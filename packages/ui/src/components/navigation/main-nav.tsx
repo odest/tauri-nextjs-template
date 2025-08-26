@@ -1,7 +1,7 @@
 "use client";
 
+import { ComponentType } from "react";
 import { ChevronRight, type LucideIcon } from "lucide-react";
-
 import {
   Collapsible,
   CollapsibleContent,
@@ -21,6 +21,7 @@ import {
 
 export function MainNav({
   items,
+  LinkComponent = "a",
 }: {
   items: {
     title: string;
@@ -32,6 +33,7 @@ export function MainNav({
       url: string;
     }[];
   }[];
+  LinkComponent?: ComponentType<any> | string;
 }) {
   return (
     <SidebarGroup>
@@ -41,10 +43,10 @@ export function MainNav({
           <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
             <SidebarMenuItem>
               <SidebarMenuButton asChild tooltip={item.title}>
-                <a href={item.url}>
+                <LinkComponent href={item.url} data-active={item.isActive}>
                   <item.icon />
                   <span>{item.title}</span>
-                </a>
+                </LinkComponent>
               </SidebarMenuButton>
               {item.items?.length ? (
                 <>
@@ -59,9 +61,9 @@ export function MainNav({
                       {item.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
                           <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
+                            <LinkComponent href={subItem.url}>
                               <span>{subItem.title}</span>
-                            </a>
+                            </LinkComponent>
                           </SidebarMenuSubButton>
                         </SidebarMenuSubItem>
                       ))}

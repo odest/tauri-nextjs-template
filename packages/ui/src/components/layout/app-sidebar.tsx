@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { ComponentType } from "react";
 import {
   BookOpen,
   Bot,
@@ -152,7 +153,12 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({
+  LinkComponent = "a",
+  ...props
+}: React.ComponentProps<typeof Sidebar> & {
+  LinkComponent?: ComponentType<any> | string;
+}) {
   return (
     <Sidebar variant="inset" collapsible="icon" {...props}>
       <SidebarHeader>
@@ -162,18 +168,22 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <a href="/">
+              <LinkComponent href="/">
                 <Biohazard className="!size-5" />
                 <span className="text-base font-semibold">TNT</span>
-              </a>
+              </LinkComponent>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <MainNav items={data.navMain} />
-        <ProjectsNav projects={data.projects} />
-        <SecondaryNav items={data.navSecondary} className="mt-auto" />
+        <MainNav items={data.navMain} LinkComponent={LinkComponent} />
+        <ProjectsNav projects={data.projects} LinkComponent={LinkComponent} />
+        <SecondaryNav
+          items={data.navSecondary}
+          LinkComponent={LinkComponent}
+          className="mt-auto"
+        />
       </SidebarContent>
       <SidebarFooter>
         <UserNav user={data.user} />

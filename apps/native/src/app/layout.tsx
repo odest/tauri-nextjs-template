@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "@workspace/ui/components/layout/app-layout";
 import "@workspace/ui/globals.css";
@@ -28,7 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <AppLayout>{children}</AppLayout>
+        <AppLayout LinkComponent={Link}>{children}</AppLayout>
       </body>
     </html>
   );

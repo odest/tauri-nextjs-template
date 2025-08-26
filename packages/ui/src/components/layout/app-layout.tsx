@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, ComponentType } from "react";
 import { AppSidebar } from "@workspace/ui/components/layout/app-sidebar";
 import { AppHeader } from "@workspace/ui/components/layout/app-header";
 import { ThemeProvider } from "@workspace/ui/providers/theme-provider";
@@ -9,9 +9,10 @@ import {
 
 interface AppLayoutProps {
   children: ReactNode;
+  LinkComponent?: ComponentType<any> | string;
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
+export function AppLayout({ children, LinkComponent }: AppLayoutProps) {
   return (
     <ThemeProvider
       attribute="class"
@@ -21,7 +22,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       enableColorScheme
     >
       <SidebarProvider>
-        <AppSidebar variant="inset" collapsible="icon" />
+        <AppSidebar LinkComponent={LinkComponent} />
         <SidebarInset>
           <AppHeader />
           {children}

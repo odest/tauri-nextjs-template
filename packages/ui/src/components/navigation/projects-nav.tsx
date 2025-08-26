@@ -1,5 +1,6 @@
 "use client";
 
+import { ComponentType } from "react";
 import {
   Folder,
   MoreHorizontal,
@@ -27,12 +28,14 @@ import {
 
 export function ProjectsNav({
   projects,
+  LinkComponent = "a",
 }: {
   projects: {
     name: string;
     url: string;
     icon: LucideIcon;
   }[];
+  LinkComponent?: ComponentType<any> | string;
 }) {
   const { isMobile } = useSidebar();
 
@@ -43,10 +46,10 @@ export function ProjectsNav({
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <LinkComponent href={item.url} data-tooltip={item.name}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </LinkComponent>
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
