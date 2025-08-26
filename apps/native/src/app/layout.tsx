@@ -1,6 +1,6 @@
-"use client";
+import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Providers } from "@workspace/ui/components/providers";
+import { AppLayout } from "@workspace/ui/components/layout/app-layout";
 import "@workspace/ui/globals.css";
 
 const geistSans = Geist({
@@ -13,6 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata: Metadata = {
+  title: "Tauri + Next.js Template",
+  description: "Tauri + Next.js Template",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -23,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <AppLayout>{children}</AppLayout>
       </body>
     </html>
   );
