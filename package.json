@@ -1,12 +1,16 @@
 {
-  "name": "shadcn-ui-monorepo",
+  "name": "tauri-nextjs-template",
   "version": "0.0.1",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean",
+    "check-types": "turbo check-types",
+    "shadcn": "pnpm --filter @workspace/ui shadcn",
+    "tauri": "pnpm --filter native tauri"
   },
   "devDependencies": {
     "@workspace/eslint-config": "workspace:*",

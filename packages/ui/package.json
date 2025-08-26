@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit",
+    "shadcn": "pnpm dlx shadcn@latest"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
@@ -21,8 +23,8 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "@turbo/gen": "^2.5.5",
-    "@types/node": "^20.19.9",
-    "@types/react": "^19.1.9",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
