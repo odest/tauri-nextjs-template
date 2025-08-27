@@ -19,61 +19,85 @@ import {
   SidebarMenuSubItem,
 } from "@workspace/ui/components/sidebar";
 
-export function MainNav({
-  items,
-  LinkComponent = "a",
-}: {
-  items: {
+interface MainNavItem {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+  isActive?: boolean;
+  items?: {
     title: string;
     url: string;
-    icon: LucideIcon;
-    isActive?: boolean;
-    items?: {
-      title: string;
-      url: string;
-    }[];
   }[];
+}
+
+interface MainNavProps {
+  items: MainNavItem[];
+  pathname: string;
   LinkComponent?: ComponentType<any> | string;
-}) {
+}
+
+export function MainNav({
+  items,
+  pathname,
+  LinkComponent = "a",
+}: MainNavProps) {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
-        {items.map((item) => (
-          <Collapsible key={item.title} asChild defaultOpen={item.isActive}>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip={item.title}>
-                <LinkComponent href={item.url} data-active={item.isActive}>
-                  <item.icon />
-                  <span>{item.title}</span>
-                </LinkComponent>
-              </SidebarMenuButton>
-              {item.items?.length ? (
-                <>
-                  <CollapsibleTrigger asChild>
-                    <SidebarMenuAction className="data-[state=open]:rotate-90">
-                      <ChevronRight />
-                      <span className="sr-only">Toggle</span>
-                    </SidebarMenuAction>
-                  </CollapsibleTrigger>
-                  <CollapsibleContent>
-                    <SidebarMenuSub>
-                      {item.items?.map((subItem) => (
-                        <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <LinkComponent href={subItem.url}>
-                              <span>{subItem.title}</span>
-                            </LinkComponent>
-                          </SidebarMenuSubButton>
-                        </SidebarMenuSubItem>
-                      ))}
-                    </SidebarMenuSub>
-                  </CollapsibleContent>
-                </>
-              ) : null}
-            </SidebarMenuItem>
-          </Collapsible>
-        ))}
+        {items.map((item) => {
+          const active =
+            pathname === item.url ||
+            (item.url !== "/" && pathname.startsWith(item.url));
+          return (
+            <Collapsible key={item.title} asChild defaultOpen={active}>
+              <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  tooltip={item.title}
+                  isActive={active}
+                >
+                  <LinkComponent href={item.url} data-active={active}>
+                    <item.icon />
+                    <span>{item.title}</span>
+                  </LinkComponent>
+                </SidebarMenuButton>
+                {item.items?.length ? (
+                  <>
+                    <CollapsibleTrigger asChild>
+                      <SidebarMenuAction className="data-[state=open]:rotate-90">
+                        <ChevronRight />
+                        <span className="sr-only">Toggle</span>
+                      </SidebarMenuAction>
+                    </CollapsibleTrigger>
+                    <CollapsibleContent>
+                      <SidebarMenuSub>
+                        {item.items.map((subItem) => {
+                          const subActive =
+                            pathname === subItem.url ||
+                            (subItem.url !== "/" &&
+                              pathname.startsWith(subItem.url));
+                          return (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton
+                                asChild
+                                isActive={subActive}
+                              >
+                                <LinkComponent href={subItem.url}>
+                                  <span>{subItem.title}</span>
+                                </LinkComponent>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          );
+                        })}
+                      </SidebarMenuSub>
+                    </CollapsibleContent>
+                  </>
+                ) : null}
+              </SidebarMenuItem>
+            </Collapsible>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );

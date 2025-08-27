@@ -30,15 +30,17 @@ import {
   useSidebar,
 } from "@workspace/ui/components/sidebar";
 
-export function UserNav({
-  user,
-}: {
-  user: {
-    name: string;
-    email: string;
-    avatar: string;
-  };
-}) {
+interface UserNavUser {
+  name: string;
+  email: string;
+  avatar: string;
+}
+
+interface UserNavProps {
+  user: UserNavUser;
+}
+
+export function UserNav({ user }: UserNavProps) {
   const { isMobile } = useSidebar();
 
   return (

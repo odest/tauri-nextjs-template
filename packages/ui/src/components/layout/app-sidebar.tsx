@@ -2,18 +2,7 @@
 
 import * as React from "react";
 import { ComponentType } from "react";
-import {
-  BookOpen,
-  Bot,
-  Biohazard,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react";
+import { Biohazard } from "lucide-react";
 
 import { MainNav } from "@workspace/ui/components/navigation/main-nav";
 import { ProjectsNav } from "@workspace/ui/components/navigation/projects-nav";
@@ -28,137 +17,18 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@workspace/ui/components/sidebar";
+import { navigationData } from "@workspace/ui/config/navigation";
 
-const data = {
-  user: {
-    name: "odest",
-    email: "dest@example.com",
-    avatar: "/avatar.png",
-  },
-  navMain: [
-    {
-      title: "Playground",
-      url: "/",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "/dashboard",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-};
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  pathname: string;
+  LinkComponent?: ComponentType<any> | string;
+}
 
 export function AppSidebar({
+  pathname,
   LinkComponent = "a",
   ...props
-}: React.ComponentProps<typeof Sidebar> & {
-  LinkComponent?: ComponentType<any> | string;
-}) {
+}: AppSidebarProps) {
   return (
     <Sidebar variant="inset" collapsible="icon" {...props}>
       <SidebarHeader>
@@ -177,16 +47,25 @@ export function AppSidebar({
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent>
-        <MainNav items={data.navMain} LinkComponent={LinkComponent} />
-        <ProjectsNav projects={data.projects} LinkComponent={LinkComponent} />
+        <MainNav
+          items={navigationData.navMain}
+          pathname={pathname}
+          LinkComponent={LinkComponent}
+        />
+        <ProjectsNav
+          projects={navigationData.projects}
+          pathname={pathname}
+          LinkComponent={LinkComponent}
+        />
         <SecondaryNav
-          items={data.navSecondary}
+          items={navigationData.navSecondary}
+          pathname={pathname}
           LinkComponent={LinkComponent}
           className="mt-auto"
         />
       </SidebarContent>
       <SidebarFooter>
-        <UserNav user={data.user} />
+        <UserNav user={navigationData.user} />
       </SidebarFooter>
     </Sidebar>
   );

@@ -9,10 +9,15 @@ import {
 
 interface AppLayoutProps {
   children: ReactNode;
+  pathname: string;
   LinkComponent?: ComponentType<any> | string;
 }
 
-export function AppLayout({ children, LinkComponent }: AppLayoutProps) {
+export function AppLayout({
+  children,
+  pathname,
+  LinkComponent,
+}: AppLayoutProps) {
   return (
     <ThemeProvider
       attribute="class"
@@ -22,7 +27,7 @@ export function AppLayout({ children, LinkComponent }: AppLayoutProps) {
       enableColorScheme
     >
       <SidebarProvider>
-        <AppSidebar LinkComponent={LinkComponent} />
+        <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
         <SidebarInset>
           <AppHeader />
           {children}

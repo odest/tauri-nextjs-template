@@ -45,8 +45,10 @@
     "./components/*": "./src/components/*.tsx",
     "./providers/*": "./src/providers/*.tsx",
     "./pages/*": "./src/pages/*.tsx",
+    "./pages/subpages/*": "./src/pages/subpages/*.tsx",
     "./lib/*": "./src/lib/*.ts",
     "./hooks/*": "./src/hooks/*.ts",
-    "./stores/*": "./src/stores/*.ts"
+    "./stores/*": "./src/stores/*.ts",
+    "./config/*": "./src/config/*.ts"
   }
 }
