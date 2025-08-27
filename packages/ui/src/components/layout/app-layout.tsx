@@ -26,7 +26,7 @@ export function AppLayout({
       disableTransitionOnChange
       enableColorScheme
     >
-      <SidebarProvider>
+      <SidebarProvider className="h-screen">
         <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
         <SidebarInset>
           <AppHeader />
