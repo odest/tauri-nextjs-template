@@ -1,6 +1,6 @@
 import { Separator } from "@workspace/ui/components/separator";
 import { SidebarTrigger } from "@workspace/ui/components/sidebar";
-import { ThemeToggle } from "@workspace/ui/components/common/theme-toggle";
+import { ModeToggle } from "@workspace/ui/components/common/mode-toggle";
 
 export function AppHeader() {
   return (
@@ -14,7 +14,7 @@ export function AppHeader() {
 
         <h1 className="text-base font-medium">Welcome Back</h1>
         <div className="ml-auto">
-          <ThemeToggle />
+          <ModeToggle />
         </div>
       </div>
     </header>

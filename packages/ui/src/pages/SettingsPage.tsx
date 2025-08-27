@@ -1,5 +1,5 @@
+import { ModeCard } from "@workspace/ui/components/common/mode-card";
 import { ThemeCard } from "@workspace/ui/components/common/theme-card";
-import { AccentColorCard } from "@workspace/ui/components/common/accent-color-card";
 
 export function SettingsPage() {
   return (
@@ -13,8 +13,8 @@ export function SettingsPage() {
         </div>
 
         <div className="grid gap-6">
+          <ModeCard />
           <ThemeCard />
-          <AccentColorCard />
         </div>
       </div>
     </div>

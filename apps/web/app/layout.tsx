@@ -31,16 +31,16 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  const raw = localStorage.getItem("accent-color-storage");
+                  const raw = localStorage.getItem("theme-storage");
                   if (raw) {
                     const parsed = JSON.parse(raw);
-                    const accent = parsed?.state?.selectedColor || "zinc";
-                    document.documentElement.setAttribute("data-theme", accent);
+                    const theme = parsed?.state?.selectedTheme || "default";
+                    document.documentElement.setAttribute("data-theme", theme);
                   } else {
-                    document.documentElement.setAttribute("data-theme", "zinc");
+                    document.documentElement.setAttribute("data-theme", "default");
                   }
                 } catch (e) {
-                  document.documentElement.setAttribute("data-theme", "zinc");
+                  document.documentElement.setAttribute("data-theme", "default");
                 }
               })();
             `,
