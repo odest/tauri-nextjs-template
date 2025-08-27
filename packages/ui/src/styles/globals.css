@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./accent.css";
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
@@ -124,4 +125,24 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+[data-slot="sidebar-menu-button"][data-active="true"] {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+[data-slot="sidebar-menu-button"][data-active="true"]:hover {
+  background-color: var(--accent) !important;
+  color: var(--primary) !important;
+}
+
+[data-slot="sidebar-menu-sub-button"][data-active="true"] {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+[data-slot="sidebar-menu-sub-button"][data-active="true"]:hover {
+  background-color: var(--accent) !important;
+  color: var(--primary) !important;
 }

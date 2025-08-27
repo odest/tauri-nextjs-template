@@ -25,6 +25,28 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const raw = localStorage.getItem("accent-color-storage");
+                  if (raw) {
+                    const parsed = JSON.parse(raw);
+                    const accent = parsed?.state?.selectedColor || "zinc";
+                    document.documentElement.setAttribute("data-theme", accent);
+                  } else {
+                    document.documentElement.setAttribute("data-theme", "zinc");
+                  }
+                } catch (e) {
+                  document.documentElement.setAttribute("data-theme", "zinc");
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased  overflow-hidden`}
       >

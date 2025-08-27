@@ -1,4 +1,5 @@
 import { ThemeCard } from "@workspace/ui/components/common/theme-card";
+import { AccentColorCard } from "@workspace/ui/components/common/accent-color-card";
 
 export function SettingsPage() {
   return (
@@ -13,6 +14,7 @@ export function SettingsPage() {
 
         <div className="grid gap-6">
           <ThemeCard />
+          <AccentColorCard />
         </div>
       </div>
     </div>
