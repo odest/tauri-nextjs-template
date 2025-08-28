@@ -1,73 +1,71 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@workspace/ui/components/card";
+import { Card } from "@workspace/ui/components/card";
 import { cn } from "@workspace/ui/lib/utils";
-import { themes } from "@workspace/ui/config/themes";
-import { useTheme } from "next-themes";
+import { Button } from "@workspace/ui/components/button";
 import { useThemeStore } from "@workspace/ui/stores/theme-store";
-import { Loader } from "lucide-react";
+import { Themes } from "@workspace/ui/config/themes";
 
-export const ThemeCard = () => {
+interface ThemeCardProps {
+  themeLabel: string;
+  themeName: Themes;
+  palette: string[];
+}
+
+const swatchDefinitions = [
+  { name: "Primary", foreground: "text-primary-foreground", index: 0 },
+  { name: "Secondary", foreground: "text-secondary-foreground", index: 1 },
+  { name: "Accent", foreground: "text-accent-foreground", index: 2 },
+  { name: "Muted", foreground: "text-muted-foreground", index: 3 },
+  { name: "Background", foreground: "text-foreground", index: 4 },
+];
+
+export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
+  const colorSwatches = swatchDefinitions.map((definition) => ({
+    name: definition.name,
+    bg: palette[definition.index],
+    fg: definition.foreground,
+  }));
   const { selectedTheme, setSelectedTheme } = useThemeStore();
-  const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme();
-
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted)
-    return (
-      <div className="flex items-center justify-center h-32">
-        {!mounted ? (
-          <Loader className="animate-spin h-4 w-4" />
-        ) : (
-          <Loader className="h-4 w-4" />
-        )}
-      </div>
-    );
 
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Themes</CardTitle>
-        <CardDescription>Use default or custom themes</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {themes.map(({ name, label, lightPalette, darkPalette }) => {
-            const palette = theme === "dark" ? darkPalette : lightPalette;
-            return (
-              <button
-                key={name}
-                onClick={() => setSelectedTheme(name)}
-                className={cn(
-                  "w-full border rounded-lg p-3 md:p-4 flex flex-col items-center shadow-sm transition-transform duration-200 hover:scale-105 hover:shadow-md",
-                  selectedTheme === name && "ring-2 ring-primary"
-                )}
-              >
-                <h4 className="font-semibold text-sm sm:text-base mb-2 text-center">
-                  {label}
-                </h4>
-                <div className="grid grid-cols-4 md:grid-cols-2 gap-2 sm:gap-3">
-                  {palette.map((color, i) => (
-                    <div
-                      key={i}
-                      className="w-6 h-6 sm:w-8 sm:h-8 rounded-full border"
-                      style={{ backgroundColor: color }}
-                    />
-                  ))}
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </CardContent>
+    <Card className="p-1 gap-0 rounded-lg">
+      <div className="relative flex h-36">
+        {colorSwatches.map((swatch) => (
+          <div
+            key={swatch.name + swatch.bg}
+            className={cn(
+              "group/swatch relative h-full flex-1 ml-1 border first:ml-0 rounded-lg transition-all duration-300 ease-in-out",
+              "hover:flex-grow-[1.5]"
+            )}
+            style={{ backgroundColor: swatch.bg }}
+          >
+            <div
+              className={cn(
+                "absolute inset-0 flex items-center justify-center",
+                "opacity-0 group-hover/swatch:opacity-100",
+                "transition-opacity duration-300 ease-in-out",
+                "pointer-events-none text-xs font-medium",
+                swatch.fg
+              )}
+            >
+              {swatch.name}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Button
+        onClick={() => setSelectedTheme(themeName)}
+        className={cn(
+          "w-full h-12 mt-1 border text-sm font-medium",
+          selectedTheme === themeName
+            ? "bg-primary text-primary-foreground"
+            : "bg-background text-foreground"
+        )}
+      >
+        {themeLabel}
+      </Button>
     </Card>
   );
-};
+}

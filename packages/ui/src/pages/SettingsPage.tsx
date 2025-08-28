@@ -1,5 +1,5 @@
 import { ModeCard } from "@workspace/ui/components/common/mode-card";
-import { ThemeCard } from "@workspace/ui/components/common/theme-card";
+import { ThemesList } from "@workspace/ui/components/common/themes-list";
 
 export function SettingsPage() {
   return (
@@ -14,7 +14,7 @@ export function SettingsPage() {
 
         <div className="grid gap-6">
           <ModeCard />
-          <ThemeCard />
+          <ThemesList />
         </div>
       </div>
     </div>
