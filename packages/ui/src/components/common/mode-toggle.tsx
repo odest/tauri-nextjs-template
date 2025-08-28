@@ -12,8 +12,36 @@ import {
 } from "@workspace/ui/components/dropdown-menu";
 import { cn } from "@workspace/ui/lib/utils";
 
+type ThemeOption = "light" | "dark" | "system";
+
 export function ModeToggle() {
   const { theme, setTheme } = useTheme();
+
+  const handleThemeChange = (
+    newTheme: ThemeOption,
+    event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
+  ) => {
+    const root = document.documentElement;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (!document.startViewTransition || prefersReducedMotion) {
+      setTheme(newTheme);
+      return;
+    }
+
+    if (event) {
+      const { clientX: x, clientY: y } = event;
+      root.style.setProperty("--x", `${x}px`);
+      root.style.setProperty("--y", `${y}px`);
+    }
+
+    document.startViewTransition(() => {
+      setTheme(newTheme);
+    });
+  };
 
   return (
     <DropdownMenu>
@@ -26,7 +54,7 @@ export function ModeToggle() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuItem
-          onClick={() => setTheme("light")}
+          onClick={(e) => handleThemeChange("light", e)}
           className={cn(theme === "light" && "bg-accent")}
         >
           <Sun className="mr-2 h-3 w-3" />
@@ -34,7 +62,7 @@ export function ModeToggle() {
           {theme === "light" && <Check className="ml-auto h-3 w-3" />}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("dark")}
+          onClick={(e) => handleThemeChange("dark", e)}
           className={cn(theme === "dark" && "bg-accent")}
         >
           <Moon className="mr-2 h-3 w-3" />
@@ -42,7 +70,7 @@ export function ModeToggle() {
           {theme === "dark" && <Check className="ml-auto h-3 w-3" />}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme("system")}
+          onClick={(e) => handleThemeChange("system", e)}
           className={cn(theme === "system" && "bg-accent")}
         >
           <Laptop className="mr-2 h-3 w-3" />

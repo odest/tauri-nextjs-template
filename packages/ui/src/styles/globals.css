@@ -1,11 +1,10 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 @import "./themes.css";
 
 @source "../../../apps/**/*.{ts,tsx}";
 @source "../../../components/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
-
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -174,6 +173,13 @@
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+
+  --tracking-tighter: calc(var(--letter-spacing) - 0.05em);
+  --tracking-tight: calc(var(--letter-spacing) - 0.025em);
+  --tracking-normal: var(--letter-spacing);
+  --tracking-wide: calc(var(--letter-spacing) + 0.025em);
+  --tracking-wider: calc(var(--letter-spacing) + 0.05em);
+  --tracking-widest: calc(var(--letter-spacing) + 0.1em);
 }
 
 @layer base {
@@ -203,4 +209,33 @@
 [data-slot="sidebar-menu-sub-button"][data-active="true"]:hover {
   background-color: var(--accent) !important;
   color: var(--primary) !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 0;
+}
+
+::view-transition-new(root) {
+  z-index: 1;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
+    opacity: 0.7;
+  }
+  to {
+    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
+    opacity: 1;
+  }
+}
+
+::view-transition-new(root) {
+  animation: reveal 0.4s ease-in-out forwards;
 }
