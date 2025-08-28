@@ -29,7 +29,7 @@ export function AppLayout({
       <SidebarProvider className="h-screen">
         <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
         <SidebarInset>
-          <AppHeader />
+          <AppHeader pathname={pathname} LinkComponent={LinkComponent} />
           {children}
         </SidebarInset>
       </SidebarProvider>
