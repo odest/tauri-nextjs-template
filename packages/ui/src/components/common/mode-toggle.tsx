@@ -1,8 +1,6 @@
 "use client";
 
 import { Laptop, Moon, Sun, Check } from "lucide-react";
-import { useTheme } from "next-themes";
-
 import { Button } from "@workspace/ui/components/button";
 import {
   DropdownMenu,
@@ -11,37 +9,10 @@ import {
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu";
 import { cn } from "@workspace/ui/lib/utils";
-
-type ThemeOption = "light" | "dark" | "system";
+import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
 
 export function ModeToggle() {
-  const { theme, setTheme } = useTheme();
-
-  const handleThemeChange = (
-    newTheme: ThemeOption,
-    event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
-  ) => {
-    const root = document.documentElement;
-
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-
-    if (!document.startViewTransition || prefersReducedMotion) {
-      setTheme(newTheme);
-      return;
-    }
-
-    if (event) {
-      const { clientX: x, clientY: y } = event;
-      root.style.setProperty("--x", `${x}px`);
-      root.style.setProperty("--y", `${y}px`);
-    }
-
-    document.startViewTransition(() => {
-      setTheme(newTheme);
-    });
-  };
+  const { theme, handleThemeChange } = useThemeTransition();
 
   return (
     <DropdownMenu>

@@ -28,7 +28,7 @@ import { themes } from "@workspace/ui/config/themes";
 import { ThemeCard } from "@workspace/ui/components/common/theme-card";
 
 export const ThemesList = () => {
-  const { theme: activeMode } = useTheme();
+  const { theme: activeMode, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   const [filteredThemes, setFilteredThemes] = useState(themes);
@@ -127,7 +127,10 @@ export const ThemesList = () => {
                 themeLabel={theme.label}
                 themeName={theme.name}
                 palette={
-                  activeMode === "dark" ? theme.darkPalette : theme.lightPalette
+                  (activeMode === "system" ? resolvedTheme : activeMode) ===
+                  "dark"
+                    ? theme.darkPalette
+                    : theme.lightPalette
                 }
               />
             ))}

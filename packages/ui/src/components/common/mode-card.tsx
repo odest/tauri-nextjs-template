@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import {
   Card,
   CardContent,
@@ -11,9 +10,10 @@ import {
 } from "@workspace/ui/components/card";
 import { Label } from "@workspace/ui/components/label";
 import { Loader } from "lucide-react";
+import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
 
 export const ModeCard = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme, handleThemeChange } = useThemeTransition();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -40,7 +40,7 @@ export const ModeCard = () => {
       <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div
           className="flex flex-col gap-3 cursor-pointer"
-          onClick={() => setTheme("light")}
+          onClick={(e) => handleThemeChange("light", e)}
         >
           <div className="relative">
             <div className="aspect-video rounded-lg border-2 border-gray-300 bg-white overflow-hidden transition-colors">
@@ -69,7 +69,7 @@ export const ModeCard = () => {
 
         <div
           className="flex flex-col gap-3 cursor-pointer"
-          onClick={() => setTheme("dark")}
+          onClick={(e) => handleThemeChange("dark", e)}
         >
           <div className="relative">
             <div className="aspect-video rounded-lg border-2 border-gray-300 bg-gray-900 overflow-hidden transition-colors">
@@ -98,7 +98,7 @@ export const ModeCard = () => {
 
         <div
           className="flex flex-col gap-3 cursor-pointer"
-          onClick={() => setTheme("system")}
+          onClick={(e) => handleThemeChange("system", e)}
         >
           <div className="relative">
             <div className="aspect-video rounded-lg border-2 border-gray-300 overflow-hidden relative transition-colors">
