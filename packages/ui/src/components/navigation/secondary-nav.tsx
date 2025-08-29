@@ -7,6 +7,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@workspace/ui/components/sidebar";
 
 interface SecondaryNavItem {
@@ -28,6 +29,14 @@ export function SecondaryNav({
   LinkComponent = "a",
   ...props
 }: SecondaryNavProps) {
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
+
   return (
     <SidebarGroup {...props}>
       <SidebarGroupContent>
@@ -43,6 +52,7 @@ export function SecondaryNav({
                     href={item.url}
                     data-tooltip={item.title}
                     data-active={active}
+                    onClick={handleLinkClick}
                   >
                     <item.icon />
                     <span>{item.title}</span>
