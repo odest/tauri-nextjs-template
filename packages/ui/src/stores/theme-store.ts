@@ -4,7 +4,9 @@ import { Themes } from "@workspace/ui/config/themes";
 
 interface ThemeState {
   selectedTheme: Themes;
+  sortOption: string;
   setSelectedTheme: (theme: Themes) => void;
+  setSortOption: (sortOption: string) => void;
 }
 
 const getInitialTheme = () => {
@@ -32,11 +34,14 @@ export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
       selectedTheme: getInitialTheme(),
+      sortOption: "default",
 
       setSelectedTheme: (theme: Themes) => {
         set({ selectedTheme: theme });
         applyTheme(theme);
       },
+
+      setSortOption: (sortOption: string) => set({ sortOption }),
     }),
     {
       name: "theme-storage",

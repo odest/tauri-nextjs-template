@@ -19,6 +19,7 @@ import {
 } from "@workspace/ui/components/card";
 import {
   Loader,
+  XCircle,
   ArrowUpDown,
   Search,
   ArrowUpAZ,
@@ -26,6 +27,7 @@ import {
 } from "lucide-react";
 import { themes } from "@workspace/ui/config/themes";
 import { ThemeCard } from "@workspace/ui/components/common/theme-card";
+import { useThemeStore } from "@workspace/ui/stores/theme-store";
 
 export const ThemesList = () => {
   const { theme: activeMode, resolvedTheme } = useTheme();
@@ -33,7 +35,7 @@ export const ThemesList = () => {
 
   const [filteredThemes, setFilteredThemes] = useState(themes);
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortOption, setSortOption] = useState("default");
+  const { sortOption, setSortOption } = useThemeStore();
 
   useEffect(() => {
     const filtered = themes.filter((theme) =>
@@ -76,19 +78,27 @@ export const ThemesList = () => {
             <CardDescription>Use default or custom themes</CardDescription>
           </div>
 
-          <div className="flex flex-row gap-2 md:items-center">
+          <div className="flex flex-col sm:flex-row gap-4 md:items-center">
             <div className="relative flex-1">
               <Search className="text-muted-foreground absolute top-2.5 left-2.5 size-4" />
               <Input
                 placeholder="Search themes..."
-                className="w-full pl-8 min-w-[140px]"
+                className="w-full pl-8 pr-8 min-w-[140px] max-w-full text-ellipsis break-all"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm("")}
+                  className="text-muted-foreground hover:text-foreground absolute top-2.5 right-2.5 size-4 transition-colors"
+                >
+                  <XCircle className="size-4" />
+                </button>
+              )}
             </div>
 
             <Select value={sortOption} onValueChange={setSortOption}>
-              <SelectTrigger className="w-[140px] gap-2 md:w-[180px]">
+              <SelectTrigger className="w-full sm:w-[160px] gap-2 md:w-[180px]">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
               <SelectContent>
@@ -116,7 +126,7 @@ export const ThemesList = () => {
             <Search className="text-muted-foreground mx-auto mb-4 size-12" />
             <h3 className="mb-1 text-lg font-medium">No themes found</h3>
             <p className="text-muted-foreground text-pretty px-4">
-              No themes match your search term &quot;{searchTerm}&quot;.
+              No themes match your search term.
             </p>
           </div>
         ) : (
