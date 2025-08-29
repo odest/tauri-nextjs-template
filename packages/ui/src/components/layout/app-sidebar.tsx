@@ -16,6 +16,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@workspace/ui/components/sidebar";
 import { navigationData } from "@workspace/ui/config/navigation";
 
@@ -29,6 +30,14 @@ export function AppSidebar({
   LinkComponent = "a",
   ...props
 }: AppSidebarProps) {
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
+
   return (
     <Sidebar variant="inset" collapsible="icon" {...props}>
       <SidebarHeader>
@@ -38,7 +47,7 @@ export function AppSidebar({
               asChild
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
-              <LinkComponent href="/">
+              <LinkComponent href="/" onClick={handleLinkClick}>
                 <Biohazard className="!size-5" />
                 <span className="text-base font-semibold">TNT</span>
               </LinkComponent>

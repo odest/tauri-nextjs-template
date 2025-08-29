@@ -17,6 +17,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubButton,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@workspace/ui/components/sidebar";
 
 interface MainNavItem {
@@ -41,6 +42,14 @@ export function MainNav({
   pathname,
   LinkComponent = "a",
 }: MainNavProps) {
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
@@ -57,7 +66,11 @@ export function MainNav({
                   tooltip={item.title}
                   isActive={active}
                 >
-                  <LinkComponent href={item.url} data-active={active}>
+                  <LinkComponent
+                    href={item.url}
+                    data-active={active}
+                    onClick={handleLinkClick}
+                  >
                     <item.icon />
                     <span>{item.title}</span>
                   </LinkComponent>
@@ -83,7 +96,10 @@ export function MainNav({
                                 asChild
                                 isActive={subActive}
                               >
-                                <LinkComponent href={subItem.url}>
+                                <LinkComponent
+                                  href={subItem.url}
+                                  onClick={handleLinkClick}
+                                >
                                   <span>{subItem.title}</span>
                                 </LinkComponent>
                               </SidebarMenuSubButton>

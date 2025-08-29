@@ -43,7 +43,13 @@ export function ProjectsNav({
   pathname,
   LinkComponent = "a",
 }: ProjectsNavProps) {
-  const { isMobile } = useSidebar();
+  const { isMobile, setOpenMobile } = useSidebar();
+
+  const handleLinkClick = () => {
+    if (isMobile) {
+      setOpenMobile(false);
+    }
+  };
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -56,7 +62,11 @@ export function ProjectsNav({
           return (
             <SidebarMenuItem key={item.name}>
               <SidebarMenuButton asChild isActive={active}>
-                <LinkComponent href={item.url} data-tooltip={item.name}>
+                <LinkComponent
+                  href={item.url}
+                  data-tooltip={item.name}
+                  onClick={handleLinkClick}
+                >
                   <item.icon />
                   <span>{item.name}</span>
                 </LinkComponent>
