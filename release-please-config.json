@@ -4,20 +4,23 @@
   "plugins": ["cargo-workspace"],
   "pull-request-title-pattern": "release version: v${version}",
   "include-component-in-tag": false,
-  "bump-minor-pre-major": true,
-  "bump-patch-for-minor-pre-major": true,
-  "draft": false,
-  "prerelease": false,
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "package-name": "tauri-nextjs-template"
     },
     "apps/native": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "extra-files": [
         {
@@ -34,26 +37,38 @@
       "package-name": "native"
     },
     "apps/web": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "package-name": "web"
     },
     "packages/ui": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "package-name": "@workspace/ui"
     },
     "packages/eslint-config": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "package-name": "@workspace/eslint-config"
     },
     "packages/typescript-config": {
-      "changelog-path": "CHANGELOG.md",
       "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
       "version-file": "package.json",
       "package-name": "@workspace/typescript-config"
     }
