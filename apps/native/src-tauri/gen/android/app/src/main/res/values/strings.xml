@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">tauri-nextjs-template</string>
+    <string name="main_activity_title">tauri-nextjs-template</string>
+</resources>
