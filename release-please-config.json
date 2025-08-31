@@ -1,0 +1,76 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "sequential-calls": true,
+  "plugins": ["cargo-workspace"],
+  "pull-request-title-pattern": "release version: v${version}",
+  "include-component-in-tag": false,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "draft": false,
+  "prerelease": false,
+  "packages": {
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "package-name": "tauri-nextjs-template"
+    },
+    "apps/native": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "src-tauri/tauri.conf.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "toml",
+          "path": "src-tauri/Cargo.toml",
+          "jsonpath": "$.package.version"
+        }
+      ],
+      "package-name": "native"
+    },
+    "apps/web": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "package-name": "web"
+    },
+    "packages/ui": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "package-name": "@workspace/ui"
+    },
+    "packages/eslint-config": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "package-name": "@workspace/eslint-config"
+    },
+    "packages/typescript-config": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "node",
+      "version-file": "package.json",
+      "package-name": "@workspace/typescript-config"
+    }
+  },
+  "changelog-sections": [
+    { "type": "feat", "section": "Features" },
+    { "type": "feature", "section": "Features" },
+    { "type": "fix", "section": "Bug Fixes" },
+    { "type": "perf", "section": "Performance Improvements" },
+    { "type": "deps", "section": "Dependencies" },
+    { "type": "revert", "section": "Reverts" },
+    { "type": "docs", "section": "Documentation" },
+    { "type": "style", "section": "Styles" },
+    { "type": "chore", "section": "Miscellaneous Chores", "hidden": true },
+    { "type": "refactor", "section": "Code Refactoring" },
+    { "type": "test", "section": "Tests" },
+    { "type": "build", "section": "Build System" },
+    { "type": "ci", "section": "Continuous Integration" }
+  ]
+}

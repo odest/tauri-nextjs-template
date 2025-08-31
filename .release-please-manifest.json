@@ -1,0 +1,26 @@
+{
+  ".": {
+    "name": "tauri-nextjs-template",
+    "version": "0.0.1"
+  },
+  "apps/native": {
+    "name": "native",
+    "version": "0.1.0"
+  },
+  "apps/web": {
+    "name": "web",
+    "version": "0.1.0"
+  },
+  "packages/ui": {
+    "name": "@workspace/ui",
+    "version": "0.0.0"
+  },
+  "packages/eslint-config": {
+    "name": "@workspace/eslint-config",
+    "version": "0.0.0"
+  },
+  "packages/typescript-config": {
+    "name": "@workspace/typescript-config",
+    "version": "0.0.0"
+  }
+}
