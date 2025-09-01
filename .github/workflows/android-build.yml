@@ -63,7 +63,7 @@ jobs:
         if: matrix.platform == 'ubuntu-22.04'
         run: |
           sudo apt-get update
-          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -101,7 +101,7 @@ jobs:
           includeRelease: true
           includeUpdaterJson: true
 
-  build-APK:
+  build-universal-APK:
     needs: release
     if: ${{ needs.release.outputs.release_created == 'true' }}
     strategy:
@@ -150,7 +150,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: "~/.pnpm-store"
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.json') }}
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -179,9 +179,6 @@ jobs:
       - name: Build Universal APK & AAB
         run: cd apps/native && pnpm tauri android build
 
-      - name: Build Per-ABI APKs
-        run: cd apps/native && pnpm tauri android build --apk --split-per-abi
-
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -189,6 +186,100 @@ jobs:
           path: |
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk
+
+      - name: Upload Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs.release.outputs.tag_name }} \
+          ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab \
+          ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk \
+          --clobber \
+          --repo "$GITHUB_REPOSITORY"
+
+  build-split-apk:
+    needs: release
+    if: ${{ needs.release.outputs.release_created == 'true' }}
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install deps (ubuntu only)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: "aarch64-linux-android x86_64-linux-android armv7-linux-androideabi i686-linux-android"
+
+      - name: Install Android NDK
+        id: ndk
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r28c
+
+      - name: Install front deps
+        run: pnpm install
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./apps/native/src-tauri -> target"
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: "~/.pnpm-store"
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Set environment variables for Android NDK
+        run: |
+          echo "NDK_HOME=${{steps.ndk.outputs.ndk-path}}" >> $GITHUB_ENV
+          echo "SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
+
+      - name: Create keystore.properties and jks file
+        env:
+          storeFile: ${{ secrets.STORE_FILE }}
+          storePassword: ${{ secrets.STORE_PASSWORD }}
+          keyAlias: ${{ secrets.KEY_ALIAS }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          jksBase64: ${{ secrets.BASE64_JKS }}
+        run: |
+          resolvedStoreFile="${storeFile/#\~/$HOME}"
+          mkdir -p "$(dirname $"$resolvedStoreFile")"
+
+          echo "storeFile=$resolvedStoreFile" > ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "storePassword=$storePassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "keyAlias=$keyAlias" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "keyPassword=$keyPassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "$jksBase64" | base64 --decode > "$resolvedStoreFile"
+
+      - name: Build Per-ABI APKs
+        run: cd apps/native && pnpm tauri android build --apk --split-per-abi
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: App Apk ${{ github.ref_name }}
+          path: |
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk
@@ -199,8 +290,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ needs.release.outputs.tag_name }} \
-          ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab \
-          ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk \
           ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk \
           ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk \
           ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk \
