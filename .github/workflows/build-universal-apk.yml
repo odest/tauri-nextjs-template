@@ -6,9 +6,6 @@ on:
         description: "Release tag"
         required: true
         type: string
-      github_token:
-        required: true
-        type: string
     secrets:
       STORE_FILE:
         required: true
@@ -113,7 +110,7 @@ jobs:
 
       - name: Upload Release
         env:
-          GITHUB_TOKEN: ${{ inputs.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ inputs.tag_name }} \
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab \

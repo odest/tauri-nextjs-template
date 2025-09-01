@@ -33,7 +33,6 @@ jobs:
     uses: ./.github/workflows/build-desktop.yml
     with:
       tag_name: ${{ needs.release.outputs.tag_name }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
     secrets: inherit
     permissions:
       contents: write
@@ -44,7 +43,6 @@ jobs:
     uses: ./.github/workflows/build-universal-apk.yml
     with:
       tag_name: ${{ needs.release.outputs.tag_name }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
     secrets: inherit
     permissions:
       contents: write
@@ -55,7 +53,6 @@ jobs:
     uses: ./.github/workflows/build-split-apk.yml
     with:
       tag_name: ${{ needs.release.outputs.tag_name }}
-      github_token: ${{ secrets.GITHUB_TOKEN }}
     secrets: inherit
     permissions:
       contents: write
