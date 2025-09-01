@@ -55,7 +55,7 @@ jobs:
         id: ndk
         uses: nttld/setup-ndk@v1
         with:
-          ndk-version: r28c
+          ndk-version: r27d
 
       - name: Install frontend deps
         run: pnpm install
@@ -69,7 +69,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: "~/.pnpm-store"
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.json') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -100,20 +100,33 @@ jobs:
           cd apps/native
           pnpm tauri android build
 
+      - name: Get project name
+        id: project_name
+        run: |
+          PROJECT_NAME=$(node -p "require('./package.json').name")
+          echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: App Bundle ${{ github.ref_name }}
+          name: App Bundle ${{ github.tag_name }}
           path: |
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk
 
-      - name: Upload Release
+      - name: Rename and Upload Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Rename files with tag pattern
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.aab"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.apk"
+
+          # Upload renamed files
           gh release upload ${{ inputs.tag_name }} \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.aab" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.apk" \
             --clobber \
             --repo "$GITHUB_REPOSITORY"

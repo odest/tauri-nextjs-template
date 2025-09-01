@@ -55,7 +55,7 @@ jobs:
         id: ndk
         uses: nttld/setup-ndk@v1
         with:
-          ndk-version: r28c
+          ndk-version: r27d
 
       - name: Install frontend deps
         run: pnpm install
@@ -69,7 +69,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: "~/.pnpm-store"
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.json') }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
@@ -100,24 +100,41 @@ jobs:
           cd apps/native
           pnpm tauri android build --apk --split-per-abi
 
+      - name: Get project name
+        id: project_name
+        run: |
+          PROJECT_NAME=$(node -p "require('./package.json').name")
+          echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: App Apk ${{ inputs.ref_name }}
+          name: App Apk ${{ inputs.tag_name }}
           path: |
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk
             ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk
 
-      - name: Upload Release
+      - name: Rename and Upload Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Rename files with tag pattern
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk"
+
+          # Upload renamed files
           gh release upload ${{ inputs.tag_name }} \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk \
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk" \
             --clobber \
             --repo "$GITHUB_REPOSITORY"

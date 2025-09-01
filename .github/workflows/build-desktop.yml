@@ -79,6 +79,7 @@ jobs:
           tagName: ${{ inputs.tag_name }}
           releaseName: ${{ inputs.tag_name }}
           releaseBody: "Desktop release for ${{ inputs.tag_name }}"
+          assetNamePattern: "[name]_${{ inputs.tag_name }}_[platform]_[arch]_[ext]"
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
