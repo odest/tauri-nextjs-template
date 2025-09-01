@@ -73,6 +73,19 @@ jobs:
       - name: install frontend dependencies
         run: pnpm install
 
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./apps/native/src-tauri -> target"
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: "~/.pnpm-store"
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Build Tauri Desktop App
         uses: tauri-apps/tauri-action@v0
         env:
