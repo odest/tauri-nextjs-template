@@ -1,0 +1,88 @@
+name: Build Desktop Apps
+on:
+  workflow_call:
+    inputs:
+      tag_name:
+        description: "Release tag"
+        required: true
+        type: string
+
+jobs:
+  build-desktop:
+    runs-on: ${{ matrix.platform }}
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: "macos-latest"
+            rust_targets: "aarch64-apple-darwin"
+            args: "--target aarch64-apple-darwin"
+          - platform: "macos-latest"
+            rust_targets: "x86_64-apple-darwin"
+            args: "--target x86_64-apple-darwin"
+          - platform: "ubuntu-22.04"
+            rust_targets: ""
+            args: ""
+          - platform: "windows-latest"
+            rust_targets: ""
+            args: ""
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install OS deps (Ubuntu only)
+        if: ${{ matrix.platform == 'ubuntu-22.04' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.rust_targets }}
+
+      - name: Install frontend dependencies
+        run: pnpm install
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./apps/native/src-tauri -> target"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: "~/.pnpm-store"
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Build Tauri Desktop App and create Release assets
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ inputs.tag_name }}
+          releaseName: ${{ inputs.tag_name }}
+          releaseBody: "Desktop release for ${{ inputs.tag_name }}"
+          assetNamePattern: "[name]_${{ inputs.tag_name }}_[platform]_[arch]_[ext]"
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}
+          projectPath: "apps/native"
+          includeRelease: true
+          includeUpdaterJson: true

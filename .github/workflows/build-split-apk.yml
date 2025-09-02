@@ -1,0 +1,140 @@
+name: Build Split APKs
+on:
+  workflow_call:
+    inputs:
+      tag_name:
+        description: "Release tag"
+        required: true
+        type: string
+    secrets:
+      STORE_FILE:
+        required: true
+      STORE_PASSWORD:
+        required: true
+      KEY_ALIAS:
+        required: true
+      KEY_PASSWORD:
+        required: true
+      BASE64_JKS:
+        required: true
+
+jobs:
+  build_split_apk:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install deps (ubuntu)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.4.1
+
+      - name: Install Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install Rust (Android targets)
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: "aarch64-linux-android x86_64-linux-android armv7-linux-androideabi i686-linux-android"
+
+      - name: Install Android NDK
+        id: ndk
+        uses: nttld/setup-ndk@v1
+        with:
+          ndk-version: r27d
+
+      - name: Install frontend deps
+        run: pnpm install
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./apps/native/src-tauri -> target"
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: "~/.pnpm-store"
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Set environment variables for Android NDK
+        run: |
+          echo "NDK_HOME=${{ steps.ndk.outputs.ndk-path }}" >> $GITHUB_ENV
+          echo "SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
+
+      - name: Create keystore.properties and jks file
+        env:
+          storeFile: ${{ secrets.STORE_FILE }}
+          storePassword: ${{ secrets.STORE_PASSWORD }}
+          keyAlias: ${{ secrets.KEY_ALIAS }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+          jksBase64: ${{ secrets.BASE64_JKS }}
+        run: |
+          resolvedStoreFile="${storeFile/#\~/$HOME}"
+          mkdir -p "$(dirname $"$resolvedStoreFile")"
+
+          echo "storeFile=$resolvedStoreFile" > ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "storePassword=$storePassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "keyAlias=$keyAlias" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "keyPassword=$keyPassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
+          echo "$jksBase64" | base64 --decode > "$resolvedStoreFile"
+
+      - name: Build Per-ABI APKs
+        run: |
+          cd apps/native
+          pnpm tauri android build --apk --split-per-abi
+
+      - name: Get project name
+        id: project_name
+        run: |
+          PROJECT_NAME=$(node -p "require('./package.json').name")
+          echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: App Apk ${{ inputs.tag_name }}
+          path: |
+            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk
+            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk
+            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk
+            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk
+
+      - name: Rename and Upload Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Rename files with tag pattern
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk" \
+             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk"
+
+          # Upload renamed files
+          gh release upload ${{ inputs.tag_name }} \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk" \
+            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk" \
+            --clobber \
+            --repo "$GITHUB_REPOSITORY"
