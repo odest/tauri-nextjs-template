@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card";
 import { Label } from "@workspace/ui/components/label";
-import { Loader } from "lucide-react";
+import { Skeleton } from "@workspace/ui/components/skeleton";
 import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
 
 export const ModeCard = () => {
@@ -20,13 +20,23 @@ export const ModeCard = () => {
 
   if (!mounted)
     return (
-      <div className="flex items-center justify-center h-32">
-        {!mounted ? (
-          <Loader className="animate-spin h-4 w-4" />
-        ) : (
-          <Loader className="h-4 w-4" />
-        )}
-      </div>
+      <Card>
+        <CardHeader>
+          <Skeleton className="h-6 w-16 mb-2" />
+          <Skeleton className="h-4 w-64" />
+        </CardHeader>
+        <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {[...Array(3)].map((_, i) => (
+            <div key={i} className="flex flex-col gap-3">
+              <Skeleton className="aspect-video rounded-lg" />
+              <div className="flex items-center gap-2">
+                <Skeleton className="w-4 h-4 rounded-full" />
+                <Skeleton className="h-4 w-12" />
+              </div>
+            </div>
+          ))}
+        </CardContent>
+      </Card>
     );
 
   return (
