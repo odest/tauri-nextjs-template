@@ -53,12 +53,12 @@ export const ModeCard = () => {
           onClick={(e) => handleThemeChange("light", e)}
         >
           <div className="relative">
-            <div className="aspect-video rounded-lg border-2 border-gray-300 bg-white overflow-hidden transition-colors">
-              <div className="h-5 bg-gray-100"></div>
+            <div className="aspect-video rounded-lg border-2 border-border dark:border-muted-foreground bg-background dark:bg-foreground overflow-hidden transition-colors">
+              <div className="h-5 border-b border-border dark:border-muted-foreground bg-muted dark:bg-muted-foreground/30"></div>
               <div className="p-2 space-y-1 mt-2">
-                <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                <div className="h-2 bg-gray-200 rounded w-1/2"></div>
-                <div className="h-2 bg-gray-200 rounded w-2/3"></div>
+                <div className="h-2 bg-muted-foreground/20 rounded dark:bg-muted/30 w-3/4"></div>
+                <div className="h-2 bg-muted-foreground/20 rounded dark:bg-muted/30 w-1/2"></div>
+                <div className="h-2 bg-muted-foreground/20 rounded dark:bg-muted/30 w-2/3"></div>
               </div>
             </div>
             <div className="absolute top-2 left-2 flex gap-1">
@@ -68,7 +68,7 @@ export const ModeCard = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors">
+            <div className="w-4 h-4 rounded-full border-2 border-muted-foreground flex items-center justify-center transition-colors">
               {theme === "light" && (
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
@@ -82,12 +82,12 @@ export const ModeCard = () => {
           onClick={(e) => handleThemeChange("dark", e)}
         >
           <div className="relative">
-            <div className="aspect-video rounded-lg border-2 border-gray-300 bg-gray-900 overflow-hidden transition-colors">
-              <div className="h-5 bg-gray-800"></div>
+            <div className="aspect-video rounded-lg border-2 border-muted-foreground dark:border-border bg-foreground dark:bg-background overflow-hidden transition-colors">
+              <div className="h-5 border-b dark:border-border border-muted-foreground bg-muted-foreground/30 dark:bg-muted"></div>
               <div className="p-2 space-y-1 mt-2">
-                <div className="h-2 bg-gray-700 rounded w-3/4"></div>
-                <div className="h-2 bg-gray-700 rounded w-1/2"></div>
-                <div className="h-2 bg-gray-700 rounded w-2/3"></div>
+                <div className="h-2 bg-muted/30 dark:bg-muted-foreground/20 rounded w-3/4"></div>
+                <div className="h-2 bg-muted/30 dark:bg-muted-foreground/20 rounded w-1/2"></div>
+                <div className="h-2 bg-muted/30 dark:bg-muted-foreground/20 rounded w-2/3"></div>
               </div>
             </div>
             <div className="absolute top-2 left-2 flex gap-1">
@@ -97,7 +97,7 @@ export const ModeCard = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors">
+            <div className="w-4 h-4 rounded-full border-2 border-muted-foreground flex items-center justify-center transition-colors">
               {theme === "dark" && (
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
@@ -111,26 +111,26 @@ export const ModeCard = () => {
           onClick={(e) => handleThemeChange("system", e)}
         >
           <div className="relative">
-            <div className="aspect-video rounded-lg border-2 border-gray-300 overflow-hidden relative transition-colors">
-              <div className="absolute inset-0 w-1/2 bg-white" />
-              <div className="absolute inset-0 left-1/2 w-1/2 bg-gray-900" />
+            <div className="aspect-video rounded-lg overflow-hidden relative transition-colors">
+              <div className="absolute inset-0 w-1/2 rounded-tl-lg rounded-bl-lg border-2 border-r border-border dark:border-muted-foreground bg-background dark:bg-foreground" />
+              <div className="absolute inset-0 left-1/2 w-1/2 rounded-tr-lg rounded-br-lg border-2 border-l border-muted-foreground dark:border-border bg-foreground dark:bg-background" />
 
               <div className="relative">
                 <div className="h-5 flex">
-                  <div className="w-1/2 bg-gray-100"></div>
-                  <div className="w-1/2 bg-gray-800"></div>
+                  <div className="w-1/2 rounded-tl-lg border-2 border-r border-border dark:border-muted-foreground bg-muted dark:bg-muted/30"></div>
+                  <div className="w-1/2 rounded-tr-lg border-2 border-l border-muted-foreground dark:border-border bg-muted/30 dark:bg-muted"></div>
                 </div>
                 <div className="p-2 space-y-1 mt-2">
                   <div className="h-2 flex rounded-full">
-                    <div className="w-1/2 rounded-full bg-gray-200"></div>
-                    <div className="w-1/4 rounded-full bg-gray-700"></div>
+                    <div className="w-1/2 rounded-tl-md rounded-bl-md bg-muted-foreground/20 dark:bg-muted/30"></div>
+                    <div className="w-1/4 rounded-tr-md rounded-br-md bg-muted/30 dark:bg-muted-foreground/20"></div>
                   </div>
                   <div className="h-2 flex rounded-full">
-                    <div className="w-1/2 rounded-full bg-gray-200"></div>
+                    <div className="w-1/2 rounded-md bg-muted-foreground/20 dark:bg-muted/30"></div>
                   </div>
                   <div className="h-2 flex rounded-full">
-                    <div className="w-1/2 rounded-full bg-gray-200"></div>
-                    <div className="w-1/6 rounded-full bg-gray-700"></div>
+                    <div className="w-1/2 rounded-tl-md rounded-bl-md bg-muted-foreground/20 dark:bg-muted/30"></div>
+                    <div className="w-1/6 rounded-tr-md rounded-br-md bg-muted/30 dark:bg-muted-foreground/20"></div>
                   </div>
                 </div>
               </div>
@@ -144,7 +144,7 @@ export const ModeCard = () => {
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="w-4 h-4 rounded-full border-2 border-gray-300 flex items-center justify-center transition-colors">
+            <div className="w-4 h-4 rounded-full border-2 border-muted-foreground flex items-center justify-center transition-colors">
               {theme === "system" && (
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
