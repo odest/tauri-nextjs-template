@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Input } from "@workspace/ui/components/input";
+import { Skeleton } from "@workspace/ui/components/skeleton";
 import {
   Select,
   SelectContent,
@@ -18,7 +19,6 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card";
 import {
-  Loader,
   XCircle,
   ArrowUpDown,
   Search,
@@ -60,13 +60,37 @@ export const ThemesList = () => {
 
   if (!mounted)
     return (
-      <div className="flex items-center justify-center h-32">
-        {!mounted ? (
-          <Loader className="animate-spin h-4 w-4" />
-        ) : (
-          <Loader className="h-4 w-4" />
-        )}
-      </div>
+      <Card>
+        <CardHeader className="space-y-4">
+          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+            <div>
+              <Skeleton className="h-6 w-20 mb-2" />
+              <Skeleton className="h-4 w-48" />
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 md:items-center">
+              <div className="relative flex-1">
+                <Skeleton className="h-9 w-full min-w-[140px] max-w-full rounded-md" />
+              </div>
+              <Skeleton className="h-9 w-full sm:w-[160px] md:w-[180px] rounded-md" />
+            </div>
+          </div>
+        </CardHeader>
+
+        <CardContent className="space-y-4">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="space-y-3">
+                <Skeleton className="aspect-video rounded-lg" />
+                <div className="space-y-2">
+                  <Skeleton className="h-4 w-20" />
+                  <Skeleton className="h-3 w-16" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     );
 
   return (
