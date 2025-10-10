@@ -10,13 +10,20 @@ import {
 } from "@workspace/ui/components/card";
 import { Label } from "@workspace/ui/components/label";
 import { Skeleton } from "@workspace/ui/components/skeleton";
+import { useSidebar } from "@workspace/ui/components/sidebar";
 import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
 
 export const ModeCard = () => {
   const { theme, handleThemeChange } = useThemeTransition();
+  const { state } = useSidebar();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
+
+  const gridClasses =
+    state === "collapsed"
+      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
 
   if (!mounted)
     return (
@@ -25,7 +32,7 @@ export const ModeCard = () => {
           <Skeleton className="h-6 w-16 mb-2" />
           <Skeleton className="h-4 w-64" />
         </CardHeader>
-        <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <CardContent className={gridClasses}>
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex flex-col gap-3">
               <Skeleton className="aspect-video rounded-lg" />
@@ -47,7 +54,7 @@ export const ModeCard = () => {
           Choose your mode or customize your style
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <CardContent className={gridClasses}>
         <div
           className="flex flex-col gap-3 cursor-pointer"
           onClick={(e) => handleThemeChange("light", e)}
