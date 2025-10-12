@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ComponentType } from "react";
+import { ComponentType, useCallback } from "react";
 import { type LucideIcon } from "lucide-react";
 import {
   SidebarGroup,
@@ -38,11 +38,11 @@ export function SecondaryNav({
 }: SecondaryNavProps) {
   const { isMobile, setOpenMobile } = useSidebar();
 
-  const handleLinkClick = () => {
+  const handleLinkClick = useCallback(() => {
     if (isMobile) {
       setOpenMobile(false);
     }
-  };
+  }, [isMobile, setOpenMobile]);
 
   return (
     <SidebarGroup {...props}>

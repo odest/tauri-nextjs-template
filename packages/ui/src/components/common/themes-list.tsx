@@ -28,10 +28,11 @@ import {
 import { themes } from "@workspace/ui/config/themes";
 import { ThemeCard } from "@workspace/ui/components/common/theme-card";
 import { useThemeStore } from "@workspace/ui/stores/theme-store";
+import { useMounted } from "@workspace/ui/hooks/use-mounted";
 
 export const ThemesList = () => {
   const { theme: activeMode, resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
 
   const [filteredThemes, setFilteredThemes] = useState(themes);
   const [searchTerm, setSearchTerm] = useState("");
@@ -55,8 +56,6 @@ export const ThemesList = () => {
 
     setFilteredThemes(sorted);
   }, [themes, searchTerm, sortOption]);
-
-  useEffect(() => setMounted(true), []);
 
   if (!mounted)
     return (

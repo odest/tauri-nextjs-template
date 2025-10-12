@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import { ComponentType } from "react";
 import { ChevronRight, type LucideIcon } from "lucide-react";
 import {
@@ -51,11 +52,11 @@ export function MainNav({
 }: MainNavProps) {
   const { isMobile, setOpenMobile } = useSidebar();
 
-  const handleLinkClick = () => {
+  const handleLinkClick = useCallback(() => {
     if (isMobile) {
       setOpenMobile(false);
     }
-  };
+  }, [isMobile, setOpenMobile]);
 
   return (
     <SidebarGroup>

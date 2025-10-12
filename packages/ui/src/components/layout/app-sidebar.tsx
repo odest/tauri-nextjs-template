@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useCallback } from "react";
 import { ComponentType } from "react";
 import { Biohazard } from "lucide-react";
 
@@ -21,6 +21,7 @@ import {
 } from "@workspace/ui/components/sidebar";
 import { navigationData } from "@workspace/ui/config/navigation";
 import { useSidebarStore } from "@workspace/ui/stores/sidebar-store";
+import { useMounted } from "@workspace/ui/hooks/use-mounted";
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   pathname: string;
@@ -41,15 +42,13 @@ export function AppSidebar({
 }: AppSidebarProps) {
   const { isMobile, setOpenMobile } = useSidebar();
   const { variant } = useSidebarStore();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
 
-  const handleLinkClick = () => {
+  const handleLinkClick = useCallback(() => {
     if (isMobile) {
       setOpenMobile(false);
     }
-  };
-
-  useEffect(() => setMounted(true), []);
+  }, [isMobile, setOpenMobile]);
 
   if (!mounted) return <></>;
 

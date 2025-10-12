@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo } from "react";
 import {
   Card,
   CardContent,
@@ -9,42 +9,25 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card";
 import { Label } from "@workspace/ui/components/label";
-import { Skeleton } from "@workspace/ui/components/skeleton";
 import { useSidebar } from "@workspace/ui/components/sidebar";
+import { useMounted } from "@workspace/ui/hooks/use-mounted";
 import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
+import { SettingsCardSkeleton } from "@workspace/ui/components/common/settings-card-skeleton";
 
 export const ModeCard = () => {
   const { theme, handleThemeChange } = useThemeTransition();
   const { state } = useSidebar();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
 
-  useEffect(() => setMounted(true), []);
+  const gridClasses = useMemo(
+    () =>
+      state === "collapsed"
+        ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
+        : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
+    [state]
+  );
 
-  const gridClasses =
-    state === "collapsed"
-      ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
-      : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4";
-
-  if (!mounted)
-    return (
-      <Card>
-        <CardHeader>
-          <Skeleton className="h-6 w-16 mb-2" />
-          <Skeleton className="h-4 w-64" />
-        </CardHeader>
-        <CardContent className={gridClasses}>
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="flex flex-col gap-3">
-              <Skeleton className="aspect-video rounded-lg" />
-              <div className="flex items-center gap-2">
-                <Skeleton className="w-4 h-4 rounded-full" />
-                <Skeleton className="h-4 w-12" />
-              </div>
-            </div>
-          ))}
-        </CardContent>
-      </Card>
-    );
+  if (!mounted) return <SettingsCardSkeleton gridClasses={gridClasses} />;
 
   return (
     <Card>
