@@ -24,7 +24,14 @@ import { useSidebarStore } from "@workspace/ui/stores/sidebar-store";
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   pathname: string;
-  LinkComponent?: ComponentType<any> | string;
+  LinkComponent?:
+    | ComponentType<{
+        href: string;
+        children: React.ReactNode;
+        onClick?: () => void;
+        className?: string;
+      }>
+    | "a";
 }
 
 export function AppSidebar({

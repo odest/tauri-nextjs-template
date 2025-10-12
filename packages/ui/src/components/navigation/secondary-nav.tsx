@@ -20,7 +20,14 @@ interface SecondaryNavProps
   extends React.ComponentPropsWithoutRef<typeof SidebarGroup> {
   items: SecondaryNavItem[];
   pathname: string;
-  LinkComponent?: ComponentType<any> | string;
+  LinkComponent?:
+    | ComponentType<{
+        href: string;
+        children: React.ReactNode;
+        onClick?: () => void;
+        className?: string;
+      }>
+    | "a";
 }
 
 export function SecondaryNav({

@@ -9,18 +9,29 @@ export const Greet = () => {
   const { name, greetMsg, setName, setGreetMsg } = useGreetStore();
 
   const handleGreet = async () => {
-    if (isTauri()) {
-      const message = await invoke("greet", { name });
-      setGreetMsg(message as string);
-    } else {
-      const response = await fetch("/api/greet", {
-        method: "POST",
-        body: JSON.stringify({ name }),
-      });
-      const data = await response.json();
-      setGreetMsg(data.greeting);
+    try {
+      if (isTauri()) {
+        const message = await invoke("greet", { name });
+        setGreetMsg(message as string);
+      } else {
+        const response = await fetch("/api/greet", {
+          method: "POST",
+          body: JSON.stringify({ name }),
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setGreetMsg(data.greeting);
+      }
+      setName("");
+    } catch (error) {
+      console.error("Greet error:", error);
+      setGreetMsg("An error occurred. Please try again.");
     }
-    setName("");
   };
 
   return (
