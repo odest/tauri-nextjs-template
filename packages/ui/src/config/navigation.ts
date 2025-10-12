@@ -8,6 +8,7 @@ import {
   Settings,
   LifeBuoy,
   PieChart,
+  LucideIcon,
   SquareTerminal,
 } from "lucide-react";
 
@@ -25,7 +26,7 @@ export interface SubNavItem {
 export interface MainNavItem {
   title: string;
   url: string;
-  icon: any;
+  icon: LucideIcon;
   isActive?: boolean;
   items?: SubNavItem[];
 }
@@ -33,13 +34,13 @@ export interface MainNavItem {
 export interface SecondaryNavItem {
   title: string;
   url: string;
-  icon: any;
+  icon: LucideIcon;
 }
 
 export interface ProjectNavItem {
   name: string;
   url: string;
-  icon: any;
+  icon: LucideIcon;
 }
 
 export interface NavigationData {

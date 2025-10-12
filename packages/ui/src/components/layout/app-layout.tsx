@@ -10,7 +10,14 @@ import {
 interface AppLayoutProps {
   children: ReactNode;
   pathname: string;
-  LinkComponent?: ComponentType<any> | string;
+  LinkComponent?:
+    | ComponentType<{
+        href: string;
+        children: React.ReactNode;
+        onClick?: () => void;
+        className?: string;
+      }>
+    | "a";
 }
 
 export function AppLayout({

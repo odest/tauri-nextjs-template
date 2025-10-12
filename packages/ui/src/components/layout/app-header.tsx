@@ -30,7 +30,14 @@ function formatSegment(segment: string): string {
 
 interface AppSidebarProps {
   pathname: string;
-  LinkComponent?: ComponentType<any> | string;
+  LinkComponent?:
+    | ComponentType<{
+        href: string;
+        children: React.ReactNode;
+        onClick?: () => void;
+        className?: string;
+      }>
+    | "a";
 }
 
 export function AppHeader({ pathname, LinkComponent = "a" }: AppSidebarProps) {
