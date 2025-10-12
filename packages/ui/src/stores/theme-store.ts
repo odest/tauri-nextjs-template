@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { getStorageItem } from "@workspace/ui/lib/storage-utils";
 import { Themes } from "@workspace/ui/config/themes";
 
 interface ThemeState {
@@ -8,18 +9,6 @@ interface ThemeState {
   setSelectedTheme: (theme: Themes) => void;
   setSortOption: (sortOption: string) => void;
 }
-
-const getInitialTheme = () => {
-  if (typeof window === "undefined") return "default";
-  const stored = localStorage.getItem("theme-storage");
-  if (!stored) return "default";
-  try {
-    const parsed = JSON.parse(stored);
-    return parsed?.state?.selectedTheme || "default";
-  } catch {
-    return "default";
-  }
-};
 
 export const applyTheme = (theme: Themes) => {
   const root = document.documentElement;
@@ -33,7 +22,7 @@ export const applyTheme = (theme: Themes) => {
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
-      selectedTheme: getInitialTheme(),
+      selectedTheme: getStorageItem<Themes>("theme-storage", "default"),
       sortOption: "default",
 
       setSelectedTheme: (theme: Themes) => {

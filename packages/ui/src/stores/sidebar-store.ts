@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
+import { getStorageItem } from "@workspace/ui/lib/storage-utils";
 
 export type SidebarVariant = "sidebar" | "floating" | "inset";
 
@@ -8,22 +9,10 @@ interface SidebarState {
   setVariant: (variant: SidebarVariant) => void;
 }
 
-const getInitialVariant = (): SidebarVariant => {
-  if (typeof window === "undefined") return "inset";
-  const stored = localStorage.getItem("sidebar-storage");
-  if (!stored) return "inset";
-  try {
-    const parsed = JSON.parse(stored);
-    return parsed?.state?.variant || "inset";
-  } catch {
-    return "inset";
-  }
-};
-
 export const useSidebarStore = create<SidebarState>()(
   persist(
     (set) => ({
-      variant: getInitialVariant(),
+      variant: getStorageItem<SidebarVariant>("sidebar-storage", "inset"),
 
       setVariant: (variant: SidebarVariant) => {
         set({ variant });
