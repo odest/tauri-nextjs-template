@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "./components/AppLayout";
+import { themeInitScript } from "@workspace/ui/scripts/theme-init";
 import "@workspace/ui/globals.css";
 
 const fontSans = Geist({
@@ -28,22 +29,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const raw = localStorage.getItem("theme-storage");
-                  if (raw) {
-                    const parsed = JSON.parse(raw);
-                    const theme = parsed?.state?.selectedTheme || "default";
-                    document.documentElement.setAttribute("data-theme", theme);
-                  } else {
-                    document.documentElement.setAttribute("data-theme", "default");
-                  }
-                } catch (e) {
-                  document.documentElement.setAttribute("data-theme", "default");
-                }
-              })();
-            `,
+            __html: themeInitScript,
           }}
         />
       </head>
