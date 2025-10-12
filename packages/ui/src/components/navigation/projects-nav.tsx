@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import { ComponentType } from "react";
 import {
   Folder,
@@ -52,11 +53,11 @@ export function ProjectsNav({
 }: ProjectsNavProps) {
   const { isMobile, setOpenMobile } = useSidebar();
 
-  const handleLinkClick = () => {
+  const handleLinkClick = useCallback(() => {
     if (isMobile) {
       setOpenMobile(false);
     }
-  };
+  }, [isMobile, setOpenMobile]);
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
