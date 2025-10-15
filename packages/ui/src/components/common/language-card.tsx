@@ -11,10 +11,12 @@ import {
 import { cn } from "@workspace/ui/lib/utils";
 import { localeConfig, routing } from "@workspace/i18n/routing";
 import { useLanguageSwitcher } from "@workspace/ui/hooks/use-language-switcher";
+import { useTranslations } from "@workspace/i18n";
 
 export function LanguageCard() {
   const { locale, currentConfig, isPending, changeLanguage } =
     useLanguageSwitcher();
+  const t = useTranslations("LanguageCard");
 
   return (
     <Card>
@@ -22,10 +24,10 @@ export function LanguageCard() {
         <div className="flex items-center justify-between">
           <div className="space-y-2">
             <div className="leading-none font-semibold flex items-center gap-2">
-              Language
+              {t("title")}
             </div>
             <div className="text-muted-foreground text-sm">
-              Choose your preferred language for the application
+              {t("description")}
             </div>
           </div>
           <Select

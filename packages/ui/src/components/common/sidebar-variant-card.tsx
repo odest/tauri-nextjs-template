@@ -13,12 +13,14 @@ import { useSidebar } from "@workspace/ui/components/sidebar";
 import { useMounted } from "@workspace/ui/hooks/use-mounted";
 import { useSidebarStore } from "@workspace/ui/stores/sidebar-store";
 import { SettingsCardSkeleton } from "@workspace/ui/components/common/settings-card-skeleton";
+import { useTranslations } from "@workspace/i18n";
 
 export const SidebarVariantCard = () => {
   const mounted = useMounted();
   const { variant: sidebarVariant, setVariant: setSidebarVariant } =
     useSidebarStore();
   const { state } = useSidebar();
+  const t = useTranslations("SidebarVariantCard");
 
   const gridClasses = useMemo(
     () =>
@@ -33,10 +35,8 @@ export const SidebarVariantCard = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Sidebar Variant</CardTitle>
-        <CardDescription>
-          Choose your sidebar variant preference
-        </CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent className={gridClasses}>
         <div
@@ -84,7 +84,7 @@ export const SidebarVariantCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">Sidebar</Label>
+            <Label className="font-medium">{t("sidebar")}</Label>
           </div>
         </div>
 
@@ -133,7 +133,7 @@ export const SidebarVariantCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">Floating</Label>
+            <Label className="font-medium">{t("floating")}</Label>
           </div>
         </div>
 
@@ -182,7 +182,7 @@ export const SidebarVariantCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">Inset</Label>
+            <Label className="font-medium">{t("inset")}</Label>
           </div>
         </div>
       </CardContent>

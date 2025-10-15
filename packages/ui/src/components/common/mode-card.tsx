@@ -13,11 +13,13 @@ import { useSidebar } from "@workspace/ui/components/sidebar";
 import { useMounted } from "@workspace/ui/hooks/use-mounted";
 import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
 import { SettingsCardSkeleton } from "@workspace/ui/components/common/settings-card-skeleton";
+import { useTranslations } from "@workspace/i18n";
 
 export const ModeCard = () => {
   const { theme, handleThemeChange } = useThemeTransition();
   const { state } = useSidebar();
   const mounted = useMounted();
+  const t = useTranslations("ModeCard");
 
   const gridClasses = useMemo(
     () =>
@@ -32,10 +34,8 @@ export const ModeCard = () => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Modes</CardTitle>
-        <CardDescription>
-          Choose your mode or customize your style
-        </CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("description")}</CardDescription>
       </CardHeader>
       <CardContent className={gridClasses}>
         <div
@@ -63,7 +63,7 @@ export const ModeCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">Light</Label>
+            <Label className="font-medium">{t("light")}</Label>
           </div>
         </div>
 
@@ -92,7 +92,7 @@ export const ModeCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">Dark</Label>
+            <Label className="font-medium">{t("dark")}</Label>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export const ModeCard = () => {
                 <div className="w-2 h-2 rounded-full bg-primary"></div>
               )}
             </div>
-            <Label className="font-medium">System</Label>
+            <Label className="font-medium">{t("system")}</Label>
           </div>
         </div>
       </CardContent>

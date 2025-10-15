@@ -20,15 +20,18 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@workspace/ui/components/sidebar";
+import { useTranslations } from "@workspace/i18n";
 
 interface MainNavItem {
   title: string;
   url: string;
   icon: LucideIcon;
   isActive?: boolean;
+  translationKey: string;
   items?: {
     title: string;
     url: string;
+    translationKey: string;
   }[];
 }
 
@@ -51,6 +54,7 @@ export function MainNav({
   LinkComponent = "a",
 }: MainNavProps) {
   const { isMobile, setOpenMobile } = useSidebar();
+  const t = useTranslations("Navigation");
 
   const handleLinkClick = useCallback(() => {
     if (isMobile) {
@@ -60,7 +64,7 @@ export function MainNav({
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+      <SidebarGroupLabel>{t("platform")}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => {
           const active =
@@ -71,7 +75,7 @@ export function MainNav({
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  tooltip={item.title}
+                  tooltip={t(item.translationKey)}
                   isActive={active}
                 >
                   <LinkComponent
@@ -80,7 +84,7 @@ export function MainNav({
                     onClick={handleLinkClick}
                   >
                     <item.icon />
-                    <span>{item.title}</span>
+                    <span>{t(item.translationKey)}</span>
                   </LinkComponent>
                 </SidebarMenuButton>
                 {item.items?.length ? (
@@ -88,7 +92,6 @@ export function MainNav({
                     <CollapsibleTrigger asChild>
                       <SidebarMenuAction className="data-[state=open]:rotate-90">
                         <ChevronRight />
-                        <span className="sr-only">Toggle</span>
                       </SidebarMenuAction>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
@@ -108,7 +111,7 @@ export function MainNav({
                                   href={subItem.url}
                                   onClick={handleLinkClick}
                                 >
-                                  <span>{subItem.title}</span>
+                                  <span>{t(subItem.translationKey)}</span>
                                 </LinkComponent>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
