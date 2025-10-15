@@ -11,6 +11,7 @@ import {
   BreadcrumbSeparator,
 } from "@workspace/ui/components/breadcrumb";
 import { ModeToggle } from "@workspace/ui/components/common/mode-toggle";
+import { LanguageToggle } from "@workspace/ui/components/common/language-toggle";
 
 const segmentDisplayMap: { [key: string]: string } = {
   docs: "Documentation",
@@ -81,7 +82,8 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppSidebarProps) {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-1">
+          <LanguageToggle />
           <ModeToggle />
         </div>
       </div>
