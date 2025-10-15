@@ -1,7 +1,11 @@
+import { useTranslations } from "@workspace/i18n";
+
 export function TutorialsPage() {
+  const t = useTranslations("TutorialsPage");
+
   return (
     <div className="flex flex-1 justify-center items-center">
-      <h1 className="text-2xl font-bold">You are on the Tutorials Page.</h1>
+      <h1 className="text-2xl font-bold">{t("title")}</h1>
     </div>
   );
 }

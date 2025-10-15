@@ -1,0 +1,38 @@
+{
+  "name": "@workspace/i18n",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/i18n.d.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./i18n.d.ts": "./src/i18n.d.ts",
+    "./plugin": "./src/plugin.ts",
+    "./middleware": "./src/middleware.ts",
+    "./routing": "./src/routing.ts",
+    "./navigation": "./src/navigation.ts",
+    "./server": "./src/server.ts",
+    "./messages/*": "./src/messages/*.json"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "devDependencies": {
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "@types/node": "^24.3.0",
+    "@types/react": "19.1.11",
+    "@types/react-dom": "19.1.7",
+    "eslint": "^9.30.1",
+    "typescript": "~5.9.2"
+  },
+  "dependencies": {
+    "next-intl": "^4.3.4"
+  },
+  "peerDependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  }
+}

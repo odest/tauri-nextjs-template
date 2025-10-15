@@ -11,24 +11,17 @@ import {
   BreadcrumbSeparator,
 } from "@workspace/ui/components/breadcrumb";
 import { ModeToggle } from "@workspace/ui/components/common/mode-toggle";
-
-const segmentDisplayMap: { [key: string]: string } = {
-  docs: "Documentation",
-  intro: "Introduction",
-};
+import { LanguageToggle } from "@workspace/ui/components/common/language-toggle";
+import { useTranslations } from "@workspace/i18n";
 
 function formatSegment(segment: string): string {
-  if (segmentDisplayMap[segment]) {
-    return segmentDisplayMap[segment];
-  }
-
   return segment
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
 }
 
-interface AppSidebarProps {
+interface AppHeaderProps {
   pathname: string;
   LinkComponent?:
     | ComponentType<{
@@ -40,8 +33,9 @@ interface AppSidebarProps {
     | "a";
 }
 
-export function AppHeader({ pathname, LinkComponent = "a" }: AppSidebarProps) {
+export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
   const segments = pathname.split("/").filter(Boolean);
+  const t = useTranslations("Navigation");
 
   return (
     <header className="group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 flex h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear">
@@ -55,23 +49,25 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppSidebarProps) {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="hidden md:block">
-              <LinkComponent href="/">Home</LinkComponent>
+              <LinkComponent href="/">{t("home")}</LinkComponent>
             </BreadcrumbItem>
 
             {segments.map((segment, index) => {
               const href = `/${segments.slice(0, index + 1).join("/")}`;
               const isLast = index === segments.length - 1;
-              const formattedSegment = formatSegment(segment);
+              // Try to get translation, fallback to formatted segment
+              const displayText =
+                t(segment) !== segment ? t(segment) : formatSegment(segment);
 
               return (
                 <Fragment key={href}>
                   <BreadcrumbSeparator className="hidden md:block" />
                   <BreadcrumbItem>
                     {isLast ? (
-                      <BreadcrumbPage>{formattedSegment}</BreadcrumbPage>
+                      <BreadcrumbPage>{displayText}</BreadcrumbPage>
                     ) : (
                       <LinkComponent href={href} className="hidden md:block">
-                        {formattedSegment}
+                        {displayText}
                       </LinkComponent>
                     )}
                   </BreadcrumbItem>
@@ -81,7 +77,8 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppSidebarProps) {
           </BreadcrumbList>
         </Breadcrumb>
 
-        <div className="ml-auto">
+        <div className="ml-auto flex items-center gap-1">
+          <LanguageToggle />
           <ModeToggle />
         </div>
       </div>

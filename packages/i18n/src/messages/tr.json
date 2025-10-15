@@ -1,0 +1,108 @@
+{
+  "HomePage": {
+    "title": "Ana Sayfadasınız."
+  },
+  "PlaygroundPage": {
+    "title": "Oyun Alanı Sayfasındasınız."
+  },
+  "DocsPage": {
+    "title": "Dokümantasyon Sayfasındasınız."
+  },
+  "ModelsPage": {
+    "title": "Modeller Sayfasındasınız."
+  },
+  "SupportPage": {
+    "title": "Destek Sayfasındasınız."
+  },
+  "FeedbackPage": {
+    "title": "Geri Bildirim Sayfasındasınız."
+  },
+  "SettingsPage": {
+    "title": "Ayarlar",
+    "description": "Uygulama tercihlerinizi yönetin ve deneyiminizi özelleştirin."
+  },
+  "QuantumPage": {
+    "title": "Kuantum Sayfasındasınız."
+  },
+  "StarredPage": {
+    "title": "Favoriler Sayfasındasınız."
+  },
+  "ExplorerPage": {
+    "title": "Keşfet Sayfasındasınız."
+  },
+  "IntroPage": {
+    "title": "Giriş Sayfasındasınız."
+  },
+  "HistoryPage": {
+    "title": "Geçmiş Sayfasındasınız."
+  },
+  "TutorialsPage": {
+    "title": "Eğitimler Sayfasındasınız."
+  },
+  "GenesisPage": {
+    "title": "Başlangıç Sayfasındasınız."
+  },
+  "Greet": {
+    "placeholder": "Bir isim girin...",
+    "button": "Selamla",
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "LanguageCard": {
+    "title": "Dil",
+    "description": "Tercih ettiğiniz dili seçin"
+  },
+  "ModeCard": {
+    "title": "Modlar",
+    "description": "Modunuzu seçin veya stilinizi özelleştirin",
+    "light": "Açık",
+    "dark": "Koyu",
+    "system": "Sistem"
+  },
+  "SidebarVariantCard": {
+    "title": "Kenar Çubuğu Varyantı",
+    "description": "Kenar çubuğu varyant tercihinizi seçin",
+    "sidebar": "Kenar Çubuğu",
+    "floating": "Yüzen",
+    "inset": "İçe Çekilmiş"
+  },
+  "ThemesList": {
+    "title": "Temalar",
+    "description": "Varsayılan veya özel temaları kullanın",
+    "searchPlaceholder": "Tema ara...",
+    "sortBy": "Sırala",
+    "sortDefault": "Varsayılan",
+    "sortAZ": "İsim (A-Z)",
+    "sortZA": "İsim (Z-A)",
+    "noThemesTitle": "Tema bulunamadı",
+    "noThemesDescription": "Arama terimi ile eşleşen tema yok."
+  },
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "playground": "Oyun Alanı",
+    "models": "Modeller",
+    "docs": "Dokümantasyon",
+    "support": "Destek",
+    "feedback": "Geri Bildirim",
+    "settings": "Ayarlar",
+    "history": "Geçmiş",
+    "starred": "Favoriler",
+    "genesis": "Başlangıç",
+    "explorer": "Keşfet",
+    "quantum": "Kuantum",
+    "intro": "Giriş",
+    "tutorials": "Eğitimler",
+    "platform": "Platform",
+    "projects": "Projeler",
+    "designEngineering": "Tasarım Mühendisliği",
+    "salesMarketing": "Satış ve Pazarlama",
+    "viewProject": "Projeyi Görüntüle",
+    "shareProject": "Projeyi Paylaş",
+    "deleteProject": "Projeyi Sil",
+    "more": "Daha Fazla",
+    "upgradeToPro": "Pro'ya Yükselt",
+    "account": "Hesap",
+    "billing": "Faturalama",
+    "notifications": "Bildirimler",
+    "logOut": "Çıkış Yap"
+  }
+}

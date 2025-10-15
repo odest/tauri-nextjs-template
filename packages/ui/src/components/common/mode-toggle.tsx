@@ -10,9 +10,11 @@ import {
 } from "@workspace/ui/components/dropdown-menu";
 import { cn } from "@workspace/ui/lib/utils";
 import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
+import { useTranslations } from "@workspace/i18n";
 
 export function ModeToggle() {
   const { theme, handleThemeChange } = useThemeTransition();
+  const t = useTranslations("ModeCard");
 
   return (
     <DropdownMenu>
@@ -20,7 +22,6 @@ export function ModeToggle() {
         <Button variant="ghost" size="icon">
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
           <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Mode</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
@@ -29,7 +30,7 @@ export function ModeToggle() {
           className={cn(theme === "light" && "bg-accent")}
         >
           <Sun className="mr-2 h-3 w-3" />
-          Light
+          {t("light")}
           {theme === "light" && <Check className="ml-auto h-3 w-3" />}
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -37,7 +38,7 @@ export function ModeToggle() {
           className={cn(theme === "dark" && "bg-accent")}
         >
           <Moon className="mr-2 h-3 w-3" />
-          Dark
+          {t("dark")}
           {theme === "dark" && <Check className="ml-auto h-3 w-3" />}
         </DropdownMenuItem>
         <DropdownMenuItem
@@ -45,7 +46,7 @@ export function ModeToggle() {
           className={cn(theme === "system" && "bg-accent")}
         >
           <Laptop className="mr-2 h-3 w-3" />
-          System
+          {t("system")}
           {theme === "system" && <Check className="ml-auto h-3 w-3" />}
         </DropdownMenuItem>
       </DropdownMenuContent>

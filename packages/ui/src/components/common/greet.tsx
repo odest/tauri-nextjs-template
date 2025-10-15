@@ -4,9 +4,11 @@ import { isTauri, invoke } from "@tauri-apps/api/core";
 import { Input } from "@workspace/ui/components/input";
 import { Button } from "@workspace/ui/components/button";
 import { useGreetStore } from "@workspace/ui/stores/greet-store";
+import { useTranslations } from "@workspace/i18n";
 
 export const Greet = () => {
   const { name, greetMsg, setName, setGreetMsg } = useGreetStore();
+  const t = useTranslations("Greet");
 
   const handleGreet = async () => {
     try {
@@ -30,7 +32,7 @@ export const Greet = () => {
       setName("");
     } catch (error) {
       console.error("Greet error:", error);
-      setGreetMsg("An error occurred. Please try again.");
+      setGreetMsg(t("error"));
     }
   };
 
@@ -47,9 +49,9 @@ export const Greet = () => {
           id="greet-input"
           value={name}
           onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
+          placeholder={t("placeholder")}
         />
-        <Button type="submit">Greet</Button>
+        <Button type="submit">{t("button")}</Button>
       </form>
       <p className="mt-4">{greetMsg}</p>
     </div>

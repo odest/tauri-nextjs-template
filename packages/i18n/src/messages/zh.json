@@ -1,0 +1,108 @@
+{
+  "HomePage": {
+    "title": "您在主页。"
+  },
+  "PlaygroundPage": {
+    "title": "您在游乐场页面。"
+  },
+  "DocsPage": {
+    "title": "您在文档页面。"
+  },
+  "ModelsPage": {
+    "title": "您在模型页面。"
+  },
+  "SupportPage": {
+    "title": "您在支持页面。"
+  },
+  "FeedbackPage": {
+    "title": "您在反馈页面。"
+  },
+  "SettingsPage": {
+    "title": "设置",
+    "description": "管理您的应用程序首选项并自定义您的体验。"
+  },
+  "QuantumPage": {
+    "title": "您在量子页面。"
+  },
+  "StarredPage": {
+    "title": "您在收藏页面。"
+  },
+  "ExplorerPage": {
+    "title": "您在资源管理器页面。"
+  },
+  "IntroPage": {
+    "title": "您在介绍页面。"
+  },
+  "HistoryPage": {
+    "title": "您在历史页面。"
+  },
+  "TutorialsPage": {
+    "title": "您在教程页面。"
+  },
+  "GenesisPage": {
+    "title": "您在创世纪页面。"
+  },
+  "Greet": {
+    "placeholder": "输入名字...",
+    "button": "问候",
+    "error": "发生错误。请重试。"
+  },
+  "LanguageCard": {
+    "title": "语言",
+    "description": "选择您的首选语言"
+  },
+  "ModeCard": {
+    "title": "模式",
+    "description": "选择您的模式或自定义您的样式",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "系统"
+  },
+  "SidebarVariantCard": {
+    "title": "侧边栏变体",
+    "description": "选择您的侧边栏变体偏好",
+    "sidebar": "侧边栏",
+    "floating": "浮动",
+    "inset": "嵌入"
+  },
+  "ThemesList": {
+    "title": "主题",
+    "description": "使用默认或自定义主题",
+    "searchPlaceholder": "搜索主题...",
+    "sortBy": "排序方式",
+    "sortDefault": "默认",
+    "sortAZ": "名称 (A-Z)",
+    "sortZA": "名称 (Z-A)",
+    "noThemesTitle": "未找到主题",
+    "noThemesDescription": "没有与您的搜索词匹配的主题。"
+  },
+  "Navigation": {
+    "home": "主页",
+    "playground": "游乐场",
+    "models": "模型",
+    "docs": "文档",
+    "support": "支持",
+    "feedback": "反馈",
+    "settings": "设置",
+    "history": "历史",
+    "starred": "收藏",
+    "genesis": "创世纪",
+    "explorer": "资源管理器",
+    "quantum": "量子",
+    "intro": "介绍",
+    "tutorials": "教程",
+    "platform": "平台",
+    "projects": "项目",
+    "designEngineering": "设计工程",
+    "salesMarketing": "销售和营销",
+    "viewProject": "查看项目",
+    "shareProject": "分享项目",
+    "deleteProject": "删除项目",
+    "more": "更多",
+    "upgradeToPro": "升级到Pro",
+    "account": "账户",
+    "billing": "账单",
+    "notifications": "通知",
+    "logOut": "退出登录"
+  }
+}

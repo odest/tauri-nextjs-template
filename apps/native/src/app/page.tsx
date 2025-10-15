@@ -1,5 +1,6 @@
-import { HomePage } from "@workspace/ui/pages/HomePage";
+import { redirect } from "next/navigation";
+import { routing } from "@workspace/i18n/routing";
 
-export default function Home() {
-  return <HomePage />;
+export default function RootPage() {
+  redirect(`/${routing.defaultLocale}`);
 }

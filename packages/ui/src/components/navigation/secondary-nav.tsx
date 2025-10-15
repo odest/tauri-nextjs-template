@@ -9,11 +9,13 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@workspace/ui/components/sidebar";
+import { useTranslations } from "@workspace/i18n";
 
 interface SecondaryNavItem {
   title: string;
   url: string;
   icon: LucideIcon;
+  translationKey: string;
 }
 
 interface SecondaryNavProps
@@ -37,6 +39,7 @@ export function SecondaryNav({
   ...props
 }: SecondaryNavProps) {
   const { isMobile, setOpenMobile } = useSidebar();
+  const t = useTranslations("Navigation");
 
   const handleLinkClick = useCallback(() => {
     if (isMobile) {
@@ -57,12 +60,12 @@ export function SecondaryNav({
                 <SidebarMenuButton asChild size="sm" isActive={active}>
                   <LinkComponent
                     href={item.url}
-                    data-tooltip={item.title}
+                    data-tooltip={t(item.translationKey)}
                     data-active={active}
                     onClick={handleLinkClick}
                   >
                     <item.icon />
-                    <span>{item.title}</span>
+                    <span>{t(item.translationKey)}</span>
                   </LinkComponent>
                 </SidebarMenuButton>
               </SidebarMenuItem>

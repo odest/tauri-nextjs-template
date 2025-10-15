@@ -1,0 +1,108 @@
+{
+  "HomePage": {
+    "title": "You are on the Home Page."
+  },
+  "PlaygroundPage": {
+    "title": "You are on the Playground Page."
+  },
+  "DocsPage": {
+    "title": "You are on the Documentation Page."
+  },
+  "ModelsPage": {
+    "title": "You are on the Models Page."
+  },
+  "SupportPage": {
+    "title": "You are on the Support Page."
+  },
+  "FeedbackPage": {
+    "title": "You are on the Feedback Page."
+  },
+  "SettingsPage": {
+    "title": "Settings",
+    "description": "Manage your application preferences and customize your experience."
+  },
+  "QuantumPage": {
+    "title": "You are on the Quantum Page."
+  },
+  "StarredPage": {
+    "title": "You are on the Starred Page."
+  },
+  "ExplorerPage": {
+    "title": "You are on the Explorer Page."
+  },
+  "IntroPage": {
+    "title": "You are on the Introduction Page."
+  },
+  "HistoryPage": {
+    "title": "You are on the History Page."
+  },
+  "TutorialsPage": {
+    "title": "You are on the Tutorials Page."
+  },
+  "GenesisPage": {
+    "title": "You are on the Genesis Page."
+  },
+  "Greet": {
+    "placeholder": "Enter a name...",
+    "button": "Greet",
+    "error": "An error occurred. Please try again."
+  },
+  "LanguageCard": {
+    "title": "Language",
+    "description": "Select your preferred language"
+  },
+  "ModeCard": {
+    "title": "Modes",
+    "description": "Choose your mode or customize your style",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "SidebarVariantCard": {
+    "title": "Sidebar Variant",
+    "description": "Choose your sidebar variant preference",
+    "sidebar": "Sidebar",
+    "floating": "Floating",
+    "inset": "Inset"
+  },
+  "ThemesList": {
+    "title": "Themes",
+    "description": "Use default or custom themes",
+    "searchPlaceholder": "Search themes...",
+    "sortBy": "Sort by",
+    "sortDefault": "Default",
+    "sortAZ": "Name (A-Z)",
+    "sortZA": "Name (Z-A)",
+    "noThemesTitle": "No themes found",
+    "noThemesDescription": "No themes match your search term."
+  },
+  "Navigation": {
+    "home": "Home",
+    "playground": "Playground",
+    "models": "Models",
+    "docs": "Documentation",
+    "support": "Support",
+    "feedback": "Feedback",
+    "settings": "Settings",
+    "history": "History",
+    "starred": "Starred",
+    "genesis": "Genesis",
+    "explorer": "Explorer",
+    "quantum": "Quantum",
+    "intro": "Introduction",
+    "tutorials": "Tutorials",
+    "platform": "Platform",
+    "projects": "Projects",
+    "designEngineering": "Design Engineering",
+    "salesMarketing": "Sales & Marketing",
+    "viewProject": "View Project",
+    "shareProject": "Share Project",
+    "deleteProject": "Delete Project",
+    "more": "More",
+    "upgradeToPro": "Upgrade to Pro",
+    "account": "Account",
+    "billing": "Billing",
+    "notifications": "Notifications",
+    "logOut": "Log out"
+  }
+}
