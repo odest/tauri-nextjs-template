@@ -22,7 +22,7 @@
     "description": "Uygulama tercihlerinizi yönetin ve deneyiminizi özelleştirin."
   },
   "QuantumPage": {
-    "title": "Quantum Sayfasındasınız."
+    "title": "Kuantum Sayfasındasınız."
   },
   "StarredPage": {
     "title": "Favoriler Sayfasındasınız."
@@ -40,7 +40,7 @@
     "title": "Eğitimler Sayfasındasınız."
   },
   "GenesisPage": {
-    "title": "Genesis Sayfasındasınız."
+    "title": "Başlangıç Sayfasındasınız."
   },
   "Greet": {
     "placeholder": "Bir isim girin...",
@@ -86,9 +86,9 @@
     "settings": "Ayarlar",
     "history": "Geçmiş",
     "starred": "Favoriler",
-    "genesis": "Genesis",
+    "genesis": "Başlangıç",
     "explorer": "Keşfet",
-    "quantum": "Quantum",
+    "quantum": "Kuantum",
     "intro": "Giriş",
     "tutorials": "Eğitimler",
     "platform": "Platform",

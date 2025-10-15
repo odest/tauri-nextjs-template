@@ -1,0 +1,108 @@
+{
+  "HomePage": {
+    "title": "Sei nella pagina iniziale."
+  },
+  "PlaygroundPage": {
+    "title": "Sei nella pagina playground."
+  },
+  "DocsPage": {
+    "title": "Sei nella pagina della documentazione."
+  },
+  "ModelsPage": {
+    "title": "Sei nella pagina dei modelli."
+  },
+  "SupportPage": {
+    "title": "Sei nella pagina di supporto."
+  },
+  "FeedbackPage": {
+    "title": "Sei nella pagina dei feedback."
+  },
+  "SettingsPage": {
+    "title": "Impostazioni",
+    "description": "Gestisci le preferenze della tua applicazione e personalizza la tua esperienza."
+  },
+  "QuantumPage": {
+    "title": "Sei nella pagina Quantistica."
+  },
+  "StarredPage": {
+    "title": "Sei nella pagina dei preferiti."
+  },
+  "ExplorerPage": {
+    "title": "Sei nella pagina dell'esploratore."
+  },
+  "IntroPage": {
+    "title": "Sei nella pagina di introduzione."
+  },
+  "HistoryPage": {
+    "title": "Sei nella pagina della cronologia."
+  },
+  "TutorialsPage": {
+    "title": "Sei nella pagina dei tutorial."
+  },
+  "GenesisPage": {
+    "title": "Sei nella pagina Genesi."
+  },
+  "Greet": {
+    "placeholder": "Inserisci un nome...",
+    "button": "Saluta",
+    "error": "Si è verificato un errore. Per favore riprova."
+  },
+  "LanguageCard": {
+    "title": "Lingua",
+    "description": "Seleziona la tua lingua preferita"
+  },
+  "ModeCard": {
+    "title": "Modalità",
+    "description": "Scegli la tua modalità o personalizza il tuo stile",
+    "light": "Chiaro",
+    "dark": "Scuro",
+    "system": "Sistema"
+  },
+  "SidebarVariantCard": {
+    "title": "Variante della barra laterale",
+    "description": "Scegli la tua preferenza per la variante della barra laterale",
+    "sidebar": "Barra laterale",
+    "floating": "Fluttuante",
+    "inset": "Incassato"
+  },
+  "ThemesList": {
+    "title": "Temi",
+    "description": "Usa temi predefiniti o personalizzati",
+    "searchPlaceholder": "Cerca temi...",
+    "sortBy": "Ordina per",
+    "sortDefault": "Predefinito",
+    "sortAZ": "Nome (A-Z)",
+    "sortZA": "Nome (Z-A)",
+    "noThemesTitle": "Nessun tema trovato",
+    "noThemesDescription": "Nessun tema corrisponde al tuo termine di ricerca."
+  },
+  "Navigation": {
+    "home": "Home",
+    "playground": "Playground",
+    "models": "Modelli",
+    "docs": "Documentazione",
+    "support": "Supporto",
+    "feedback": "Feedback",
+    "settings": "Impostazioni",
+    "history": "Cronologia",
+    "starred": "Preferiti",
+    "genesis": "Genesi",
+    "explorer": "Esploratore",
+    "quantum": "Quantistica",
+    "intro": "Introduzione",
+    "tutorials": "Tutorial",
+    "platform": "Piattaforma",
+    "projects": "Progetti",
+    "designEngineering": "Ingegneria del design",
+    "salesMarketing": "Vendite e marketing",
+    "viewProject": "Visualizza progetto",
+    "shareProject": "Condividi progetto",
+    "deleteProject": "Elimina progetto",
+    "more": "Altro",
+    "upgradeToPro": "Aggiorna a Pro",
+    "account": "Account",
+    "billing": "Fatturazione",
+    "notifications": "Notifiche",
+    "logOut": "Esci"
+  }
+}

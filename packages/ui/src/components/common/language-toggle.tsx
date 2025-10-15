@@ -34,7 +34,7 @@ export function LanguageToggle() {
               disabled={isPending}
             >
               <span className="mr-2 text-base">{config.flag}</span>
-              {config.label}
+              {config.nativeName}
               {isSelected && <Check className="ml-auto h-3 w-3" />}
             </DropdownMenuItem>
           );

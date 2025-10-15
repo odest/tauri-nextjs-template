@@ -12,6 +12,7 @@ This is a modern monorepo template that combines Tauri for cross-platform deskto
 - **🎨 Modern UI** - Tailwind CSS + shadcn/ui components
 - **📱 Responsive Design** - Works on all screen sizes
 - **🔒 Type Safety** - Full TypeScript support
+- **🌍 Internationalization** - Multi-language support with next-intl (10 languages included)
 - **🚀 CI/CD Ready** - GitHub Actions with automated releases
 
 ## 📋 Prerequisites
@@ -51,6 +52,7 @@ pnpm --filter native dev   # Desktop app only
 │       └── package.json
 ├── packages/
 │   ├── ui/                 # Shared shadcn/ui components
+│   ├── i18n/               # Internationalization package
 │   ├── eslint-config/      # Shared ESLint configuration
 │   └── typescript-config/  # Shared TypeScript configuration
 ├── .github/                # GitHub Actions workflows
@@ -86,6 +88,42 @@ pnpm shadcn add button
 # The component will be available in all apps as:
 import { Button } from "@workspace/ui/components/button"
 ```
+
+## 🌍 Internationalization (i18n)
+
+This template includes built-in support for 10 languages:
+
+- 🇬🇧 English
+- 🇹🇷 Turkish
+- 🇪🇸 Spanish
+- 🇫🇷 French
+- 🇩🇪 German
+- 🇵🇹 Portuguese
+- 🇮🇹 Italian
+- 🇷🇺 Russian
+- 🇯🇵 Japanese
+- 🇨🇳 Chinese (Simplified)
+
+**Note:** Current translations were generated using AI and may need review for accuracy.
+
+### Usage
+
+```typescript
+// Import translations
+import { useTranslations } from "@workspace/i18n";
+
+// Use in components
+function MyComponent() {
+  const t = useTranslations("HomePage");
+  return <h1>{t("title")}</h1>;
+}
+```
+
+### Adding New Languages
+
+1. Create a new JSON file in `packages/i18n/src/messages/[locale].json`
+2. Add the locale configuration in `packages/i18n/src/routing.ts`
+3. Import and export the messages in `packages/i18n/src/index.ts`
 
 ## 🔄 Release Process
 
