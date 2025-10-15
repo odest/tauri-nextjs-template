@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "You are on the Home Page."
+  },
+  "Language": {
+    "label": "Language",
+    "en": "English",
+    "tr": "Turkish"
+  }
+}

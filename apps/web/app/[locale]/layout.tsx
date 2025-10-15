@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "./components/AppLayout";
 import { themeInitScript } from "@workspace/ui/scripts/theme-init";
+import { NextIntlClientProvider, hasLocale } from "@workspace/i18n";
+import { routing } from "@workspace/i18n/routing";
 import "@workspace/ui/globals.css";
 
 const fontSans = Geist({
@@ -19,13 +22,22 @@ export const metadata: Metadata = {
   description: "Tauri + Next.js Template",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+
+  // Validate that the incoming `locale` parameter is valid
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -36,7 +48,9 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontMono.variable} font-sans antialiased  overflow-hidden`}
       >
-        <AppLayout>{children}</AppLayout>
+        <NextIntlClientProvider>
+          <AppLayout>{children}</AppLayout>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

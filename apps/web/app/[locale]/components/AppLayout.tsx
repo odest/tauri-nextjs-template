@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@workspace/i18n/navigation";
 import { AppLayout as MainLayout } from "@workspace/ui/components/layout/app-layout";
 
 interface AppLayoutProps {
