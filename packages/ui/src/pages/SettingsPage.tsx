@@ -1,3 +1,4 @@
+import { LanguageCard } from "@workspace/ui/components/common/language-card";
 import { ModeCard } from "@workspace/ui/components/common/mode-card";
 import { SidebarVariantCard } from "@workspace/ui/components/common/sidebar-variant-card";
 import { ThemesList } from "@workspace/ui/components/common/themes-list";
@@ -14,6 +15,7 @@ export function SettingsPage() {
         </div>
 
         <div className="grid gap-6">
+          <LanguageCard />
           <ModeCard />
           <SidebarVariantCard />
           <ThemesList />
