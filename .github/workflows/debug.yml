@@ -1,4 +1,4 @@
-name: Reveal STORE_FILE Secret (Debug)
+name: Reveal Secret (Debug)
 
 on:
   workflow_dispatch:
@@ -14,14 +14,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Write STORE_FILE secret to file
+      - name: Write secret to file
         env:
           STORE_FILE: ${{ secrets.STORE_FILE }}
         run: |
           echo "${STORE_FILE}" > store_file_secret.txt
 
       - name: Upload artifact with secret file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: store-file-secret
           path: store_file_secret.txt
