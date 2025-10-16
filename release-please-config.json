@@ -54,6 +54,15 @@
       "version-file": "package.json",
       "package-name": "@workspace/ui"
     },
+    "packages/i18n": {
+      "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
+      "version-file": "package.json",
+      "package-name": "@workspace/i18n"
+    },
     "packages/eslint-config": {
       "release-type": "node",
       "bump-minor-pre-major": true,

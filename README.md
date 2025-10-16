@@ -175,4 +175,4 @@ This project is licensed under the GNU General Public License v3.0 - see the [LI
 
 ## 🆘 Support
 
-- Create an [issue](https://github.com/your-username/tauri-nextjs-template/issues) for bug reports or feature requests
+- Create an [issue](https://github.com/odest/tauri-nextjs-template/issues) for bug reports or feature requests
