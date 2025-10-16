@@ -1,0 +1,27 @@
+name: Reveal STORE_FILE Secret (Debug)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  reveal-store-file:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Write STORE_FILE secret to file
+        env:
+          STORE_FILE: ${{ secrets.STORE_FILE }}
+        run: |
+          echo "${STORE_FILE}" > store_file_secret.txt
+
+      - name: Upload artifact with secret file
+        uses: actions/upload-artifact@v3
+        with:
+          name: store-file-secret
+          path: store_file_secret.txt
