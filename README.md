@@ -79,10 +79,10 @@ First, create your own repository from this template:
    - Enable **"Read and write permissions"**
    - Enable **"Allow GitHub Actions to create and approve pull requests"**
 
-   > [!WARNING]
-   > If these options are grayed out, your organization or enterprise may have restricted these permissions. Check with your organization/enterprise settings first.
+> [!WARNING]
+> If these options are grayed out, your organization or enterprise may have restricted these permissions. Check with your organization/enterprise settings first.
 
-   This configuration is required for `release-please` to automatically create release pull requests.
+This configuration is required for `release-please` to automatically create release pull requests.
 
 ### Step 2: Clone and Initialize Your Project
 
