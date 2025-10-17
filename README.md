@@ -26,7 +26,7 @@
 - [🛠️ Quick Start](#️-quick-start)
   - [Step 1: Create Your Repository](#step-1-create-your-repository)
   - [Step 2: Clone and Initialize Your Project](#step-2-clone-and-initialize-your-project)
-  - [Step 3: Configure Android Signing (Optional)](#step-3-configure-android-signing-optional)
+  - [Step 3: Configure Android Signing (REQUIRED for Android Builds)](#step-3-configure-android-signing-required-for-android-builds)
   - [Step 4: Start Building!](#step-4-start-building-)
 - [📁 Project Structure](#-project-structure)
 - [🎯 Available Commands](#-available-commands)
@@ -129,7 +129,18 @@ The initialization script will:
 - ✅ Update all configuration files automatically
 - ✅ Optionally rewrite initial commit and create refactor commit
 
-### Step 3: Configure Android Signing (Optional)
+> [!IMPORTANT]
+> **After running the initialization script and pushing the refactor commit**, release-please will automatically create a Pull Request titled something like `chore: release master`. **DO NOT MERGE THIS PR YET!** You must first complete Step 3 (Android signing configuration) or disable the Android build workflow, otherwise the GitHub Actions that build Android will fail.
+
+### Step 3: Configure Android Signing (REQUIRED for Android Builds)
+
+> [!WARNING]
+> **This step is REQUIRED if you want to build Android apps.** The GitHub Actions workflow includes Android builds by default. If you skip this step, the workflow will fail when you merge the release-please PR.
+>
+> **You have two options:**
+>
+> 1. **Complete the Android signing setup** (recommended if you plan to build Android apps)
+> 2. **Disable the Android build** in `.github/workflows/release.yml` by commenting out or removing the Android build jobs
 
 If you plan to build Android apps, you need to set up the code signing. The codebase is already prepared for this signing; you just need to perform the following steps:
 
@@ -150,9 +161,15 @@ keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA -keysize 2048 -va
 keytool -genkey -v -keystore $env:USERPROFILE\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
 ```
 
+**Windows (CMD):**
+
+```cmd
+keytool -genkey -v -keystore "%USERPROFILE%\upload-keystore.jks" -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+```
+
 #### 3.2. Create Keystore Properties File
 
-Create a file named `[project]/src-tauri/gen/android/keystore.properties` with your keystore information:
+Create a file named `apps/native/src-tauri/gen/android/keystore.properties` with your keystore information:
 
 ```properties
 storePassword=<your store password defined when keytool was executed>
@@ -162,12 +179,7 @@ storeFile=<location of the key store file, such as /Users/<user name>/upload-key
 ```
 
 > [!WARNING]
-> Keep the `keystore.properties` file private. Add it to `.gitignore` to prevent committing sensitive information:
->
-> ```
-> # .gitignore
-> **/keystore.properties
-> ```
+> Keep the `keystore.properties` file confidential. To prevent sensitive information from being stored, the file has been added to the `.gitignore` file.
 
 #### 3.3. Convert Keystore to Base64
 
@@ -205,6 +217,25 @@ Add the following secrets to your GitHub repository:
 
 > [!WARNING]
 > Never commit your keystore file or passwords to your repository. Always use GitHub Secrets for sensitive information.
+
+#### 3.5. Merge the Release PR
+
+After completing the Android signing setup (or disabling the Android build), you can now safely merge the release-please Pull Request:
+
+1. Go to your repository on GitHub
+2. Navigate to the **Pull Requests** tab
+3. Find the PR titled `chore: release master` created by release-please
+4. Review the changes in the PR
+5. Click **Merge pull request**
+
+Once merged, GitHub Actions will automatically:
+
+- Build your desktop app (Windows, macOS, Linux)
+- Build your Android app (if signing is configured)
+- Create a new GitHub release with all binaries attached
+
+> [!TIP]
+> If you don't plan to build Android apps immediately, you can disable the Android build in `.github/workflows/release.yml` and complete the signing setup later when needed.
 
 ### Step 4: Start Building! 🚀
 
