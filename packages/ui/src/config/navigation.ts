@@ -56,7 +56,7 @@ export interface NavigationData {
 export const navigationData: NavigationData = {
   user: {
     name: "odest",
-    email: "dest@example.com",
+    email: "odest@example.com",
     avatar: "/avatar.png",
   },
   navMain: [
