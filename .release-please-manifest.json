@@ -2,7 +2,7 @@
   ".": "0.0.4",
   "apps/native": "0.1.6",
   "apps/web": "0.1.3",
-  "packages/ui": "1.8.0",
+  "packages/ui": "1.9.0",
   "packages/i18n": "0.1.3",
   "packages/eslint-config": "0.1.0",
   "packages/typescript-config": "0.1.0"
