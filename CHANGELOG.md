@@ -1,5 +1,51 @@
 # Changelog
 
+## [0.0.4](https://github.com/odest/tauri-nextjs-template/compare/v0.0.3...v0.0.4) (2025-12-12)
+
+
+### Features
+
+* add contributing and funding docs, improve README, and enhance UI with skeletons and sidebar variant selector ([0a34782](https://github.com/odest/tauri-nextjs-template/commit/0a34782cbca29d2f858d8f85f293e3370c57f3ec))
+* add init scripts, svg assets, improve README ([21d6de5](https://github.com/odest/tauri-nextjs-template/commit/21d6de5834dda0bcf7f90f80dc1984b1b5c234dc))
+* add skeleton loading placeholders for mode-card and themes-list ([eaf937c](https://github.com/odest/tauri-nextjs-template/commit/eaf937ccbe750f155dcc2c8209ba9cee4f9b028b))
+* **i18n:** add internationalization support for web and native apps ([2e9da4f](https://github.com/odest/tauri-nextjs-template/commit/2e9da4f3fe853a818426de083d816a67f9e9d0ea))
+* **i18n:** add support for 10 languages ([7f0a219](https://github.com/odest/tauri-nextjs-template/commit/7f0a219d85d78dca056b65dcf31fe776c708cfef))
+* **i18n:** add translation texts for pages and components ([27017ba](https://github.com/odest/tauri-nextjs-template/commit/27017bac3976ace273635faf72f10a465cd12fc0))
+* **language:** Add language card and switcher hook ([05f7a23](https://github.com/odest/tauri-nextjs-template/commit/05f7a23959d259d9c359c70fab40ac801240660e))
+* **sidebar:** add sidebar variant selector UI and persistent store ([f6b7bb3](https://github.com/odest/tauri-nextjs-template/commit/f6b7bb31d34ae847fe4cf933c688fd79865ef01e))
+* **ui:** add language toggle and locale config ([60d1e56](https://github.com/odest/tauri-nextjs-template/commit/60d1e56b4375a872340093e1644cb8689acedc61))
+
+
+### Bug Fixes
+
+* appearance settings are not responsive on mobile view (close [#8](https://github.com/odest/tauri-nextjs-template/issues/8)) ([1fe1b69](https://github.com/odest/tauri-nextjs-template/commit/1fe1b698eeec5794316d83ab8a698874ddd88b23))
+* **common/greet:** add error handling and clear input after greet ([e954c0f](https://github.com/odest/tauri-nextjs-template/commit/e954c0fff9441c0913e47f6bd93ea6c8eed6675d))
+* **greet:** handle invalid input and sanitize name ([201a5d0](https://github.com/odest/tauri-nextjs-template/commit/201a5d06fb477c5a6ad51098dbda258838387499))
+
+
+### Documentation
+
+* add CONTRIBUTING.md, FUNDING.yml, overhaul README ([8e9a878](https://github.com/odest/tauri-nextjs-template/commit/8e9a878df6dbddc9ab7710fafafa913cf7c3a11e))
+* fix formatting of README warning block ([7a5cb63](https://github.com/odest/tauri-nextjs-template/commit/7a5cb63c5fddf95036eefb5d66422c9de98def28))
+* **README:** add required Android signing notes and guide ([a06dba1](https://github.com/odest/tauri-nextjs-template/commit/a06dba1fa0fb8d3374afe682156ab920a24fb59c))
+
+
+### Code Refactoring
+
+* **ui:** extract theme init script to shared module ([0e51547](https://github.com/odest/tauri-nextjs-template/commit/0e515474305715b54bb05ccde1111499cfcf8eb5))
+* **ui:** replace mounting with useMounted hook skeleton component ([c5366b6](https://github.com/odest/tauri-nextjs-template/commit/c5366b6d1600a71025a17eeef5cd179d99dea5d6))
+* **ui:** replace mounting with useMounted hook skeleton component ([cd9faa3](https://github.com/odest/tauri-nextjs-template/commit/cd9faa318c847dafbd018804db456210e2cf275e))
+* update LinkComponent types and use LucideIcon for nav icons ([7ed51cd](https://github.com/odest/tauri-nextjs-template/commit/7ed51cdb4f8e32150b931f4f1c33e19018be3a41))
+* use sidebar state for grid layout in mode and variant cards ([e7e84af](https://github.com/odest/tauri-nextjs-template/commit/e7e84af7268a997f6bafe670a588c8903e2e41ec))
+* **utils:** Extract storage retrieval to utility and use it in stores ([af79486](https://github.com/odest/tauri-nextjs-template/commit/af794864c2b67f2f245818ddaf8b85577c768d50))
+
+
+### Build System
+
+* **deps:** bump next from 15.5.0 to 15.5.9 ([c17477c](https://github.com/odest/tauri-nextjs-template/commit/c17477c72416240f3520d30d594b72843c06eb5e))
+* **deps:** bump next from 15.5.0 to 15.5.9 ([33ee5cd](https://github.com/odest/tauri-nextjs-template/commit/33ee5cd2591eb70d31ce4db7814c723dd1dade5d))
+* Exclude src-tauri from tsconfig and add Android .gitignore in scripts ([a2c8a89](https://github.com/odest/tauri-nextjs-template/commit/a2c8a89bdb3608ab98fb5152321de8deee8a0216))
+
 ## [0.0.3](https://github.com/odest/tauri-nextjs-template/compare/v0.0.2...v0.0.3) (2025-09-02)
 
 
