@@ -1,9 +1,9 @@
 {
   ".": "0.0.4",
-  "apps/native": "0.1.5",
-  "apps/web": "0.1.1",
-  "packages/ui": "1.6.0",
-  "packages/i18n": "0.1.1",
+  "apps/native": "0.1.6",
+  "apps/web": "0.1.2",
+  "packages/ui": "1.7.0",
+  "packages/i18n": "0.1.2",
   "packages/eslint-config": "0.1.0",
   "packages/typescript-config": "0.1.0"
 }
