@@ -15,7 +15,7 @@
     "@workspace/i18n": "workspace:*",
     "@workspace/ui": "workspace:*",
     "lucide-react": "^0.475.0",
-    "next": "^15.5.9",
+    "next": "^16.1.5",
     "react": "^19.1.4",
     "react-dom": "^19.1.4"
   },
