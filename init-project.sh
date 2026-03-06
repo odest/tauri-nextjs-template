@@ -129,7 +129,7 @@ fi
 
 # Delete CHANGELOG files
 echo -e "${YELLOW}[Cleaning] Removing CHANGELOG files...${NC}"
-rm -f "CHANGELOG.md" "apps/native/CHANGELOG.md" "packages/ui/CHANGELOG.md" 2>/dev/null
+rm -f "CHANGELOG.md" "apps/native/CHANGELOG.md" "apps/web/CHANGELOG.md" "packages/ui/CHANGELOG.md" "packages/i18n/CHANGELOG.md" 2>/dev/null
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}[OK] Deleted CHANGELOG files${NC}"
 fi

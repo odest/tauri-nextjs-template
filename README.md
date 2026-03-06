@@ -57,8 +57,8 @@
 
 Before you begin, ensure you have the following installed:
 
-- **Node.js** (v22 or higher) - [Download](https://nodejs.org/)
-- **pnpm** (v8 or higher) - [Install Guide](https://pnpm.io/installation)
+- **Node.js** (v20 or higher) - [Download](https://nodejs.org/)
+- **pnpm** (v10 or higher) - [Install Guide](https://pnpm.io/installation)
 - **Rust** (latest stable) - [Install Guide](https://www.rust-lang.org/tools/install)
 
 **Optional for Mobile Development:**

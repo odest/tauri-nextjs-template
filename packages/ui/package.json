@@ -23,6 +23,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
     "next-themes": "^0.4.6",
+    "radix-ui": "^1.4.3",
     "react": "^19.1.5",
     "react-dom": "^19.1.5",
     "tailwind-merge": "^3.3.1",
@@ -36,8 +37,8 @@
     "@types/node": "^24.3.0",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.7",
-    "@workspace/i18n": "workspace:*",
     "@workspace/eslint-config": "workspace:*",
+    "@workspace/i18n": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2"
@@ -52,6 +53,7 @@
     "./lib/*": "./src/lib/*.ts",
     "./hooks/*": "./src/hooks/*.ts",
     "./stores/*": "./src/stores/*.ts",
-    "./config/*": "./src/config/*.ts"
+    "./config/*": "./src/config/*.ts",
+    "./scripts/*": "./src/scripts/*.ts"
   }
 }

@@ -58,6 +58,7 @@ pnpm dev
 │   └── web/                 # Next.js web app
 ├── packages/
 │   ├── ui/                  # Shared UI components
+│   ├── i18n/                # Shared internationalization
 │   ├── eslint-config/       # Shared ESLint configuration
 │   └── typescript-config/   # Shared TypeScript configuration
 └── .github/                 # GitHub workflows and templates

@@ -149,7 +149,9 @@ Write-Host "[Cleaning] Removing CHANGELOG files..." -ForegroundColor Yellow
 $changelogFiles = @(
     "CHANGELOG.md",
     "apps\native\CHANGELOG.md",
-    "packages\ui\CHANGELOG.md"
+    "apps\web\CHANGELOG.md",
+    "packages\ui\CHANGELOG.md",
+    "packages\i18n\CHANGELOG.md"
 )
 
 foreach ($changelog in $changelogFiles) {

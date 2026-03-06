@@ -5,13 +5,12 @@ export const themeInitScript = `
       if (raw) {
         const parsed = JSON.parse(raw);
         const theme = parsed?.state?.selectedTheme || "default";
-        document.documentElement.setAttribute("data-theme", theme);
-      } else {
-        document.documentElement.setAttribute("data-theme", "default");
+        if (theme !== "default") {
+          document.documentElement.setAttribute("data-theme", theme);
+        }
       }
     } catch (error) {
       console.error("[Theme Init]", error);
-      document.documentElement.setAttribute("data-theme", "default");
     }
   })();
 `;
