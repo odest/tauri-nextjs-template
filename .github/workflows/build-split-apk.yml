@@ -37,8 +37,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10.4.1
 
       - name: Install Node
         uses: actions/setup-node@v4
@@ -87,7 +85,7 @@ jobs:
           jksBase64: ${{ secrets.BASE64_JKS }}
         run: |
           resolvedStoreFile="${storeFile/#\~/$HOME}"
-          mkdir -p "$(dirname $"$resolvedStoreFile")"
+          mkdir -p "$(dirname "$resolvedStoreFile")"
 
           echo "storeFile=$resolvedStoreFile" > ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
           echo "storePassword=$storePassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
