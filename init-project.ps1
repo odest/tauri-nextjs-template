@@ -187,6 +187,7 @@ function Update-ProjectFile {
             # Replace project names
             $content = $content -replace 'tauri-nextjs-template', $ProjectName
             $content = $content -replace 'tauri_nextjs_template', $ProjectNameSnake
+            $content = $content -replace 'Tauri \+ Next\.js Template', $ProjectName
             
             # Replace GitHub username if provided
             if ($GitHubUsername) {
@@ -252,6 +253,7 @@ Update-ProjectFile -FilePath "$currentDir\packages\i18n\package.json" -Descripti
 Update-ProjectFile -FilePath "$currentDir\packages\typescript-config\package.json" -Description "typescript-config package.json" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\packages\ui\package.json" -Description "UI package.json" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\packages\ui\src\config\navigation.ts" -Description "Navigation config" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
+Update-ProjectFile -FilePath "$currentDir\packages\ui\src\components\layout\app-sidebar.tsx" -Description "App Sidebar" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 
 # Update identifier in tauri.conf.json (needs special handling)
 $tauriConfigPath = "$currentDir\apps\native\src-tauri\tauri.conf.json"

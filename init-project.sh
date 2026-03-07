@@ -152,6 +152,7 @@ update_file() {
             # Replace project names
             sed -i '' "s/tauri-nextjs-template/${PROJECT_NAME}/g" "$file"
             sed -i '' "s/tauri_nextjs_template/${PROJECT_NAME_SNAKE}/g" "$file"
+            sed -i '' "s/Tauri + Next\.js Template/${PROJECT_NAME}/g" "$file"
             
             # Replace GitHub username if provided
             if [ -n "$GITHUB_USERNAME" ]; then
@@ -174,6 +175,7 @@ update_file() {
             # Replace project names
             sed -i "s/tauri-nextjs-template/${PROJECT_NAME}/g" "$file"
             sed -i "s/tauri_nextjs_template/${PROJECT_NAME_SNAKE}/g" "$file"
+            sed -i "s/Tauri + Next\.js Template/${PROJECT_NAME}/g" "$file"
             
             # Replace GitHub username if provided
             if [ -n "$GITHUB_USERNAME" ]; then
@@ -224,6 +226,7 @@ update_file "packages/i18n/package.json" "i18n package.json"
 update_file "packages/typescript-config/package.json" "typescript-config package.json"
 update_file "packages/ui/package.json" "UI package.json"
 update_file "packages/ui/src/config/navigation.ts" "Navigation config"
+update_file "packages/ui/src/components/layout/app-sidebar.tsx" "App Sidebar"
 
 # Update identifier in tauri.conf.json (needs special handling)
 if [ -f "apps/native/src-tauri/tauri.conf.json" ]; then

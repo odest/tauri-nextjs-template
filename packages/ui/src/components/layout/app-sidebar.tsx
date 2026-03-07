@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useCallback } from "react";
 import { ComponentType } from "react";
-import { Biohazard } from "lucide-react";
+import { Hexagon } from "lucide-react";
 
 import { MainNav } from "@workspace/ui/components/navigation/main-nav";
 import { ProjectsNav } from "@workspace/ui/components/navigation/projects-nav";
@@ -62,8 +62,10 @@ export function AppSidebar({
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <LinkComponent href="/" onClick={handleLinkClick}>
-                <Biohazard className="!size-5" />
-                <span className="text-base font-semibold">TNT</span>
+                <Hexagon className="!size-5" />
+                <span className="text-base font-semibold">
+                  Tauri + Next.js Template
+                </span>
               </LinkComponent>
             </SidebarMenuButton>
           </SidebarMenuItem>
