@@ -2,45 +2,18 @@
   "HomePage": {
     "title": "ホームページにいます。"
   },
-  "PlaygroundPage": {
-    "title": "プレイグラウンドページにいます。"
+  "DashboardPage": {
+    "title": "ダッシュボードページにいます。"
   },
-  "DocsPage": {
-    "title": "ドキュメントページにいます。"
+  "OverviewPage": {
+    "title": "概要ページにいます。"
   },
-  "ModelsPage": {
-    "title": "モデルページにいます。"
-  },
-  "SupportPage": {
-    "title": "サポートページにいます。"
-  },
-  "FeedbackPage": {
-    "title": "フィードバックページにいます。"
+  "AnalyticsPage": {
+    "title": "分析ページにいます。"
   },
   "SettingsPage": {
     "title": "設定",
     "description": "アプリケーションの設定を管理し、体験をカスタマイズします。"
-  },
-  "QuantumPage": {
-    "title": "量子ページにいます。"
-  },
-  "StarredPage": {
-    "title": "お気に入りページにいます。"
-  },
-  "ExplorerPage": {
-    "title": "エクスプローラーページにいます。"
-  },
-  "IntroPage": {
-    "title": "紹介ページにいます。"
-  },
-  "HistoryPage": {
-    "title": "履歴ページにいます。"
-  },
-  "TutorialsPage": {
-    "title": "チュートリアルページにいます。"
-  },
-  "GenesisPage": {
-    "title": "創世記ページにいます。"
   },
   "Greet": {
     "placeholder": "名前を入力してください...",
@@ -78,23 +51,15 @@
   },
   "Navigation": {
     "home": "ホーム",
-    "playground": "プレイグラウンド",
-    "models": "モデル",
-    "docs": "ドキュメント",
-    "support": "サポート",
+    "dashboard": "ダッシュボード",
+    "overview": "概要",
+    "analytics": "分析",
+    "github": "Github",
     "feedback": "フィードバック",
     "settings": "設定",
-    "history": "履歴",
-    "starred": "お気に入り",
-    "genesis": "創世記",
-    "explorer": "エクスプローラー",
-    "quantum": "量子",
-    "intro": "紹介",
-    "tutorials": "チュートリアル",
     "platform": "プラットフォーム",
     "projects": "プロジェクト",
-    "designEngineering": "デザインエンジニアリング",
-    "salesMarketing": "営業とマーケティング",
+    "projectAlpha": "プロジェクトアルファ",
     "viewProject": "プロジェクトを表示",
     "shareProject": "プロジェクトを共有",
     "deleteProject": "プロジェクトを削除",

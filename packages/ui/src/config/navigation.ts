@@ -1,14 +1,11 @@
 import {
-  Bot,
   Home,
   Send,
-  Frame,
-  BookOpen,
+  Github,
   Settings,
-  LifeBuoy,
   PieChart,
   LucideIcon,
-  SquareTerminal,
+  LayoutDashboard,
 } from "lucide-react";
 
 export interface UserNavItem {
@@ -37,6 +34,7 @@ export interface SecondaryNavItem {
   url: string;
   icon: LucideIcon;
   translationKey: string;
+  external?: boolean;
 }
 
 export interface ProjectNavItem {
@@ -69,70 +67,39 @@ export const navigationData: NavigationData = {
       translationKey: "home",
     },
     {
-      title: "Playground",
-      url: "/playground",
-      icon: SquareTerminal,
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
       isActive: true,
-      translationKey: "playground",
+      translationKey: "dashboard",
       items: [
         {
-          title: "History",
-          url: "/playground/history",
-          translationKey: "history",
+          title: "Overview",
+          url: "/dashboard/overview",
+          translationKey: "overview",
         },
         {
-          title: "Starred",
-          url: "/playground/starred",
-          translationKey: "starred",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "/models",
-      icon: Bot,
-      translationKey: "models",
-      items: [
-        { title: "Genesis", url: "/models/genesis", translationKey: "genesis" },
-        {
-          title: "Explorer",
-          url: "/models/explorer",
-          translationKey: "explorer",
-        },
-        { title: "Quantum", url: "/models/quantum", translationKey: "quantum" },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "/docs",
-      icon: BookOpen,
-      translationKey: "docs",
-      items: [
-        {
-          title: "Introduction",
-          url: "/docs/intro",
-          translationKey: "intro",
-        },
-        {
-          title: "Tutorials",
-          url: "/docs/tutorials",
-          translationKey: "tutorials",
+          title: "Analytics",
+          url: "/dashboard/analytics",
+          translationKey: "analytics",
         },
       ],
     },
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "/support",
-      icon: LifeBuoy,
-      translationKey: "support",
-    },
-    {
       title: "Feedback",
-      url: "/feedback",
+      url: "https://github.com/odest/tauri-nextjs-template/issues",
       icon: Send,
       translationKey: "feedback",
+      external: true,
+    },
+    {
+      title: "Github",
+      url: "https://github.com/odest/tauri-nextjs-template",
+      icon: Github,
+      translationKey: "github",
+      external: true,
     },
     {
       title: "Settings",
@@ -143,16 +110,10 @@ export const navigationData: NavigationData = {
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-      translationKey: "designEngineering",
-    },
-    {
-      name: "Sales & Marketing",
+      name: "Project Alpha",
       url: "#",
       icon: PieChart,
-      translationKey: "salesMarketing",
+      translationKey: "projectAlpha",
     },
   ],
 };

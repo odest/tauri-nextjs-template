@@ -16,6 +16,7 @@ interface SecondaryNavItem {
   url: string;
   icon: LucideIcon;
   translationKey: string;
+  external?: boolean;
 }
 
 interface SecondaryNavProps
@@ -63,6 +64,8 @@ export function SecondaryNav({
                     data-tooltip={t(item.translationKey)}
                     data-active={active}
                     onClick={handleLinkClick}
+                    target={item.external ? "_blank" : undefined}
+                    rel={item.external ? "noopener noreferrer" : undefined}
                   >
                     <item.icon />
                     <span>{t(item.translationKey)}</span>

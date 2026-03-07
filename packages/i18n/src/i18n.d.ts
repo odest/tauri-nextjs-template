@@ -1,4 +1,4 @@
-import type { Locale } from "@workspace/i18n/index";
+import type { Locale } from "@workspace/i18n";
 import messages from "@workspace/i18n/messages/en.json";
 
 type Messages = typeof messages;

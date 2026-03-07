@@ -2,45 +2,18 @@
   "HomePage": {
     "title": "You are on the Home Page."
   },
-  "PlaygroundPage": {
-    "title": "You are on the Playground Page."
+  "DashboardPage": {
+    "title": "You are on the Dashboard Page."
   },
-  "DocsPage": {
-    "title": "You are on the Documentation Page."
+  "OverviewPage": {
+    "title": "You are on the Overview Page."
   },
-  "ModelsPage": {
-    "title": "You are on the Models Page."
-  },
-  "SupportPage": {
-    "title": "You are on the Support Page."
-  },
-  "FeedbackPage": {
-    "title": "You are on the Feedback Page."
+  "AnalyticsPage": {
+    "title": "You are on the Analytics Page."
   },
   "SettingsPage": {
     "title": "Settings",
     "description": "Manage your application preferences and customize your experience."
-  },
-  "QuantumPage": {
-    "title": "You are on the Quantum Page."
-  },
-  "StarredPage": {
-    "title": "You are on the Starred Page."
-  },
-  "ExplorerPage": {
-    "title": "You are on the Explorer Page."
-  },
-  "IntroPage": {
-    "title": "You are on the Introduction Page."
-  },
-  "HistoryPage": {
-    "title": "You are on the History Page."
-  },
-  "TutorialsPage": {
-    "title": "You are on the Tutorials Page."
-  },
-  "GenesisPage": {
-    "title": "You are on the Genesis Page."
   },
   "Greet": {
     "placeholder": "Enter a name...",
@@ -78,23 +51,15 @@
   },
   "Navigation": {
     "home": "Home",
-    "playground": "Playground",
-    "models": "Models",
-    "docs": "Documentation",
-    "support": "Support",
+    "dashboard": "Dashboard",
+    "overview": "Overview",
+    "analytics": "Analytics",
+    "github": "Github",
     "feedback": "Feedback",
     "settings": "Settings",
-    "history": "History",
-    "starred": "Starred",
-    "genesis": "Genesis",
-    "explorer": "Explorer",
-    "quantum": "Quantum",
-    "intro": "Introduction",
-    "tutorials": "Tutorials",
     "platform": "Platform",
     "projects": "Projects",
-    "designEngineering": "Design Engineering",
-    "salesMarketing": "Sales & Marketing",
+    "projectAlpha": "Project Alpha",
     "viewProject": "View Project",
     "shareProject": "Share Project",
     "deleteProject": "Delete Project",

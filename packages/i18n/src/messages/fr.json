@@ -2,45 +2,18 @@
   "HomePage": {
     "title": "Vous êtes sur la page d'accueil."
   },
-  "PlaygroundPage": {
-    "title": "Vous êtes sur la page de jeu."
+  "DashboardPage": {
+    "title": "Vous êtes sur la page du tableau de bord."
   },
-  "DocsPage": {
-    "title": "Vous êtes sur la page de documentation."
+  "OverviewPage": {
+    "title": "Vous êtes sur la page de vue d'ensemble."
   },
-  "ModelsPage": {
-    "title": "Vous êtes sur la page des modèles."
-  },
-  "SupportPage": {
-    "title": "Vous êtes sur la page d'assistance."
-  },
-  "FeedbackPage": {
-    "title": "Vous êtes sur la page de commentaires."
+  "AnalyticsPage": {
+    "title": "Vous êtes sur la page d'analyse."
   },
   "SettingsPage": {
     "title": "Paramètres",
     "description": "Gérez les préférences de votre application et personnalisez votre expérience."
-  },
-  "QuantumPage": {
-    "title": "Vous êtes sur la page Quantique."
-  },
-  "StarredPage": {
-    "title": "Vous êtes sur la page favoris."
-  },
-  "ExplorerPage": {
-    "title": "Vous êtes sur la page explorateur."
-  },
-  "IntroPage": {
-    "title": "Vous êtes sur la page d'introduction."
-  },
-  "HistoryPage": {
-    "title": "Vous êtes sur la page d'historique."
-  },
-  "TutorialsPage": {
-    "title": "Vous êtes sur la page de tutoriels."
-  },
-  "GenesisPage": {
-    "title": "Vous êtes sur la page Genèse."
   },
   "Greet": {
     "placeholder": "Entrez un nom...",
@@ -78,23 +51,15 @@
   },
   "Navigation": {
     "home": "Accueil",
-    "playground": "Jeu",
-    "models": "Modèles",
-    "docs": "Documentation",
-    "support": "Assistance",
+    "dashboard": "Tableau de bord",
+    "overview": "Aperçu",
+    "analytics": "Analyse",
+    "github": "Github",
     "feedback": "Commentaires",
     "settings": "Paramètres",
-    "history": "Historique",
-    "starred": "Favoris",
-    "genesis": "Genèse",
-    "explorer": "Explorateur",
-    "quantum": "Quantique",
-    "intro": "Introduction",
-    "tutorials": "Tutoriels",
     "platform": "Plateforme",
     "projects": "Projets",
-    "designEngineering": "Ingénierie de conception",
-    "salesMarketing": "Ventes et marketing",
+    "projectAlpha": "Projet Alpha",
     "viewProject": "Voir le projet",
     "shareProject": "Partager le projet",
     "deleteProject": "Supprimer le projet",

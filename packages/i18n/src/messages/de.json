@@ -2,45 +2,18 @@
   "HomePage": {
     "title": "Sie befinden sich auf der Startseite."
   },
-  "PlaygroundPage": {
-    "title": "Sie befinden sich auf der Spielplatz-Seite."
+  "DashboardPage": {
+    "title": "Sie befinden sich auf der Dashboard-Seite."
   },
-  "DocsPage": {
-    "title": "Sie befinden sich auf der Dokumentationsseite."
+  "OverviewPage": {
+    "title": "Sie befinden sich auf der Übersichtsseite."
   },
-  "ModelsPage": {
-    "title": "Sie befinden sich auf der Modelle-Seite."
-  },
-  "SupportPage": {
-    "title": "Sie befinden sich auf der Support-Seite."
-  },
-  "FeedbackPage": {
-    "title": "Sie befinden sich auf der Feedback-Seite."
+  "AnalyticsPage": {
+    "title": "Sie befinden sich auf der Analyseseite."
   },
   "SettingsPage": {
     "title": "Einstellungen",
     "description": "Verwalten Sie Ihre Anwendungseinstellungen und passen Sie Ihre Erfahrung an."
-  },
-  "QuantumPage": {
-    "title": "Sie befinden sich auf der Quanten-Seite."
-  },
-  "StarredPage": {
-    "title": "Sie befinden sich auf der Favoriten-Seite."
-  },
-  "ExplorerPage": {
-    "title": "Sie befinden sich auf der Explorer-Seite."
-  },
-  "IntroPage": {
-    "title": "Sie befinden sich auf der Einführungsseite."
-  },
-  "HistoryPage": {
-    "title": "Sie befinden sich auf der Verlaufsseite."
-  },
-  "TutorialsPage": {
-    "title": "Sie befinden sich auf der Tutorials-Seite."
-  },
-  "GenesisPage": {
-    "title": "Sie befinden sich auf der Entstehungs-Seite."
   },
   "Greet": {
     "placeholder": "Geben Sie einen Namen ein...",
@@ -78,23 +51,15 @@
   },
   "Navigation": {
     "home": "Startseite",
-    "playground": "Spielplatz",
-    "models": "Modelle",
-    "docs": "Dokumentation",
-    "support": "Support",
+    "dashboard": "Dashboard",
+    "overview": "Übersicht",
+    "analytics": "Analyse",
+    "github": "Github",
     "feedback": "Feedback",
     "settings": "Einstellungen",
-    "history": "Verlauf",
-    "starred": "Favoriten",
-    "genesis": "Entstehung",
-    "explorer": "Explorer",
-    "quantum": "Quanten",
-    "intro": "Einführung",
-    "tutorials": "Tutorials",
     "platform": "Plattform",
     "projects": "Projekte",
-    "designEngineering": "Design-Engineering",
-    "salesMarketing": "Vertrieb und Marketing",
+    "projectAlpha": "Projekt Alpha",
     "viewProject": "Projekt anzeigen",
     "shareProject": "Projekt teilen",
     "deleteProject": "Projekt löschen",

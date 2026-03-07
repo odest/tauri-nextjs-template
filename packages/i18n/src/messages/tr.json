@@ -2,45 +2,18 @@
   "HomePage": {
     "title": "Ana Sayfadasınız."
   },
-  "PlaygroundPage": {
-    "title": "Oyun Alanı Sayfasındasınız."
+  "DashboardPage": {
+    "title": "Kontrol Paneli Sayfasındasınız."
   },
-  "DocsPage": {
-    "title": "Dokümantasyon Sayfasındasınız."
+  "OverviewPage": {
+    "title": "Genel Bakış Sayfasındasınız."
   },
-  "ModelsPage": {
-    "title": "Modeller Sayfasındasınız."
-  },
-  "SupportPage": {
-    "title": "Destek Sayfasındasınız."
-  },
-  "FeedbackPage": {
-    "title": "Geri Bildirim Sayfasındasınız."
+  "AnalyticsPage": {
+    "title": "Analiz Sayfasındasınız."
   },
   "SettingsPage": {
     "title": "Ayarlar",
     "description": "Uygulama tercihlerinizi yönetin ve deneyiminizi özelleştirin."
-  },
-  "QuantumPage": {
-    "title": "Kuantum Sayfasındasınız."
-  },
-  "StarredPage": {
-    "title": "Favoriler Sayfasındasınız."
-  },
-  "ExplorerPage": {
-    "title": "Keşfet Sayfasındasınız."
-  },
-  "IntroPage": {
-    "title": "Giriş Sayfasındasınız."
-  },
-  "HistoryPage": {
-    "title": "Geçmiş Sayfasındasınız."
-  },
-  "TutorialsPage": {
-    "title": "Eğitimler Sayfasındasınız."
-  },
-  "GenesisPage": {
-    "title": "Başlangıç Sayfasındasınız."
   },
   "Greet": {
     "placeholder": "Bir isim girin...",
@@ -78,23 +51,15 @@
   },
   "Navigation": {
     "home": "Ana Sayfa",
-    "playground": "Oyun Alanı",
-    "models": "Modeller",
-    "docs": "Dokümantasyon",
-    "support": "Destek",
+    "dashboard": "Kontrol Paneli",
+    "overview": "Genel Bakış",
+    "analytics": "Analiz",
+    "github": "Github",
     "feedback": "Geri Bildirim",
     "settings": "Ayarlar",
-    "history": "Geçmiş",
-    "starred": "Favoriler",
-    "genesis": "Başlangıç",
-    "explorer": "Keşfet",
-    "quantum": "Kuantum",
-    "intro": "Giriş",
-    "tutorials": "Eğitimler",
     "platform": "Platform",
     "projects": "Projeler",
-    "designEngineering": "Tasarım Mühendisliği",
-    "salesMarketing": "Satış ve Pazarlama",
+    "projectAlpha": "Proje Alpha",
     "viewProject": "Projeyi Görüntüle",
     "shareProject": "Projeyi Paylaş",
     "deleteProject": "Projeyi Sil",
