@@ -57,7 +57,7 @@ export const ThemesList = () => {
     });
 
     setFilteredThemes(sorted);
-  }, [themes, searchTerm, sortOption]);
+  }, [searchTerm, sortOption]);
 
   if (!mounted)
     return (
