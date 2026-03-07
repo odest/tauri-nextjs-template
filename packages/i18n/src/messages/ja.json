@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "分析ページにいます。"
   },
-  "PlaygroundPage": {
-    "title": "プレイグラウンドページにいます。"
-  },
-  "DocsPage": {
-    "title": "ドキュメントページにいます。"
-  },
-  "ModelsPage": {
-    "title": "モデルページにいます。"
-  },
-  "SupportPage": {
-    "title": "サポートページにいます。"
-  },
-  "FeedbackPage": {
-    "title": "フィードバックページにいます。"
-  },
   "SettingsPage": {
     "title": "設定",
     "description": "アプリケーションの設定を管理し、体験をカスタマイズします。"
-  },
-  "QuantumPage": {
-    "title": "量子ページにいます。"
-  },
-  "StarredPage": {
-    "title": "お気に入りページにいます。"
-  },
-  "ExplorerPage": {
-    "title": "エクスプローラーページにいます。"
-  },
-  "IntroPage": {
-    "title": "紹介ページにいます。"
-  },
-  "HistoryPage": {
-    "title": "履歴ページにいます。"
-  },
-  "TutorialsPage": {
-    "title": "チュートリアルページにいます。"
-  },
-  "GenesisPage": {
-    "title": "創世記ページにいます。"
   },
   "Greet": {
     "placeholder": "名前を入力してください...",
@@ -90,19 +54,9 @@
     "dashboard": "ダッシュボード",
     "overview": "概要",
     "analytics": "分析",
-    "playground": "プレイグラウンド",
-    "models": "モデル",
-    "docs": "ドキュメント",
     "github": "Github",
     "feedback": "フィードバック",
     "settings": "設定",
-    "history": "履歴",
-    "starred": "お気に入り",
-    "genesis": "創世記",
-    "explorer": "エクスプローラー",
-    "quantum": "量子",
-    "intro": "紹介",
-    "tutorials": "チュートリアル",
     "platform": "プラットフォーム",
     "projects": "プロジェクト",
     "projectAlpha": "プロジェクトアルファ",

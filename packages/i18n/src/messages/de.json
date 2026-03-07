@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "Sie befinden sich auf der Analyseseite."
   },
-  "PlaygroundPage": {
-    "title": "Sie befinden sich auf der Spielplatz-Seite."
-  },
-  "DocsPage": {
-    "title": "Sie befinden sich auf der Dokumentationsseite."
-  },
-  "ModelsPage": {
-    "title": "Sie befinden sich auf der Modelle-Seite."
-  },
-  "SupportPage": {
-    "title": "Sie befinden sich auf der Support-Seite."
-  },
-  "FeedbackPage": {
-    "title": "Sie befinden sich auf der Feedback-Seite."
-  },
   "SettingsPage": {
     "title": "Einstellungen",
     "description": "Verwalten Sie Ihre Anwendungseinstellungen und passen Sie Ihre Erfahrung an."
-  },
-  "QuantumPage": {
-    "title": "Sie befinden sich auf der Quanten-Seite."
-  },
-  "StarredPage": {
-    "title": "Sie befinden sich auf der Favoriten-Seite."
-  },
-  "ExplorerPage": {
-    "title": "Sie befinden sich auf der Explorer-Seite."
-  },
-  "IntroPage": {
-    "title": "Sie befinden sich auf der Einführungsseite."
-  },
-  "HistoryPage": {
-    "title": "Sie befinden sich auf der Verlaufsseite."
-  },
-  "TutorialsPage": {
-    "title": "Sie befinden sich auf der Tutorials-Seite."
-  },
-  "GenesisPage": {
-    "title": "Sie befinden sich auf der Entstehungs-Seite."
   },
   "Greet": {
     "placeholder": "Geben Sie einen Namen ein...",
@@ -90,19 +54,9 @@
     "dashboard": "Dashboard",
     "overview": "Übersicht",
     "analytics": "Analyse",
-    "playground": "Spielplatz",
-    "models": "Modelle",
-    "docs": "Dokumentation",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Einstellungen",
-    "history": "Verlauf",
-    "starred": "Favoriten",
-    "genesis": "Entstehung",
-    "explorer": "Explorer",
-    "quantum": "Quanten",
-    "intro": "Einführung",
-    "tutorials": "Tutorials",
     "platform": "Plattform",
     "projects": "Projekte",
     "projectAlpha": "Projekt Alpha",

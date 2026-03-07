@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "Estás en la página de análisis."
   },
-  "PlaygroundPage": {
-    "title": "Estás en la página de juegos."
-  },
-  "DocsPage": {
-    "title": "Estás en la página de documentación."
-  },
-  "ModelsPage": {
-    "title": "Estás en la página de modelos."
-  },
-  "SupportPage": {
-    "title": "Estás en la página de soporte."
-  },
-  "FeedbackPage": {
-    "title": "Estás en la página de comentarios."
-  },
   "SettingsPage": {
     "title": "Configuración",
     "description": "Administre las preferencias de su aplicación y personalice su experiencia."
-  },
-  "QuantumPage": {
-    "title": "Estás en la página Cuántica."
-  },
-  "StarredPage": {
-    "title": "Estás en la página de favoritos."
-  },
-  "ExplorerPage": {
-    "title": "Estás en la página del explorador."
-  },
-  "IntroPage": {
-    "title": "Estás en la página de introducción."
-  },
-  "HistoryPage": {
-    "title": "Estás en la página de historial."
-  },
-  "TutorialsPage": {
-    "title": "Estás en la página de tutoriales."
-  },
-  "GenesisPage": {
-    "title": "Estás en la página Génesis."
   },
   "Greet": {
     "placeholder": "Ingrese un nombre...",
@@ -90,19 +54,9 @@
     "dashboard": "Panel de control",
     "overview": "Visión General",
     "analytics": "Análisis",
-    "playground": "Juegos",
-    "models": "Modelos",
-    "docs": "Documentación",
     "github": "Github",
     "feedback": "Comentarios",
     "settings": "Configuración",
-    "history": "Historial",
-    "starred": "Favoritos",
-    "genesis": "Génesis",
-    "explorer": "Explorador",
-    "quantum": "Cuántica",
-    "intro": "Introducción",
-    "tutorials": "Tutoriales",
     "platform": "Plataforma",
     "projects": "Proyectos",
     "projectAlpha": "Proyecto Alpha",

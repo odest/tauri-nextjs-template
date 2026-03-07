@@ -1,13 +1,10 @@
 import {
-  Bot,
   Home,
   Send,
   Github,
-  BookOpen,
   Settings,
   PieChart,
   LucideIcon,
-  SquareTerminal,
   LayoutDashboard,
 } from "lucide-react";
 
@@ -85,58 +82,6 @@ export const navigationData: NavigationData = {
           title: "Analytics",
           url: "/dashboard/analytics",
           translationKey: "analytics",
-        },
-      ],
-    },
-    {
-      title: "Playground",
-      url: "/playground",
-      icon: SquareTerminal,
-      isActive: true,
-      translationKey: "playground",
-      items: [
-        {
-          title: "History",
-          url: "/playground/history",
-          translationKey: "history",
-        },
-        {
-          title: "Starred",
-          url: "/playground/starred",
-          translationKey: "starred",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "/models",
-      icon: Bot,
-      translationKey: "models",
-      items: [
-        { title: "Genesis", url: "/models/genesis", translationKey: "genesis" },
-        {
-          title: "Explorer",
-          url: "/models/explorer",
-          translationKey: "explorer",
-        },
-        { title: "Quantum", url: "/models/quantum", translationKey: "quantum" },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "/docs",
-      icon: BookOpen,
-      translationKey: "docs",
-      items: [
-        {
-          title: "Introduction",
-          url: "/docs/intro",
-          translationKey: "intro",
-        },
-        {
-          title: "Tutorials",
-          url: "/docs/tutorials",
-          translationKey: "tutorials",
         },
       ],
     },

@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "You are on the Analytics Page."
   },
-  "PlaygroundPage": {
-    "title": "You are on the Playground Page."
-  },
-  "DocsPage": {
-    "title": "You are on the Documentation Page."
-  },
-  "ModelsPage": {
-    "title": "You are on the Models Page."
-  },
-  "SupportPage": {
-    "title": "You are on the Support Page."
-  },
-  "FeedbackPage": {
-    "title": "You are on the Feedback Page."
-  },
   "SettingsPage": {
     "title": "Settings",
     "description": "Manage your application preferences and customize your experience."
-  },
-  "QuantumPage": {
-    "title": "You are on the Quantum Page."
-  },
-  "StarredPage": {
-    "title": "You are on the Starred Page."
-  },
-  "ExplorerPage": {
-    "title": "You are on the Explorer Page."
-  },
-  "IntroPage": {
-    "title": "You are on the Introduction Page."
-  },
-  "HistoryPage": {
-    "title": "You are on the History Page."
-  },
-  "TutorialsPage": {
-    "title": "You are on the Tutorials Page."
-  },
-  "GenesisPage": {
-    "title": "You are on the Genesis Page."
   },
   "Greet": {
     "placeholder": "Enter a name...",
@@ -90,19 +54,9 @@
     "dashboard": "Dashboard",
     "overview": "Overview",
     "analytics": "Analytics",
-    "playground": "Playground",
-    "models": "Models",
-    "docs": "Documentation",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Settings",
-    "history": "History",
-    "starred": "Starred",
-    "genesis": "Genesis",
-    "explorer": "Explorer",
-    "quantum": "Quantum",
-    "intro": "Introduction",
-    "tutorials": "Tutorials",
     "platform": "Platform",
     "projects": "Projects",
     "projectAlpha": "Project Alpha",

@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "您在分析页面。"
   },
-  "PlaygroundPage": {
-    "title": "您在游乐场页面。"
-  },
-  "DocsPage": {
-    "title": "您在文档页面。"
-  },
-  "ModelsPage": {
-    "title": "您在模型页面。"
-  },
-  "SupportPage": {
-    "title": "您在支持页面。"
-  },
-  "FeedbackPage": {
-    "title": "您在反馈页面。"
-  },
   "SettingsPage": {
     "title": "设置",
     "description": "管理您的应用程序首选项并自定义您的体验。"
-  },
-  "QuantumPage": {
-    "title": "您在量子页面。"
-  },
-  "StarredPage": {
-    "title": "您在收藏页面。"
-  },
-  "ExplorerPage": {
-    "title": "您在资源管理器页面。"
-  },
-  "IntroPage": {
-    "title": "您在介绍页面。"
-  },
-  "HistoryPage": {
-    "title": "您在历史页面。"
-  },
-  "TutorialsPage": {
-    "title": "您在教程页面。"
-  },
-  "GenesisPage": {
-    "title": "您在创世纪页面。"
   },
   "Greet": {
     "placeholder": "输入名字...",
@@ -90,19 +54,9 @@
     "dashboard": "仪表板",
     "overview": "概览",
     "analytics": "分析",
-    "playground": "游乐场",
-    "models": "模型",
-    "docs": "文档",
     "github": "Github",
     "feedback": "反馈",
     "settings": "设置",
-    "history": "历史",
-    "starred": "收藏",
-    "genesis": "创世纪",
-    "explorer": "资源管理器",
-    "quantum": "量子",
-    "intro": "介绍",
-    "tutorials": "教程",
     "platform": "平台",
     "projects": "项目",
     "projectAlpha": "项目Alpha",

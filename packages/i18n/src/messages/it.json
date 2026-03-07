@@ -11,45 +11,9 @@
   "AnalyticsPage": {
     "title": "Sei nella pagina di analisi."
   },
-  "PlaygroundPage": {
-    "title": "Sei nella pagina playground."
-  },
-  "DocsPage": {
-    "title": "Sei nella pagina della documentazione."
-  },
-  "ModelsPage": {
-    "title": "Sei nella pagina dei modelli."
-  },
-  "SupportPage": {
-    "title": "Sei nella pagina di supporto."
-  },
-  "FeedbackPage": {
-    "title": "Sei nella pagina dei feedback."
-  },
   "SettingsPage": {
     "title": "Impostazioni",
     "description": "Gestisci le preferenze della tua applicazione e personalizza la tua esperienza."
-  },
-  "QuantumPage": {
-    "title": "Sei nella pagina Quantistica."
-  },
-  "StarredPage": {
-    "title": "Sei nella pagina dei preferiti."
-  },
-  "ExplorerPage": {
-    "title": "Sei nella pagina dell'esploratore."
-  },
-  "IntroPage": {
-    "title": "Sei nella pagina di introduzione."
-  },
-  "HistoryPage": {
-    "title": "Sei nella pagina della cronologia."
-  },
-  "TutorialsPage": {
-    "title": "Sei nella pagina dei tutorial."
-  },
-  "GenesisPage": {
-    "title": "Sei nella pagina Genesi."
   },
   "Greet": {
     "placeholder": "Inserisci un nome...",
@@ -90,19 +54,9 @@
     "dashboard": "Cruscotto",
     "overview": "Panoramica",
     "analytics": "Analisi",
-    "playground": "Playground",
-    "models": "Modelli",
-    "docs": "Documentazione",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Impostazioni",
-    "history": "Cronologia",
-    "starred": "Preferiti",
-    "genesis": "Genesi",
-    "explorer": "Esploratore",
-    "quantum": "Quantistica",
-    "intro": "Introduzione",
-    "tutorials": "Tutorial",
     "platform": "Piattaforma",
     "projects": "Progetti",
     "projectAlpha": "Progetto Alpha",
