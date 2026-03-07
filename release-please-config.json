@@ -1,7 +1,22 @@
 {
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "sequential-calls": true,
-  "plugins": ["cargo-workspace"],
+  "plugins": [
+    { "type": "cargo-workspace", "merge": false },
+    {
+      "type": "linked-versions",
+      "groupName": "workspace",
+      "components": [
+        "tauri-nextjs-template",
+        "native",
+        "web",
+        "@workspace/ui",
+        "@workspace/i18n",
+        "@workspace/eslint-config",
+        "@workspace/typescript-config"
+      ]
+    }
+  ],
   "pull-request-title-pattern": "release version: v${version}",
   "include-component-in-tag": false,
   "packages": {
@@ -21,6 +36,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "extra-files": [
         {
@@ -42,6 +58,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "web"
     },
@@ -51,6 +68,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/ui"
     },
@@ -60,6 +78,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/i18n"
     },
@@ -69,6 +88,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/eslint-config"
     },
@@ -78,6 +98,7 @@
       "bump-patch-for-minor-pre-major": true,
       "draft": false,
       "prerelease": false,
+      "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/typescript-config"
     }
