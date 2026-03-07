@@ -2,6 +2,15 @@
   "HomePage": {
     "title": "Вы находитесь на главной странице."
   },
+  "DashboardPage": {
+    "title": "Вы находитесь на странице панели управления."
+  },
+  "OverviewPage": {
+    "title": "Вы находитесь на странице обзора."
+  },
+  "AnalyticsPage": {
+    "title": "Вы находитесь на странице анализа."
+  },
   "PlaygroundPage": {
     "title": "Вы находитесь на странице площадки."
   },
@@ -78,10 +87,13 @@
   },
   "Navigation": {
     "home": "Главная",
+    "dashboard": "Панель управления",
+    "overview": "Обзор",
+    "analytics": "Аналитика",
     "playground": "Площадка",
     "models": "Модели",
     "docs": "Документация",
-    "support": "Поддержка",
+    "github": "Github",
     "feedback": "Обратная связь",
     "settings": "Настройки",
     "history": "История",
@@ -93,8 +105,7 @@
     "tutorials": "Учебные материалы",
     "platform": "Платформа",
     "projects": "Проекты",
-    "designEngineering": "Проектирование",
-    "salesMarketing": "Продажи и маркетинг",
+    "projectAlpha": "Проект Альфа",
     "viewProject": "Просмотреть проект",
     "shareProject": "Поделиться проектом",
     "deleteProject": "Удалить проект",

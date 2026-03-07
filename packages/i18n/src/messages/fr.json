@@ -2,6 +2,15 @@
   "HomePage": {
     "title": "Vous êtes sur la page d'accueil."
   },
+  "DashboardPage": {
+    "title": "Vous êtes sur la page du tableau de bord."
+  },
+  "OverviewPage": {
+    "title": "Vous êtes sur la page de vue d'ensemble."
+  },
+  "AnalyticsPage": {
+    "title": "Vous êtes sur la page d'analyse."
+  },
   "PlaygroundPage": {
     "title": "Vous êtes sur la page de jeu."
   },
@@ -78,10 +87,13 @@
   },
   "Navigation": {
     "home": "Accueil",
+    "dashboard": "Tableau de bord",
+    "overview": "Aperçu",
+    "analytics": "Analyse",
     "playground": "Jeu",
     "models": "Modèles",
     "docs": "Documentation",
-    "support": "Assistance",
+    "github": "Github",
     "feedback": "Commentaires",
     "settings": "Paramètres",
     "history": "Historique",
@@ -93,8 +105,7 @@
     "tutorials": "Tutoriels",
     "platform": "Plateforme",
     "projects": "Projets",
-    "designEngineering": "Ingénierie de conception",
-    "salesMarketing": "Ventes et marketing",
+    "projectAlpha": "Projet Alpha",
     "viewProject": "Voir le projet",
     "shareProject": "Partager le projet",
     "deleteProject": "Supprimer le projet",

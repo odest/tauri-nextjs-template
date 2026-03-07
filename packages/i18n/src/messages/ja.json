@@ -2,6 +2,15 @@
   "HomePage": {
     "title": "ホームページにいます。"
   },
+  "DashboardPage": {
+    "title": "ダッシュボードページにいます。"
+  },
+  "OverviewPage": {
+    "title": "概要ページにいます。"
+  },
+  "AnalyticsPage": {
+    "title": "分析ページにいます。"
+  },
   "PlaygroundPage": {
     "title": "プレイグラウンドページにいます。"
   },
@@ -78,10 +87,13 @@
   },
   "Navigation": {
     "home": "ホーム",
+    "dashboard": "ダッシュボード",
+    "overview": "概要",
+    "analytics": "分析",
     "playground": "プレイグラウンド",
     "models": "モデル",
     "docs": "ドキュメント",
-    "support": "サポート",
+    "github": "Github",
     "feedback": "フィードバック",
     "settings": "設定",
     "history": "履歴",
@@ -93,8 +105,7 @@
     "tutorials": "チュートリアル",
     "platform": "プラットフォーム",
     "projects": "プロジェクト",
-    "designEngineering": "デザインエンジニアリング",
-    "salesMarketing": "営業とマーケティング",
+    "projectAlpha": "プロジェクトアルファ",
     "viewProject": "プロジェクトを表示",
     "shareProject": "プロジェクトを共有",
     "deleteProject": "プロジェクトを削除",

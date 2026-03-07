@@ -2,6 +2,15 @@
   "HomePage": {
     "title": "Sie befinden sich auf der Startseite."
   },
+  "DashboardPage": {
+    "title": "Sie befinden sich auf der Dashboard-Seite."
+  },
+  "OverviewPage": {
+    "title": "Sie befinden sich auf der Übersichtsseite."
+  },
+  "AnalyticsPage": {
+    "title": "Sie befinden sich auf der Analyseseite."
+  },
   "PlaygroundPage": {
     "title": "Sie befinden sich auf der Spielplatz-Seite."
   },
@@ -78,10 +87,13 @@
   },
   "Navigation": {
     "home": "Startseite",
+    "dashboard": "Dashboard",
+    "overview": "Übersicht",
+    "analytics": "Analyse",
     "playground": "Spielplatz",
     "models": "Modelle",
     "docs": "Dokumentation",
-    "support": "Support",
+    "github": "Github",
     "feedback": "Feedback",
     "settings": "Einstellungen",
     "history": "Verlauf",
@@ -93,8 +105,7 @@
     "tutorials": "Tutorials",
     "platform": "Plattform",
     "projects": "Projekte",
-    "designEngineering": "Design-Engineering",
-    "salesMarketing": "Vertrieb und Marketing",
+    "projectAlpha": "Projekt Alpha",
     "viewProject": "Projekt anzeigen",
     "shareProject": "Projekt teilen",
     "deleteProject": "Projekt löschen",

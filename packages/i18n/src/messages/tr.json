@@ -2,6 +2,15 @@
   "HomePage": {
     "title": "Ana Sayfadasınız."
   },
+  "DashboardPage": {
+    "title": "Kontrol Paneli Sayfasındasınız."
+  },
+  "OverviewPage": {
+    "title": "Genel Bakış Sayfasındasınız."
+  },
+  "AnalyticsPage": {
+    "title": "Analiz Sayfasındasınız."
+  },
   "PlaygroundPage": {
     "title": "Oyun Alanı Sayfasındasınız."
   },
@@ -78,10 +87,13 @@
   },
   "Navigation": {
     "home": "Ana Sayfa",
+    "dashboard": "Kontrol Paneli",
+    "overview": "Genel Bakış",
+    "analytics": "Analiz",
     "playground": "Oyun Alanı",
     "models": "Modeller",
     "docs": "Dokümantasyon",
-    "support": "Destek",
+    "github": "Github",
     "feedback": "Geri Bildirim",
     "settings": "Ayarlar",
     "history": "Geçmiş",
@@ -93,8 +105,7 @@
     "tutorials": "Eğitimler",
     "platform": "Platform",
     "projects": "Projeler",
-    "designEngineering": "Tasarım Mühendisliği",
-    "salesMarketing": "Satış ve Pazarlama",
+    "projectAlpha": "Proje Alpha",
     "viewProject": "Projeyi Görüntüle",
     "shareProject": "Projeyi Paylaş",
     "deleteProject": "Projeyi Sil",

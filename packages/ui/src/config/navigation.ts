@@ -2,13 +2,13 @@ import {
   Bot,
   Home,
   Send,
-  Frame,
+  Github,
   BookOpen,
   Settings,
-  LifeBuoy,
   PieChart,
   LucideIcon,
   SquareTerminal,
+  LayoutDashboard,
 } from "lucide-react";
 
 export interface UserNavItem {
@@ -37,6 +37,7 @@ export interface SecondaryNavItem {
   url: string;
   icon: LucideIcon;
   translationKey: string;
+  external?: boolean;
 }
 
 export interface ProjectNavItem {
@@ -67,6 +68,25 @@ export const navigationData: NavigationData = {
       isActive: true,
       items: [],
       translationKey: "home",
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
+      isActive: true,
+      translationKey: "dashboard",
+      items: [
+        {
+          title: "Overview",
+          url: "/dashboard/overview",
+          translationKey: "overview",
+        },
+        {
+          title: "Analytics",
+          url: "/dashboard/analytics",
+          translationKey: "analytics",
+        },
+      ],
     },
     {
       title: "Playground",
@@ -123,16 +143,18 @@ export const navigationData: NavigationData = {
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "/support",
-      icon: LifeBuoy,
-      translationKey: "support",
-    },
-    {
       title: "Feedback",
-      url: "/feedback",
+      url: "https://github.com/odest/tauri-nextjs-template/issues",
       icon: Send,
       translationKey: "feedback",
+      external: true,
+    },
+    {
+      title: "Github",
+      url: "https://github.com/odest/tauri-nextjs-template",
+      icon: Github,
+      translationKey: "github",
+      external: true,
     },
     {
       title: "Settings",
@@ -143,16 +165,10 @@ export const navigationData: NavigationData = {
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-      translationKey: "designEngineering",
-    },
-    {
-      name: "Sales & Marketing",
+      name: "Project Alpha",
       url: "#",
       icon: PieChart,
-      translationKey: "salesMarketing",
+      translationKey: "projectAlpha",
     },
   ],
 };
