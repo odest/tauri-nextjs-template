@@ -1,7 +1,11 @@
 import createMiddleware from "@workspace/i18n/middleware";
 import { routing } from "@workspace/i18n/routing";
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default function proxy(request: import("next/server").NextRequest) {
+  return intlMiddleware(request);
+}
 
 export const config = {
   // Match all pathnames except for
