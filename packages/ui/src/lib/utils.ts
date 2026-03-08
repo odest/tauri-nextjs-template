@@ -4,3 +4,16 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export async function fetchLatestGithubVersion(): Promise<string | null> {
+  try {
+    const res = await fetch(
+      "https://api.github.com/repos/odest/tauri-nextjs-template/releases/latest"
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.tag_name?.replace(/^v/, "") || null;
+  } catch {
+    return null;
+  }
+}

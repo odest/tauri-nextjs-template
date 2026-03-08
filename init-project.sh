@@ -227,6 +227,9 @@ update_file "packages/typescript-config/package.json" "typescript-config package
 update_file "packages/ui/package.json" "UI package.json"
 update_file "packages/ui/src/config/navigation.ts" "Navigation config"
 update_file "packages/ui/src/components/layout/app-sidebar.tsx" "App Sidebar"
+update_file "packages/ui/src/lib/utils.ts" "Utils"
+update_file "apps/web/app/[locale]/(landing)/components/header.tsx" "Landing Header"
+update_file "apps/web/app/[locale]/(landing)/components/hero-section.tsx" "Landing Hero"
 
 # Update identifier in tauri.conf.json (needs special handling)
 if [ -f "apps/native/src-tauri/tauri.conf.json" ]; then

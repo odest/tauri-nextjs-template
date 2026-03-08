@@ -1,7 +1,14 @@
 "use client";
 
-import { HomePage } from "@workspace/ui/pages/HomePage";
+import { useEffect } from "react";
+import { useRouter } from "@workspace/i18n/navigation";
 
-export default function Home() {
-  return <HomePage />;
+export default function RootRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/home");
+  }, [router]);
+
+  return null;
 }
