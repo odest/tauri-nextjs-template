@@ -8,15 +8,15 @@ on:
         type: string
     secrets:
       STORE_FILE:
-        required: true
+        required: false
       STORE_PASSWORD:
-        required: true
+        required: false
       KEY_ALIAS:
-        required: true
+        required: false
       KEY_PASSWORD:
-        required: true
+        required: false
       BASE64_JKS:
-        required: true
+        required: false
 
 jobs:
   build_universal_apk:
@@ -76,7 +76,17 @@ jobs:
           echo "NDK_HOME=${{ steps.ndk.outputs.ndk-path }}" >> $GITHUB_ENV
           echo "SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
 
+      - name: Check Keystore Secrets
+        id: check_secrets
+        run: |
+          if [ -n "${{ secrets.BASE64_JKS }}" ]; then
+            echo "HAS_SECRETS=true" >> $GITHUB_ENV
+          else
+            echo "HAS_SECRETS=false" >> $GITHUB_ENV
+          fi
+
       - name: Create keystore.properties and jks file
+        if: env.HAS_SECRETS == 'true'
         env:
           storeFile: ${{ secrets.STORE_FILE }}
           storePassword: ${{ secrets.STORE_PASSWORD }}
@@ -93,10 +103,17 @@ jobs:
           echo "keyPassword=$keyPassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
           echo "$jksBase64" | base64 --decode > "$resolvedStoreFile"
 
-      - name: Build Universal APK & AAB
+      - name: Build Universal Release
+        if: env.HAS_SECRETS == 'true'
         run: |
           cd apps/native
           pnpm tauri android build
+
+      - name: Build Universal Debug
+        if: env.HAS_SECRETS == 'false'
+        run: |
+          cd apps/native
+          pnpm tauri android build --debug
 
       - name: Get project name
         id: project_name
@@ -104,27 +121,37 @@ jobs:
           PROJECT_NAME=$(node -p "require('./package.json').name")
           echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
 
+      - name: Rename Artifacts
+        run: |
+          if [ "${{ env.HAS_SECRETS }}" == "true" ]; then
+            SUFFIX="_RELEASE"
+          else
+            SUFFIX="_DEBUG"
+          fi
+
+          APK_PATH=$(find ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk -name "*.apk" | head -n 1)
+          if [ -n "$APK_PATH" ]; then
+            cp "$APK_PATH" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal${SUFFIX}.apk"
+          fi
+
+          if [ "${{ env.HAS_SECRETS }}" == "true" ]; then
+            AAB_PATH=$(find ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle -name "*.aab" | head -n 1)
+            if [ -n "$AAB_PATH" ]; then
+              cp "$AAB_PATH" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal${SUFFIX}.aab"
+            fi
+          fi
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: App Bundle ${{ inputs.tag_name }}
-          path: |
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk
+          name: Universal-APK-${{ inputs.tag_name }}
+          path: ${{ github.workspace }}/*_android_universal_*.*
 
-      - name: Rename and Upload Release
+      - name: Upload Release to GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Rename files with tag pattern
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/bundle/universalRelease/app-universal-release.aab" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.aab"
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/universal/release/app-universal-release.apk" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.apk"
-
-          # Upload renamed files
           gh release upload ${{ inputs.tag_name }} \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.aab" \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_universal.apk" \
+            ${{ github.workspace }}/*_android_universal_*.* \
             --clobber \
             --repo "$GITHUB_REPOSITORY"

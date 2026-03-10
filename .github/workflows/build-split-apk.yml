@@ -8,15 +8,15 @@ on:
         type: string
     secrets:
       STORE_FILE:
-        required: true
+        required: false
       STORE_PASSWORD:
-        required: true
+        required: false
       KEY_ALIAS:
-        required: true
+        required: false
       KEY_PASSWORD:
-        required: true
+        required: false
       BASE64_JKS:
-        required: true
+        required: false
 
 jobs:
   build_split_apk:
@@ -76,7 +76,17 @@ jobs:
           echo "NDK_HOME=${{ steps.ndk.outputs.ndk-path }}" >> $GITHUB_ENV
           echo "SDK_ROOT=$HOME/android-sdk" >> $GITHUB_ENV
 
+      - name: Check Keystore Secrets
+        id: check_secrets
+        run: |
+          if [ -n "${{ secrets.BASE64_JKS }}" ]; then
+            echo "HAS_SECRETS=true" >> $GITHUB_ENV
+          else
+            echo "HAS_SECRETS=false" >> $GITHUB_ENV
+          fi
+
       - name: Create keystore.properties and jks file
+        if: env.HAS_SECRETS == 'true'
         env:
           storeFile: ${{ secrets.STORE_FILE }}
           storePassword: ${{ secrets.STORE_PASSWORD }}
@@ -93,10 +103,17 @@ jobs:
           echo "keyPassword=$keyPassword" >> ${{github.workspace}}/apps/native/src-tauri/gen/android/keystore.properties
           echo "$jksBase64" | base64 --decode > "$resolvedStoreFile"
 
-      - name: Build Per-ABI APKs
+      - name: Build Per-ABI APKs - Release
+        if: env.HAS_SECRETS == 'true'
         run: |
           cd apps/native
           pnpm tauri android build --apk --split-per-abi
+
+      - name: Build Per-ABI APKs - Debug
+        if: env.HAS_SECRETS == 'false'
+        run: |
+          cd apps/native
+          pnpm tauri android build --debug --apk --split-per-abi
 
       - name: Get project name
         id: project_name
@@ -104,35 +121,32 @@ jobs:
           PROJECT_NAME=$(node -p "require('./package.json').name")
           echo "name=$PROJECT_NAME" >> $GITHUB_OUTPUT
 
+      - name: Rename APKs
+        run: |
+          if [ "${{ env.HAS_SECRETS }}" == "true" ]; then
+            MODE="release"
+            SUFFIX="_RELEASE"
+          else
+            MODE="debug"
+            SUFFIX="_DEBUG"
+          fi
+
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/$MODE/app-arm64-$MODE.apk" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64${SUFFIX}.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/$MODE/app-arm-$MODE.apk" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm${SUFFIX}.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/$MODE/app-x86-$MODE.apk" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86${SUFFIX}.apk"
+          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/$MODE/app-x86_64-$MODE.apk" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64${SUFFIX}.apk"
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: App Apk ${{ inputs.tag_name }}
-          path: |
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk
-            ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk
+          name: Split-APKs-${{ inputs.tag_name }}
+          path: ${{ github.workspace }}/*_android_*.apk
 
-      - name: Rename and Upload Release
+      - name: Upload Release to GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Rename files with tag pattern
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/release/app-arm64-release.apk" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk"
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm/release/app-arm-release.apk" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk"
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86/release/app-x86-release.apk" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk"
-          cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/x86_64/release/app-x86_64-release.apk" \
-             "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk"
-
-          # Upload renamed files
           gh release upload ${{ inputs.tag_name }} \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64.apk" \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm.apk" \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86.apk" \
-            "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_x86_64.apk" \
+            ${{ github.workspace }}/*_android_*.apk \
             --clobber \
             --repo "$GITHUB_REPOSITORY"
