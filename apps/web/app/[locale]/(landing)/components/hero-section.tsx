@@ -230,11 +230,7 @@ export default function HeroSection() {
                     variant="outline"
                     className="cursor-pointer text-base"
                   >
-                    <Link
-                      href="https://github.com/odest/tauri-nextjs-template"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link href="/docs/quick-start">
                       <Rocket />
                       <span className="text-nowrap">Start Building</span>
                     </Link>

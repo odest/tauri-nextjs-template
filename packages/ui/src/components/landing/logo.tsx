@@ -1,12 +1,6 @@
 import { cn } from "@workspace/ui/lib/utils";
 
-export const Logo = ({
-  className,
-  uniColor,
-}: {
-  className?: string;
-  uniColor?: boolean;
-}) => {
+export const Logo = ({ className }: { className?: string }) => {
   return (
     <svg
       className={cn("lucide lucide-hexagon-icon lucide-hexagon", className)}

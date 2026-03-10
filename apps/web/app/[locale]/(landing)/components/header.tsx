@@ -8,7 +8,7 @@ import { Button } from "@workspace/ui/components/button";
 import { Logo } from "@workspace/ui/components/landing/logo";
 
 const menuItems = [
-  { name: "Docs", href: "/" },
+  { name: "Docs", href: "/docs" },
   { name: "Pricing", href: "/" },
   { name: "Download", href: "/" },
   { name: "Showcase", href: "/" },
