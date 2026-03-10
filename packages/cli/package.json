@@ -2,6 +2,15 @@
   "name": "@tntstack/create",
   "version": "0.1.1",
   "description": "Scaffolding tool for TNTStack",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odest/tntstack.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/odest/tntstack/issues"
+  },
+  "homepage": "https://tnt.odest.tech/",
   "type": "module",
   "bin": {
     "tntstack": "./dist/index.js"
