@@ -1,3 +1,5 @@
+"use client";
+
 import { Greet } from "@workspace/ui/components/common/greet";
 import { useTranslations } from "@workspace/i18n";
 

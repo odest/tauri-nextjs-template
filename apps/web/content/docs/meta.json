@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "---Getting Started---",
+    "index",
+    "tech-stack",
+    "quick-start",
+    "---Deep Dive---",
+    "architecture",
+    "guides",
+    "deployment",
+    "reference"
+  ]
+}

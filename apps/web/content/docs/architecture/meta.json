@@ -1,0 +1,12 @@
+{
+  "title": "Architecture",
+  "icon": "Blocks",
+  "pages": [
+    "project-structure",
+    "native-app",
+    "web-app",
+    "ui-package",
+    "i18n-package",
+    "shared-configs"
+  ]
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from "@workspace/i18n";
 
 export function AnalyticsPage() {

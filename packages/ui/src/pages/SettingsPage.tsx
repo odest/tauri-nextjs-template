@@ -1,3 +1,5 @@
+"use client";
+
 import { ScrollArea, ScrollBar } from "@workspace/ui/components/scroll-area";
 import { LanguageCard } from "@workspace/ui/components/common/language-card";
 import { ModeCard } from "@workspace/ui/components/common/mode-card";

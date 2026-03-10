@@ -254,6 +254,9 @@ Update-ProjectFile -FilePath "$currentDir\packages\typescript-config\package.jso
 Update-ProjectFile -FilePath "$currentDir\packages\ui\package.json" -Description "UI package.json" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\packages\ui\src\config\navigation.ts" -Description "Navigation config" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\packages\ui\src\components\layout\app-sidebar.tsx" -Description "App Sidebar" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
+Update-ProjectFile -FilePath "$currentDir\packages\ui\src\lib\utils.ts" -Description "Utils" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
+Update-ProjectFile -FilePath "$currentDir\apps\web\app\[locale]\(landing)\components\header.tsx" -Description "Landing Header" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
+Update-ProjectFile -FilePath "$currentDir\apps\web\app\[locale]\(landing)\components\hero-section.tsx" -Description "Landing Hero" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 
 # Update identifier in tauri.conf.json (needs special handling)
 $tauriConfigPath = "$currentDir\apps\native\src-tauri\tauri.conf.json"

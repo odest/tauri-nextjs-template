@@ -60,7 +60,7 @@ export const navigationData: NavigationData = {
   navMain: [
     {
       title: "Home",
-      url: "/",
+      url: "/home",
       icon: Home,
       isActive: true,
       items: [],

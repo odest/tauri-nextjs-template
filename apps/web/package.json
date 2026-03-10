@@ -12,8 +12,12 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@types/mdx": "^2.0.13",
     "@workspace/i18n": "workspace:*",
     "@workspace/ui": "workspace:*",
+    "fumadocs-core": "^16.6.10",
+    "fumadocs-mdx": "^14.2.9",
+    "fumadocs-ui": "^16.6.10",
     "lucide-react": "^0.577.0",
     "next": "^16.1.6",
     "react": "^19.2.4",
@@ -26,6 +30,7 @@
     "@workspace/eslint-config": "workspace:^",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "zod": "^4.3.6"
   }
 }
