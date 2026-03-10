@@ -87,6 +87,7 @@
       "draft": false,
       "prerelease": false,
       "skip-changelog": false,
+      "include-component-in-tag": true,
       "version-file": "package.json",
       "package-name": "@tntstack/create"
     }
