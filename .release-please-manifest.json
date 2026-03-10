@@ -1,6 +1,6 @@
 {
-  ".": "1.1.1",
-  "apps/native": "1.1.0",
+  ".": "1.1.2",
+  "apps/native": "1.1.1",
   "apps/web": "1.1.0",
   "packages/ui": "1.1.1",
   "packages/i18n": "1.1.0",

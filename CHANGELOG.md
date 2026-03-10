@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/odest/tntstack/compare/v1.1.1...v1.1.2) (2026-03-10)
+
+
+### Continuous Integration
+
+* **android:** implement smart debug/release build pipelines ([76a4ae5](https://github.com/odest/tntstack/commit/76a4ae58fca4965b1b372f0512742b64ce7fe4b3))
+
 ## [1.1.1](https://github.com/odest/tntstack/compare/v1.1.0...v1.1.1) (2026-03-10)
 
 
