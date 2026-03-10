@@ -7,11 +7,11 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}╔═══════════════════════════════════════════════════════╗${NC}"
-echo -e "${BLUE}║                                                       ║${NC}"
-echo -e "${BLUE}║     Tauri + Next.js Template Initialization           ║${NC}"
-echo -e "${BLUE}║                                                       ║${NC}"
-echo -e "${BLUE}╚═══════════════════════════════════════════════════════╝${NC}"
+echo -e "${BLUE}╔═══════════════════════════════════════╗${NC}"
+echo -e "${BLUE}║                                       ║${NC}"
+echo -e "${BLUE}║     TNTStack Initialization           ║${NC}"
+echo -e "${BLUE}║                                       ║${NC}"
+echo -e "${BLUE}╚═══════════════════════════════════════╝${NC}"
 echo ""
 
 # Check if this is a git repository
@@ -32,7 +32,7 @@ if [ -d ".git" ]; then
         echo -e "  '${CURRENT_COMMIT_MESSAGE}'"
         echo ""
         echo -e "${YELLOW}New commit message will be:${NC}"
-        echo -e "  ${GREEN}'chore: initialize project using tauri-nextjs-template'${NC}"
+        echo -e "  ${GREEN}'chore: initialize project using tntstack'${NC}"
         echo ""
         
         read -p "Update initial commit message? (Y/n): " -r
@@ -106,7 +106,7 @@ echo ""
 # Update initial commit if requested
 if [ "$SHOULD_UPDATE_INITIAL_COMMIT" = true ]; then
     echo -e "${YELLOW}[Git] Updating initial commit message...${NC}"
-    if git commit --amend -m "chore: initialize project using tauri-nextjs-template" 2>/dev/null; then
+    if git commit --amend -m "chore: initialize project using tntstack" 2>/dev/null; then
         echo -e "${GREEN}[OK] Initial commit message updated${NC}"
         
         # Ask to force push
@@ -150,9 +150,9 @@ update_file() {
         if [[ "$OSTYPE" == "darwin"* ]]; then
             # macOS
             # Replace project names
-            sed -i '' "s/tauri-nextjs-template/${PROJECT_NAME}/g" "$file"
-            sed -i '' "s/tauri_nextjs_template/${PROJECT_NAME_SNAKE}/g" "$file"
-            sed -i '' "s/Tauri + Next\.js Template/${PROJECT_NAME}/g" "$file"
+            sed -i '' "s/tntstack/${PROJECT_NAME}/g" "$file"
+            sed -i '' "s/tntstack/${PROJECT_NAME_SNAKE}/g" "$file"
+            sed -i '' "s/TNTStack/${PROJECT_NAME}/g" "$file"
             
             # Replace GitHub username if provided
             if [ -n "$GITHUB_USERNAME" ]; then
@@ -173,9 +173,9 @@ update_file() {
         else
             # Linux
             # Replace project names
-            sed -i "s/tauri-nextjs-template/${PROJECT_NAME}/g" "$file"
-            sed -i "s/tauri_nextjs_template/${PROJECT_NAME_SNAKE}/g" "$file"
-            sed -i "s/Tauri + Next\.js Template/${PROJECT_NAME}/g" "$file"
+            sed -i "s/tntstack/${PROJECT_NAME}/g" "$file"
+            sed -i "s/tntstack/${PROJECT_NAME_SNAKE}/g" "$file"
+            sed -i "s/TNTStack/${PROJECT_NAME}/g" "$file"
             
             # Replace GitHub username if provided
             if [ -n "$GITHUB_USERNAME" ]; then
@@ -217,7 +217,7 @@ update_file "apps/native/src-tauri/src/main.rs" "Main Rust file"
 update_file "apps/native/src-tauri/gen/android/app/.gitignore" "Android .gitignore"
 update_file "apps/native/src-tauri/gen/android/app/build.gradle.kts" "Android build.gradle.kts"
 update_file "apps/native/src-tauri/gen/android/app/src/main/AndroidManifest.xml" "AndroidManifest.xml"
-update_file "apps/native/src-tauri/gen/android/app/src/main/java/com/tauri_nextjs_template/app/MainActivity.kt" "MainActivity.kt"
+update_file "apps/native/src-tauri/gen/android/app/src/main/java/com/tntstack/app/MainActivity.kt" "MainActivity.kt"
 update_file "apps/native/src-tauri/gen/android/app/src/main/res/values/strings.xml" "Android strings.xml"
 update_file "apps/native/src-tauri/gen/android/app/src/main/res/values/themes.xml" "Android themes.xml"
 update_file "apps/native/src-tauri/gen/android/app/src/main/res/values-night/themes.xml" "Android themes-night.xml"
@@ -235,9 +235,9 @@ update_file "apps/web/app/[locale]/(landing)/components/hero-section.tsx" "Landi
 if [ -f "apps/native/src-tauri/tauri.conf.json" ]; then
     echo -e "${YELLOW}[Updating] Tauri identifier${NC}"
     if [[ "$OSTYPE" == "darwin"* ]]; then
-        sed -i '' "s/com\.tauri-nextjs-template\.app/com.${PROJECT_NAME}.app/g" "apps/native/src-tauri/tauri.conf.json"
+        sed -i '' "s/com\.tntstack\.app/com.${PROJECT_NAME}.app/g" "apps/native/src-tauri/tauri.conf.json"
     else
-        sed -i "s/com\.tauri-nextjs-template\.app/com.${PROJECT_NAME}.app/g" "apps/native/src-tauri/tauri.conf.json"
+        sed -i "s/com\.tntstack\.app/com.${PROJECT_NAME}.app/g" "apps/native/src-tauri/tauri.conf.json"
     fi
     echo -e "${GREEN}[OK] Updated Tauri identifier${NC}"
 fi
@@ -246,10 +246,10 @@ fi
 echo ""
 echo -e "${YELLOW}[Renaming] Android package directories...${NC}"
 
-OLD_JAVA_PATH1="apps/native/src-tauri/gen/android/buildSrc/src/main/java/com/tauri_nextjs_template"
+OLD_JAVA_PATH1="apps/native/src-tauri/gen/android/buildSrc/src/main/java/com/tntstack"
 NEW_JAVA_PATH1="apps/native/src-tauri/gen/android/buildSrc/src/main/java/com/${PROJECT_NAME_SNAKE}"
 
-OLD_JAVA_PATH2="apps/native/src-tauri/gen/android/app/src/main/java/com/tauri_nextjs_template"
+OLD_JAVA_PATH2="apps/native/src-tauri/gen/android/app/src/main/java/com/tntstack"
 NEW_JAVA_PATH2="apps/native/src-tauri/gen/android/app/src/main/java/com/${PROJECT_NAME_SNAKE}"
 
 if [ -d "$OLD_JAVA_PATH1" ]; then

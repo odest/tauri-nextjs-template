@@ -8,7 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export async function fetchLatestGithubVersion(): Promise<string | null> {
   try {
     const res = await fetch(
-      "https://api.github.com/repos/odest/tauri-nextjs-template/releases/latest"
+      "https://api.github.com/repos/odest/tntstack/releases/latest"
     );
     if (!res.ok) return null;
     const data = await res.json();

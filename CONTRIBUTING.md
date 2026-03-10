@@ -1,4 +1,4 @@
-# Contributing to Tauri Next.js Template
+# Contributing to TNTStack
 
 First off, thank you for considering contributing to this project!
 
@@ -31,8 +31,8 @@ This project uses:
 
 ```bash
 # Clone the repository
-git clone https://github.com/odest/tauri-nextjs-template.git
-cd tauri-nextjs-template
+git clone https://github.com/odest/tntstack.git
+cd tntstack
 
 # Install dependencies
 pnpm install

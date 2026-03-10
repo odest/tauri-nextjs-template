@@ -155,13 +155,13 @@ export default function HeroSection() {
               <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
                 <AnimatedGroup variants={transitionVariants}>
                   <Link
-                    href="https://github.com/odest/tauri-nextjs-template/releases/latest"
+                    href="https://github.com/odest/tntstack/releases/latest"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                   >
                     <span className="text-foreground text-sm">
-                      Tauri + Next.js Template v{latestTag} Released
+                      TNTStack v{latestTag} Released
                     </span>
                     <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 

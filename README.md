@@ -2,17 +2,17 @@
   <picture>
     <source srcset=".github/assets/light.svg" media="(prefers-color-scheme: dark)">
     <source srcset=".github/assets/dark.svg" media="(prefers-color-scheme: light)">
-    <img src=".github/assets/dark.svg" alt="Tauri + Next.js Template" width="800">
+    <img src=".github/assets/dark.svg" alt="TNTStack" width="800">
   </picture>
 </div>
 
 <div align="center">
   
-  # Tauri + Next.js Monorepo Template
+  # TNTStack
 
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-green.svg)](https://opensource.org/licenses/GPL-3.0)
-[![Version](https://img.shields.io/github/v/release/odest/tauri-nextjs-template?label=Version&color=orange.svg)](https://github.com/odest/tauri-nextjs-template/releases/latest)
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Desktop%20%7C%20Mobile-blue.svg)](https://github.com/odest/tauri-nextjs-template)
+[![Version](https://img.shields.io/github/v/release/odest/tntstack?label=Version&color=orange.svg)](https://github.com/odest/tntstack/releases/latest)
+[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Desktop%20%7C%20Mobile-blue.svg)](https://github.com/odest/tntstack)
 [![Made with](https://img.shields.io/badge/Made%20with-Tauri%20%7C%20Next.js%20%7C%20Rust-red.svg)](https://tauri.app)
 
 **This is a modern monorepo template that combines Tauri for cross-platform desktop and mobile applications with Next.js for web development, all managed with pnpm workspaces and Turbo.**

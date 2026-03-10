@@ -91,7 +91,7 @@ export const HeroHeader = () => {
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <Button asChild size="sm">
                   <Link
-                    href="https://github.com/odest/tauri-nextjs-template"
+                    href="https://github.com/odest/tntstack"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

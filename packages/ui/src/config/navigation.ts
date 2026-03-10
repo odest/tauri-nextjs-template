@@ -89,14 +89,14 @@ export const navigationData: NavigationData = {
   navSecondary: [
     {
       title: "Feedback",
-      url: "https://github.com/odest/tauri-nextjs-template/issues",
+      url: "https://github.com/odest/tntstack/issues",
       icon: Send,
       translationKey: "feedback",
       external: true,
     },
     {
       title: "Github",
-      url: "https://github.com/odest/tauri-nextjs-template",
+      url: "https://github.com/odest/tntstack",
       icon: Github,
       translationKey: "github",
       external: true,

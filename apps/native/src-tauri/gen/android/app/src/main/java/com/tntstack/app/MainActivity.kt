@@ -1,4 +1,4 @@
-package com.tauri_nextjs_template.app
+package com.tntstack.app
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

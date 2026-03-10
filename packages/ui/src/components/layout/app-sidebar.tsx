@@ -63,9 +63,7 @@ export function AppSidebar({
             >
               <LinkComponent href="/" onClick={handleLinkClick}>
                 <Hexagon className="!size-5" />
-                <span className="text-base font-semibold">
-                  Tauri + Next.js Template
-                </span>
+                <span className="text-base font-semibold">TNTStack</span>
               </LinkComponent>
             </SidebarMenuButton>
           </SidebarMenuItem>

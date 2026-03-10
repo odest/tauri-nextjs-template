@@ -11,11 +11,11 @@ function baseOptions(): BaseLayoutProps {
       title: (
         <div className="flex items-center gap-2">
           <Hexagon className="size-5" />
-          <span className="font-semibold">Tauri + Next.js Template</span>
+          <span className="font-semibold">TNTStack</span>
         </div>
       ),
     },
-    githubUrl: "https://github.com/odest/tauri-nextjs-template",
+    githubUrl: "https://github.com/odest/tntstack",
   };
 }
 

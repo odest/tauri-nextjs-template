@@ -1,4 +1,4 @@
-# PowerShell initialization script for Tauri + Next.js Template
+# PowerShell initialization script for TNTStack
 
 # Colors for output
 function Write-ColorOutput($ForegroundColor) {
@@ -12,9 +12,9 @@ function Write-ColorOutput($ForegroundColor) {
 
 Clear-Host
 
-Write-Host "================================================================" -ForegroundColor Cyan
-Write-Host "     Tauri + Next.js Template Initialization" -ForegroundColor Cyan
-Write-Host "================================================================" -ForegroundColor Cyan
+Write-Host "=======================================" -ForegroundColor Cyan
+Write-Host "     TNTStack Initialization" -ForegroundColor Cyan
+Write-Host "=======================================" -ForegroundColor Cyan
 Write-Host ""
 
 # Check if this is a git repository
@@ -35,7 +35,7 @@ if ($isGitRepo) {
             Write-Host "  '$currentCommitMessage'" -ForegroundColor White
             Write-Host ""
             Write-Host "New commit message will be:" -ForegroundColor Yellow
-            Write-Host "  'chore: initialize project using tauri-nextjs-template'" -ForegroundColor Green
+            Write-Host "  'chore: initialize project using tntstack'" -ForegroundColor Green
             Write-Host ""
             
             $response = Read-Host "Update initial commit message? (Y/n)"
@@ -116,7 +116,7 @@ Write-Host ""
 if ($shouldUpdateInitialCommit) {
     Write-Host "[Git] Updating initial commit message..." -ForegroundColor Yellow
     try {
-        git commit --amend -m "chore: initialize project using tauri-nextjs-template" 2>$null
+        git commit --amend -m "chore: initialize project using tntstack" 2>$null
         if ($LASTEXITCODE -eq 0) {
             Write-Host "[OK] Initial commit message updated" -ForegroundColor Green
             
@@ -185,9 +185,8 @@ function Update-ProjectFile {
             $content = Get-Content -Path $FilePath -Raw -Encoding UTF8
             
             # Replace project names
-            $content = $content -replace 'tauri-nextjs-template', $ProjectName
-            $content = $content -replace 'tauri_nextjs_template', $ProjectNameSnake
-            $content = $content -replace 'Tauri \+ Next\.js Template', $ProjectName
+            $content = $content -replace 'tntstack', $ProjectName
+            $content = $content -replace 'TNTStack', $ProjectName
             
             # Replace GitHub username if provided
             if ($GitHubUsername) {
@@ -244,7 +243,7 @@ Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\src\main.rs" -De
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\.gitignore" -Description "Android .gitignore" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\build.gradle.kts" -Description "Android build.gradle.kts" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\AndroidManifest.xml" -Description "AndroidManifest.xml" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
-Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\java\com\tauri_nextjs_template\app\MainActivity.kt" -Description "MainActivity.kt" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
+Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\java\com\tntstack\app\MainActivity.kt" -Description "MainActivity.kt" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\res\values\strings.xml" -Description "Android strings.xml" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\res\values\themes.xml" -Description "Android themes.xml" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
 Update-ProjectFile -FilePath "$currentDir\apps\native\src-tauri\gen\android\app\src\main\res\values-night\themes.xml" -Description "Android themes-night.xml" -ProjectName $PROJECT_NAME -ProjectNameSnake $PROJECT_NAME_SNAKE -Version $VERSION -GitHubUsername $GITHUB_USERNAME
@@ -264,7 +263,7 @@ if (Test-Path $tauriConfigPath) {
     Write-Host "[Updating] Tauri identifier" -ForegroundColor Yellow
     try {
         $content = Get-Content -Path $tauriConfigPath -Raw -Encoding UTF8
-        $content = $content -replace 'com\.tauri-nextjs-template\.app', "com.$PROJECT_NAME.app"
+        $content = $content -replace 'com\.tntstack\.app', "com.$PROJECT_NAME.app"
         $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
         [System.IO.File]::WriteAllText($tauriConfigPath, $content, $Utf8NoBomEncoding)
         Write-Host "[OK] Updated Tauri identifier" -ForegroundColor Green
@@ -278,10 +277,10 @@ if (Test-Path $tauriConfigPath) {
 Write-Host ""
 Write-Host "[Renaming] Android package directories..." -ForegroundColor Yellow
 
-$oldJavaPath1 = "$currentDir\apps\native\src-tauri\gen\android\buildSrc\src\main\java\com\tauri_nextjs_template"
+$oldJavaPath1 = "$currentDir\apps\native\src-tauri\gen\android\buildSrc\src\main\java\com\tntstack"
 $newJavaPath1 = "$currentDir\apps\native\src-tauri\gen\android\buildSrc\src\main\java\com\$PROJECT_NAME_SNAKE"
 
-$oldJavaPath2 = "$currentDir\apps\native\src-tauri\gen\android\app\src\main\java\com\tauri_nextjs_template"
+$oldJavaPath2 = "$currentDir\apps\native\src-tauri\gen\android\app\src\main\java\com\tntstack"
 $newJavaPath2 = "$currentDir\apps\native\src-tauri\gen\android\app\src\main\java\com\$PROJECT_NAME_SNAKE"
 
 if (Test-Path $oldJavaPath1) {

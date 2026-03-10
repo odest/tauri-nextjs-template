@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tauri + Next.js Template",
-  description: "Tauri + Next.js Template",
+  title: "TNTStack",
+  description: "TNTStack",
 };
 
 export function generateStaticParams() {
