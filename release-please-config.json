@@ -89,6 +89,7 @@
       "skip-changelog": false,
       "include-component-in-tag": true,
       "version-file": "package.json",
+      "component": "@tntstack/create",
       "package-name": "@tntstack/create"
     }
   },
