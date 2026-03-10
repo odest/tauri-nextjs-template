@@ -101,6 +101,16 @@
       "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/typescript-config"
+    },
+    "packages/cli": {
+      "release-type": "node",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": true,
+      "draft": false,
+      "prerelease": false,
+      "skip-changelog": false,
+      "version-file": "package.json",
+      "package-name": "@tntstack/create"
     }
   },
   "changelog-sections": [

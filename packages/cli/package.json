@@ -1,0 +1,27 @@
+{
+  "name": "@tntstack/create",
+  "version": "0.1.0",
+  "description": "Scaffolding tool for TNTStack",
+  "type": "module",
+  "bin": {
+    "tntstack": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "start": "node ./dist/index.js",
+    "lint": "eslint .",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "picocolors": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^9.39.4",
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  }
+}
