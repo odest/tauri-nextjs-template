@@ -11,9 +11,7 @@
         "native",
         "web",
         "@workspace/ui",
-        "@workspace/i18n",
-        "@workspace/eslint-config",
-        "@workspace/typescript-config"
+        "@workspace/i18n"
       ]
     }
   ],
@@ -81,26 +79,6 @@
       "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/i18n"
-    },
-    "packages/eslint-config": {
-      "release-type": "node",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
-      "skip-changelog": true,
-      "version-file": "package.json",
-      "package-name": "@workspace/eslint-config"
-    },
-    "packages/typescript-config": {
-      "release-type": "node",
-      "bump-minor-pre-major": true,
-      "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
-      "skip-changelog": true,
-      "version-file": "package.json",
-      "package-name": "@workspace/typescript-config"
     },
     "packages/cli": {
       "release-type": "node",

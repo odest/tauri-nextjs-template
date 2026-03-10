@@ -1,0 +1,56 @@
+name: Build Apps
+description: Build desktop and Android apps for a release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Release tag to build for (e.g. v1.1.0)"
+        required: true
+        type: string
+      build_desktop:
+        description: "Build desktop apps (Windows, macOS, Linux)"
+        required: true
+        type: boolean
+        default: true
+      build_android_split:
+        description: "Build per-ABI split APKs"
+        required: true
+        type: boolean
+        default: true
+      build_android_universal:
+        description: "Build universal APK + AAB"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-desktop:
+    if: ${{ inputs.build_desktop }}
+    uses: ./.github/workflows/build-desktop.yml
+    with:
+      tag_name: ${{ inputs.tag_name }}
+    secrets: inherit
+    permissions:
+      contents: write
+
+  build-split-apk:
+    if: ${{ inputs.build_android_split }}
+    uses: ./.github/workflows/build-split-apk.yml
+    with:
+      tag_name: ${{ inputs.tag_name }}
+    secrets: inherit
+    permissions:
+      contents: write
+
+  build-universal-apk:
+    if: ${{ inputs.build_android_universal }}
+    uses: ./.github/workflows/build-universal-apk.yml
+    with:
+      tag_name: ${{ inputs.tag_name }}
+    secrets: inherit
+    permissions:
+      contents: write

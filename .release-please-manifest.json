@@ -4,6 +4,5 @@
   "apps/web": "1.0.0",
   "packages/ui": "1.0.0",
   "packages/i18n": "1.0.0",
-  "packages/eslint-config": "1.0.0",
-  "packages/typescript-config": "1.0.0"
+  "packages/cli": "0.1.0"
 }

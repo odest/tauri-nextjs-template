@@ -1,5 +1,5 @@
-name: Release App Bundle
-description: Build App Bundle And Release
+name: Release
+description: Release Please
 
 on:
   workflow_dispatch:
@@ -15,9 +15,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    outputs:
-      release_created: ${{ steps.release.outputs.release_created }}
-      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - name: Release Please
         id: release
@@ -26,33 +23,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
-
-  build-desktop:
-    needs: release
-    if: ${{ needs.release.outputs.release_created == 'true' }}
-    uses: ./.github/workflows/build-desktop.yml
-    with:
-      tag_name: ${{ needs.release.outputs.tag_name }}
-    secrets: inherit
-    permissions:
-      contents: write
-
-  build-universal-apk:
-    needs: release
-    if: ${{ needs.release.outputs.release_created == 'true' }}
-    uses: ./.github/workflows/build-universal-apk.yml
-    with:
-      tag_name: ${{ needs.release.outputs.tag_name }}
-    secrets: inherit
-    permissions:
-      contents: write
-
-  build-split-apk:
-    needs: release
-    if: ${{ needs.release.outputs.release_created == 'true' }}
-    uses: ./.github/workflows/build-split-apk.yml
-    with:
-      tag_name: ${{ needs.release.outputs.tag_name }}
-    secrets: inherit
-    permissions:
-      contents: write
