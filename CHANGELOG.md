@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.1](https://github.com/odest/tntstack/compare/v1.1.0...v1.1.1) (2026-03-10)
+
+
+### Documentation
+
+* **cli:** Add package metadata and README for CLI scaffolding ([d73ad2a](https://github.com/odest/tntstack/commit/d73ad2a8456bef2c4f80d87575cf376097ee4dba))
+
+
+### Code Refactoring
+
+* **ci:** add publish CLI workflow and improve version fetch logic ([087c196](https://github.com/odest/tntstack/commit/087c196a898cd8870d828b13ac69ae0db377fd31))
+
 ## [1.1.0](https://github.com/odest/tntstack/compare/v1.0.0...v1.1.0) (2026-03-10)
 
 
