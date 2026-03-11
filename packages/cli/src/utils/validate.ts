@@ -1,0 +1,45 @@
+/**
+ * Validate a project name: lowercase letters, numbers, and hyphens only.
+ */
+export function validateProjectName(
+  value: string | undefined,
+): string | undefined {
+  if (!value || value.length === 0) return "Project name cannot be empty.";
+  if (!/^[a-z0-9-_]+$/.test(value))
+    return "Use only lowercase letters, numbers, hyphens, and underscores.";
+  if (
+    value.startsWith("-") ||
+    value.endsWith("-") ||
+    value.startsWith("_") ||
+    value.endsWith("_")
+  )
+    return "Cannot start or end with a hyphen or underscore.";
+  return undefined;
+}
+
+/**
+ * Validate a semver version string (e.g. 0.1.0).
+ */
+export function validateVersion(value: string | undefined): string | undefined {
+  if (!value) return undefined; // allow empty input to fallback to defaultValue
+  if (!/^\d+\.\d+\.\d+$/.test(value))
+    return "Must be a valid semver version (e.g. 0.1.0).";
+  return undefined;
+}
+
+/**
+ * Convert kebab-case to snake_case for Android package paths.
+ */
+export function toSnakeCase(name: string): string {
+  return name.replace(/-/g, "_");
+}
+
+/**
+ * Convert kebab-case to PascalCase (e.g. "my-app" → "MyApp").
+ */
+export function toPascalCase(name: string): string {
+  return name
+    .split("-")
+    .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
+    .join("");
+}
