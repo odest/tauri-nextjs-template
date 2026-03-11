@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/odest/tntstack/compare/v1.2.0...v1.2.1) (2026-03-11)
+
+
+### Build System
+
+* **cli:** rename package to @tntstack/create-app ([b6eddca](https://github.com/odest/tntstack/commit/b6eddca915b32028be947853667aa66f613c6441))
+
 ## [1.2.0](https://github.com/odest/tntstack/compare/v1.1.2...v1.2.0) (2026-03-11)
 
 
