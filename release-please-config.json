@@ -2,10 +2,9 @@
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
   "sequential-calls": true,
   "plugins": [
-    { "type": "cargo-workspace", "merge": false },
     {
       "type": "linked-versions",
-      "groupName": "workspace",
+      "groupName": "tntstack-workspace",
       "components": [
         ".",
         "apps/native",
@@ -15,7 +14,7 @@
       ]
     }
   ],
-  "pull-request-title-pattern": "release version: v${version}",
+  "pull-request-title-pattern": "chore(release): publish v${version}",
   "include-component-in-tag": false,
   "packages": {
     ".": {
@@ -23,8 +22,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "version-file": "package.json",
       "package-name": "tntstack"
     },
@@ -32,8 +29,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "skip-changelog": true,
       "version-file": "package.json",
       "extra-files": [
@@ -54,8 +49,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "web"
@@ -64,8 +57,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/ui"
@@ -74,8 +65,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "skip-changelog": true,
       "version-file": "package.json",
       "package-name": "@workspace/i18n"
@@ -84,8 +73,6 @@
       "release-type": "node",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
-      "draft": false,
-      "prerelease": false,
       "skip-changelog": false,
       "include-component-in-tag": true,
       "version-file": "package.json",
@@ -95,7 +82,6 @@
   },
   "changelog-sections": [
     { "type": "feat", "section": "Features" },
-    { "type": "feature", "section": "Features" },
     { "type": "fix", "section": "Bug Fixes" },
     { "type": "perf", "section": "Performance Improvements" },
     { "type": "deps", "section": "Dependencies" },
