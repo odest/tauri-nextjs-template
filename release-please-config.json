@@ -6,11 +6,11 @@
       "type": "linked-versions",
       "groupName": "tntstack-workspace",
       "components": [
-        ".",
-        "apps/native",
-        "apps/web",
-        "packages/ui",
-        "packages/i18n"
+        "tntstack",
+        "native",
+        "web",
+        "@workspace/ui",
+        "@workspace/i18n"
       ]
     }
   ],
