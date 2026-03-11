@@ -14,7 +14,7 @@
       ]
     }
   ],
-  "pull-request-title-pattern": "chore(release): publish v${version}",
+  "pull-request-title-pattern": "release version: v${version}",
   "include-component-in-tag": false,
   "packages": {
     ".": {
@@ -23,6 +23,7 @@
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
       "version-file": "package.json",
+      "component": "tntstack",
       "package-name": "tntstack"
     },
     "apps/native": {
@@ -31,6 +32,7 @@
       "bump-patch-for-minor-pre-major": true,
       "skip-changelog": true,
       "version-file": "package.json",
+      "component": "native",
       "extra-files": [
         {
           "type": "json",
@@ -51,6 +53,7 @@
       "bump-patch-for-minor-pre-major": true,
       "skip-changelog": true,
       "version-file": "package.json",
+      "component": "web",
       "package-name": "web"
     },
     "packages/ui": {
@@ -59,6 +62,7 @@
       "bump-patch-for-minor-pre-major": true,
       "skip-changelog": true,
       "version-file": "package.json",
+      "component": "@workspace/ui",
       "package-name": "@workspace/ui"
     },
     "packages/i18n": {
@@ -67,6 +71,7 @@
       "bump-patch-for-minor-pre-major": true,
       "skip-changelog": true,
       "version-file": "package.json",
+      "component": "@workspace/i18n",
       "package-name": "@workspace/i18n"
     },
     "packages/cli": {
