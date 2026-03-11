@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    if: startsWith(github.event.release.tag_name, '@tntstack/create-v')
+    if: startsWith(github.event.release.tag_name, '@tntstack/create-app@v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,9 +29,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build CLI
-        run: pnpm --filter @tntstack/create build
+        run: pnpm --filter @tntstack/create-app build
 
       - name: Publish to npm
-        run: pnpm --filter @tntstack/create publish --no-git-checks --provenance --access public
+        run: pnpm --filter @tntstack/create-app publish --no-git-checks --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

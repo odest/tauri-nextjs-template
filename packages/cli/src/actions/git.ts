@@ -6,7 +6,7 @@ export async function initGit(projectDir: string): Promise<void> {
   await execa("git", ["add", "."], { cwd: projectDir });
   await execa(
     "git",
-    ["commit", "-m", "chore: initialize project using @tntstack/create"],
+    ["commit", "-m", "chore: initialize project using @tntstack/create-app"],
     {
       cwd: projectDir,
     },

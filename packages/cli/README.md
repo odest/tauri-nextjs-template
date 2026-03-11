@@ -1,26 +1,26 @@
-# @tntstack/create
+# @tntstack/create-app
 
-The official scaffolding CLI for [**TNT Stack**](https://tnt.odest.tech). The ultimate stack for building cross-platform apps. Write your code once and deploy to Web, Windows, macOS, Linux, and Android.
+The official scaffolding CLI for [**TNT Stack**](https://tnt.odest.tech). The solid stack for building cross-platform apps. Write your code once and build for Web, Desktop, and Mobile.
 
 ## Usage
 
 ```bash
-npm create @tntstack
+npm create @tntstack/app@latest
 ```
 
 Or with other package managers:
 
 ```bash
-pnpm create @tntstack
-yarn create @tntstack
-npx @tntstack/create
-bunx @tntstack/create
+pnpm create @tntstack/app@latest
+yarn create @tntstack/app
+npx @tntstack/create-app
+bunx @tntstack/create-app
 ```
 
 ### Non-interactive
 
 ```bash
-npm create @tntstack -- --name my-app --github-user myuser --no-install
+npm create @tntstack/app@latest -- --name my-app --github-user myuser --no-install
 ```
 
 ### Options

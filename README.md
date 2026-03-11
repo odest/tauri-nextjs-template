@@ -22,14 +22,14 @@
 ## Quick Start
 
 ```bash
-npm create @tntstack
+npm create @tntstack/app@latest
 ```
 
 or with other package managers:
 
 ```bash
-pnpm create @tntstack
-bunx @tntstack/create
+pnpm create @tntstack/app@latest
+bunx @tntstack/create-app
 ```
 
 The CLI walks you through project setup — naming, identifiers, versioning — then scaffolds a fully configured monorepo ready for development.
