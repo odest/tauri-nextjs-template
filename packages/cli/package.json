@@ -1,6 +1,6 @@
 {
   "name": "@tntstack/create",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Scaffolding CLI for TNT Stack",
   "license": "GPL-3.0",
   "author": "odest",

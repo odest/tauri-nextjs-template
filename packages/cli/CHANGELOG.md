@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/odest/tntstack/compare/@tntstack/create-v0.1.2...@tntstack/create-v0.1.3) (2026-03-11)
+
+
+### Features
+
+* **cli:** add interactive @tntstack/create scaffolding tool ([b39ae89](https://github.com/odest/tntstack/commit/b39ae896b8bb7c5c0f51df07539f89b0fbd3c7cb))
+
 ## [0.1.2](https://github.com/odest/tntstack/compare/@tntstack/create-v0.1.1...@tntstack/create-v0.1.2) (2026-03-10)
 
 

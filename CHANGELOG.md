@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/odest/tntstack/compare/v1.1.2...v1.2.0) (2026-03-11)
+
+
+### Features
+
+* **cli:** add interactive @tntstack/create scaffolding tool ([b39ae89](https://github.com/odest/tntstack/commit/b39ae896b8bb7c5c0f51df07539f89b0fbd3c7cb))
+
+
+### Bug Fixes
+
+* **release:** correct component paths in linked-versions config ([f37aa5d](https://github.com/odest/tntstack/commit/f37aa5d967dc10c9013783714451ebb44d167663))
+
 ## [1.1.2](https://github.com/odest/tntstack/compare/v1.1.1...v1.1.2) (2026-03-10)
 
 
