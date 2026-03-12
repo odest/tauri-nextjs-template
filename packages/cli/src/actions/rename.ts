@@ -84,7 +84,10 @@ export async function renameProject(
   // 2. Rename Android Java package directories
   await renameAndroidDirs(projectDir, opts);
 
-  // 3. Update version fields in known config files
+  // 3. Rename Apple directories and files
+  await renameAppleDirsAndFiles(projectDir, opts);
+
+  // 4. Update version fields in known config files
   await replaceVersions(projectDir, opts);
 }
 
@@ -153,6 +156,61 @@ async function removeEmptyParents(dir: string, stopAt: string): Promise<void> {
     }
   } catch {
     // ignore
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Apple directory and file rename
+// ---------------------------------------------------------------------------
+
+async function renameAppleDirsAndFiles(
+  projectDir: string,
+  opts: ScaffoldOptions,
+): Promise<void> {
+  const appleGenDir = path.join(
+    projectDir,
+    "apps",
+    "native",
+    "src-tauri",
+    "gen",
+    "apple",
+  );
+  if (!(await fs.pathExists(appleGenDir))) return;
+
+  // Find all files and directories under appleGenDir
+  const allPaths: string[] = [];
+  async function collectPaths(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      allPaths.push(full);
+      if (entry.isDirectory()) {
+        await collectPaths(full);
+      }
+    }
+  }
+  await collectPaths(appleGenDir);
+
+  // Sort paths by descending length so that innermost files/dirs are renamed first
+  allPaths.sort((a, b) => b.length - a.length);
+
+  for (const p of allPaths) {
+    if (!(await fs.pathExists(p))) continue; // skip if already moved by parent
+    
+    const basename = path.basename(p);
+    let newBasename = basename;
+    
+    if (newBasename.includes(SEARCH_TERMS.namePascal)) {
+      newBasename = newBasename.replaceAll(SEARCH_TERMS.namePascal, opts.projectNamePascal);
+    }
+    if (newBasename.includes(SEARCH_TERMS.name)) {
+      newBasename = newBasename.replaceAll(SEARCH_TERMS.name, opts.projectName);
+    }
+
+    if (newBasename !== basename) {
+      const newPath = path.join(path.dirname(p), newBasename);
+      await fs.move(p, newPath, { overwrite: true });
+    }
   }
 }
 
