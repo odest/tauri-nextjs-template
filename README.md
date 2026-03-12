@@ -7,12 +7,17 @@
 
   <br />
 
-**One codebase. Every platform.**\
- Web, Windows, macOS, Linux, and Android — powered by Tauri, Next.js, and Rust.
+<h1>TNTStack</h1>
 
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPL%203.0-green.svg)](https://opensource.org/licenses/GPL-3.0)
+  <p>
+    <strong>The solid stack for building cross-platform apps.</strong><br>
+    Write your code once and build for Web, Desktop, and Mobile.<br>
+    Powered by a seamless monorepo setup featuring Next.js and Tauri.
+  </p>
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/github/v/release/odest/tntstack?label=Version&color=orange)](https://github.com/odest/tntstack/releases/latest)
-[![npm](https://img.shields.io/npm/v/@tntstack/create?label=CLI&color=CB3837)](https://www.npmjs.com/package/@tntstack/create)
+[![npm](https://img.shields.io/npm/v/@tntstack/create-app?label=CLI&color=CB3837)](https://www.npmjs.com/package/@tntstack/create-app)
 [![Docs](https://img.shields.io/badge/Docs-tnt.odest.tech-blue)](https://tnt.odest.tech/docs)
 
 </div>
@@ -86,4 +91,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-[GPL-3.0](LICENSE)
+[MIT](LICENSE)

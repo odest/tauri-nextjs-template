@@ -87,4 +87,4 @@ We welcome feature requests! Please open an issue with our feature request templ
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the same license as the project.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.

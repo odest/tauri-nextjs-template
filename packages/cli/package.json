@@ -2,7 +2,7 @@
   "name": "@tntstack/create-app",
   "version": "0.1.4",
   "description": "Scaffolding CLI for TNT Stack",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "author": "odest",
   "keywords": [
     "tntstack",
