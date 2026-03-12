@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.3.0](https://github.com/odest/tntstack/compare/v1.2.1...v1.3.0) (2026-03-12)
+
+
+### Features
+
+* **cli:** support apple directory and file renaming during scaffold ([d8beab1](https://github.com/odest/tntstack/commit/d8beab1df1be3f93c9d4335e4e5cff5956b6549e))
+* **native:** update application icons across all platforms ([8486bd2](https://github.com/odest/tntstack/commit/8486bd2594354a747863fce40fa18961febc4b2b))
+* **web:** Add PWA support with Serwist, add favicons, metadata, and manifest ([3b08c17](https://github.com/odest/tntstack/commit/3b08c17ead9eb6da223295a7bf511b4f307fe700))
+
+
+### Documentation
+
+* Update license to MIT and adjust docs ([abf9340](https://github.com/odest/tntstack/commit/abf9340faf121a79f8a545500bdabaf8c3a0ed35))
+
+
+### Code Refactoring
+
+* swap hexagon icon for custom logo and add brand assets ([c6f09fe](https://github.com/odest/tntstack/commit/c6f09fe5832b09264799c9959e83c5cfb3910310))
+
+
+### Build System
+
+* **ios:** initialize Tauri iOS project via GitHub Actions ([fd1fef0](https://github.com/odest/tntstack/commit/fd1fef0a1f5b22f90a043ff90f01e2ff5e75626d))
+
+
+### Continuous Integration
+
+* **ios:** add temporary project initialization workflow ([840f3cf](https://github.com/odest/tntstack/commit/840f3cf89f44229c048229cc2aadaac8cde7956d))
+* **ios:** remove temporary project init workflow ([ce145bd](https://github.com/odest/tntstack/commit/ce145bddd56ae2781c729535d7c6d64f05e9966f))
+
 ## [1.2.1](https://github.com/odest/tntstack/compare/v1.2.0...v1.2.1) (2026-03-11)
 
 
