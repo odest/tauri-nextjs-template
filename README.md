@@ -1,13 +1,11 @@
 <div align="center">
   <picture>
-    <source srcset=".github/assets/light.svg" media="(prefers-color-scheme: dark)">
-    <source srcset=".github/assets/dark.svg" media="(prefers-color-scheme: light)">
-    <img src=".github/assets/dark.svg" alt="TNTStack" width="800">
+    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-light.svg" media="(prefers-color-scheme: dark)">
+    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-dark.svg" media="(prefers-color-scheme: light)">
+    <img src="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-dark.svg" alt="TNTStack" width="120" height="120">
   </picture>
 
-  <br />
-
-<h1>TNTStack</h1>
+  <h1>TNTStack</h1>
 
   <p>
     <strong>The solid stack for building cross-platform apps.</strong><br>
@@ -20,9 +18,14 @@
 [![npm](https://img.shields.io/npm/v/@tntstack/create-app?label=CLI&color=CB3837)](https://www.npmjs.com/package/@tntstack/create-app)
 [![Docs](https://img.shields.io/badge/Docs-tnt.odest.tech-blue)](https://tnt.odest.tech/docs)
 
-</div>
+  <br />
 
----
+  <picture>
+    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-light.webp" media="(prefers-color-scheme: light)">
+    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-dark.webp" media="(prefers-color-scheme: dark)">
+    <img src="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-dark.webp" alt="TNTStack" width="800">
+  </picture>
+</div>
 
 ## Quick Start
 
