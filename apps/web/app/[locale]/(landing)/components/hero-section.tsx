@@ -184,7 +184,7 @@ export default function HeroSection() {
                   as="h1"
                   className="mx-auto mt-8 max-w-4xl text-balance text-5xl max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
                 >
-                  Ship Multi-Platform Apps Faster Than Ever
+                  Build Cross-Platform Apps Faster Than Ever
                 </TextEffect>
                 <TextEffect
                   per="line"
@@ -192,11 +192,11 @@ export default function HeroSection() {
                   speedSegment={0.3}
                   delay={0.5}
                   as="p"
-                  className="mx-auto mt-8 max-w-2xl text-balance text-lg"
+                  className="mx-auto mt-8 max-w-3xl text-balance text-lg"
                 >
-                  A template with batteries included. Write your code once with
-                  Next.js, and deploy to Web, Windows, macOS, Linux, and Android
-                  seamlessly.
+                  The solid stack for building cross-platform apps. Write your
+                  code once and build for Web, Desktop, and Mobile. Powered by a
+                  seamless monorepo setup featuring Next.js and Tauri.
                 </TextEffect>
 
                 <AnimatedGroup

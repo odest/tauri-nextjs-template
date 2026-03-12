@@ -3,14 +3,14 @@ import { DocsLayout } from "fumadocs-ui/layouts/docs";
 import { source } from "@/lib/source";
 import type { ReactNode } from "react";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
-import { Hexagon } from "lucide-react";
+import { Logo } from "@workspace/ui/components/landing/logo";
 
 function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
         <div className="flex items-center gap-2">
-          <Hexagon className="size-5" />
+          <Logo className="size-5" />
           <span className="font-semibold">TNTStack</span>
         </div>
       ),

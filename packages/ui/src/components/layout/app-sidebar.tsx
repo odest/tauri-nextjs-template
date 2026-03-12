@@ -3,8 +3,6 @@
 import * as React from "react";
 import { useCallback } from "react";
 import { ComponentType } from "react";
-import { Hexagon } from "lucide-react";
-
 import { MainNav } from "@workspace/ui/components/navigation/main-nav";
 import { ProjectsNav } from "@workspace/ui/components/navigation/projects-nav";
 import { SecondaryNav } from "@workspace/ui/components/navigation/secondary-nav";
@@ -22,6 +20,7 @@ import {
 import { navigationData } from "@workspace/ui/config/navigation";
 import { useSidebarStore } from "@workspace/ui/stores/sidebar-store";
 import { useMounted } from "@workspace/ui/hooks/use-mounted";
+import { Logo } from "@workspace/ui/components/landing/logo";
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   pathname: string;
@@ -62,7 +61,7 @@ export function AppSidebar({
               className="data-[slot=sidebar-menu-button]:!p-1.5"
             >
               <LinkComponent href="/" onClick={handleLinkClick}>
-                <Hexagon className="!size-5" />
+                <Logo className="!size-5" />
                 <span className="text-base font-semibold">TNTStack</span>
               </LinkComponent>
             </SidebarMenuButton>
