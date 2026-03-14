@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.1](https://github.com/odest/tntstack/compare/v1.3.0...v1.3.1) (2026-03-14)
+
+
+### Bug Fixes
+
+* **ui:** explicitly define children prop in ThemeProvider for React 19 compatibility ([a71bc81](https://github.com/odest/tntstack/commit/a71bc8112e468dfa54f146987c66e21e4419d37d))
+* **web:** resolve missing open graph images in localized routes ([9240081](https://github.com/odest/tntstack/commit/92400815358bfd6dc630cc2496a3d47294c14ca9))
+
+
+### Code Refactoring
+
+* **scripts:** unify lint scripts and update ts version ([c1e94e4](https://github.com/odest/tntstack/commit/c1e94e4d224b525501cb893bf9374684515ab3f5))
+
 ## [1.3.0](https://github.com/odest/tntstack/compare/v1.2.1...v1.3.0) (2026-03-12)
 
 
