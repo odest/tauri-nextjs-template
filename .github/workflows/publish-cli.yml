@@ -32,6 +32,8 @@ jobs:
         run: pnpm --filter @tntstack/create-app build
 
       - name: Publish to npm
-        run: pnpm --filter @tntstack/create-app publish --no-git-checks --provenance --access public
+        run: |
+          cd packages/cli
+          pnpm publish --no-git-checks --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

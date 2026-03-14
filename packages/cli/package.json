@@ -4,6 +4,10 @@
   "description": "Scaffolding CLI for TNT Stack",
   "license": "MIT",
   "author": "odest",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [
     "tntstack",
     "tauri",
