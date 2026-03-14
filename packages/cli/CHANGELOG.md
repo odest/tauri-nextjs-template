@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/odest/tntstack/compare/@tntstack/create-app-v0.1.5...@tntstack/create-app@v0.1.6) (2026-03-14)
+
+
+### Code Refactoring
+
+* **scripts:** unify lint scripts and update ts version ([c1e94e4](https://github.com/odest/tntstack/commit/c1e94e4d224b525501cb893bf9374684515ab3f5))
+
 ## [0.1.5](https://github.com/odest/tntstack/compare/@tntstack/create-app-v0.1.4...@tntstack/create-app-v0.1.5) (2026-03-12)
 
 
