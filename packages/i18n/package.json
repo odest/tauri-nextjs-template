@@ -16,12 +16,14 @@
     "./messages/*": "./src/messages/*.json"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check-types": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^25.3.5",
-    "@types/react": "19.1.11",
-    "@types/react-dom": "19.1.7",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",

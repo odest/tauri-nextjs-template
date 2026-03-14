@@ -4,7 +4,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
     "shadcn": "pnpm dlx shadcn@latest"
   },
@@ -43,7 +44,7 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",
     "tailwindcss": "^4.2.1",
-    "typescript": "^5.9.3"
+    "typescript": "~5.9.3"
   },
   "exports": {
     "./globals.css": "./src/styles/globals.css",

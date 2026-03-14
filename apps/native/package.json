@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "fix": "eslint . --fix",
+    "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
     "tauri": "tauri",
     "clean": "rm -rf dist"
@@ -28,7 +28,7 @@
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@workspace/eslint-config": "workspace:^",
+    "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",
     "typescript": "~5.9.3"
