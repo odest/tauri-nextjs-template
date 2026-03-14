@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.7](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.6...@tntstack/create-app@v0.1.7) (2026-03-14)
+
+
+### Bug Fixes
+
+* **cli:** resolve 404 error on npm publish by adding publishConfig ([4251e18](https://github.com/odest/tntstack/commit/4251e1832922d665f28c8a851841c940e1a6ff8c))
+
 ## [0.1.6](https://github.com/odest/tntstack/compare/@tntstack/create-app-v0.1.5...@tntstack/create-app@v0.1.6) (2026-03-14)
 
 

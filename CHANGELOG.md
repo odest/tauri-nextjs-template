@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/odest/tntstack/compare/v1.3.1...v1.3.2) (2026-03-14)
+
+
+### Bug Fixes
+
+* **cli:** resolve 404 error on npm publish by adding publishConfig ([4251e18](https://github.com/odest/tntstack/commit/4251e1832922d665f28c8a851841c940e1a6ff8c))
+
 ## [1.3.1](https://github.com/odest/tntstack/compare/v1.3.0...v1.3.1) (2026-03-14)
 
 
