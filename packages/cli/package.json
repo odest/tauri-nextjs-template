@@ -1,6 +1,6 @@
 {
   "name": "@tntstack/create-app",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Scaffolding CLI for TNT Stack",
   "license": "MIT",
   "author": "odest",
