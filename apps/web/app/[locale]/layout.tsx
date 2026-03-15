@@ -24,7 +24,7 @@ const APP_DESCRIPTION =
   "The solid stack for building cross-platform apps. Write your code once and build for Web, Desktop, and Mobile.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tnt.odest.tech"),
+  metadataBase: new URL("https://tntstack.odest.dev"),
   applicationName: APP_NAME,
   title: {
     default: APP_DEFAULT_TITLE,

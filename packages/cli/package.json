@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/odest/tntstack/issues"
   },
-  "homepage": "https://tnt.odest.tech",
+  "homepage": "https://tntstack.odest.dev",
   "type": "module",
   "files": [
     "dist"
