@@ -25,7 +25,7 @@ bunx @tntstack/create-app
 The CLI walks you through project name, GitHub username, app identifier, and version interactively. You can also skip the prompts:
 
 ```bash
-pnpm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
+npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
 ```
 
 ### Options
