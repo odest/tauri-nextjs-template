@@ -1,5 +1,67 @@
 ---
 title: Introduction
-description: A cross-platform monorepo template combining Tauri for desktop/mobile apps with Next.js for web.
+description: A cross-platform monorepo for Web, Desktop, and Mobile. Built on Tauri 2 and Next.js.
 icon: BookOpen
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Card, Cards } from 'fumadocs-ui/components/card'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+import { Layers, Component, Palette, Languages, Wifi, GitBranch, Monitor, Globe, Smartphone } from 'lucide-react'
+
+TNTStack is a starting point for building cross-platform apps. One codebase targets Web (SSR + PWA), Desktop (Windows, macOS, Linux), and Mobile (Android, iOS). The web deployment operates as a standard Next.js application with Server-Side Rendering (SSR) and Progressive Web App (PWA) capabilities. For native targets, we use Tauri v2. The native build pipeline takes a static export of the Next.js application and embeds it within a Rust-powered webview.
+
+Both apps pull pages, components, themes, and state from a single shared UI package. You change a button once, it updates everywhere.
+
+## Features
+
+<Cards>
+  <Card icon={<Layers />} title="Cross-Platform" description="Web, Desktop, and Mobile from one codebase. SSR for web, static export for native." />
+  <Card icon={<Component />} title="Shared UI" description="Pages, components, hooks, stores, and styles live in packages/ui. Both apps consume them directly." />
+  <Card icon={<Palette />} title="40+ Themes" description="OKLCh color palettes with light/dark variants. Custom themes via CSS custom properties." />
+  <Card icon={<Languages />} title="10 Languages" description="Type-safe i18n implemented via next-intl. Supports 10 locales out of the box with dynamic routing." />
+  <Card icon={<Wifi />} title="PWA" description="Offline support, precaching, and runtime caching strategies for the web app." />
+  <Card icon={<GitBranch />} title="CI/CD" description="GitHub Actions for validation, Release Please for versioning, automated desktop and Android builds." />
+</Cards>
+
+## Platform
+
+| Target | Development Server | Production Build |
+|---|---|---|
+| Web + PWA | `pnpm web dev` | `pnpm web build` |
+| Windows / macOS / Linux | `pnpm tauri dev` | `pnpm tauri build` |
+| Android | `pnpm tauri android dev` | `pnpm tauri android build` |
+| iOS | `pnpm tauri ios dev` | `pnpm tauri ios build` |
+
+## Get Started
+
+<Steps>
+  <Step>
+    ### Initialization
+    ```bash
+    npm create @tntstack/app@latest
+    ```
+  </Step>
+  <Step>
+    ### Local Development
+    ```bash
+    cd <your-project-name>
+    pnpm install
+    pnpm dev
+    ```
+    The web development server starts at `http://localhost:3000` and the native desktop app in parallel.
+  </Step>
+</Steps>
+
+Full setup with prerequisites and platform-specific configuration: [Quick Start](/docs/quick-start).
+
+## Dive In
+
+<Cards>
+  <Card title="Tech Stack" href="/docs/tech-stack" description="Technologies, versions, and why they're here." />
+  <Card title="Quick Start" href="/docs/quick-start" description="Prerequisites, CLI options, and first run." />
+  <Card title="Project Structure" href="/docs/architecture/project-structure" description="Monorepo layout and package dependency graph." />
+  <Card title="Theming" href="/docs/guides/theming" description="Theme system, custom palettes, and sidebar variants." />
+  <Card title="Deployment" href="/docs/deployment/ci-cd" description="CI/CD, desktop builds, Android signing, web hosting." />
+  <Card title="Commands" href="/docs/reference/available-commands" description="Every CLI command and workspace script." />
+</Cards>

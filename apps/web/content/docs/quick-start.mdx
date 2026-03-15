@@ -1,5 +1,112 @@
 ---
 title: Quick Start
-description: Get the template up and running in minutes.
-icon: Rocket
+description: Get your cross-platform monorepo up and running in minutes.
+icon: Zap
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+
+## Prerequisites
+
+You need these installed on your machine:
+
+- **[Node.js](https://nodejs.org/)** v20 or higher
+- **[pnpm](https://pnpm.io/)** v10 or higher
+- **[Rust](https://www.rust-lang.org/tools/install)** (latest stable) for native builds
+
+<Callout title="Platform Dependencies" type="warn">
+  Native apps require platform-specific tools: Xcode (macOS/iOS), Android Studio + NDK (Android), or C++ Build Tools (Windows). Follow the [Tauri Prerequisites](https://tauri.app/start/prerequisites/) for your OS.
+</Callout>
+
+## 1. Scaffolding
+
+The official CLI initializes the workspace, renaming identifiers, and setting up the monorepo structure.
+
+<Tabs items={["npm", "pnpm", "bun", "yarn"]}>
+  <Tab value="npm">
+    ```bash
+    npm create @tntstack/app@latest
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm create @tntstack/app@latest
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx @tntstack/create-app
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn create @tntstack/app
+    ```
+  </Tab>
+</Tabs>
+
+### CLI Options
+
+The CLI is interactive by default, but you can pass flags to skip prompts:
+
+| Flag | Description | Default |
+|---|---|---|
+| `-n, --name <name>` | Project name | (prompted) |
+| `-g, --github-user <user>` | GitHub username or org | `your-github-username` |
+| `-i, --identifier <id>` | App identifier (reverse-domain) | `com.<name>.app` |
+| `-v, --app-version <ver>`  | Initial version | `0.1.0` |
+| `--no-install` | Skip dependency installation | (false) |
+
+Example:
+```bash
+npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
+```
+
+## 2. Local Development
+
+<Steps>
+  <Step>
+    ### Navigate
+    ```bash
+    cd <your-project-name>
+    ```
+  </Step>
+  <Step>
+    ### Install dependencies
+    *If you skipped this during scaffolding*
+    ```bash
+    pnpm install
+    ```
+  </Step>
+  <Step>
+    ### Start all apps
+    ```bash
+    pnpm dev
+    ```
+    The web development server starts at `http://localhost:3000` and the native desktop app in parallel.
+  </Step>
+</Steps>
+
+### Selective Development
+
+If you only want to work on one platform:
+
+| Platform | Command |
+|---|---|
+| **Web** | `pnpm web dev` |
+| **Desktop** | `pnpm tauri dev` |
+| **Android** | `pnpm tauri android dev` |
+| **iOS** | `pnpm tauri ios dev` |
+
+## 3. CI/CD Permissions
+
+TNTStack uses **Release Please** for automated versioning. If you host on GitHub, you must grant permissions for the release bot to work.
+
+1. Go to your repository **Settings** > **Actions** > **General**.
+2. Scroll to **Workflow permissions**.
+3. Select **Read and write permissions**.
+4. Check **Allow GitHub Actions to create and approve pull requests**.
+
+Without these permissions, the automated release PRs and changelog generation will fail.

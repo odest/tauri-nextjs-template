@@ -1,5 +1,94 @@
 ---
 title: Tech Stack
-description: Technologies and tools used in this template.
+description: Technologies, versions, and the reasoning behind each choice.
 icon: Layers
 ---
+
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Callout } from 'fumadocs-ui/components/callout'
+
+## Web
+
+| Technology | Version | Role |
+|---|---|---|
+| [Next.js](https://nextjs.org) | 16 | App Router, SSR for web, static export for native |
+| [React](https://react.dev) | 19 | UI rendering |
+| [TypeScript](https://www.typescriptlang.org) | 5.9 | Strict type safety across every package |
+
+Next.js handles both sides of this stack. The web app runs with SSR and middleware. The native app uses `output: "export"` to produce static HTML that Tauri loads into a webview. Same framework, different output modes.
+
+## Native
+
+| Technology | Version | Role |
+|---|---|---|
+| [Tauri](https://tauri.app) | 2 | Desktop and mobile runtime (Rust core + system webview) |
+| [Rust](https://www.rust-lang.org) | stable | Native backend, IPC commands |
+| [serde](https://serde.rs) | 1 | JSON serialization for IPC payloads |
+
+Tauri delegates rendering to the OS-native webview instead of bundling Chromium, significantly reducing the final binary footprint.
+
+## Styling
+
+| Technology | Version | Role |
+|---|---|---|
+| [Tailwind CSS](https://tailwindcss.com) | 4 | Utility-first CSS with `@theme` and native CSS variables |
+| [shadcn/ui](https://ui.shadcn.com) | latest | Copy-paste Radix UI components, `new-york` style |
+| [Radix UI](https://www.radix-ui.com) | various | Accessible, unstyled primitives (`dialog`, `dropdown-menu`, `select`, etc.) |
+| [Motion](https://motion.dev) | 12 | Animations (landing page transitions, staggered reveals) |
+| [Lucide](https://lucide.dev) | 0.577 | Icon set |
+
+Tailwind v4 dropped the JS config file. Themes are now pure CSS custom properties scoped by `data-theme` attributes, which drives the dynamic theme architecture.
+
+## State & Data
+
+| Technology | Version | Role |
+|---|---|---|
+| [Zustand](https://zustand-demo.pmnd.rs) | 5 | Client state (theme, sidebar, greet form) |
+| [Zod](https://zod.dev) | 4 | Schema validation |
+| [next-themes](https://github.com/pacocoursey/next-themes) | 0.4 | Light/dark/system mode switching |
+
+Zustand stores persist to `localStorage` where needed (theme selection, sidebar variant). No server state management yet, add your own as needed.
+
+## Internationalization
+
+| Technology | Version | Role |
+|---|---|---|
+| [next-intl](https://next-intl.dev) | 4.8 | Routing, middleware, `useTranslations`, message loading |
+
+Wrapped in `@workspace/i18n` so both apps share the same locale config, messages, and navigation helpers. Type-safe keys via module augmentation.
+
+## PWA
+
+| Technology | Version | Role |
+|---|---|---|
+| [Serwist](https://serwist.pages.dev) | 9.5 | Service worker, precaching, runtime caching |
+
+## Documentation
+
+| Technology | Version | Role |
+|---|---|---|
+| [Fumadocs](https://fumadocs.dev) | 16 | Docs framework (MDX processing, search, sidebar, i18n) |
+| [fumadocs-mdx](https://fumadocs.dev) | 14 | Build-time MDX content pipeline |
+| [Mermaid](https://mermaid.js.org) | 11 | Diagrams in MDX |
+
+## Infrastructure
+
+| Technology | Version | Role |
+|---|---|---|
+| [Turborepo](https://turborepo.dev/) | 2.8 | Monorepo task orchestration with dependency-aware caching |
+| [pnpm](https://pnpm.io) | 10 | Package manager (workspaces, strict hoisting) |
+| [ESLint](https://eslint.org) | 9 | Linting (flat config, shared presets) |
+| [Prettier](https://prettier.io) | 3.8 | Code formatting |
+| [GitHub Actions](https://github.com/features/actions) | — | CI/CD (PR checks, desktop/Android builds) |
+| [Release Please](https://github.com/googleapis/release-please) | — | Conventional Commits-based versioning and changelogs |
+
+## CLI
+
+| Technology | Version | Role |
+|---|---|---|
+| [Commander](https://github.com/tj/commander.js) | 14 | Argument parsing |
+| [@clack/prompts](https://github.com/bombshell-dev/clack) | 1.1 | Interactive prompts |
+| [giget](https://github.com/unjs/giget) | 3.1 | Downloads the latest source from GitHub |
+| [tsup](https://github.com/egoist/tsup) | 8 | Bundles the CLI to a single file |
+
+The scaffolding CLI (`@tntstack/create-app`) is independently versioned and published to npm.
