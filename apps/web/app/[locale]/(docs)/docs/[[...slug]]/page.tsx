@@ -11,6 +11,8 @@ import { getMDXComponents } from "@/components/mdx";
 import type { Metadata } from "next";
 import { createRelativeLink } from "fumadocs-ui/mdx";
 
+export const dynamic = "force-static";
+
 export default async function Page(props: {
   params: Promise<{ slug?: string[]; locale: string }>;
 }) {
