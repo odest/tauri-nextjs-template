@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.1](https://github.com/odest/tntstack/compare/v1.4.0...v1.4.1) (2026-03-18)
+
+
+### Build System
+
+* **deps:** bump next from 16.1.6 to 16.1.7 ([4a0b0fb](https://github.com/odest/tntstack/commit/4a0b0fbcb70c84960b98a9761bd91f27d828b9b5))
+* **deps:** bump next from 16.1.6 to 16.1.7 ([e6b4733](https://github.com/odest/tntstack/commit/e6b4733514e647d525f4249de9083c784e9b3411))
+
 ## [1.4.0](https://github.com/odest/tntstack/compare/v1.3.2...v1.4.0) (2026-03-15)
 
 
