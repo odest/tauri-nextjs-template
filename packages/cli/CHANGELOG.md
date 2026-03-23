@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.8](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.7...@tntstack/create-app@v0.1.8) (2026-03-23)
+
+
+### Bug Fixes
+
+* **cli:** fix typo in README ([95d4d95](https://github.com/odest/tntstack/commit/95d4d95560e2ee29b6b6158fc68f5c572e94253c))
+
 ## [0.1.7](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.6...@tntstack/create-app@v0.1.7) (2026-03-14)
 
 

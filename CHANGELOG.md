@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.2](https://github.com/odest/tntstack/compare/v1.4.1...v1.4.2) (2026-03-23)
+
+
+### Bug Fixes
+
+* **cli:** fix typo in README ([95d4d95](https://github.com/odest/tntstack/commit/95d4d95560e2ee29b6b6158fc68f5c572e94253c))
+
+
+### Documentation
+
+* add apps and packages architecture documentation ([3fdf9c8](https://github.com/odest/tntstack/commit/3fdf9c89fe264a2bfc4451077ae11f14223bd2fb))
+
 ## [1.4.1](https://github.com/odest/tntstack/compare/v1.4.0...v1.4.1) (2026-03-18)
 
 
