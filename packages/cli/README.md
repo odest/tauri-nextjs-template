@@ -45,7 +45,7 @@ npm create @tntstack/app@latest --name <your-project-name> --github-user <your-g
 2. Replaces all project identifiers and names with your values
 3. Restructures mobile directories (Android and iOS) to match your app identifier
 4. Updates version fields across all config files
-5. Cleans up scaffold-only files, initializes git, and optionally installs dependencies`
+5. Cleans up scaffold-only files, initializes git, and optionally installs dependencies
 
 ## What's Next?
 
