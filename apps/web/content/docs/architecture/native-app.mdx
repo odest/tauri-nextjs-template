@@ -1,5 +1,212 @@
 ---
 title: Native App
-description: Tauri desktop and mobile application.
+description: Tauri desktop and mobile application. Next.js frontend with Rust backend.
 icon: Monitor
 ---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Mermaid } from '@/components/mdx/mermaid'
+
+A Next.js frontend statically exported into a Tauri 2 webview with a Rust backend. Produces desktop binaries for Windows, macOS, and Linux, plus mobile builds for Android and iOS.
+
+## Directory Structure
+
+<Files>
+  <Folder name="apps/native" defaultOpen>
+    <Folder name="src" defaultOpen>
+      <Folder name="app">
+        <Folder name="[locale]">
+          <Folder name="home" />
+          <Folder name="dashboard" />
+          <Folder name="settings" />
+          <File name="layout.tsx" />
+          <File name="page.tsx — redirects to /home" />
+        </Folder>
+      </Folder>
+      <Folder name="i18n">
+        <File name="request.ts" />
+      </Folder>
+    </Folder>
+    <Folder name="src-tauri" defaultOpen>
+      <Folder name="src">
+        <File name="lib.rs — Tauri commands" />
+        <File name="main.rs — entry point" />
+      </Folder>
+      <Folder name="capabilities">
+        <File name="default.json — permission grants" />
+      </Folder>
+      <Folder name="icons" />
+      <File name="tauri.conf.json" />
+      <File name="Cargo.toml" />
+      <File name="build.rs" />
+    </Folder>
+    <File name="next.config.ts" />
+    <File name="package.json" />
+  </Folder>
+</Files>
+
+## Architecture
+
+<Mermaid chart={`graph LR
+  subgraph "Frontend · Next.js"
+    pages["Pages & Components"]
+    export["Static Export · dist/"]
+  end
+
+  subgraph "Backend · Rust"
+    commands["Tauri Commands"]
+    plugins["Plugins"]
+    webview["Webview"]
+  end
+
+  pages --> export
+  export --> webview
+  webview -->|"invoke()"| commands
+  commands -->|"JSON"| webview
+`} />
+
+1. Next.js pages are statically exported to `dist/`
+2. Tauri loads the static files into the OS-native webview
+3. Frontend calls Rust functions via `invoke()` over IPC
+4. Rust commands return JSON to the webview
+
+## Tauri Configuration
+
+```json title="src-tauri/tauri.conf.json"
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "tntstack",
+  "version": "x.x.x",
+  "identifier": "com.tntstack.app",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:3000",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [{ "title": "tntstack", "width": 800, "height": 600 }],
+    "security": { "csp": null }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
+```
+
+In dev mode, Tauri runs `pnpm dev` and points the webview at `localhost:3000`. In production, it runs `pnpm build` and loads static files from `dist/`.
+
+## Rust Backend
+
+<Tabs items={["lib.rs", "main.rs", "Cargo.toml"]}>
+  <Tab value="lib.rs">
+
+```rust title="src-tauri/src/lib.rs"
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+  tauri::Builder::default()
+    .plugin(tauri_plugin_opener::init())
+    .invoke_handler(tauri::generate_handler![/* your commands */])
+    .run(tauri::generate_context!())
+    .expect("error while running tauri application");
+}
+```
+
+Register plugins with `.plugin()` and IPC commands with `invoke_handler`. The `mobile_entry_point` attribute makes the same entry point work on both desktop and mobile.
+
+  </Tab>
+  <Tab value="main.rs">
+
+```rust title="src-tauri/src/main.rs"
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
+fn main() {
+  tntstack_lib::run()
+}
+```
+
+The crate name comes from `Cargo.toml`'s `[lib] name` field. After scaffolding with the CLI, this will match your project name.
+
+  </Tab>
+  <Tab value="Cargo.toml">
+
+| Crate | Role |
+|---|---|
+| `tauri` | Core runtime (with `devtools` feature) |
+| `tauri-plugin-opener` | Open URLs and files with the OS default |
+| `serde` / `serde_json` | JSON serialization for IPC |
+| `tauri-build` | Build-time code generation |
+
+The `custom-protocol` feature flag switches between dev server and static file loading in production builds.
+
+  </Tab>
+</Tabs>
+
+## Capabilities
+
+Tauri 2 gates every API behind explicit permissions per window:
+
+```json title="src-tauri/capabilities/default.json"
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "enables the default permissions",
+  "windows": ["main"],
+  "permissions": ["core:default", "opener:default"]
+}
+```
+
+| Permission | What it grants |
+|---|---|
+| `core:default` | Window, event, and app lifecycle operations |
+| `opener:default` | Open URLs and files with system apps |
+
+Adding a new Tauri plugin? You'll need to register it in `lib.rs` and add its permission here.
+
+## Next.js Configuration
+
+```typescript title="next.config.ts"
+import type { NextConfig } from "next";
+import createNextIntlPlugin from "@workspace/i18n/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  output: "export",
+  trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
+  distDir: "dist",
+  transpilePackages: ["@workspace/ui", "@workspace/i18n"],
+};
+
+export default withNextIntl(nextConfig);
+```
+
+## Native vs Web
+
+| | Native App | Web App |
+|---|---|---|
+| Output | Static export (`dist/`) | Server-rendered |
+| Images | `unoptimized: true` | Server-optimized |
+| API Routes | Not available | Yes |
+| SSR / ISR | Not available | Yes |
+| i18n plugin | `createNextIntlPlugin("./src/i18n/request.ts")` | `createNextIntlPlugin()` |
+| Extra plugins | None | `withMDX`, `withSerwist` |
+| Server logic | Rust commands via IPC | API routes |
+
+<Callout type="warn">
+Static export means no API routes, no SSR, no ISR. If you need server-side logic in the native app, put it in Rust commands instead.
+</Callout>

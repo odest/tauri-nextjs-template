@@ -1,5 +1,199 @@
 ---
 title: i18n Package
-description: Internationalization setup, routing, middleware and 10 supported languages.
+description: Internationalization. Routing, middleware, translations, and 10 supported languages.
 icon: Languages
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
+
+Wraps `next-intl` into a shared module consumed by both apps. Defines supported locales, provides locale-aware navigation helpers, exports message files, and exposes the middleware and plugin for Next.js.
+
+## Directory Structure
+
+<Files>
+  <Folder name="packages/i18n/src" defaultOpen>
+    <File name="index.ts" />
+    <File name="routing.ts" />
+    <File name="navigation.ts" />
+    <File name="middleware.ts" />
+    <File name="plugin.ts" />
+    <File name="server.ts" />
+    <File name="i18n.d.ts" />
+    <Folder name="messages" defaultOpen>
+      <File name="en.json, tr.json, es.json, fr.json, de.json" />
+      <File name="pt.json, it.json, ru.json, ja.json, zh.json" />
+    </Folder>
+  </Folder>
+</Files>
+
+## Supported Languages
+
+| Code | Language | Native Name |
+|---|---|---|
+| `en` | English | English |
+| `tr` | Turkish | Türkçe |
+| `es` | Spanish | Español |
+| `fr` | French | Français |
+| `de` | German | Deutsch |
+| `pt` | Portuguese | Português |
+| `it` | Italian | Italiano |
+| `ru` | Russian | Русский |
+| `ja` | Japanese | 日本語 |
+| `zh` | Chinese | 中文 |
+
+## Package Exports
+
+Each file in this package maps to a specific export path in `package.json`:
+
+| Export | File | Used by |
+|---|---|---|
+| `@workspace/i18n` | `index.ts` | Both apps (messages, types, re-exports) |
+| `@workspace/i18n/routing` | `routing.ts` | Both apps (locale config, routing) |
+| `@workspace/i18n/navigation` | `navigation.ts` | Both apps (Link, useRouter, usePathname) |
+| `@workspace/i18n/middleware` | `middleware.ts` | Web app (`proxy.ts`) |
+| `@workspace/i18n/plugin` | `plugin.ts` | Both apps (`next.config.ts`) |
+| `@workspace/i18n/server` | `server.ts` | Web app (server components) |
+| `@workspace/i18n/messages/*` | `messages/*.json` | Direct JSON access |
+
+## Source Files
+
+<Tabs items={["routing.ts", "navigation.ts", "index.ts", "i18n.d.ts"]}>
+  <Tab value="routing.ts">
+
+```typescript title="src/routing.ts"
+import { defineRouting } from "next-intl/routing";
+
+export const localeConfig = {
+  en: { flag: "🇬🇧", label: "English", nativeName: "English" },
+  tr: { flag: "🇹🇷", label: "Turkish", nativeName: "Türkçe" },
+  // ... 8 more (see Supported Languages table above)
+} as const;
+
+export const locales = Object.keys(localeConfig) as Array<
+  keyof typeof localeConfig
+>;
+
+export const routing = defineRouting({
+  locales: locales,
+  defaultLocale: "en",
+});
+```
+
+Each locale entry provides flag emoji, English label, and native name for the language toggle UI.
+
+  </Tab>
+  <Tab value="navigation.ts">
+
+```typescript title="src/navigation.ts"
+import { createNavigation } from "next-intl/navigation";
+import { routing } from "@workspace/i18n/routing";
+
+export const { Link, redirect, usePathname, useRouter, getPathname } =
+  createNavigation(routing);
+```
+
+Locale-aware replacements for Next.js navigation APIs. Use `Link` instead of `next/link`, `useRouter` instead of `next/navigation`, etc.
+
+  </Tab>
+  <Tab value="index.ts">
+
+```typescript title="src/index.ts"
+import { routing, localeConfig } from "@workspace/i18n/routing";
+
+export type Locale = (typeof routing.locales)[number];
+export * from "next-intl";
+export { localeConfig };
+
+// Static imports for all 10 language files
+import enMessages from "./messages/en.json" with { type: "json" };
+import trMessages from "./messages/tr.json" with { type: "json" };
+// ... 8 more
+
+export const messages = {
+  en: enMessages, tr: trMessages, /* ... all 10 */
+} as const;
+```
+
+All message files are imported statically so they work with both SSR (web) and static export (native). Re-exports everything from `next-intl` so consumers only need one import source.
+
+  </Tab>
+  <Tab value="i18n.d.ts">
+
+```typescript title="src/i18n.d.ts"
+import type { Locale } from "@workspace/i18n";
+import messages from "@workspace/i18n/messages/en.json";
+
+type Messages = typeof messages;
+
+declare module "next-intl" {
+  interface AppConfig {
+    Locale: Locale;
+    Messages: Messages;
+  }
+}
+```
+
+Module augmentation that uses `en.json` as the type source. TypeScript will autocomplete and validate all namespace names and translation keys across the codebase.
+
+  </Tab>
+</Tabs>
+
+The remaining files (`plugin.ts`, `middleware.ts`, `server.ts`) are one-line re-exports from `next-intl`:
+
+```typescript
+// plugin.ts    → export { default } from "next-intl/plugin";
+// middleware.ts → export { default } from "next-intl/middleware";
+// server.ts    → export { getLocale, getRequestConfig, getTranslations } from "next-intl/server";
+```
+
+## Message Structure
+
+Messages are organized by component namespace. Each top-level key maps to a component:
+
+```json title="messages/en.json"
+{
+  "HomePage": { "title": "You are on the Home Page." },
+  "DashboardPage": { "title": "You are on the Dashboard Page." },
+  "OverviewPage": { "title": "You are on the Overview Page." },
+  "AnalyticsPage": { "title": "You are on the Analytics Page." },
+  "SettingsPage": { "title": "Settings", "description": "..." },
+  "Greet": { "placeholder": "Enter a name...", "button": "Greet", "error": "..." },
+  "LanguageCard": { "title": "Language", "description": "..." },
+  "ModeCard": { "title": "Modes", "light": "Light", "dark": "Dark", "system": "System" },
+  "SidebarVariantCard": { "title": "Sidebar Variant", "sidebar": "...", "floating": "...", "inset": "..." },
+  "ThemesList": { "title": "Themes", "searchPlaceholder": "...", "sortBy": "...", ... },
+  "Navigation": { "home": "Home", "dashboard": "Dashboard", "settings": "Settings", ... }
+}
+```
+
+All 10 language files follow this exact structure. Missing keys fall back to the default locale (English).
+
+<Callout type="info">
+For step-by-step instructions on adding new translation keys or new languages, see the [Managing Translations](/docs/guides/managing-translations) guide.
+</Callout>
+
+## Usage
+
+```tsx
+// Client component with translations
+import { useTranslations } from "@workspace/i18n";
+
+function HomePage() {
+  const t = useTranslations("HomePage");
+  return <h1>{t("title")}</h1>;
+}
+```
+
+```tsx
+// Locale-aware navigation (not next/link)
+import { Link } from "@workspace/i18n/navigation";
+
+<Link href="/settings">Settings</Link>
+// Renders: /en/settings, /tr/settings, etc.
+```
+
+<Callout type="warn">
+Always import `Link`, `useRouter`, and `usePathname` from `@workspace/i18n/navigation`, not from `next/link` or `next/navigation`. Using the Next.js defaults bypasses locale prefixing.
+</Callout>

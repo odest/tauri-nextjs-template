@@ -1,5 +1,193 @@
 ---
 title: Web App
-description: Next.js web application, route groups and documentation site.
+description: Next.js web application. Route groups, API routes, and documentation site.
 icon: Globe
 ---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+A server-rendered Next.js app that hosts the landing page, web app, documentation site, and API routes. Also serves as a PWA with offline support via Serwist.
+
+## Directory Structure
+
+<Files>
+  <Folder name="apps/web" defaultOpen>
+    <Folder name="app" defaultOpen>
+      <Folder name="[locale]" defaultOpen>
+        <Folder name="(app)">
+          <File name="Web App, Home, Settings (sidebar layout)" />
+        </Folder>
+        <Folder name="(docs)">
+          <File name="Documentation site (Fumadocs layout)" />
+        </Folder>
+        <Folder name="(landing)">
+          <File name="Landing page (marketing layout)" />
+        </Folder>
+        <File name="layout.tsx" />
+      </Folder>
+      <Folder name="api">
+        <Folder name="greet">
+          <File name="route.ts" />
+        </Folder>
+        <Folder name="search">
+          <File name="route.ts" />
+        </Folder>
+      </Folder>
+    </Folder>
+    <Folder name="content">
+      <Folder name="docs">
+        <File name="MDX documentation files" />
+      </Folder>
+    </Folder>
+    <Folder name="i18n">
+      <File name="request.ts" />
+    </Folder>
+    <Folder name="lib">
+      <File name="source.ts" />
+    </Folder>
+    <File name="next.config.ts" />
+    <File name="source.config.ts" />
+    <File name="proxy.ts" />
+  </Folder>
+</Files>
+
+## Route Groups
+
+Pages are split into three route groups under `[locale]`, each with its own layout:
+
+| Group | Paths | Layout |
+|---|---|---|
+| `(landing)` | `/` | Marketing layout (no sidebar) |
+| `(app)` | `/home`, `/dashboard`, `/settings` | Sidebar-based app shell |
+| `(docs)` | `/docs/...` | Fumadocs documentation layout |
+
+<Callout type="info">
+API routes live outside `[locale]` and skip the i18n middleware entirely.
+</Callout>
+
+## Next.js Configuration
+
+```typescript title="next.config.ts"
+import type { NextConfig } from "next";
+import createNextIntlPlugin from "@workspace/i18n/plugin";
+import { createMDX } from "fumadocs-mdx/next";
+import { withSerwist } from "@serwist/turbopack";
+
+const withNextIntl = createNextIntlPlugin();
+const withMDX = createMDX();
+
+const nextConfig: NextConfig = {
+  transpilePackages: ["@workspace/ui", "@workspace/i18n"],
+};
+
+export default withSerwist(withNextIntl(withMDX(nextConfig)));
+```
+
+Three plugins chained together:
+
+| Plugin | What it does |
+|---|---|
+| `withMDX` | Processes MDX content for Fumadocs |
+| `withNextIntl` | Enables locale-based routing and message loading |
+| `withSerwist` | Generates the service worker for PWA/offline support |
+
+## Middleware
+
+```typescript title="proxy.ts"
+import createMiddleware from "@workspace/i18n/middleware";
+import { routing } from "@workspace/i18n/routing";
+
+const intlMiddleware = createMiddleware(routing);
+
+export default function proxy(request: import("next/server").NextRequest) {
+  return intlMiddleware(request);
+}
+
+export const config = {
+  matcher: "/((?!api|trpc|_next|_vercel|serwist|~offline|.*\\..*).*)",
+};
+```
+
+Handles locale detection and URL rewriting. The matcher excludes API routes, Next.js internals, Serwist service worker paths, and static files.
+
+## API Routes
+
+**`POST /api/greet`** — Demo endpoint. Accepts a JSON body with a `name` field, validates and sanitizes input, returns a greeting. Server-side equivalent of the native app's Tauri `greet` command.
+
+**`GET /api/search`** — Fumadocs search index:
+
+```typescript title="app/api/search/route.ts"
+import { source } from "@/lib/source";
+import { createFromSource } from "fumadocs-core/search/server";
+
+export const { GET } = createFromSource(source, {
+  localeMap: {
+    // Japanese and Chinese are not supported by Orama's stemmer,
+    // so we fall back to English stemming for search indexing.
+    ja: "english",
+    zh: "english",
+  },
+});
+```
+
+The `localeMap` handles languages where Orama's built-in stemmer has no support.
+
+## Documentation System
+
+<Tabs items={["Content Config", "Source Loader"]}>
+  <Tab value="Content Config">
+
+```typescript title="source.config.ts"
+import { defineDocs, defineConfig } from "fumadocs-mdx/config";
+import { remarkMdxMermaid } from "fumadocs-core/mdx-plugins";
+
+export const docs = defineDocs({
+  dir: "content/docs",
+});
+
+export default defineConfig({
+  mdxOptions: {
+    remarkPlugins: [remarkMdxMermaid],
+  },
+});
+```
+
+MDX files in `content/docs/` are processed at build time. The `remarkMdxMermaid` plugin enables Mermaid diagrams in MDX.
+
+  </Tab>
+  <Tab value="Source Loader">
+
+```typescript title="lib/source.ts"
+import { docs } from "fumadocs-mdx:collections/server";
+import { loader } from "fumadocs-core/source";
+import { createElement } from "react";
+import { icons } from "lucide-react";
+import { locales, routing } from "@workspace/i18n/routing";
+
+export const source = loader({
+  baseUrl: "/docs",
+  source: docs.toFumadocsSource(),
+  i18n: {
+    languages: [...locales],
+    defaultLanguage: routing.defaultLocale,
+    fallbackLanguage: routing.defaultLocale,
+  },
+  icon(iconString) {
+    if (iconString && iconString in icons) {
+      return createElement(icons[iconString as keyof typeof icons] as any);
+    }
+    return undefined;
+  },
+});
+```
+
+Connects MDX content to the docs UI. The `icon` function resolves frontmatter `icon` fields to Lucide React components. Falls back to the default locale if a translation is missing.
+
+  </Tab>
+</Tabs>
+
+## App Layout
+
+The `(app)` route group wraps all app pages in `AppLayout` from `@workspace/ui`, passing locale-aware `Link` and `usePathname` from `@workspace/i18n/navigation`. The sidebar, header, and navigation all come from the shared UI package. See [UI Package](/docs/architecture/ui-package) for component details.

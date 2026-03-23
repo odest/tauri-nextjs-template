@@ -1,0 +1,174 @@
+---
+title: CLI Package
+description: Scaffolding CLI. Downloads, renames, and configures TNTStack projects.
+icon: Terminal
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+Published to npm as [`@tntstack/create-app`](https://www.npmjs.com/package/@tntstack/create-app). Downloads the latest source, renames all identifiers to match your project, configures Android and iOS packaging, inits git, and optionally installs dependencies.
+
+## Usage
+
+<Tabs items={["npm", "pnpm", "yarn", "bun"]}>
+  <Tab value="npm">
+    ```bash
+    npm create @tntstack/app@latest
+    ```
+  </Tab>
+  <Tab value="pnpm">
+    ```bash
+    pnpm create @tntstack/app@latest
+    ```
+  </Tab>
+  <Tab value="yarn">
+    ```bash
+    yarn create @tntstack/app
+    ```
+  </Tab>
+  <Tab value="bun">
+    ```bash
+    bunx @tntstack/create-app
+    ```
+  </Tab>
+</Tabs>
+
+The CLI runs in interactive mode by default. You can also pass flags for CI or scripted setups:
+
+```bash
+npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
+```
+
+| Flag | Description |
+|---|---|
+| `-n, --name <name>` | Project name |
+| `-d, --directory <dir>` | Output directory (defaults to `./<name>`) |
+| `-g, --github-user <user>` | GitHub username or org |
+| `-i, --identifier <id>` | App identifier, reverse-domain (defaults to `com.<name>.app`) |
+| `-v, --app-version <ver>` | Initial version (defaults to `0.1.0`) |
+| `--no-install` | Skip `pnpm install` |
+
+## Directory Structure
+
+<Files>
+  <Folder name="packages/cli" defaultOpen>
+    <Folder name="src" defaultOpen>
+      <File name="index.ts" />
+      <File name="scaffold.ts" />
+      <File name="prompts.ts" />
+      <File name="consts.ts" />
+      <Folder name="actions">
+        <File name="clone.ts" />
+        <File name="rename.ts" />
+        <File name="clean.ts" />
+        <File name="git.ts" />
+        <File name="install.ts" />
+      </Folder>
+      <Folder name="utils">
+        <File name="validate.ts" />
+      </Folder>
+    </Folder>
+    <File name="package.json" />
+    <File name="tsconfig.json" />
+  </Folder>
+</Files>
+
+## How It Works
+
+The scaffold pipeline runs 5 steps in order:
+
+<Tabs items={["1. Clone", "2. Rename", "3. Clean", "4. Git", "5. Install"]}>
+  <Tab value="1. Clone">
+
+```typescript title="actions/clone.ts"
+import { downloadTemplate } from "giget";
+import { TEMPLATE_SOURCE } from "../consts.js";
+
+export async function cloneTemplate(directory: string): Promise<string> {
+  const { dir } = await downloadTemplate(TEMPLATE_SOURCE, {
+    dir: directory,
+    force: true,
+  });
+  return dir;
+}
+```
+
+Downloads the latest source from `github:odest/tntstack#master` using giget. No git history is carried over.
+
+  </Tab>
+  <Tab value="2. Rename">
+
+The most complex step. Walks every text file in the project and applies find-replace for these identifiers:
+
+| Search term | Replaced with |
+|---|---|
+| `com.tntstack.app` | User's app identifier |
+| `tntstack_lib` | `<project_name_snake>_lib` |
+| `TNTStack` | PascalCase project name |
+| `odest` | User's GitHub username |
+| `tntstack` | User's project name |
+
+After file contents, it also:
+- Renames Android Java package directories (`gen/android/**/java/com/tntstack/` → user's identifier path)
+- Renames Apple generated directories and files (`gen/apple/`)
+- Updates version fields in all `package.json` files, `Cargo.toml`, `Cargo.lock`, `tauri.conf.json`, and `.release-please-manifest.json`
+
+Binary files, lock files, and build artifacts are skipped via pattern matching.
+
+  </Tab>
+  <Tab value="3. Clean">
+
+Removes files that only belong to the source repo:
+
+```typescript title="consts.ts"
+export const FILES_TO_CLEAN = [
+  "CHANGELOG.md",
+  "packages/cli",
+  ".github/FUNDING.yml",
+  ".github/workflows/publish-cli.yml",
+] as const;
+```
+
+Also removes `packages/cli` references from `release-please-config.json` and `.release-please-manifest.json`.
+
+  </Tab>
+  <Tab value="4. Git">
+
+Runs `git init` and creates an initial commit. Skipped gracefully if git is not available.
+
+  </Tab>
+  <Tab value="5. Install">
+
+Runs `pnpm install` unless `--no-install` was passed. Falls back with a warning if pnpm is not found.
+
+  </Tab>
+</Tabs>
+
+## Interactive Prompts
+
+In interactive mode, the CLI asks these questions:
+
+| Prompt | Default |
+|---|---|
+| Project name | `<your-project-name>` |
+| GitHub username / org | `<your-github-username>` |
+| Initial version | `0.1.0` |
+| Install dependencies? | Yes |
+
+After answering, a summary is shown and the user can confirm or re-enter their choices.
+
+## Build & Development
+
+The CLI is built with tsup and published independently from the monorepo:
+
+| Script | Command |
+|---|---|
+| `build` | `tsup` (bundles to `dist/index.js`) |
+| `dev` | `tsup --watch` |
+| `start` | `node ./dist/index.js` |
+
+<Callout type="info">
+The CLI has its own version (`vX.Y.Z`) separate from the monorepo version. It's published to npm via the `publish-cli.yml` GitHub Actions workflow on new releases.
+</Callout>
