@@ -17,35 +17,50 @@ on:
         type: boolean
 
 jobs:
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - id: set-matrix
+        run: |
+          MATRIX_JSON="{\"include\":["
+
+          if [ "${{ inputs.build_macos }}" == "true" ]; then
+            MATRIX_JSON="$MATRIX_JSON{\"platform\":\"macos-latest\",\"rust_targets\":\"aarch64-apple-darwin\",\"args\":\"--target aarch64-apple-darwin\",\"os_name\":\"macos\"},"
+            MATRIX_JSON="$MATRIX_JSON{\"platform\":\"macos-latest\",\"rust_targets\":\"x86_64-apple-darwin\",\"args\":\"--target x86_64-apple-darwin\",\"os_name\":\"macos\"},"
+          fi
+
+          if [ "${{ inputs.build_linux }}" == "true" ]; then
+            MATRIX_JSON="$MATRIX_JSON{\"platform\":\"ubuntu-22.04\",\"rust_targets\":\"\",\"args\":\"\",\"os_name\":\"linux\"},"
+          fi
+
+          if [ "${{ inputs.build_windows }}" == "true" ]; then
+            MATRIX_JSON="$MATRIX_JSON{\"platform\":\"windows-latest\",\"rust_targets\":\"\",\"args\":\"\",\"os_name\":\"windows\"},"
+          fi
+
+          if [ "$MATRIX_JSON" == "{\"include\":[" ]; then
+            echo "matrix={\"include\":[]}" >> $GITHUB_OUTPUT
+          else
+            MATRIX_JSON="${MATRIX_JSON%,}]}"
+            echo "matrix=$MATRIX_JSON" >> $GITHUB_OUTPUT
+          fi
+
   build-desktop:
+    needs: prepare-matrix
+    if: ${{ fromJson(needs.prepare-matrix.outputs.matrix).include[0] != null }}
     runs-on: ${{ matrix.platform }}
     permissions:
       contents: write
-    if: ${{ (matrix.os_name == 'macos' && inputs.build_macos) || (matrix.os_name == 'linux' && inputs.build_linux) || (matrix.os_name == 'windows' && inputs.build_windows) }}
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - platform: "macos-latest"
-            rust_targets: "aarch64-apple-darwin"
-            args: "--target aarch64-apple-darwin"
-            os_name: "macos"
-          - platform: "macos-latest"
-            rust_targets: "x86_64-apple-darwin"
-            args: "--target x86_64-apple-darwin"
-            os_name: "macos"
-          - platform: "ubuntu-22.04"
-            rust_targets: ""
-            args: ""
-            os_name: "linux"
-          - platform: "windows-latest"
-            rust_targets: ""
-            args: ""
-            os_name: "windows"
+      matrix: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag_name }}
 
       - name: Install OS deps (Ubuntu only)
         if: ${{ matrix.platform == 'ubuntu-22.04' }}
