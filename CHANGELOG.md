@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.3](https://github.com/odest/tntstack/compare/v1.4.2...v1.4.3) (2026-03-24)
+
+
+### Bug Fixes
+
+* **native:** disable link prefetching to resolve silent navigation hangs on windows ([f2c615d](https://github.com/odest/tntstack/commit/f2c615da07864cb0c579b746a8d6bc1994c1f1c7))
+
+
+### Continuous Integration
+
+* **workflows:** add selective desktop builds and refine artifact naming ([4aa58a4](https://github.com/odest/tntstack/commit/4aa58a4ea29a060e9fd9057d8a48d7a6235fe061))
+* **workflows:** implement dynamic matrix and enforce explicit refs for checkout ([99178f1](https://github.com/odest/tntstack/commit/99178f130ee39e1a1d668222c194da45e946ecb2))
+
 ## [1.4.2](https://github.com/odest/tntstack/compare/v1.4.1...v1.4.2) (2026-03-23)
 
 
