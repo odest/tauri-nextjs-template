@@ -8,8 +8,18 @@ on:
         description: "Release tag to build for (e.g. v1.1.0)"
         required: true
         type: string
-      build_desktop:
-        description: "Build desktop apps (Windows, macOS, Linux)"
+      build_windows:
+        description: "Build Windows (.exe, .msi)"
+        required: true
+        type: boolean
+        default: true
+      build_macos:
+        description: "Build macOS (.dmg, .app)"
+        required: true
+        type: boolean
+        default: true
+      build_linux:
+        description: "Build Linux (.rpm, .deb, .AppImage)"
         required: true
         type: boolean
         default: true
@@ -29,10 +39,13 @@ permissions:
 
 jobs:
   build-desktop:
-    if: ${{ inputs.build_desktop }}
+    if: ${{ inputs.build_windows || inputs.build_macos || inputs.build_linux }}
     uses: ./.github/workflows/build-desktop.yml
     with:
       tag_name: ${{ inputs.tag_name }}
+      build_windows: ${{ inputs.build_windows }}
+      build_macos: ${{ inputs.build_macos }}
+      build_linux: ${{ inputs.build_linux }}
     secrets: inherit
     permissions:
       contents: write

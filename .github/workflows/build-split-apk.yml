@@ -125,10 +125,10 @@ jobs:
         run: |
           if [ "${{ env.HAS_SECRETS }}" == "true" ]; then
             MODE="release"
-            SUFFIX="_RELEASE"
+            SUFFIX=""
           else
             MODE="debug"
-            SUFFIX="_DEBUG"
+            SUFFIX="-debug"
           fi
 
           cp "${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk/arm64/$MODE/app-arm64-$MODE.apk" "${{ github.workspace }}/${{ steps.project_name.outputs.name }}_${{ inputs.tag_name }}_android_arm64${SUFFIX}.apk"

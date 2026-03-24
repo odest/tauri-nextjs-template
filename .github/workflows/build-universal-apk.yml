@@ -124,9 +124,9 @@ jobs:
       - name: Rename Artifacts
         run: |
           if [ "${{ env.HAS_SECRETS }}" == "true" ]; then
-            SUFFIX="_RELEASE"
+            SUFFIX=""
           else
-            SUFFIX="_DEBUG"
+            SUFFIX="-debug"
           fi
 
           APK_PATH=$(find ${{ github.workspace }}/apps/native/src-tauri/gen/android/app/build/outputs/apk -name "*.apk" | head -n 1)

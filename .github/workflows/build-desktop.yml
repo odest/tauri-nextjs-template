@@ -6,12 +6,22 @@ on:
         description: "Release tag"
         required: true
         type: string
+      build_windows:
+        required: true
+        type: boolean
+      build_macos:
+        required: true
+        type: boolean
+      build_linux:
+        required: true
+        type: boolean
 
 jobs:
   build-desktop:
     runs-on: ${{ matrix.platform }}
     permissions:
       contents: write
+    if: ${{ (matrix.os_name == 'macos' && inputs.build_macos) || (matrix.os_name == 'linux' && inputs.build_linux) || (matrix.os_name == 'windows' && inputs.build_windows) }}
     strategy:
       fail-fast: false
       matrix:
@@ -19,15 +29,19 @@ jobs:
           - platform: "macos-latest"
             rust_targets: "aarch64-apple-darwin"
             args: "--target aarch64-apple-darwin"
+            os_name: "macos"
           - platform: "macos-latest"
             rust_targets: "x86_64-apple-darwin"
             args: "--target x86_64-apple-darwin"
+            os_name: "macos"
           - platform: "ubuntu-22.04"
             rust_targets: ""
             args: ""
+            os_name: "linux"
           - platform: "windows-latest"
             rust_targets: ""
             args: ""
+            os_name: "windows"
 
     steps:
       - name: Checkout
@@ -77,7 +91,7 @@ jobs:
           tagName: ${{ inputs.tag_name }}
           releaseName: ${{ inputs.tag_name }}
           releaseBody: "Desktop release for ${{ inputs.tag_name }}"
-          assetNamePattern: "[name]_${{ inputs.tag_name }}_[platform]_[arch][ext]"
+          assetNamePattern: "[name]_${{ inputs.tag_name }}_${{ matrix.os_name }}_[arch][ext]"
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
