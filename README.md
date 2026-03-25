@@ -106,7 +106,10 @@ pnpm dev
 This starts both the web app (http://localhost:3000) and the native desktop app in parallel.
 
 > [!IMPORTANT]
-> GitHub Actions & Release Please: If you host your code on GitHub, you must go to your repository settings (Settings > Actions > General) and grant Read and write permissions as well as Allow GitHub Actions to create and approve pull requests for the automated release pipelines to function properly.
+> **GitHub Actions & Release Please:** For the automated release pipelines and changelog generation to function properly, you **must** configure the following repository settings:
+>
+> 1. **Workflow Permissions** (Settings > Actions > General): Grant **Read and write permissions** and check **Allow GitHub Actions to create and approve pull requests**.
+> 2. **Pull Request Merging** (Settings > General): To maintain the required linear git history for the release bot, uncheck `Allow merge commits` and `Allow rebase merging`. Leave only **`Allow squash merging`** checked, and set the default commit message to **`Pull request title`**.
 
 ## 📦 Overview
 

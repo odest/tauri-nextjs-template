@@ -100,13 +100,22 @@ If you only want to work on one platform:
 | **Android** | `pnpm tauri android dev` |
 | **iOS** | `pnpm tauri ios dev` |
 
-## 3. CI/CD Permissions
+## 3. CI/CD & Repository Settings
 
-TNTStack uses **Release Please** for automated versioning. If you host on GitHub, you must grant permissions for the release bot to work.
+TNTStack uses **Release Please** for automated versioning and changelog generation. If you host your code on GitHub, you must grant specific permissions for the release bot and enforce a linear git history.
 
+**Step A: Workflow Permissions**
 1. Go to your repository **Settings** > **Actions** > **General**.
-2. Scroll to **Workflow permissions**.
+2. Scroll down to **Workflow permissions**.
 3. Select **Read and write permissions**.
 4. Check **Allow GitHub Actions to create and approve pull requests**.
 
-Without these permissions, the automated release PRs and changelog generation will fail.
+**Step B: Enforce Squash Merging**
+Without a linear git history, the release bot will fail to parse your commits and break the automated release cycle.
+1. Go to your repository **Settings** > **General**.
+2. Scroll down to the **Pull Requests** section.
+3. Uncheck **Allow merge commits** and **Allow rebase merging**.
+4. Check only **Allow squash merging**.
+5. Under the "Default commit message" dropdown for squash merging, strictly select **Pull request title**.
+
+Without these settings, the automated release PRs will either lack permission to run or fail due to a tangled commit history.
