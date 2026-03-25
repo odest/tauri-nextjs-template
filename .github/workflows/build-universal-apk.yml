@@ -29,6 +29,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag_name }}
 
       - name: Install deps (ubuntu)
         run: |
@@ -145,13 +147,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Universal-APK-${{ inputs.tag_name }}
-          path: ${{ github.workspace }}/*_android_universal_*.*
+          path: ${{ github.workspace }}/*_android_universal*.*
 
       - name: Upload Release to GitHub
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release upload ${{ inputs.tag_name }} \
-            ${{ github.workspace }}/*_android_universal_*.* \
+            ${{ github.workspace }}/*_android_universal*.* \
             --clobber \
             --repo "$GITHUB_REPOSITORY"
