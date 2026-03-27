@@ -11,7 +11,7 @@
     "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
     "tauri": "tauri",
-    "clean": "rm -rf dist"
+    "clean": "rimraf dist .next .turbo src-tauri/target"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.10.1",
@@ -19,13 +19,13 @@
     "@workspace/i18n": "workspace:*",
     "@workspace/ui": "workspace:*",
     "lucide-react": "^0.577.0",
-    "next": "^16.1.7",
+    "next": "^16.2.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.10.1",
-    "@types/node": "^25.3.5",
+    "@types/node": "^25.5.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@workspace/eslint-config": "workspace:*",

@@ -59,9 +59,9 @@ export default function OfflinePage() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           className="lucide lucide-wifi-off-icon lucide-wifi-off"
         >
           <path d="M12 20h.01" />
@@ -76,8 +76,8 @@ export default function OfflinePage() {
 
       <h1>You are offline</h1>
       <p>
-        It looks like you've lost your internet connection. Please check your
-        connection and try again.
+        It looks like you&apos;ve lost your internet connection. Please check
+        your connection and try again.
       </p>
     </>
   );

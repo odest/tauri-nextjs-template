@@ -10,7 +10,11 @@ interface AppLayoutProps {
 
 // Disable prefetching to prevent race conditions and silent navigation
 // failures on Tauri Windows (WebView2) when fetching RSC payloads.
-const NativeLink = ({ href, children, ...props }: any) => {
+const NativeLink = ({
+  href,
+  children,
+  ...props
+}: React.ComponentProps<typeof Link>) => {
   return (
     <Link href={href} prefetch={false} {...props}>
       {children}

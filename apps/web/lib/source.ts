@@ -14,7 +14,8 @@ export const source = loader({
   },
   icon(iconString) {
     if (iconString && iconString in icons) {
-      return createElement(icons[iconString as keyof typeof icons] as any);
+      const Icon = icons[iconString as keyof typeof icons];
+      return createElement(Icon);
     }
     return undefined;
   },

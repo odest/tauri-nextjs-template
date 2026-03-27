@@ -35,6 +35,7 @@ function MermaidContent({ chart }: { chart: string }) {
   // Asynchronously load mermaid to prevent SSR issues and reduce bundle size
   const { default: mermaid } = use(
     cachePromise("mermaid", () => import("mermaid")),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) as any;
 
   mermaid.initialize({
@@ -49,6 +50,7 @@ function MermaidContent({ chart }: { chart: string }) {
     cachePromise(`${chart}-${resolvedTheme}`, () => {
       return mermaid.render(id, chart.replaceAll("\\\\n", "\\n"));
     }),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ) as any;
 
   return (

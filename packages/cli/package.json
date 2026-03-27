@@ -45,23 +45,23 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
-    "clean": "rm -rf dist"
+    "clean": "rimraf dist .turbo"
   },
   "dependencies": {
     "@clack/prompts": "^1.1.0",
     "commander": "^14.0.3",
     "execa": "^9.6.1",
     "fs-extra": "^11.3.4",
-    "giget": "^3.1.2",
-    "picocolors": "^1.0.0"
+    "giget": "^3.2.0",
+    "picocolors": "^1.1.1"
   },
   "devDependencies": {
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.0.0",
+    "@types/node": "^20.19.37",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",
-    "tsup": "^8.0.2",
+    "tsup": "^8.5.1",
     "typescript": "~5.9.3"
   }
 }
