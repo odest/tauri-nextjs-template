@@ -1,6 +1,6 @@
 {
   "name": "@workspace/i18n",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "type": "module",
   "private": true,
   "main": "src/index.ts",
