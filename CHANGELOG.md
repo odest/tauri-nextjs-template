@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.4.4](https://github.com/odest/tntstack/compare/v1.4.3...v1.4.4) (2026-03-27)
+
+
+### Bug Fixes
+
+* **web:** resolve metadata image prerender error in localized routes ([d2cd0c7](https://github.com/odest/tntstack/commit/d2cd0c7544749a5a1e07ec735845b54a3dfd660a))
+
+
+### Documentation
+
+* add linear git history requirements to setup instructions ([eb0b39e](https://github.com/odest/tntstack/commit/eb0b39e3290afb0186df0304c8dabce3d012cdea))
+
+
+### Code Refactoring
+
+* **icons:** update app icons and add missing sizes ([4569231](https://github.com/odest/tntstack/commit/45692317203215cbf5233bd4585410e2de85815f))
+
+
+### Continuous Integration
+
+* **workflows:** fix universal apk upload wildcard and enforce checkout ref ([a4345e3](https://github.com/odest/tntstack/commit/a4345e31d6d522a9097a9db0f4f65fa73fc44365))
+
 ## [1.4.3](https://github.com/odest/tntstack/compare/v1.4.2...v1.4.3) (2026-03-24)
 
 
