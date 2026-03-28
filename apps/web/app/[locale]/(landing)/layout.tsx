@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@workspace/ui/providers/theme-provider";
+import { ThemeProvider } from "@workspace/core/providers/theme-provider";
 
 interface LandingLayoutProps {
   children: React.ReactNode;

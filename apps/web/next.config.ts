@@ -7,7 +7,7 @@ const withNextIntl = createNextIntlPlugin();
 const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@workspace/ui", "@workspace/i18n"],
+  transpilePackages: ["@workspace/ui", "@workspace/core", "@workspace/i18n"],
 };
 
 export default withSerwist(withNextIntl(withMDX(nextConfig)));

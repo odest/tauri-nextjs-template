@@ -25,10 +25,10 @@ import {
   ArrowUpAZ,
   ArrowDownAZ,
 } from "lucide-react";
-import { themes } from "@workspace/ui/config/themes";
-import { ThemeCard } from "@workspace/ui/components/common/theme-card";
-import { useThemeStore } from "@workspace/ui/stores/theme-store";
-import { useMounted } from "@workspace/ui/hooks/use-mounted";
+import { themes } from "@workspace/core/config/themes";
+import { ThemeCard } from "@workspace/core/components/common/theme-card";
+import { useThemeStore } from "@workspace/core/stores/theme-store";
+import { useMounted } from "@workspace/core/hooks/use-mounted";
 import { useTranslations } from "@workspace/i18n";
 
 export const ThemesList = () => {
@@ -42,7 +42,7 @@ export const ThemesList = () => {
 
   useEffect(() => {
     const filtered = themes.filter((theme) =>
-      theme.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      theme.name?.toLowerCase().includes(searchTerm.toLowerCase()),
     );
 
     const sorted = [...filtered].sort((a, b) => {
@@ -73,7 +73,7 @@ export const ThemesList = () => {
               <div className="relative flex-1">
                 <Skeleton className="h-9 w-full min-w-[140px] max-w-full rounded-md" />
               </div>
-              <Skeleton className="h-9 w-full sm:w-[160px] md:w-[180px] rounded-md" />
+              <Skeleton className="h-9 w-full sm:w-40 md:w-[180px] rounded-md" />
             </div>
           </div>
         </CardHeader>
@@ -123,7 +123,7 @@ export const ThemesList = () => {
             </div>
 
             <Select value={sortOption} onValueChange={setSortOption}>
-              <SelectTrigger className="w-full sm:w-[160px] gap-2 md:w-[180px]">
+              <SelectTrigger className="w-full sm:w-40 gap-2 md:w-[180px]">
                 <SelectValue placeholder={t("sortBy")} />
               </SelectTrigger>
               <SelectContent>

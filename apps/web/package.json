@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@types/mdx": "^2.0.13",
+    "@workspace/core": "workspace:*",
     "@workspace/i18n": "workspace:*",
     "@workspace/ui": "workspace:*",
     "fumadocs-core": "^16.7.7",

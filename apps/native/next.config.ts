@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   distDir: "dist",
-  transpilePackages: ["@workspace/ui", "@workspace/i18n"],
+  transpilePackages: ["@workspace/ui", "@workspace/core", "@workspace/i18n"],
 };
 
 export default withNextIntl(nextConfig);

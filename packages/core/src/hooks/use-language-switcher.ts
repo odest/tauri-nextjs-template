@@ -1,7 +1,7 @@
 import { useTransition, useEffect } from "react";
 import { useLocale } from "@workspace/i18n";
 import { usePathname, useRouter } from "@workspace/i18n/navigation";
-import { useThemeStore, applyTheme } from "@workspace/ui/stores/theme-store";
+import { useThemeStore, applyTheme } from "@workspace/core/stores/theme-store";
 import { localeConfig } from "@workspace/i18n/routing";
 
 export function useLanguageSwitcher() {

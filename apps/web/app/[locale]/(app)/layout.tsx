@@ -1,7 +1,7 @@
 "use client";
 
 import { Link, usePathname } from "@workspace/i18n/navigation";
-import { AppLayout } from "@workspace/ui/components/layout/app-layout";
+import { AppLayout } from "@workspace/core/components/layout/app-layout";
 
 interface AppGroupLayoutProps {
   children: React.ReactNode;

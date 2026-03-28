@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Link, usePathname } from "@workspace/i18n/navigation";
-import { AppLayout as MainLayout } from "@workspace/ui/components/layout/app-layout";
+import { AppLayout as MainLayout } from "@workspace/core/components/layout/app-layout";
 
 interface AppLayoutProps {
   children: React.ReactNode;

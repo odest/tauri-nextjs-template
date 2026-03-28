@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "./components/AppLayout";
-import { themeInitScript } from "@workspace/ui/scripts/theme-init";
+import { themeInitScript } from "@workspace/core/scripts/theme-init";
 import { NextIntlClientProvider, hasLocale, messages } from "@workspace/i18n";
 import { routing } from "@workspace/i18n/routing";
 import "@workspace/ui/globals.css";

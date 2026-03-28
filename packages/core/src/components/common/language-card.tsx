@@ -10,7 +10,7 @@ import {
 } from "@workspace/ui/components/select";
 import { cn } from "@workspace/ui/lib/utils";
 import { localeConfig, routing } from "@workspace/i18n/routing";
-import { useLanguageSwitcher } from "@workspace/ui/hooks/use-language-switcher";
+import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
 import { useTranslations } from "@workspace/i18n";
 
 export function LanguageCard() {

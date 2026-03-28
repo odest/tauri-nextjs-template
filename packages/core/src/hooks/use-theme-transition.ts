@@ -9,12 +9,12 @@ export function useThemeTransition() {
 
   const handleThemeChange = (
     newTheme: ThemeOption,
-    event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
+    event?: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
   ) => {
     const root = document.documentElement;
 
     const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
+      "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (!document.startViewTransition || prefersReducedMotion) {

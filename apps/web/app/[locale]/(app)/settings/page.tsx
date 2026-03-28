@@ -1,4 +1,4 @@
-import { SettingsPage } from "@workspace/ui/pages/SettingsPage";
+import { SettingsPage } from "@workspace/core/pages/SettingsPage";
 
 export default function Settings() {
   return <SettingsPage />;

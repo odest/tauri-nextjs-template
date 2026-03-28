@@ -1,7 +1,7 @@
 import { ReactNode, ComponentType } from "react";
-import { AppSidebar } from "@workspace/ui/components/layout/app-sidebar";
-import { AppHeader } from "@workspace/ui/components/layout/app-header";
-import { ThemeProvider } from "@workspace/ui/providers/theme-provider";
+import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
+import { AppHeader } from "@workspace/core/components/layout/app-header";
+import { ThemeProvider } from "@workspace/core/providers/theme-provider";
 import {
   SidebarInset,
   SidebarProvider,

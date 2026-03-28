@@ -10,7 +10,7 @@ import {
 } from "@workspace/ui/components/dropdown-menu";
 import { cn } from "@workspace/ui/lib/utils";
 import { routing, localeConfig } from "@workspace/i18n/routing";
-import { useLanguageSwitcher } from "@workspace/ui/hooks/use-language-switcher";
+import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
 
 export function LanguageToggle() {
   const { locale, isPending, changeLanguage } = useLanguageSwitcher();

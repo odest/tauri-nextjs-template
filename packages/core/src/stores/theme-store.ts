@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
-import { getStorageItem } from "@workspace/ui/lib/storage-utils";
-import { Themes } from "@workspace/ui/config/themes";
+import { getStorageItem } from "@workspace/core/lib/storage-utils";
+import { Themes } from "@workspace/core/config/themes";
 
 interface ThemeState {
   selectedTheme: Themes;
@@ -35,6 +35,6 @@ export const useThemeStore = create<ThemeState>()(
     {
       name: "theme-storage",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

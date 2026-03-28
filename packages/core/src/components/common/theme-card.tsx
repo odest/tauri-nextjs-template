@@ -3,8 +3,8 @@
 import { Card } from "@workspace/ui/components/card";
 import { cn } from "@workspace/ui/lib/utils";
 import { Button } from "@workspace/ui/components/button";
-import { useThemeStore } from "@workspace/ui/stores/theme-store";
-import { Themes } from "@workspace/ui/config/themes";
+import { useThemeStore } from "@workspace/core/stores/theme-store";
+import { Themes } from "@workspace/core/config/themes";
 
 interface ThemeCardProps {
   themeLabel: string;
@@ -36,7 +36,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
             key={swatch.name + swatch.bg}
             className={cn(
               "group/swatch relative h-full flex-1 ml-1 border first:ml-0 rounded-lg transition-all duration-300 ease-in-out",
-              "hover:flex-grow-[1.5]"
+              "hover:grow-[1.5]",
             )}
             style={{ backgroundColor: swatch.bg }}
           >
@@ -46,7 +46,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
                 "opacity-0 group-hover/swatch:opacity-100",
                 "transition-opacity duration-300 ease-in-out",
                 "pointer-events-none text-xs font-medium",
-                swatch.fg
+                swatch.fg,
               )}
             >
               {swatch.name}
@@ -61,7 +61,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
           "w-full h-12 mt-1 border text-sm font-medium",
           selectedTheme === themeName
             ? "bg-primary text-primary-foreground"
-            : "bg-background text-foreground"
+            : "bg-background text-foreground",
         )}
       >
         {themeLabel}

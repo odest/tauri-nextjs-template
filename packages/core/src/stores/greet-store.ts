@@ -19,6 +19,6 @@ export const useGreetStore = create<GreetState>()(
     {
       name: "greet-storage",
       storage: createJSONStorage(() => localStorage),
-    }
-  )
+    },
+  ),
 );

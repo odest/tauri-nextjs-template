@@ -1,6 +1,6 @@
 "use client";
 
-import { DashboardPage } from "@workspace/ui/pages/DashboardPage";
+import { DashboardPage } from "@workspace/core/pages/DashboardPage";
 
 export default function Dashboard() {
   return <DashboardPage />;

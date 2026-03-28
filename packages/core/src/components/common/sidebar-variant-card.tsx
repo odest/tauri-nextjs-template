@@ -10,9 +10,9 @@ import {
 } from "@workspace/ui/components/card";
 import { Label } from "@workspace/ui/components/label";
 import { useSidebar } from "@workspace/ui/components/sidebar";
-import { useMounted } from "@workspace/ui/hooks/use-mounted";
-import { useSidebarStore } from "@workspace/ui/stores/sidebar-store";
-import { SettingsCardSkeleton } from "@workspace/ui/components/common/settings-card-skeleton";
+import { useMounted } from "@workspace/core/hooks/use-mounted";
+import { useSidebarStore } from "@workspace/core/stores/sidebar-store";
+import { SettingsCardSkeleton } from "@workspace/core/components/common/settings-card-skeleton";
 import { useTranslations } from "@workspace/i18n";
 
 export const SidebarVariantCard = () => {
@@ -27,7 +27,7 @@ export const SidebarVariantCard = () => {
       state === "collapsed"
         ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"
         : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4",
-    [state]
+    [state],
   );
 
   if (!mounted) return <SettingsCardSkeleton gridClasses={gridClasses} />;

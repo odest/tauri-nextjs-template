@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Play, Rocket } from "lucide-react";
-import { fetchLatestGithubVersion } from "@workspace/ui/lib/utils";
+import { fetchLatestGithubVersion } from "@workspace/core/lib/utils";
 import { Button } from "@workspace/ui/components/button";
 import {
   AnimatedGroup,

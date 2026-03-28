@@ -19,8 +19,9 @@ interface SecondaryNavItem {
   external?: boolean;
 }
 
-interface SecondaryNavProps
-  extends React.ComponentPropsWithoutRef<typeof SidebarGroup> {
+interface SecondaryNavProps extends React.ComponentPropsWithoutRef<
+  typeof SidebarGroup
+> {
   items: SecondaryNavItem[];
   pathname: string;
   LinkComponent?:

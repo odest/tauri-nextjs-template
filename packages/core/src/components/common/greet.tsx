@@ -3,7 +3,7 @@
 import { isTauri, invoke } from "@tauri-apps/api/core";
 import { Input } from "@workspace/ui/components/input";
 import { Button } from "@workspace/ui/components/button";
-import { useGreetStore } from "@workspace/ui/stores/greet-store";
+import { useGreetStore } from "@workspace/core/stores/greet-store";
 import { useTranslations } from "@workspace/i18n";
 
 export const Greet = () => {

@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu";
 import { cn } from "@workspace/ui/lib/utils";
-import { useThemeTransition } from "@workspace/ui/hooks/use-theme-transition";
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
 import { useTranslations } from "@workspace/i18n";
 
 export function ModeToggle() {

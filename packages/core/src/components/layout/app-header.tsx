@@ -10,8 +10,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@workspace/ui/components/breadcrumb";
-import { ModeToggle } from "@workspace/ui/components/common/mode-toggle";
-import { LanguageToggle } from "@workspace/ui/components/common/language-toggle";
+import { ModeToggle } from "@workspace/core/components/common/mode-toggle";
+import { LanguageToggle } from "@workspace/core/components/common/language-toggle";
 import { useTranslations } from "@workspace/i18n";
 
 function formatSegment(segment: string): string {
