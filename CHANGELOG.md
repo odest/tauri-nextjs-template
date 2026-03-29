@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/odest/tntstack/compare/v1.4.5...v1.4.6) (2026-03-29)
+
+
+### Bug Fixes
+
+* **ci:** remove custom pull request title pattern ([67d32c9](https://github.com/odest/tntstack/commit/67d32c91cd7f3a5ccb5246542e8578ac233d526c))
+
 ## [1.4.5](https://github.com/odest/tntstack/compare/v1.4.4...v1.4.5) (2026-03-29)
 
 
