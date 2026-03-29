@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/odest/tntstack/compare/v1.4.6...v1.4.7) (2026-03-29)
+
+
+### Bug Fixes
+
+* **ci:** use separate pull requests for release-please ([edebdc9](https://github.com/odest/tntstack/commit/edebdc9932795c0a4562a43502da4efeb6408794))
+
 ## [1.4.6](https://github.com/odest/tntstack/compare/v1.4.5...v1.4.6) (2026-03-29)
 
 
