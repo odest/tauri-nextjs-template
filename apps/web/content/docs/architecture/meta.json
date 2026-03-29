@@ -5,6 +5,7 @@
     "overview",
     "native-app",
     "web-app",
+    "core-package",
     "ui-package",
     "i18n-package",
     "cli-package",

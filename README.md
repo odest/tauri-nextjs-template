@@ -41,7 +41,7 @@ TNTStack is a starting point for building cross-platform apps. It covers **Web**
 
 ## 💡 Philosophy
 
-- **Unified** - One codebase, every platform. Web and native share the same pages, components, and state.
+- **Unified** - One codebase, every platform. Web and native share the same pages, components, and state through `packages/core` and `packages/ui`.
 - **Ready** - 40+ themes, 10 languages, CI/CD, and a scaffolding CLI out of the box.
 - **Portable** - Run `npm create @tntstack/app`, brand your project, and own the code. No lock-in.
 - **Strict** - End-to-end TypeScript, shared lint rules, and automated releases keep things solid.
@@ -49,7 +49,7 @@ TNTStack is a starting point for building cross-platform apps. It covers **Web**
 ## ✨ Features
 
 - **Cross-Platform** - Single codebase deploys to web, desktop, and mobile
-- **Shared UI Core** - All pages, components, state, and themes live in `packages/ui`
+- **Shared Architecture** - Design system primitives in `packages/ui`, business logic and pages in `packages/core`
 - **40+ Themes** - Light and dark variants of 40+ color schemes, plus custom theming support
 - **10 Languages** - Type-safe i18n works with both SSR (web) and static export (native)
 - **PWA** - Offline support, precaching, and runtime caching strategies for the web app
@@ -121,14 +121,15 @@ apps/
   native/             → Next.js (Static) + Tauri 2 — desktop & mobile
 
 packages/
-  ui/                 → The core: shared pages, components, themes, stores
+  core/               → Business logic: pages, stores, hooks, providers, config
+  ui/                 → Design system: shadcn/ui primitives, themes, styles
   i18n/               → 10-language type-safe translations (SSR & static)
   cli/                → Scaffolding tool (npm create @tntstack/app)
   eslint-config/      → Shared ESLint rules (Flat Config)
   typescript-config/  → Shared TypeScript configs
 ```
 
-Both `web` and `native` import pages, components, and state from `packages/ui`. The web app runs with SSR and PWA support. The native app uses a static HTML export served by Tauri's Rust backend.
+Both `web` and `native` import pages, layouts, and state from `packages/core`, and design system primitives from `packages/ui`. The web app runs with SSR and PWA support. The native app uses a static HTML export served by Tauri's Rust backend.
 
 ### Supported Platforms
 

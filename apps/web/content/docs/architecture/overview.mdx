@@ -8,7 +8,7 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files'
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Mermaid } from '@/components/mdx/mermaid'
 
-The root monorepo. pnpm workspaces with Turborepo orchestration, two apps and five packages.
+The root monorepo. pnpm workspaces with Turborepo orchestration, two apps and six packages.
 
 ## Directory Structure
 
@@ -30,8 +30,11 @@ Internal packages reference each other with `"workspace:*"` in `package.json`. p
     </Folder>
   </Folder>
   <Folder name="packages" defaultOpen>
+    <Folder name="core">
+      <File name="Business logic: pages, stores, hooks, providers, config" />
+    </Folder>
     <Folder name="ui">
-      <File name="Shared pages, components, hooks, stores, themes, styles" />
+      <File name="Design system: shadcn/ui primitives, themes, styles" />
     </Folder>
     <Folder name="i18n">
       <File name="Locale config, messages, routing, middleware (next-intl)" />
@@ -60,7 +63,8 @@ Internal packages reference each other with `"workspace:*"` in `package.json`. p
     web["apps/web"]
   end
 
-  subgraph Core
+  subgraph Packages
+    core["packages/core"]
     ui["packages/ui"]
     i18n["packages/i18n"]
     cli["packages/cli"]
@@ -71,20 +75,25 @@ Internal packages reference each other with `"workspace:*"` in `package.json`. p
     ts["packages/typescript-config"]
   end
 
+  native --> core
   native --> ui
   native --> i18n
+  web --> core
   web --> ui
   web --> i18n
+  core --> ui
+  core --> i18n
   ui --> i18n
 
   native -.-> eslint & ts
   web -.-> eslint & ts
+  core -.-> eslint & ts
   ui -.-> eslint & ts
   i18n -.-> eslint & ts
   cli -.-> eslint & ts
 `} />
 
-Solid arrows are runtime dependencies. Dashed arrows are dev/tooling dependencies (every package uses the shared ESLint and TypeScript configs). The `cli` package is independent and published to npm separately.
+Solid arrows are runtime dependencies. Dashed arrows are dev/tooling dependencies (every package uses the shared ESLint and TypeScript configs). The `cli` package is independent and published to npm separately. `core` depends on `ui` for design system primitives.
 
 ## Turborepo Pipeline
 

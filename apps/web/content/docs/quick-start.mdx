@@ -104,13 +104,13 @@ If you only want to work on one platform:
 
 TNTStack uses **Release Please** for automated versioning and changelog generation. If you host your code on GitHub, you must grant specific permissions for the release bot and enforce a linear git history.
 
-**Step A: Workflow Permissions**
+### Step A: Workflow Permissions
 1. Go to your repository **Settings** > **Actions** > **General**.
 2. Scroll down to **Workflow permissions**.
 3. Select **Read and write permissions**.
 4. Check **Allow GitHub Actions to create and approve pull requests**.
 
-**Step B: Enforce Squash Merging**
+### Step B: Enforce Squash Merging
 Without a linear git history, the release bot will fail to parse your commits and break the automated release cycle.
 1. Go to your repository **Settings** > **General**.
 2. Scroll down to the **Pull Requests** section.

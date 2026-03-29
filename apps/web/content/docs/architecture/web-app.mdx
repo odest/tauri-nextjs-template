@@ -79,7 +79,7 @@ const withNextIntl = createNextIntlPlugin();
 const withMDX = createMDX();
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@workspace/ui", "@workspace/i18n"],
+  transpilePackages: ["@workspace/ui", "@workspace/core", "@workspace/i18n"],
 };
 
 export default withSerwist(withNextIntl(withMDX(nextConfig)));
@@ -190,4 +190,4 @@ Connects MDX content to the docs UI. The `icon` function resolves frontmatter `i
 
 ## App Layout
 
-The `(app)` route group wraps all app pages in `AppLayout` from `@workspace/ui`, passing locale-aware `Link` and `usePathname` from `@workspace/i18n/navigation`. The sidebar, header, and navigation all come from the shared UI package. See [UI Package](/docs/architecture/ui-package) for component details.
+The `(app)` route group wraps all app pages in `AppLayout` from `@workspace/core`, passing locale-aware `Link` and `usePathname` from `@workspace/i18n/navigation`. The sidebar, header, and navigation all come from the shared core and UI packages. See [Core Package](/docs/architecture/core-package) and [UI Package](/docs/architecture/ui-package) for component details.

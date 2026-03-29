@@ -1,0 +1,192 @@
+---
+title: Core Package
+description: Business logic, pages, stores, hooks, providers, and configuration.
+icon: Cpu
+---
+
+import { File, Folder, Files } from 'fumadocs-ui/components/files'
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+The business logic layer. Pages, Zustand stores, hooks, providers, navigation config, and smart components live here. This package depends on [`packages/ui`](/docs/architecture/ui-package) for design system primitives and [`packages/i18n`](/docs/architecture/i18n-package) for translations.
+
+## Directory Structure
+
+<Files>
+  <Folder name="packages/core/src" defaultOpen>
+    <Folder name="components" defaultOpen>
+      <Folder name="common">
+        <File name="greet.tsx, theme-card.tsx, mode-card.tsx, language-card.tsx, ..." />
+      </Folder>
+      <Folder name="layout">
+        <File name="app-layout.tsx, app-header.tsx, app-sidebar.tsx" />
+      </Folder>
+      <Folder name="navigation">
+        <File name="main-nav.tsx, projects-nav.tsx, secondary-nav.tsx, user-nav.tsx" />
+      </Folder>
+    </Folder>
+    <Folder name="pages">
+      <File name="HomePage.tsx, DashboardPage.tsx, SettingsPage.tsx" />
+      <Folder name="subpages">
+        <File name="AnalyticsPage.tsx, OverviewPage.tsx" />
+      </Folder>
+    </Folder>
+    <Folder name="stores">
+      <File name="greet-store.ts, sidebar-store.ts, theme-store.ts" />
+    </Folder>
+    <Folder name="hooks">
+      <File name="use-language-switcher.ts, use-mounted.ts, use-theme-transition.ts" />
+    </Folder>
+    <Folder name="providers">
+      <File name="theme-provider.tsx" />
+    </Folder>
+    <Folder name="config">
+      <File name="navigation.ts, themes.ts" />
+    </Folder>
+    <Folder name="lib">
+      <File name="utils.ts, storage-utils.ts" />
+    </Folder>
+    <Folder name="scripts">
+      <File name="theme-init.ts" />
+    </Folder>
+  </Folder>
+</Files>
+
+## Components
+
+<Tabs items={["Layout", "Common", "Navigation"]}>
+  <Tab value="Layout">
+
+The app shell. These three components compose together to form the sidebar dashboard layout used by both apps.
+
+| Component | What it renders |
+|---|---|
+| `app-layout.tsx` | Full layout wrapper (sidebar + header + content) |
+| `app-header.tsx` | Top bar with breadcrumbs and mobile trigger |
+| `app-sidebar.tsx` | Sidebar that mounts all navigation groups |
+
+  </Tab>
+  <Tab value="Common">
+
+Feature components used in app pages.
+
+| Component | What it does |
+|---|---|
+| `greet.tsx` | Greeting form with Tauri/API toggle |
+| `language-card.tsx` | Language picker card |
+| `language-toggle.tsx` | Compact language toggle button |
+| `mode-card.tsx` | Light/dark/system selector |
+| `mode-toggle.tsx` | Compact mode toggle button |
+| `theme-card.tsx` | Single theme preview with selection |
+| `themes-list.tsx` | Searchable theme gallery grid |
+| `sidebar-variant-card.tsx` | Sidebar style picker |
+| `settings-card-skeleton.tsx` | Loading skeleton for settings cards |
+
+  </Tab>
+  <Tab value="Navigation">
+
+Sidebar navigation sections. Mounted inside `app-sidebar.tsx`.
+
+| Component | What it renders |
+|---|---|
+| `main-nav.tsx` | Primary links (Home, Dashboard) |
+| `projects-nav.tsx` | Project list with dropdown actions |
+| `secondary-nav.tsx` | Secondary links (Settings, Feedback) |
+| `user-nav.tsx` | User avatar with account menu |
+
+  </Tab>
+</Tabs>
+
+## Pages
+
+Full page components consumed by both apps. The app routes are thin wrappers around these.
+
+| Page | Route |
+|---|---|
+| `HomePage.tsx` | `/home` |
+| `DashboardPage.tsx` | `/dashboard` |
+| `SettingsPage.tsx` | `/settings` |
+| `OverviewPage.tsx` | `/dashboard/overview` |
+| `AnalyticsPage.tsx` | `/dashboard/analytics` |
+
+This is why both apps can share the same UI: the page logic lives here, not in the apps.
+
+## Hooks
+
+| Hook | What it does |
+|---|---|
+| `use-mounted.ts` | Returns `true` after first client render |
+| `use-theme-transition.ts` | View Transition API wrapper for smooth theme switching |
+| `use-language-switcher.ts` | Locale change with theme re-application |
+
+## Stores
+
+Zustand stores with `localStorage` persistence where needed.
+
+| Store | State |
+|---|---|
+| `greet-store.ts` | Greeting form input + response |
+| `sidebar-store.ts` | Open/closed state, sidebar variant |
+| `theme-store.ts` | Selected color theme (`data-theme` attribute) |
+
+## Providers
+
+| Provider | What it does |
+|---|---|
+| `theme-provider.tsx` | Injects the custom theme system (wraps `next-themes`) |
+
+## Configuration
+
+| File | What it defines |
+|---|---|
+| `navigation.ts` | Sidebar navigation structure and routes |
+| `themes.ts` | Theme registry (40+ color schemes) |
+| `theme-init.ts` | Script injected into `<head>` to prevent flash of wrong theme |
+
+## Utilities
+
+| File | What it provides |
+|---|---|
+| `utils.ts` | `fetchLatestGithubVersion()` — fetches latest release tag from GitHub API |
+| `storage-utils.ts` | Type-safe `localStorage` helpers for store persistence |
+
+## Exports
+
+Wildcard exports in `package.json`. No barrel files.
+
+```json title="package.json (exports)"
+{
+  "./components/*": "./src/components/*.tsx",
+  "./pages/*": "./src/pages/*.tsx",
+  "./pages/subpages/*": "./src/pages/subpages/*.tsx",
+  "./hooks/*": "./src/hooks/*.ts",
+  "./stores/*": "./src/stores/*.ts",
+  "./config/*": "./src/config/*.ts",
+  "./providers/*": "./src/providers/*.tsx",
+  "./lib/*": "./src/lib/*.ts",
+  "./scripts/*": "./src/scripts/*.ts"
+}
+```
+
+```tsx
+// Usage
+import { AppLayout } from "@workspace/core/components/layout/app-layout";
+import { useThemeStore } from "@workspace/core/stores/theme-store";
+import { HomePage } from "@workspace/core/pages/HomePage";
+import { ThemeProvider } from "@workspace/core/providers/theme-provider";
+```
+
+<Callout type="info">
+Direct path imports (no barrel index). Tree-shaking works out of the box and circular dependency issues are avoided.
+</Callout>
+
+## Dependency Flow
+
+```
+core → ui  (design system primitives)
+core → i18n (translations)
+```
+
+<Callout type="warn">
+`ui` must never import from `core`. The dependency flow is strictly one-directional: `core → ui`. This prevents circular dependencies and keeps the design system independent.
+</Callout>

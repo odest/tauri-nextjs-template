@@ -1,6 +1,6 @@
 ---
 title: UI Package
-description: Shared component library. shadcn/ui primitives, layout, hooks, stores, and styles.
+description: Design system primitives, global styles, and theme infrastructure.
 icon: Component
 ---
 
@@ -8,7 +8,7 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files'
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
-The shared core of both apps. Pages, components, hooks, stores, themes, and global styles all live here. Both `apps/native` and `apps/web` consume this package directly.
+The design system layer. shadcn/ui components, Tailwind themes, global styles, and the `cn()` utility. Both `apps/native` and `apps/web` consume this package for visual primitives.
 
 ## Directory Structure
 
@@ -16,15 +16,6 @@ The shared core of both apps. Pages, components, hooks, stores, themes, and glob
   <Folder name="packages/ui/src" defaultOpen>
     <Folder name="components" defaultOpen>
       <File name="button.tsx, card.tsx, input.tsx, sidebar.tsx, ... (15+ primitives)" />
-      <Folder name="common">
-        <File name="greet.tsx, theme-card.tsx, mode-card.tsx, language-card.tsx, ..." />
-      </Folder>
-      <Folder name="layout">
-        <File name="app-layout.tsx, app-header.tsx, app-sidebar.tsx" />
-      </Folder>
-      <Folder name="navigation">
-        <File name="main-nav.tsx, projects-nav.tsx, secondary-nav.tsx, user-nav.tsx" />
-      </Folder>
       <Folder name="landing">
         <File name="animated-group.tsx, infinite-slider.tsx, logo-cloud.tsx, ..." />
       </Folder>
@@ -32,39 +23,21 @@ The shared core of both apps. Pages, components, hooks, stores, themes, and glob
         <File name="Brand SVG icons (eslint, nextjs, react, rust, tauri, ...)" />
       </Folder>
     </Folder>
-    <Folder name="pages">
-      <File name="HomePage.tsx, DashboardPage.tsx, SettingsPage.tsx" />
-      <Folder name="subpages">
-        <File name="AnalyticsPage.tsx, OverviewPage.tsx" />
-      </Folder>
-    </Folder>
     <Folder name="hooks">
-      <File name="use-language-switcher.ts, use-mobile.ts, use-mounted.ts, use-theme-transition.ts" />
-    </Folder>
-    <Folder name="stores">
-      <File name="greet-store.ts, sidebar-store.ts, theme-store.ts" />
-    </Folder>
-    <Folder name="config">
-      <File name="navigation.ts, themes.ts" />
-    </Folder>
-    <Folder name="providers">
-      <File name="theme-provider.tsx" />
+      <File name="use-mobile.ts" />
     </Folder>
     <Folder name="styles">
       <File name="globals.css, themes.css" />
     </Folder>
     <Folder name="lib">
-      <File name="utils.ts, storage-utils.ts" />
-    </Folder>
-    <Folder name="scripts">
-      <File name="theme-init.ts" />
+      <File name="utils.ts" />
     </Folder>
   </Folder>
 </Files>
 
 ## Components
 
-<Tabs items={["Primitives", "Layout", "Common", "Landing", "Navigation"]}>
+<Tabs items={["Primitives", "Landing"]}>
   <Tab value="Primitives">
 
 15+ shadcn/ui components (`new-york` style) in the root of `src/components/`:
@@ -72,34 +45,6 @@ The shared core of both apps. Pages, components, hooks, stores, themes, and glob
 `avatar`, `breadcrumb`, `button`, `card`, `collapsible`, `dropdown-menu`, `input`, `label`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `tooltip`
 
 All built on Radix UI primitives except `card`, `input`, `breadcrumb` (native HTML), `skeleton` (CSS animation), and `sidebar` (custom compound component).
-
-  </Tab>
-  <Tab value="Layout">
-
-The app shell. These three components compose together to form the sidebar dashboard layout used by both apps.
-
-| Component | What it renders |
-|---|---|
-| `app-layout.tsx` | Full layout wrapper (sidebar + header + content) |
-| `app-header.tsx` | Top bar with breadcrumbs and mobile trigger |
-| `app-sidebar.tsx` | Sidebar that mounts all navigation groups |
-
-  </Tab>
-  <Tab value="Common">
-
-Feature components used in app pages.
-
-| Component | What it does |
-|---|---|
-| `greet.tsx` | Greeting form with Tauri/API toggle |
-| `language-card.tsx` | Language picker card |
-| `language-toggle.tsx` | Compact language toggle button |
-| `mode-card.tsx` | Light/dark/system selector |
-| `mode-toggle.tsx` | Compact mode toggle button |
-| `theme-card.tsx` | Single theme preview with selection |
-| `themes-list.tsx` | Searchable theme gallery grid |
-| `sidebar-variant-card.tsx` | Sidebar style picker |
-| `settings-card-skeleton.tsx` | Loading skeleton for settings cards |
 
   </Tab>
   <Tab value="Landing">
@@ -116,52 +61,19 @@ Landing page components. All animations use the Motion library.
 | `text-effect.tsx` | Animated text reveal |
 
   </Tab>
-  <Tab value="Navigation">
-
-Sidebar navigation sections. Mounted inside `app-sidebar.tsx`.
-
-| Component | What it renders |
-|---|---|
-| `main-nav.tsx` | Primary links (Home, Dashboard) |
-| `projects-nav.tsx` | Project list with dropdown actions |
-| `secondary-nav.tsx` | Secondary links (Settings, Feedback) |
-| `user-nav.tsx` | User avatar with account menu |
-
-  </Tab>
 </Tabs>
-
-## Pages
-
-Full page components consumed by both apps. The app routes are thin wrappers around these.
-
-| Page | Route |
-|---|---|
-| `HomePage.tsx` | `/home` |
-| `DashboardPage.tsx` | `/dashboard` |
-| `SettingsPage.tsx` | `/settings` |
-| `OverviewPage.tsx` | `/dashboard/overview` |
-| `AnalyticsPage.tsx` | `/dashboard/analytics` |
-
-This is why both apps can share the same UI: the page logic lives here, not in the apps.
 
 ## Hooks
 
 | Hook | What it does |
 |---|---|
-| `use-mobile.ts` | Returns `true` below the mobile breakpoint |
-| `use-mounted.ts` | Returns `true` after first client render |
-| `use-theme-transition.ts` | View Transition API wrapper for smooth theme switching |
-| `use-language-switcher.ts` | Locale change with theme re-application |
+| `use-mobile.ts` | Returns `true` below the mobile breakpoint (required by `sidebar.tsx`) |
 
-## Stores
+## Utilities
 
-Zustand stores with `localStorage` persistence where needed.
-
-| Store | State |
+| File | What it provides |
 |---|---|
-| `greet-store.ts` | Greeting form input + response |
-| `sidebar-store.ts` | Open/closed state, sidebar variant |
-| `theme-store.ts` | Selected color theme (`data-theme` attribute) |
+| `utils.ts` | `cn()` — Tailwind class merge utility (`clsx` + `tailwind-merge`) |
 
 ## Exports
 
@@ -172,23 +84,16 @@ Wildcard exports in `package.json`. No barrel files.
   "./globals.css": "./src/styles/globals.css",
   "./postcss.config": "./postcss.config.mjs",
   "./components/*": "./src/components/*.tsx",
-  "./providers/*": "./src/providers/*.tsx",
-  "./pages/*": "./src/pages/*.tsx",
-  "./pages/subpages/*": "./src/pages/subpages/*.tsx",
-  "./hooks/*": "./src/hooks/*.ts",
-  "./stores/*": "./src/stores/*.ts",
-  "./config/*": "./src/config/*.ts",
   "./lib/*": "./src/lib/*.ts",
-  "./scripts/*": "./src/scripts/*.ts"
+  "./hooks/*": "./src/hooks/*.ts"
 }
 ```
 
 ```tsx
 // Usage
 import { Button } from "@workspace/ui/components/button";
-import { AppLayout } from "@workspace/ui/components/layout/app-layout";
-import { useThemeStore } from "@workspace/ui/stores/theme-store";
-import { HomePage } from "@workspace/ui/pages/HomePage";
+import { Sidebar } from "@workspace/ui/components/sidebar";
+import { cn } from "@workspace/ui/lib/utils";
 ```
 
 <Callout type="info">
@@ -202,13 +107,14 @@ Direct path imports (no barrel index). Tree-shaking works out of the box and cir
 @import "tw-animate-css";
 @import "./themes.css";
 
-@source "../../../apps/**/*.{ts,tsx}";
+@source "../../../../apps/**/*.{ts,tsx}";
+@source "../../../core/src/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
 @custom-variant dark (&:is(.dark *));
 ```
 
-The `@source` directives tell Tailwind to scan both the UI package and all apps for class usage. Both apps import this stylesheet via `@workspace/ui/globals.css`.
+The `@source` directives tell Tailwind to scan the UI package, the core package, and all apps for class usage. Both apps import this stylesheet via `@workspace/ui/globals.css`.
 
 <Callout type="warn">
 Don't create separate Tailwind entry points in the apps. Use the shared `globals.css` so all workspaces share the same design tokens and utilities.
