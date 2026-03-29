@@ -29,7 +29,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
         run: |
-          LATEST_TAG=$(gh release list --limit 10 --json tagName -q ".[].tagName" | grep -E '^v[0-9]' | head -n 1)
+          LATEST_TAG=$(gh release list --repo ${{ github.repository }} --limit 10 --json tagName -q ".[].tagName" | grep -E '^v[0-9]' | head -n 1)
           if [ -n "$LATEST_TAG" ]; then
-            gh release edit "$LATEST_TAG" --latest
+            gh release edit "$LATEST_TAG" --repo ${{ github.repository }} --latest
           fi
