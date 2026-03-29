@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.5](https://github.com/odest/tntstack/compare/v1.4.4...v1.4.5) (2026-03-29)
+
+
+### Documentation
+
+* update architecture documentation for ui and core packages split ([c65c0ed](https://github.com/odest/tntstack/commit/c65c0edc6054bd909c5fa6426fbb0adfba43e729))
+
+
+### Code Refactoring
+
+* **packages:** extract business logic from ui to core ([59bd4ec](https://github.com/odest/tntstack/commit/59bd4ec64acedb43a472414fbf84f51f1b4f22de))
+
 ## [1.4.4](https://github.com/odest/tntstack/compare/v1.4.3...v1.4.4) (2026-03-27)
 
 
