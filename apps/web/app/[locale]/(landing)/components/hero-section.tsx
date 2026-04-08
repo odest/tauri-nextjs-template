@@ -4,40 +4,10 @@ import Image from "next/image";
 import { ArrowRight, Play, Rocket } from "lucide-react";
 import { fetchLatestGithubVersion } from "@workspace/core/lib/utils";
 import { Button } from "@workspace/ui/components/button";
-import {
-  AnimatedGroup,
-  type AnimatedGroupProps,
-} from "@workspace/ui/components/landing/animated-group";
+import { AnimatedGroup } from "@workspace/ui/components/landing/animated-group";
 import { LogoCloud } from "@workspace/ui/components/landing/logo-cloud";
 import { TextEffect } from "@workspace/ui/components/landing/text-effect";
-
-const transitionVariants: AnimatedGroupProps["variants"] = {
-  container: {
-    visible: {
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  },
-  item: {
-    hidden: {
-      opacity: 0,
-      filter: "blur(12px)",
-      y: 12,
-    },
-    visible: {
-      opacity: 1,
-      filter: "blur(0px)",
-      y: 0,
-      transition: {
-        type: "spring",
-        bounce: 0.3,
-        duration: 1.5,
-      },
-    },
-  },
-};
+import { transitionVariants } from "@/lib/animations";
 
 export default function HeroSection() {
   const [latestTag, setLatestTag] = useState<string | null>(null);
