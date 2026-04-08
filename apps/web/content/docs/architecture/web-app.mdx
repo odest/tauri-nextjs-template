@@ -45,6 +45,9 @@ A server-rendered Next.js app that hosts the landing page, web app, documentatio
       <File name="request.ts" />
     </Folder>
     <Folder name="lib">
+      <File name="animations.ts" />
+      <File name="detect-platform.ts" />
+      <File name="github-releases.ts" />
       <File name="source.ts" />
     </Folder>
     <File name="next.config.ts" />
@@ -59,7 +62,7 @@ Pages are split into three route groups under `[locale]`, each with its own layo
 
 | Group | Paths | Layout |
 |---|---|---|
-| `(landing)` | `/` | Marketing layout (no sidebar) |
+| `(landing)` | `/`, `/download` | Marketing layout (no sidebar) |
 | `(app)` | `/home`, `/dashboard`, `/settings` | Sidebar-based app shell |
 | `(docs)` | `/docs/...` | Fumadocs documentation layout |
 

@@ -1,4 +1,5 @@
 import { ThemeProvider } from "@workspace/core/providers/theme-provider";
+import { HeroHeader } from "./components/header";
 
 interface LandingLayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,7 @@ export default function LandingLayout({ children }: LandingLayoutProps) {
       disableTransitionOnChange
       enableColorScheme
     >
+      <HeroHeader />
       {children}
     </ThemeProvider>
   );

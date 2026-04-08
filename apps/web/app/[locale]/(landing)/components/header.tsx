@@ -10,7 +10,7 @@ import { Logo } from "@workspace/ui/components/landing/logo";
 const menuItems = [
   { name: "Docs", href: "/docs" },
   { name: "Pricing", href: "/" },
-  { name: "Download", href: "/" },
+  { name: "Download", href: "/download" },
   { name: "Showcase", href: "/" },
 ];
 
