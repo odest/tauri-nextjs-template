@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.5.0](https://github.com/odest/tntstack/compare/v1.4.7...v1.5.0) (2026-04-11)
+
+
+### Features
+
+* **web:** implement download page with dynamic OS artifacts ([#49](https://github.com/odest/tntstack/issues/49)) ([25841eb](https://github.com/odest/tntstack/commit/25841ebf48545b5434cc7198913124b08b508332))
+
+
+### Build System
+
+* **deps:** bump next from 16.2.1 to 16.2.3 ([#52](https://github.com/odest/tntstack/issues/52)) ([adf1d2e](https://github.com/odest/tntstack/commit/adf1d2ec99809bd4058708b9ff0c993ada569289))
+* **deps:** bump next-intl from 4.8.3 to 4.9.1 ([#51](https://github.com/odest/tntstack/issues/51)) ([ed5c70f](https://github.com/odest/tntstack/commit/ed5c70f48977ea752e65a5fe90219a78f9e7332c))
+
 ## [1.4.7](https://github.com/odest/tntstack/compare/v1.4.6...v1.4.7) (2026-03-29)
 
 
