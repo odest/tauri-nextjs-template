@@ -7,6 +7,7 @@ import { Button } from "@workspace/ui/components/button";
 import { AnimatedGroup } from "@workspace/ui/components/landing/animated-group";
 import { LogoCloud } from "@workspace/ui/components/landing/logo-cloud";
 import { TextEffect } from "@workspace/ui/components/landing/text-effect";
+import { BorderBeam } from "@workspace/ui/components/landing/border-beam";
 import { transitionVariants } from "@/lib/animations";
 
 export default function HeroSection() {
@@ -110,6 +111,7 @@ export default function HeroSection() {
               className="hidden size-full dark:block"
               width="3276"
               height="4095"
+              priority
             />
           </AnimatedGroup>
 
@@ -218,18 +220,23 @@ export default function HeroSection() {
             <div className="mask-b-from-55% relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
               <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
                 <Image
-                  className="bg-background aspect-15/8 relative hidden rounded-2xl dark:block"
+                  className="bg-background aspect-15/8 relative hidden rounded-2xl grayscale mix-blend-luminosity dark:block"
                   src="/app-screen-dark.png"
                   alt="app screen"
                   width="1920"
                   height="1080"
                 />
                 <Image
-                  className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border dark:hidden"
+                  className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border grayscale mix-blend-luminosity dark:hidden"
                   src="/app-screen-light.png"
                   alt="app screen"
                   width="1920"
                   height="1080"
+                />
+                <BorderBeam
+                  duration={6}
+                  size={200}
+                  className="from-transparent via-primary to-transparent"
                 />
               </div>
             </div>
