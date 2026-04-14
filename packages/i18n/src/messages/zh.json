@@ -69,5 +69,21 @@
     "billing": "账单",
     "notifications": "通知",
     "logOut": "退出登录"
+  },
+  "HotkeysDialog": {
+    "title": "键盘快捷键",
+    "description": "此应用程序可用的键盘快捷键。",
+    "general": "常规",
+    "navigation": "导航",
+    "commandPalette": "命令面板",
+    "toggleSidebar": "切换侧边栏",
+    "toggleMode": "切换模式",
+    "showHotkeys": "显示快捷键",
+    "goHome": "转到主页",
+    "goDashboard": "转到仪表板",
+    "goAnalytics": "转到分析",
+    "goOverview": "转到概览",
+    "goSettings": "转到设置",
+    "then": "然后"
   }
 }

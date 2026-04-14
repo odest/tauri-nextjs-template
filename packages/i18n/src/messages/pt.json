@@ -69,5 +69,21 @@
     "billing": "Faturamento",
     "notifications": "Notificações",
     "logOut": "Sair"
+  },
+  "HotkeysDialog": {
+    "title": "Atalhos de Teclado",
+    "description": "Atalhos de teclado disponíveis para este aplicativo.",
+    "general": "Geral",
+    "navigation": "Navegação",
+    "commandPalette": "Paleta de Comandos",
+    "toggleSidebar": "Alternar barra lateral",
+    "toggleMode": "Alternar Modo",
+    "showHotkeys": "Mostrar atalhos",
+    "goHome": "Ir para o Início",
+    "goDashboard": "Ir para o Painel",
+    "goAnalytics": "Ir para Análises",
+    "goOverview": "Ir para Visão Geral",
+    "goSettings": "Ir para Configurações",
+    "then": "em seguida"
   }
 }

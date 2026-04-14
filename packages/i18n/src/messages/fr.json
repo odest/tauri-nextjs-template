@@ -69,5 +69,21 @@
     "billing": "Facturation",
     "notifications": "Notifications",
     "logOut": "Se déconnecter"
+  },
+  "HotkeysDialog": {
+    "title": "Raccourcis Clavier",
+    "description": "Raccourcis clavier disponibles pour cette application.",
+    "general": "Général",
+    "navigation": "Navigation",
+    "commandPalette": "Palette de Commandes",
+    "toggleSidebar": "Basculer la barre latérale",
+    "toggleMode": "Basculer le mode",
+    "showHotkeys": "Afficher les raccourcis",
+    "goHome": "Aller à l'Accueil",
+    "goDashboard": "Aller au tableau de bord",
+    "goAnalytics": "Aller à l'Analyse",
+    "goOverview": "Aller à l'Aperçu",
+    "goSettings": "Aller aux Paramètres",
+    "then": "puis"
   }
 }

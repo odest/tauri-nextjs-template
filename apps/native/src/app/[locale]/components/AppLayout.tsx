@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Link, usePathname } from "@workspace/i18n/navigation";
+import { Link, usePathname, useRouter } from "@workspace/i18n/navigation";
 import { AppLayout as MainLayout } from "@workspace/core/components/layout/app-layout";
 
 interface AppLayoutProps {
@@ -23,10 +23,15 @@ const NativeLink = ({
 };
 
 export function AppLayout({ children }: AppLayoutProps) {
+  const router = useRouter();
   const pathname = usePathname();
 
   return (
-    <MainLayout pathname={pathname} LinkComponent={NativeLink}>
+    <MainLayout
+      pathname={pathname}
+      navigate={(path) => router.push(path)}
+      LinkComponent={NativeLink}
+    >
       {children}
     </MainLayout>
   );

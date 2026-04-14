@@ -69,5 +69,21 @@
     "billing": "Billing",
     "notifications": "Notifications",
     "logOut": "Log out"
+  },
+  "HotkeysDialog": {
+    "title": "Keyboard Shortcuts",
+    "description": "Available keyboard shortcuts for this application.",
+    "general": "General",
+    "navigation": "Navigation",
+    "commandPalette": "Command Palette",
+    "toggleSidebar": "Toggle Sidebar",
+    "toggleMode": "Toggle Mode",
+    "showHotkeys": "Show Shortcuts",
+    "goHome": "Go to Home",
+    "goDashboard": "Go to Dashboard",
+    "goAnalytics": "Go to Analytics",
+    "goOverview": "Go to Overview",
+    "goSettings": "Go to Settings",
+    "then": "then"
   }
 }

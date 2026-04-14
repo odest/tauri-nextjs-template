@@ -69,5 +69,21 @@
     "billing": "Faturalama",
     "notifications": "Bildirimler",
     "logOut": "Çıkış Yap"
+  },
+  "HotkeysDialog": {
+    "title": "Klavye Kısayolları",
+    "description": "Bu uygulama için kullanılabilir klavye kısayolları.",
+    "general": "Genel",
+    "navigation": "Navigasyon",
+    "commandPalette": "Komut Paleti",
+    "toggleSidebar": "Kenar Çubuğunu Aç/Kapat",
+    "toggleMode": "Modu Değiştir",
+    "showHotkeys": "Kısayolları Göster",
+    "goHome": "Ana Sayfaya Git",
+    "goDashboard": "Kontrol Paneline Git",
+    "goAnalytics": "Analize Git",
+    "goOverview": "Genel Bakışa Git",
+    "goSettings": "Ayarlara Git",
+    "then": "sonra"
   }
 }

@@ -69,5 +69,21 @@
     "billing": "Facturación",
     "notifications": "Notificaciones",
     "logOut": "Cerrar sesión"
+  },
+  "HotkeysDialog": {
+    "title": "Atajos de Teclado",
+    "description": "Atajos de teclado disponibles para esta aplicación.",
+    "general": "General",
+    "navigation": "Navegación",
+    "commandPalette": "Paleta de Comandos",
+    "toggleSidebar": "Alternar barra lateral",
+    "toggleMode": "Alternar Modo",
+    "showHotkeys": "Mostrar atajos",
+    "goHome": "Ir a Inicio",
+    "goDashboard": "Ir al Tablero",
+    "goAnalytics": "Ir a Analíticas",
+    "goOverview": "Ir a Resumen",
+    "goSettings": "Ir a Ajustes",
+    "then": "luego"
   }
 }

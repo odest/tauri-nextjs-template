@@ -69,5 +69,21 @@
     "billing": "Выставление счетов",
     "notifications": "Уведомления",
     "logOut": "Выйти"
+  },
+  "HotkeysDialog": {
+    "title": "Сочетания Клавиш",
+    "description": "Доступные сочетания клавиш для этого приложения.",
+    "general": "Общие",
+    "navigation": "Навигация",
+    "commandPalette": "Палитра Команд",
+    "toggleSidebar": "Переключить боковую панель",
+    "toggleMode": "Переключить режим",
+    "showHotkeys": "Показать сочетания клавиш",
+    "goHome": "На Главную",
+    "goDashboard": "На панель управления",
+    "goAnalytics": "К аналитике",
+    "goOverview": "К обзору",
+    "goSettings": "Перейти к Настройкам",
+    "then": "затем"
   }
 }

@@ -69,5 +69,21 @@
     "billing": "Fatturazione",
     "notifications": "Notifiche",
     "logOut": "Esci"
+  },
+  "HotkeysDialog": {
+    "title": "Scorciatoie da Tastiera",
+    "description": "Scorciatoie da tastiera disponibili per questa applicazione.",
+    "general": "Generale",
+    "navigation": "Navigazione",
+    "commandPalette": "Tavolozza dei Comandi",
+    "toggleSidebar": "Attiva/Disattiva barra laterale",
+    "toggleMode": "Cambia Modalità",
+    "showHotkeys": "Mostra scorciatoie",
+    "goHome": "Vai alla Home",
+    "goDashboard": "Vai alla Dashboard",
+    "goAnalytics": "Vai all'Analisi",
+    "goOverview": "Vai alla Panoramica",
+    "goSettings": "Vai alle Impostazioni",
+    "then": "poi"
   }
 }
