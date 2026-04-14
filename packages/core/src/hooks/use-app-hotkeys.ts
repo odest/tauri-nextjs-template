@@ -4,6 +4,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { hotkeys } from "@workspace/core/config/hotkeys";
 import { useSidebar } from "@workspace/ui/components/sidebar";
 import { useHotkeysDialogStore } from "@workspace/core/stores/hotkeys-store";
+import { useCommandPaletteStore } from "@workspace/core/stores/command-palette-store";
 import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
 
 interface UseAppHotkeysOptions {
@@ -14,16 +15,16 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
   const { toggleSidebar } = useSidebar();
   const { theme, handleThemeChange } = useThemeTransition();
   const toggleHotkeysDialog = useHotkeysDialogStore((s) => s.toggle);
+  const toggleCommandPalette = useCommandPaletteStore((s) => s.toggle);
 
   const getKeys = (id: string) => hotkeys.find((h) => h.id === id)?.keys || "";
 
-  // Command Palette (placeholder for now)
+  // Command Palette
   useHotkeys(
     getKeys("command-palette"),
     (e: KeyboardEvent) => {
       e.preventDefault();
-      // TODO: Command palette logic will be added in the feat/command-palette branch.
-      console.log("Command Palette triggered!");
+      toggleCommandPalette();
     },
     { enableOnFormTags: false, delimiter: "|" },
   );
