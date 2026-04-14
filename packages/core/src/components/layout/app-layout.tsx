@@ -1,7 +1,11 @@
+"use client";
+
 import { ReactNode, ComponentType } from "react";
 import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
 import { AppHeader } from "@workspace/core/components/layout/app-header";
+import { HotkeysDialog } from "@workspace/core/components/common/hotkeys-dialog";
 import { ThemeProvider } from "@workspace/core/providers/theme-provider";
+import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys";
 import {
   SidebarInset,
   SidebarProvider,
@@ -10,6 +14,7 @@ import {
 interface AppLayoutProps {
   children: ReactNode;
   pathname: string;
+  navigate: (path: string) => void;
   LinkComponent?:
     | ComponentType<{
         href: string;
@@ -20,9 +25,15 @@ interface AppLayoutProps {
     | "a";
 }
 
+function HotkeysRegistrar({ navigate }: { navigate: (path: string) => void }) {
+  useAppHotkeys({ navigate });
+  return null;
+}
+
 export function AppLayout({
   children,
   pathname,
+  navigate,
   LinkComponent,
 }: AppLayoutProps) {
   return (
@@ -34,11 +45,13 @@ export function AppLayout({
       enableColorScheme
     >
       <SidebarProvider className="h-screen">
+        <HotkeysRegistrar navigate={navigate} />
         <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
         <SidebarInset>
           <AppHeader pathname={pathname} LinkComponent={LinkComponent} />
           {children}
         </SidebarInset>
+        <HotkeysDialog />
       </SidebarProvider>
     </ThemeProvider>
   );

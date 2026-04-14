@@ -17,3 +17,28 @@ export async function fetchLatestGithubVersion(): Promise<string | null> {
     return null;
   }
 }
+
+/**
+ * Returns a human-readable label for a hotkey key string.
+ * Detects macOS to show ⌘ instead of Ctrl.
+ * Handles sequence strings (e.g. "g>s") and combinators (e.g. "mod+k").
+ */
+export function formatHotkeyDisplay(keys: string): string[] {
+  const isMac =
+    typeof navigator !== "undefined" &&
+    /Mac|iPod|iPhone|iPad/.test(navigator.userAgent);
+
+  // Split by either `+` or `>` to support sequences like "g>s" and chords like "mod+k"
+  return keys.split(/[+>]+/).map((key) => {
+    switch (key) {
+      case "mod":
+        return isMac ? "⌘" : "Ctrl";
+      case "shift":
+        return isMac ? "⇧" : "Shift";
+      case "alt":
+        return isMac ? "⌥" : "Alt";
+      default:
+        return key.toUpperCase();
+    }
+  });
+}

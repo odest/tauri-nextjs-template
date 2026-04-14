@@ -1,6 +1,6 @@
 "use client";
 
-import { Link, usePathname } from "@workspace/i18n/navigation";
+import { Link, usePathname, useRouter } from "@workspace/i18n/navigation";
 import { AppLayout } from "@workspace/core/components/layout/app-layout";
 
 interface AppGroupLayoutProps {
@@ -8,10 +8,15 @@ interface AppGroupLayoutProps {
 }
 
 export default function AppGroupLayout({ children }: AppGroupLayoutProps) {
+  const router = useRouter();
   const pathname = usePathname();
 
   return (
-    <AppLayout pathname={pathname} LinkComponent={Link}>
+    <AppLayout
+      pathname={pathname}
+      navigate={(path) => router.push(path)}
+      LinkComponent={Link}
+    >
       {children}
     </AppLayout>
   );

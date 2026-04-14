@@ -69,5 +69,21 @@
     "billing": "Abrechnung",
     "notifications": "Benachrichtigungen",
     "logOut": "Abmelden"
+  },
+  "HotkeysDialog": {
+    "title": "Tastenkürzel",
+    "description": "Verfügbare Tastenkürzel für diese Anwendung.",
+    "general": "Allgemein",
+    "navigation": "Navigation",
+    "commandPalette": "Befehlspalette",
+    "toggleSidebar": "Seitenleiste umschalten",
+    "toggleMode": "Modus umschalten",
+    "showHotkeys": "Tastenkürzel anzeigen",
+    "goHome": "Zur Startseite gehen",
+    "goDashboard": "Zum Dashboard gehen",
+    "goAnalytics": "Zur Analyse gehen",
+    "goOverview": "Zur Übersicht gehen",
+    "goSettings": "Zu Einstellungen gehen",
+    "then": "dann"
   }
 }

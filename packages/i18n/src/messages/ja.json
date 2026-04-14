@@ -69,5 +69,21 @@
     "billing": "請求",
     "notifications": "通知",
     "logOut": "ログアウト"
+  },
+  "HotkeysDialog": {
+    "title": "キーボードショートカット",
+    "description": "このアプリケーションで利用可能なキーボードショートカット。",
+    "general": "一般",
+    "navigation": "ナビゲーション",
+    "commandPalette": "コマンドパレット",
+    "toggleSidebar": "サイドバーを切り替える",
+    "toggleMode": "モードを切り替える",
+    "showHotkeys": "ショートカットを表示",
+    "goHome": "ホームに戻る",
+    "goDashboard": "ダッシュボードに戻る",
+    "goAnalytics": "分析に移動",
+    "goOverview": "概要に移動",
+    "goSettings": "設定に行く",
+    "then": "次に"
   }
 }
