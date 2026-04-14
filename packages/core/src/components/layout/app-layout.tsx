@@ -4,6 +4,7 @@ import { ReactNode, ComponentType } from "react";
 import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
 import { AppHeader } from "@workspace/core/components/layout/app-header";
 import { HotkeysDialog } from "@workspace/core/components/common/hotkeys-dialog";
+import { CommandPalette } from "@workspace/core/components/common/command-palette";
 import { ThemeProvider } from "@workspace/core/providers/theme-provider";
 import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys";
 import {
@@ -52,6 +53,7 @@ export function AppLayout({
           {children}
         </SidebarInset>
         <HotkeysDialog />
+        <CommandPalette navigate={navigate} />
       </SidebarProvider>
     </ThemeProvider>
   );

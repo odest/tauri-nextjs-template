@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import { Input } from "@workspace/ui/components/input";
 import { Skeleton } from "@workspace/ui/components/skeleton";
 import {
@@ -30,9 +29,10 @@ import { ThemeCard } from "@workspace/core/components/common/theme-card";
 import { useThemeStore } from "@workspace/core/stores/theme-store";
 import { useMounted } from "@workspace/core/hooks/use-mounted";
 import { useTranslations } from "@workspace/i18n";
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
 
 export const ThemesList = () => {
-  const { theme: activeMode, resolvedTheme } = useTheme();
+  const { theme: activeMode, resolvedTheme } = useThemeTransition();
   const mounted = useMounted();
   const t = useTranslations("ThemesList");
 

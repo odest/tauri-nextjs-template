@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 type ThemeOption = "light" | "dark" | "system";
 
 export function useThemeTransition() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   const handleThemeChange = (
     newTheme: ThemeOption,
@@ -35,6 +35,7 @@ export function useThemeTransition() {
 
   return {
     theme,
+    resolvedTheme,
     handleThemeChange,
   };
 }
