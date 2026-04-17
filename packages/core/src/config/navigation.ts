@@ -1,9 +1,16 @@
 import {
   Home,
   Send,
+  User,
+  Bell,
+  LogOut,
+  Search,
   Github,
+  Sparkles,
   Settings,
   PieChart,
+  BadgeCheck,
+  CreditCard,
   LucideIcon,
   LayoutDashboard,
 } from "lucide-react";
@@ -29,6 +36,13 @@ export interface MainNavItem {
   translationKey: string;
 }
 
+export interface MobileNavItem {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+  translationKey: string;
+}
+
 export interface SecondaryNavItem {
   title: string;
   url: string;
@@ -44,11 +58,25 @@ export interface ProjectNavItem {
   translationKey: string;
 }
 
+export interface ProfileNavItem {
+  title: string;
+  url: string;
+  icon: LucideIcon;
+  translationKey: string;
+}
+
+export interface ProfileNavGroup {
+  id: string;
+  items: ProfileNavItem[];
+}
+
 export interface NavigationData {
   user: UserNavItem;
   navMain: MainNavItem[];
+  navMobile: MobileNavItem[];
   navSecondary: SecondaryNavItem[];
   projects: ProjectNavItem[];
+  navProfile: ProfileNavGroup[];
 }
 
 export const navigationData: NavigationData = {
@@ -86,6 +114,33 @@ export const navigationData: NavigationData = {
       ],
     },
   ],
+  navMobile: [
+    { title: "Home", url: "/home", icon: Home, translationKey: "home" },
+    {
+      title: "Search",
+      url: "#search",
+      icon: Search,
+      translationKey: "search",
+    },
+    {
+      title: "Dashboard",
+      url: "/dashboard",
+      icon: LayoutDashboard,
+      translationKey: "dashboard",
+    },
+    {
+      title: "Profile",
+      url: "#profile",
+      icon: User,
+      translationKey: "profile",
+    },
+    {
+      title: "Settings",
+      url: "/settings",
+      icon: Settings,
+      translationKey: "settings",
+    },
+  ],
   navSecondary: [
     {
       title: "Feedback",
@@ -114,6 +169,53 @@ export const navigationData: NavigationData = {
       url: "#",
       icon: PieChart,
       translationKey: "projectAlpha",
+    },
+  ],
+  navProfile: [
+    {
+      id: "group-1",
+      items: [
+        {
+          title: "Upgrade to Pro",
+          url: "#upgrade",
+          icon: Sparkles,
+          translationKey: "upgradeToPro",
+        },
+      ],
+    },
+    {
+      id: "group-2",
+      items: [
+        {
+          title: "Account",
+          url: "#account",
+          icon: BadgeCheck,
+          translationKey: "account",
+        },
+        {
+          title: "Billing",
+          url: "#billing",
+          icon: CreditCard,
+          translationKey: "billing",
+        },
+        {
+          title: "Notifications",
+          url: "#notifications",
+          icon: Bell,
+          translationKey: "notifications",
+        },
+      ],
+    },
+    {
+      id: "group-3",
+      items: [
+        {
+          title: "Log Out",
+          url: "#logout",
+          icon: LogOut,
+          translationKey: "logOut",
+        },
+      ],
     },
   ],
 };

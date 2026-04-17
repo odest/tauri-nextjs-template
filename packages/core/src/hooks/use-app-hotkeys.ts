@@ -34,7 +34,7 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
     getKeys("toggle-mode"),
     (e: KeyboardEvent) => {
       e.preventDefault();
-      handleThemeChange((theme === "dark" ? "light" : "dark") as any);
+      handleThemeChange((theme === "dark" ? "light" : "dark") as "light" | "dark");
     },
     { enableOnFormTags: false },
   );

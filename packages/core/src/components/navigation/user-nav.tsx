@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-} from "lucide-react";
-
+import { ChevronsUpDown } from "lucide-react";
+import { navigationData } from "@workspace/core/config/navigation";
 import {
   Avatar,
   AvatarFallback,
@@ -27,7 +20,6 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-  useSidebar,
 } from "@workspace/ui/components/sidebar";
 import { useTranslations } from "@workspace/i18n";
 
@@ -42,7 +34,6 @@ interface UserNavProps {
 }
 
 export function UserNav({ user }: UserNavProps) {
-  const { isMobile } = useSidebar();
   const t = useTranslations("Navigation");
 
   return (
@@ -69,7 +60,7 @@ export function UserNav({ user }: UserNavProps) {
           </DropdownMenuTrigger>
           <DropdownMenuContent
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-            side={isMobile ? "bottom" : "right"}
+            side={"right"}
             align="end"
             sideOffset={4}
           >
@@ -88,32 +79,24 @@ export function UserNav({ user }: UserNavProps) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                {t("upgradeToPro")}
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <BadgeCheck />
-                {t("account")}
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                {t("billing")}
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                {t("notifications")}
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut />
-              {t("logOut")}
-            </DropdownMenuItem>
+            {navigationData.navProfile.map((group, index) => (
+              <div key={group.id} className="contents">
+                <DropdownMenuGroup>
+                  {group.items.map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <DropdownMenuItem key={item.translationKey}>
+                        <Icon strokeWidth={2} />
+                        {t(item.translationKey as Parameters<typeof t>[0])}
+                      </DropdownMenuItem>
+                    );
+                  })}
+                </DropdownMenuGroup>
+                {index < navigationData.navProfile.length - 1 && (
+                  <DropdownMenuSeparator />
+                )}
+              </div>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
