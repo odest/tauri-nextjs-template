@@ -30,7 +30,9 @@ function HotkeyRow({ hotkey }: { hotkey: HotkeyDefinition }) {
 
   return (
     <div className="flex items-center justify-between py-2">
-      <span className="text-sm">{t(hotkey.translationKey)}</span>
+      <span className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
+        {t(hotkey.translationKey)}
+      </span>
       <KbdGroup className="gap-0.5">
         {keys.map((key, i) => (
           <React.Fragment key={i}>
@@ -57,7 +59,7 @@ function HotkeysList() {
     <div className="space-y-4">
       {generalHotkeys.length > 0 && (
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+          <h3 className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
             {t("general")}
           </h3>
           <div className="space-y-0.5">
@@ -74,7 +76,7 @@ function HotkeysList() {
 
       {navigationHotkeys.length > 0 && (
         <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+          <h3 className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
             {t("navigation")}
           </h3>
           <div className="space-y-0.5">

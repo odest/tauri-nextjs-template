@@ -42,7 +42,7 @@ export function ModeSwitch({ className }: { className?: string }) {
               type="button"
               onClick={(e) => handleThemeChange(mode.value, e)}
               className={cn(
-                "relative z-10 flex h-7 w-7 cursor-pointer items-center justify-center rounded-full transition-colors duration-200",
+                "relative z-10 flex size-7 cursor-pointer items-center justify-center rounded-full transition-colors duration-200",
                 isActive
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground/70",

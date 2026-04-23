@@ -44,7 +44,7 @@ export const ModeCard = () => {
         >
           <div className="relative">
             <div className="aspect-video rounded-lg border-2 border-border dark:border-muted-foreground bg-background dark:bg-foreground overflow-hidden transition-colors">
-              <div className="h-5 border-b border-border dark:border-muted-foreground bg-muted dark:bg-muted-foreground/30"></div>
+              <div className="h-(--comp-h-5) border-b border-border dark:border-muted-foreground bg-muted dark:bg-muted-foreground/30"></div>
               <div className="p-2 space-y-1 mt-2">
                 <div className="h-2 bg-muted-foreground/20 rounded dark:bg-muted/30 w-3/4"></div>
                 <div className="h-2 bg-muted-foreground/20 rounded dark:bg-muted/30 w-1/2"></div>
@@ -73,7 +73,7 @@ export const ModeCard = () => {
         >
           <div className="relative">
             <div className="aspect-video rounded-lg border-2 border-muted-foreground dark:border-border bg-foreground dark:bg-background overflow-hidden transition-colors">
-              <div className="h-5 border-b dark:border-border border-muted-foreground bg-muted-foreground/30 dark:bg-muted"></div>
+              <div className="h-(--comp-h-5) border-b dark:border-border border-muted-foreground bg-muted-foreground/30 dark:bg-muted"></div>
               <div className="p-2 space-y-1 mt-2">
                 <div className="h-2 bg-muted/30 dark:bg-muted-foreground/20 rounded w-3/4"></div>
                 <div className="h-2 bg-muted/30 dark:bg-muted-foreground/20 rounded w-1/2"></div>
@@ -106,7 +106,7 @@ export const ModeCard = () => {
               <div className="absolute inset-0 left-1/2 w-1/2 rounded-tr-lg rounded-br-lg border-2 border-l border-muted-foreground dark:border-border bg-foreground dark:bg-background" />
 
               <div className="relative">
-                <div className="h-5 flex">
+                <div className="h-(--comp-h-5) flex">
                   <div className="w-1/2 rounded-tl-lg border-2 border-r border-border dark:border-muted-foreground bg-muted dark:bg-muted/30"></div>
                   <div className="w-1/2 rounded-tr-lg border-2 border-l border-muted-foreground dark:border-border bg-muted/30 dark:bg-muted"></div>
                 </div>

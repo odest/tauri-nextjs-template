@@ -45,7 +45,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
                 "absolute inset-0 flex items-center justify-center",
                 "opacity-0 group-hover/swatch:opacity-100",
                 "transition-opacity duration-300 ease-in-out",
-                "pointer-events-none text-xs font-medium",
+                "pointer-events-none [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium",
                 swatch.fg,
               )}
             >
@@ -58,7 +58,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
       <Button
         onClick={() => setSelectedTheme(themeName)}
         className={cn(
-          "w-full h-12 mt-1 border text-sm font-medium",
+          "w-full h-(--comp-h-12) mt-1 border [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-medium",
           selectedTheme === themeName
             ? "bg-primary text-primary-foreground"
             : "bg-background text-foreground",

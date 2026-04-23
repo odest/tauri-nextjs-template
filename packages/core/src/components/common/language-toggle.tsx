@@ -33,7 +33,9 @@ export function LanguageToggle() {
               className={cn(isSelected && "bg-accent")}
               disabled={isPending}
             >
-              <span className="mr-2 text-base">{config.flag}</span>
+              <span className="mr-2 [font-size:var(--comp-text-base)] [line-height:var(--comp-lh-base)]">
+                {config.flag}
+              </span>
               {config.nativeName}
               {isSelected && <Check className="ml-auto h-3 w-3" />}
             </DropdownMenuItem>

@@ -16,7 +16,9 @@ export const LogoCloud = () => {
       <div className="group relative m-auto max-w-6xl px-6">
         <div className="flex flex-col items-center md:flex-row">
           <div className="inline md:max-w-44 md:border-r md:pr-6">
-            <p className="text-end text-sm">Powered by the best tools</p>
+            <p className="text-end [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
+              Powered by the best tools
+            </p>
           </div>
           <div className="**:fill-foreground relative py-6 md:w-[calc(100%-11rem)]">
             <InfiniteSlider speedOnHover={20} speed={40} gap={112}>

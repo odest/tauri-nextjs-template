@@ -13,7 +13,7 @@ export const SettingsCardSkeleton = ({
   return (
     <Card>
       <CardHeader>
-        <Skeleton className="h-6 w-24 mb-2" />
+        <Skeleton className="h-(--comp-h-6) w-24 mb-2" />
         <Skeleton className="h-4 w-64" />
       </CardHeader>
       <CardContent className={gridClasses}>
