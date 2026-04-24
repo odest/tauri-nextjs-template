@@ -28,8 +28,12 @@ function DownloadButton({
       className="w-full cursor-pointer justify-between"
     >
       <Link href={href}>
-        <span className="text-sm">{label}</span>
-        <span className="text-muted-foreground text-xs font-mono">{ext}</span>
+        <span className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
+          {label}
+        </span>
+        <span className="text-muted-foreground [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-mono">
+          {ext}
+        </span>
       </Link>
     </Button>
   );
@@ -66,7 +70,9 @@ function PlatformCard({
             />
           ))
         ) : (
-          <p className="text-sm text-muted-foreground py-2">Coming soon</p>
+          <p className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] text-muted-foreground py-2">
+            Coming soon
+          </p>
         )}
       </CardContent>
     </Card>
@@ -106,7 +112,7 @@ const CardDecorator = ({ children }: { children: ReactNode }) => (
       className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
     />
 
-    <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-l border-t">
+    <div className="bg-background absolute inset-0 m-auto flex size-(--comp-h-12) items-center justify-center border-l border-t">
       {children}
     </div>
   </div>

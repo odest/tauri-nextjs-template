@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "./components/AppLayout";
@@ -20,6 +20,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TNTStack",
   description: "TNTStack",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
 };
 
 export function generateStaticParams() {

@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "分析ページにいます。"
   },
-  "SettingsPage": {
-    "title": "設定",
-    "description": "アプリケーションの設定を管理し、体験をカスタマイズします。"
-  },
   "Greet": {
     "placeholder": "名前を入力してください...",
     "button": "挨拶する",
