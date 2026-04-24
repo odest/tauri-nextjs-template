@@ -25,6 +25,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@workspace/ui/components/drawer";
+import { Kbd } from "@workspace/ui/components/kbd";
 import { useCommandPaletteStore } from "@workspace/core/stores/command-palette-store";
 import { useHotkeysDialogStore } from "@workspace/core/stores/hotkeys-store";
 import { useSidebarStore } from "@workspace/core/stores/sidebar-store";
@@ -56,18 +57,6 @@ import {
   LayoutDashboard,
   CornerDownLeftIcon,
 } from "lucide-react";
-
-function CommandMenuKbd({ className, ...props }: React.ComponentProps<"kbd">) {
-  return (
-    <kbd
-      className={cn(
-        "pointer-events-none flex h-(--comp-h-5) items-center justify-center gap-1 rounded border bg-background px-1 font-sans [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium text-muted-foreground select-none [&_svg:not([class*='size-'])]:size-3",
-        className,
-      )}
-      {...props}
-    />
-  );
-}
 
 function CommandMenuItem({
   children,
@@ -126,12 +115,12 @@ export function CommandPalette({
     const keys = formatHotkeyDisplay(hk.keys);
     const isSequence = hk.keys.includes(">");
     return (
-      <span className="ml-auto flex items-center gap-1">
+      <span className="ml-auto hidden md:flex items-center gap-1">
         {keys.map((key, i) => (
           <React.Fragment key={i}>
-            <CommandMenuKbd>{key}</CommandMenuKbd>
+            <Kbd>{key}</Kbd>
             {isSequence && i < keys.length - 1 && (
-              <span className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] opacity-70 text-muted-foreground mx-1 lowercase">
+              <span className="text-[10px] text-muted-foreground opacity-70 font-mono mx-1.5">
                 {t("then")}
               </span>
             )}
@@ -180,18 +169,26 @@ export function CommandPalette({
               <span>{t("toggleMode")}</span>
               {getKeysDisplay("toggle-mode")}
             </CommandMenuItem>
-            <CommandMenuItem onSelect={() => runCommand(() => toggleSidebar())}>
-              <PanelLeft />
-              <span>{t("toggleSidebar")}</span>
-              {getKeysDisplay("toggle-sidebar")}
-            </CommandMenuItem>
-            <CommandMenuItem
-              onSelect={() => runCommand(() => toggleHotkeysDialog())}
-            >
-              <Keyboard />
-              <span>{t("showHotkeys")}</span>
-              {getKeysDisplay("show-hotkeys")}
-            </CommandMenuItem>
+
+            {!isMobile && (
+              <CommandMenuItem
+                onSelect={() => runCommand(() => toggleSidebar())}
+              >
+                <PanelLeft />
+                <span>{t("toggleSidebar")}</span>
+                {getKeysDisplay("toggle-sidebar")}
+              </CommandMenuItem>
+            )}
+
+            {!isMobile && (
+              <CommandMenuItem
+                onSelect={() => runCommand(() => toggleHotkeysDialog())}
+              >
+                <Keyboard />
+                <span>{t("showHotkeys")}</span>
+                {getKeysDisplay("show-hotkeys")}
+              </CommandMenuItem>
+            )}
           </CommandGroup>
 
           <CommandSeparator className="my-2" />
@@ -258,24 +255,32 @@ export function CommandPalette({
             })}
           </CommandGroup>
 
-          <CommandSeparator className="my-2" />
-
-          <CommandGroup heading={t("sidebarVariants")} className={groupClasses}>
-            {(["sidebar", "floating", "inset"] as const).map(
-              (sidebarVariant) => (
-                <CommandMenuItem
-                  key={sidebarVariant}
-                  onSelect={() => runCommand(() => setVariant(sidebarVariant))}
-                >
-                  <LayoutTemplate />
-                  <span className="capitalize">{t(sidebarVariant)}</span>
-                  {variant === sidebarVariant && (
-                    <Check className="ml-auto h-4 w-4" />
-                  )}
-                </CommandMenuItem>
-              ),
-            )}
-          </CommandGroup>
+          {!isMobile && (
+            <>
+              <CommandSeparator className="my-2" />
+              <CommandGroup
+                heading={t("sidebarVariants")}
+                className={groupClasses}
+              >
+                {(["sidebar", "floating", "inset"] as const).map(
+                  (sidebarVariant) => (
+                    <CommandMenuItem
+                      key={sidebarVariant}
+                      onSelect={() =>
+                        runCommand(() => setVariant(sidebarVariant))
+                      }
+                    >
+                      <LayoutTemplate />
+                      <span className="capitalize">{t(sidebarVariant)}</span>
+                      {variant === sidebarVariant && (
+                        <Check className="ml-auto h-4 w-4" />
+                      )}
+                    </CommandMenuItem>
+                  ),
+                )}
+              </CommandGroup>
+            </>
+          )}
 
           <CommandSeparator className="my-2" />
 
@@ -311,22 +316,22 @@ export function CommandPalette({
         </CommandList>
       </Command>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 flex h-(--comp-h-10) items-center justify-between rounded-b-xl border-t border-border bg-muted/50 px-4 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium text-muted-foreground">
+      <div className="absolute inset-x-0 bottom-0 z-20 hidden md:flex h-(--comp-h-10) items-center justify-between rounded-b-xl border-t border-border bg-muted/50 px-4 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium text-muted-foreground">
         <div className="flex items-center gap-2">
-          <CommandMenuKbd>
+          <Kbd>
             <MoveUp />
-          </CommandMenuKbd>
-          <CommandMenuKbd>
+          </Kbd>
+          <Kbd>
             <MoveDown />
-          </CommandMenuKbd>
+          </Kbd>
           <span>{t("navigate")}</span>
-          <CommandMenuKbd>
+          <Kbd>
             <CornerDownLeftIcon />
-          </CommandMenuKbd>
+          </Kbd>
           <span>{t("openOrSelect")}</span>
         </div>
         <div className="flex items-center gap-2">
-          <CommandMenuKbd>Esc</CommandMenuKbd>
+          <Kbd>Esc</Kbd>
           <span>{t("close")}</span>
         </div>
       </div>
@@ -337,7 +342,7 @@ export function CommandPalette({
     return (
       <Drawer open={isOpen} onOpenChange={(open) => !open && close()}>
         <DrawerContent
-          className="overflow-hidden h-[96dvh] p-0 pb-12"
+          className="overflow-hidden h-[96dvh] p-0"
           onOpenAutoFocus={(e) => e.preventDefault()}
         >
           <DrawerHeader className="sr-only">

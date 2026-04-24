@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "Sei nella pagina di analisi."
   },
-  "SettingsPage": {
-    "title": "Impostazioni",
-    "description": "Gestisci le preferenze della tua applicazione e personalizza la tua esperienza."
-  },
   "Greet": {
     "placeholder": "Inserisci un nome...",
     "button": "Saluta",

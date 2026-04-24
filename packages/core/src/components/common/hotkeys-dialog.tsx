@@ -38,7 +38,7 @@ function HotkeyRow({ hotkey }: { hotkey: HotkeyDefinition }) {
           <React.Fragment key={i}>
             <Kbd>{key}</Kbd>
             {isSequence && i < keys.length - 1 && (
-              <span className="text-[10px] text-muted-foreground mx-1.5">
+              <span className="text-[10px] text-muted-foreground opacity-70 font-mono mx-1.5">
                 {t("then")}
               </span>
             )}
@@ -98,7 +98,7 @@ export function HotkeysDialog() {
   if (isMobile) {
     return (
       <Drawer open={isOpen} onOpenChange={(open) => !open && close()}>
-        <DrawerContent className="px-4 pb-8">
+        <DrawerContent className="p-4">
           <DrawerHeader>
             <DrawerTitle>{t("title")}</DrawerTitle>
             <DrawerDescription>{t("description")}</DrawerDescription>

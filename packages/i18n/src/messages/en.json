@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "You are on the Analytics Page."
   },
-  "SettingsPage": {
-    "title": "Settings",
-    "description": "Manage your application preferences and customize your experience."
-  },
   "Greet": {
     "placeholder": "Enter a name...",
     "button": "Greet",

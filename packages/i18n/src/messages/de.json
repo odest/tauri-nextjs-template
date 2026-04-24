@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "Sie befinden sich auf der Analyseseite."
   },
-  "SettingsPage": {
-    "title": "Einstellungen",
-    "description": "Verwalten Sie Ihre Anwendungseinstellungen und passen Sie Ihre Erfahrung an."
-  },
   "Greet": {
     "placeholder": "Geben Sie einen Namen ein...",
     "button": "Begrüßen",

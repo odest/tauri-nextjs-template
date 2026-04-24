@@ -45,7 +45,7 @@ export function UserNav({ user }: UserNavProps) {
               size="lg"
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
-              <Avatar className="h-(--comp-h-8) w-(--comp-w-8) rounded-lg">
+              <Avatar className="h-(--comp-h-8) w-(--comp-h-8) rounded-lg">
                 <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback className="rounded-lg">
                   {user.name.slice(0, 2).toUpperCase()}
@@ -68,7 +68,7 @@ export function UserNav({ user }: UserNavProps) {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="flex items-center gap-2 px-1 py-1.5 text-left [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
-                <Avatar className="h-(--comp-h-8) w-(--comp-w-8) rounded-lg">
+                <Avatar className="h-(--comp-h-8) w-(--comp-h-8) rounded-lg">
                   <AvatarImage src={user.avatar} alt={user.name} />
                   <AvatarFallback className="rounded-lg">
                     {user.name.slice(0, 2).toUpperCase()}

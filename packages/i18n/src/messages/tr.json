@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "Analitik Sayfasındasınız."
   },
-  "SettingsPage": {
-    "title": "Ayarlar",
-    "description": "Uygulama tercihlerinizi yönetin ve deneyiminizi özelleştirin."
-  },
   "Greet": {
     "placeholder": "Bir isim girin...",
     "button": "Selamla",

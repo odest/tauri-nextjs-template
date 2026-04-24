@@ -11,10 +11,6 @@
   "AnalyticsPage": {
     "title": "您在分析页面。"
   },
-  "SettingsPage": {
-    "title": "设置",
-    "description": "管理您的应用程序首选项并自定义您的体验。"
-  },
   "Greet": {
     "placeholder": "输入名字...",
     "button": "问候",
