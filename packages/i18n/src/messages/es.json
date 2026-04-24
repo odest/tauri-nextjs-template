@@ -12,9 +12,14 @@
     "title": "Estás en la página de análisis."
   },
   "Greet": {
-    "placeholder": "Ingrese un nombre...",
+    "placeholder": "Introduce un nombre...",
     "button": "Saludar",
-    "error": "Ocurrió un error. Por favor, inténtelo de nuevo."
+    "error": "Ocurrió un error. Por favor, inténtalo de nuevo.",
+    "successGreeting": "¡Hola {name}! ¡{source} te envía saludos!",
+    "loadingTauri": "Conectando al sistema...",
+    "loadingWeb": "Conectando a la red...",
+    "missingName": "Información faltante",
+    "missingNameDesc": "Por favor, introduce un nombre para saludar."
   },
   "LanguageCard": {
     "title": "Idioma",

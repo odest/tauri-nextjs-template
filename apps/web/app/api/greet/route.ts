@@ -11,11 +11,17 @@ export async function POST(req: Request) {
     }
 
     const sanitizedName = name.trim().slice(0, 100);
-    const greeting = `Hello, ${sanitizedName}! You've been greeted from Next.js!`;
 
-    return new Response(JSON.stringify({ greeting }), {
-      headers: { "Content-Type": "application/json" },
-    });
+    return new Response(
+      JSON.stringify({
+        message_key: "successGreeting",
+        name: sanitizedName,
+        source: "Next.js",
+      }),
+      {
+        headers: { "Content-Type": "application/json" },
+      },
+    );
   } catch {
     return new Response(JSON.stringify({ error: "Invalid request" }), {
       status: 400,

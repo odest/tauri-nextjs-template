@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "Digite um nome...",
     "button": "Saudar",
-    "error": "Ocorreu um erro. Por favor, tente novamente."
+    "error": "Ocorreu um erro. Por favor, tente novamente.",
+    "successGreeting": "Olá {name}! {source} envia saudações!",
+    "loadingTauri": "Conectando ao sistema...",
+    "loadingWeb": "Conectando à rede...",
+    "missingName": "Informação ausente",
+    "missingNameDesc": "Por favor, digite um nome para saudar."
   },
   "LanguageCard": {
     "title": "Idioma",

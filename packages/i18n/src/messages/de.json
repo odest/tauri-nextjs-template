@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "Geben Sie einen Namen ein...",
     "button": "Begrüßen",
-    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "successGreeting": "Hallo {name}! {source} sendet Grüße!",
+    "loadingTauri": "Verbindung zum System wird hergestellt...",
+    "loadingWeb": "Verbindung zum Netzwerk wird hergestellt...",
+    "missingName": "Fehlende Informationen",
+    "missingNameDesc": "Bitte geben Sie einen Namen ein, um zu begrüßen."
   },
   "LanguageCard": {
     "title": "Sprache",

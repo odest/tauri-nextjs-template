@@ -12,9 +12,14 @@
     "title": "您在分析页面。"
   },
   "Greet": {
-    "placeholder": "输入名字...",
+    "placeholder": "请输入一个名字...",
     "button": "问候",
-    "error": "发生错误。请重试。"
+    "error": "发生错误。请重试。",
+    "successGreeting": "你好，{name}！{source} 向你发送了问候！",
+    "loadingTauri": "正在连接到系统...",
+    "loadingWeb": "正在连接到网络...",
+    "missingName": "信息缺失",
+    "missingNameDesc": "请输入一个名字进行问候。"
   },
   "LanguageCard": {
     "title": "语言",

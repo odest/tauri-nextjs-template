@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "名前を入力してください...",
     "button": "挨拶する",
-    "error": "エラーが発生しました。もう一度お試しください。"
+    "error": "エラーが発生しました。もう一度お試しください。",
+    "successGreeting": "こんにちは、{name}さん！{source}から挨拶が届きました！",
+    "loadingTauri": "システムに接続しています...",
+    "loadingWeb": "ネットワークに接続しています...",
+    "missingName": "情報が不足しています",
+    "missingNameDesc": "挨拶するには名前を入力してください。"
   },
   "LanguageCard": {
     "title": "言語",

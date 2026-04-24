@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "Bir isim girin...",
     "button": "Selamla",
-    "error": "Bir hata oluştu. Lütfen tekrar deneyin."
+    "error": "Bir hata oluştu. Lütfen tekrar deneyin.",
+    "successGreeting": "Merhaba {name}! {source} sana selam yolladı!",
+    "loadingTauri": "Sisteme bağlanılıyor...",
+    "loadingWeb": "Ağa bağlanılıyor...",
+    "missingName": "Eksik Bilgi",
+    "missingNameDesc": "Lütfen selamlamak için bir isim girin."
   },
   "LanguageCard": {
     "title": "Dil",

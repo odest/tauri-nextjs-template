@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode, ComponentType } from "react";
+import { Toaster } from "@workspace/ui/components/sonner";
 import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
 import { AppHeader } from "@workspace/core/components/layout/app-header";
 import { HotkeysDialog } from "@workspace/core/components/common/hotkeys-dialog";
@@ -54,6 +55,7 @@ export function AppLayout({
         <SidebarInset>
           <AppHeader pathname={pathname} LinkComponent={LinkComponent} />
           {children}
+          <Toaster />
           <MobileBottomNav
             items={navigationData.navMobile}
             pathname={pathname}

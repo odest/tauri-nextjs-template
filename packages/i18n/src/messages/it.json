@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "Inserisci un nome...",
     "button": "Saluta",
-    "error": "Si è verificato un errore. Per favore riprova."
+    "error": "Si è verificato un errore. Per favore riprova.",
+    "successGreeting": "Ciao {name}! {source} ti invia i suoi saluti!",
+    "loadingTauri": "Connessione al sistema in corso...",
+    "loadingWeb": "Connessione alla rete in corso...",
+    "missingName": "Informazioni mancanti",
+    "missingNameDesc": "Inserisci un nome per salutare."
   },
   "LanguageCard": {
     "title": "Lingua",

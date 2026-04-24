@@ -14,7 +14,12 @@
   "Greet": {
     "placeholder": "Enter a name...",
     "button": "Greet",
-    "error": "An error occurred. Please try again."
+    "error": "An error occurred. Please try again.",
+    "successGreeting": "Hello {name}! {source} sends greetings!",
+    "loadingTauri": "Connecting to the system...",
+    "loadingWeb": "Connecting to the network...",
+    "missingName": "Missing Information",
+    "missingNameDesc": "Please enter a name to greet."
   },
   "LanguageCard": {
     "title": "Language",
