@@ -342,8 +342,8 @@ export function CommandPalette({
     return (
       <Drawer open={isOpen} onOpenChange={(open) => !open && close()}>
         <DrawerContent
-          className="overflow-hidden h-[96dvh] p-0"
-          onOpenAutoFocus={(e) => e.preventDefault()}
+          className="overflow-hidden h-[96dvh]"
+          onOpenAutoFocus={(e: Event) => e.preventDefault()}
         >
           <DrawerHeader className="sr-only">
             <DrawerTitle>{t("commandPalette")}</DrawerTitle>
@@ -357,7 +357,7 @@ export function CommandPalette({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
-      <DialogContent className="overflow-hidden p-0 rounded-xl border-none bg-background bg-clip-padding pb-12 shadow-2xl ring-4 ring-border/80 sm:max-w-lg top-[15%] translate-y-0">
+      <DialogContent className="overflow-hidden p-0 rounded-xl border-none bg-background bg-clip-padding pb-10 shadow-2xl ring-4 ring-border/80 sm:max-w-lg top-[15%] translate-y-0">
         <DialogHeader className="sr-only">
           <DialogTitle>{t("commandPalette")}</DialogTitle>
           <DialogDescription>{t("search")}</DialogDescription>
