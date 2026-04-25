@@ -2,8 +2,8 @@
 
 import { useTranslations } from "@workspace/i18n";
 
-export function OverviewPage() {
-  const t = useTranslations("OverviewPage");
+export function ReportsPage() {
+  const t = useTranslations("ReportsPage");
 
   return (
     <div className="flex flex-1 justify-center items-center p-4">

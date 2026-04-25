@@ -1,7 +1,14 @@
 "use client";
 
-import { DashboardPage } from "@workspace/core/pages/DashboardPage";
+import { useEffect } from "react";
+import { useRouter } from "@workspace/i18n/navigation";
 
 export default function Dashboard() {
-  return <DashboardPage />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/dashboard/overview");
+  }, [router]);
+
+  return null;
 }

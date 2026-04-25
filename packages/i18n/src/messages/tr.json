@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "Ana Sayfadasınız."
   },
-  "DashboardPage": {
-    "title": "Kontrol Paneli Sayfasındasınız."
-  },
   "OverviewPage": {
-    "title": "Genel Bakış Sayfasındasınız."
+    "title": "Kontrol Paneli/Genel Bakış Sayfasındasınız."
   },
   "AnalyticsPage": {
-    "title": "Analitik Sayfasındasınız."
+    "title": "Kontrol Paneli/Analitik Sayfasındasınız."
+  },
+  "ReportsPage": {
+    "title": "Kontrol Paneli/Raporlar Sayfasındasınız."
   },
   "Greet": {
     "placeholder": "Bir isim girin...",
@@ -55,6 +55,7 @@
     "dashboard": "Kontrol Paneli",
     "overview": "Genel Bakış",
     "analytics": "Analitik",
+    "reports": "Raporlar",
     "github": "Github",
     "feedback": "Geri Bildirim",
     "settings": "Ayarlar",
@@ -84,6 +85,7 @@
     "goDashboard": "Kontrol Paneline Git",
     "goAnalytics": "Analitiklere Git",
     "goOverview": "Genel Bakışa Git",
+    "goReports": "Raporlara Git",
     "goSettings": "Ayarlara Git",
     "then": "sonra"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Kontrol Paneline Git",
     "goAnalytics": "Analitiklere Git",
     "goOverview": "Genel Bakışa Git",
+    "goReports": "Raporlara Git",
     "goSettings": "Ayarlara Git",
     "language": "Dil",
     "sidebarVariants": "Kenar Çubuğu Görünümleri",

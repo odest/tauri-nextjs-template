@@ -52,6 +52,7 @@ import {
   Settings,
   MoveDown,
   LineChart,
+  FileText,
   PanelLeft,
   LayoutTemplate,
   LayoutDashboard,
@@ -202,11 +203,18 @@ export function CommandPalette({
               {getKeysDisplay("go-home")}
             </CommandMenuItem>
             <CommandMenuItem
-              onSelect={() => runCommand(() => navigate("/dashboard"))}
+              onSelect={() => runCommand(() => navigate("/dashboard/overview"))}
             >
               <LayoutDashboard />
               <span>{t("goDashboard")}</span>
               {getKeysDisplay("go-dashboard")}
+            </CommandMenuItem>
+            <CommandMenuItem
+              onSelect={() => runCommand(() => navigate("/dashboard/overview"))}
+            >
+              <View />
+              <span>{t("goOverview")}</span>
+              {getKeysDisplay("go-overview")}
             </CommandMenuItem>
             <CommandMenuItem
               onSelect={() =>
@@ -218,11 +226,11 @@ export function CommandPalette({
               {getKeysDisplay("go-analytics")}
             </CommandMenuItem>
             <CommandMenuItem
-              onSelect={() => runCommand(() => navigate("/dashboard/overview"))}
+              onSelect={() => runCommand(() => navigate("/dashboard/reports"))}
             >
-              <View />
-              <span>{t("goOverview")}</span>
-              {getKeysDisplay("go-overview")}
+              <FileText />
+              <span>{t("goReports")}</span>
+              {getKeysDisplay("go-reports")}
             </CommandMenuItem>
             <CommandMenuItem
               onSelect={() => runCommand(() => navigate("/settings"))}

@@ -9,17 +9,13 @@ import { ThemesList } from "@workspace/core/components/common/themes-list";
 export function SettingsPage() {
   return (
     <ScrollArea className="overflow-y-auto w-full">
-      <div className="flex flex-1 flex-col gap-6 p-4 pb-28 md:pb-4">
-        <div className="max-w-3xl mx-auto w-full flex flex-col gap-6">
-          <div className="grid gap-6">
-            <LanguageCard />
-            <ModeCard />
-            <div className="hidden md:block">
-              <SidebarVariantCard />
-            </div>
-            <ThemesList />
-          </div>
+      <div className="flex flex-col max-w-3xl mx-auto w-full p-4 pb-28 md:pb-4 gap-4">
+        <LanguageCard />
+        <ModeCard />
+        <div className="hidden md:block">
+          <SidebarVariantCard />
         </div>
+        <ThemesList />
       </div>
       <ScrollBar orientation="vertical" />
     </ScrollArea>

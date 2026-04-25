@@ -12,6 +12,7 @@ import { BorderBeam } from "@workspace/ui/components/landing/border-beam";
 export interface MobileBottomNavItem {
   title: string;
   url: string;
+  href?: string;
   icon: LucideIcon;
   isActive?: boolean;
   translationKey: string;
@@ -82,6 +83,7 @@ export function MobileBottomNav({
         const isActive =
           pathname === item.url ||
           (item.url !== "/" && pathname.startsWith(item.url));
+        const href = item.href ?? item.url;
 
         const handleClick = (e?: { preventDefault?: () => void }) => {
           if (item.url === "#search") {
@@ -97,7 +99,7 @@ export function MobileBottomNav({
         return (
           <LinkComponent
             key={item.url}
-            href={item.url}
+            href={href}
             onClick={handleClick}
             className={cn(
               "flex h-full items-center justify-center outline-none",

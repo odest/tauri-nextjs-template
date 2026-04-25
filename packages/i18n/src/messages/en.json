@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "You are on the Home Page."
   },
-  "DashboardPage": {
-    "title": "You are on the Dashboard Page."
-  },
   "OverviewPage": {
-    "title": "You are on the Overview Page."
+    "title": "You are on the Dashboard/Overview Page."
   },
   "AnalyticsPage": {
-    "title": "You are on the Analytics Page."
+    "title": "You are on the Dashboard/Analytics Page."
+  },
+  "ReportsPage": {
+    "title": "You are on the Dashboard/Reports Page."
   },
   "Greet": {
     "placeholder": "Enter a name...",
@@ -55,6 +55,7 @@
     "dashboard": "Dashboard",
     "overview": "Overview",
     "analytics": "Analytics",
+    "reports": "Reports",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Settings",
@@ -84,6 +85,7 @@
     "goDashboard": "Go to Dashboard",
     "goAnalytics": "Go to Analytics",
     "goOverview": "Go to Overview",
+    "goReports": "Go to Reports",
     "goSettings": "Go to Settings",
     "then": "then"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Go to Dashboard",
     "goAnalytics": "Go to Analytics",
     "goOverview": "Go to Overview",
+    "goReports": "Go to Reports",
     "goSettings": "Go to Settings",
     "language": "Language",
     "sidebarVariants": "Sidebar Variants",

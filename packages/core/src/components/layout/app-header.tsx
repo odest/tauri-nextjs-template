@@ -12,6 +12,7 @@ import {
 } from "@workspace/ui/components/breadcrumb";
 import { ModeToggle } from "@workspace/core/components/common/mode-toggle";
 import { LanguageToggle } from "@workspace/core/components/common/language-toggle";
+import { navigationData } from "@workspace/core/config/navigation";
 import { useTranslations } from "@workspace/i18n";
 
 function formatSegment(segment: string): string {
@@ -39,6 +40,10 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
     .filter((s) => Boolean(s) && s !== "home");
   const t = useTranslations("Navigation");
   const isHome = pathname === "/home" || pathname === "/";
+  const getBreadcrumbHref = (href: string) => {
+    const navItem = navigationData.navMain.find((item) => item.url === href);
+    return navItem?.href ?? href;
+  };
 
   return (
     <header className="group-has-data-[collapsible=icon]/sidebar-wrapper:h-(--comp-h-12) hidden md:flex h-(--comp-h-12) shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear">
@@ -61,6 +66,7 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
 
             {segments.map((segment, index) => {
               const href = `/${segments.slice(0, index + 1).join("/")}`;
+              const breadcrumbHref = getBreadcrumbHref(href);
               const isLast = index === segments.length - 1;
               // Try to get translation, fallback to formatted segment
               const displayText =
@@ -73,7 +79,10 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
                     {isLast ? (
                       <BreadcrumbPage>{displayText}</BreadcrumbPage>
                     ) : (
-                      <LinkComponent href={href} className="hidden md:block">
+                      <LinkComponent
+                        href={breadcrumbHref}
+                        className="hidden md:block"
+                      >
                         {displayText}
                       </LinkComponent>
                     )}

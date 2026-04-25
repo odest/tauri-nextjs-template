@@ -28,7 +28,7 @@ The business logic layer. Pages, Zustand stores, hooks, providers, navigation co
     <Folder name="pages">
       <File name="HomePage.tsx, DashboardPage.tsx, SettingsPage.tsx" />
       <Folder name="subpages">
-        <File name="AnalyticsPage.tsx, OverviewPage.tsx" />
+        <File name="OverviewPage.tsx, AnalyticsPage.tsx, ReportsPage.tsx" />
       </Folder>
     </Folder>
     <Folder name="stores">
@@ -108,6 +108,7 @@ Full page components consumed by both apps. The app routes are thin wrappers aro
 | `SettingsPage.tsx` | `/settings` |
 | `OverviewPage.tsx` | `/dashboard/overview` |
 | `AnalyticsPage.tsx` | `/dashboard/analytics` |
+| `ReportsPage.tsx` | `/dashboard/reports` |
 
 This is why both apps can share the same UI: the page logic lives here, not in the apps.
 

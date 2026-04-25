@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "ホームページにいます。"
   },
-  "DashboardPage": {
-    "title": "ダッシュボードページにいます。"
-  },
   "OverviewPage": {
-    "title": "概要ページにいます。"
+    "title": "ダッシュボード/概要ページにいます。"
   },
   "AnalyticsPage": {
-    "title": "分析ページにいます。"
+    "title": "ダッシュボード/分析ページにいます。"
+  },
+  "ReportsPage": {
+    "title": "ダッシュボード/レポートページにいます。"
   },
   "Greet": {
     "placeholder": "名前を入力してください...",
@@ -55,6 +55,7 @@
     "dashboard": "ダッシュボード",
     "overview": "概要",
     "analytics": "分析",
+    "reports": "レポート",
     "github": "Github",
     "feedback": "フィードバック",
     "settings": "設定",
@@ -84,6 +85,7 @@
     "goDashboard": "ダッシュボード",
     "goAnalytics": "分析",
     "goOverview": "概要",
+    "goReports": "レポート",
     "goSettings": "設定",
     "then": "その後"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "ダッシュボード",
     "goAnalytics": "分析",
     "goOverview": "概要",
+    "goReports": "レポート",
     "goSettings": "設定",
     "language": "言語",
     "sidebarVariants": "サイドバー",

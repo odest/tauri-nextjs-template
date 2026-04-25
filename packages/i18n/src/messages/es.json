@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "Estás en la página de inicio."
   },
-  "DashboardPage": {
-    "title": "Estás en la página del panel de control."
-  },
   "OverviewPage": {
-    "title": "Estás en la página de vista general."
+    "title": "Estás en la página de Panel de control/Visión general."
   },
   "AnalyticsPage": {
-    "title": "Estás en la página de análisis."
+    "title": "Estás en la página de Panel de control/Análisis."
+  },
+  "ReportsPage": {
+    "title": "Estás en la página de Panel de control/Informes."
   },
   "Greet": {
     "placeholder": "Introduce un nombre...",
@@ -55,6 +55,7 @@
     "dashboard": "Panel de control",
     "overview": "Visión General",
     "analytics": "Análisis",
+    "reports": "Informes",
     "github": "Github",
     "feedback": "Comentarios",
     "settings": "Configuración",
@@ -84,6 +85,7 @@
     "goDashboard": "Ir al Panel",
     "goAnalytics": "Ir a Analíticas",
     "goOverview": "Ir a Resumen",
+    "goReports": "Ir a Informes",
     "goSettings": "Ir a Ajustes",
     "then": "luego"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Ir al Panel",
     "goAnalytics": "Ir a Analíticas",
     "goOverview": "Ir a Resumen",
+    "goReports": "Ir a Informes",
     "goSettings": "Ir a Ajustes",
     "language": "Idioma",
     "sidebarVariants": "Variantes de Barra Lateral",

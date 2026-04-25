@@ -1,5 +1,11 @@
-import { DashboardPage } from "@workspace/core/pages/DashboardPage";
+import { redirect } from "@workspace/i18n/navigation";
 
-export default function Dashboard() {
-  return <DashboardPage />;
+export default async function Dashboard({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  redirect({ href: "/dashboard/overview", locale });
 }

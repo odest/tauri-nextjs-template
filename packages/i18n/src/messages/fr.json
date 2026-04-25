@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "Vous êtes sur la page d'accueil."
   },
-  "DashboardPage": {
-    "title": "Vous êtes sur la page du tableau de bord."
-  },
   "OverviewPage": {
-    "title": "Vous êtes sur la page de vue d'ensemble."
+    "title": "Vous êtes sur la page Tableau de bord/Aperçu."
   },
   "AnalyticsPage": {
-    "title": "Vous êtes sur la page d'analyse."
+    "title": "Vous êtes sur la page Tableau de bord/Analyse."
+  },
+  "ReportsPage": {
+    "title": "Vous êtes sur la page Tableau de bord/Rapports."
   },
   "Greet": {
     "placeholder": "Entrez un nom...",
@@ -55,6 +55,7 @@
     "dashboard": "Tableau de bord",
     "overview": "Aperçu",
     "analytics": "Analyse",
+    "reports": "Rapports",
     "github": "Github",
     "feedback": "Commentaires",
     "settings": "Paramètres",
@@ -84,6 +85,7 @@
     "goDashboard": "Tableau de bord",
     "goAnalytics": "Analytique",
     "goOverview": "Aperçu",
+    "goReports": "Rapports",
     "goSettings": "Paramètres",
     "then": "puis"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Tableau de bord",
     "goAnalytics": "Analytique",
     "goOverview": "Aperçu",
+    "goReports": "Rapports",
     "goSettings": "Paramètres",
     "language": "Langue",
     "sidebarVariants": "Variantes",

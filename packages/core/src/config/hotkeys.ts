@@ -37,15 +37,21 @@ export const hotkeys: HotkeyDefinition[] = [
     category: "navigation",
   },
   {
+    id: "go-overview",
+    keys: "g>o",
+    translationKey: "goOverview",
+    category: "navigation",
+  },
+  {
     id: "go-analytics",
     keys: "g>a",
     translationKey: "goAnalytics",
     category: "navigation",
   },
   {
-    id: "go-overview",
-    keys: "g>o",
-    translationKey: "goOverview",
+    id: "go-reports",
+    keys: "g>r",
+    translationKey: "goReports",
     category: "navigation",
   },
   {

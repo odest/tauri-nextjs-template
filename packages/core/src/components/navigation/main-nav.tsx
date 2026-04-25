@@ -25,6 +25,7 @@ import { useTranslations } from "@workspace/i18n";
 interface MainNavItem {
   title: string;
   url: string;
+  href?: string;
   icon: LucideIcon;
   isActive?: boolean;
   translationKey: string;
@@ -70,8 +71,13 @@ export function MainNav({
           const active =
             pathname === item.url ||
             (item.url !== "/" && pathname.startsWith(item.url));
+          const href = item.href ?? item.url;
           return (
-            <Collapsible key={item.title} asChild defaultOpen={active}>
+            <Collapsible
+              key={`${item.title}-${active}`}
+              asChild
+              defaultOpen={active}
+            >
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
@@ -79,7 +85,7 @@ export function MainNav({
                   isActive={active}
                 >
                   <LinkComponent
-                    href={item.url}
+                    href={href}
                     data-active={active}
                     onClick={handleLinkClick}
                   >

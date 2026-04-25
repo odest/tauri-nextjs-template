@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "您在主页。"
   },
-  "DashboardPage": {
-    "title": "您在仪表板页面。"
-  },
   "OverviewPage": {
-    "title": "您在概览页面。"
+    "title": "您在仪表板/概览页面。"
   },
   "AnalyticsPage": {
-    "title": "您在分析页面。"
+    "title": "您在仪表板/分析页面。"
+  },
+  "ReportsPage": {
+    "title": "您在仪表板/报表页面。"
   },
   "Greet": {
     "placeholder": "请输入一个名字...",
@@ -55,6 +55,7 @@
     "dashboard": "仪表板",
     "overview": "概览",
     "analytics": "分析",
+    "reports": "报表",
     "github": "Github",
     "feedback": "反馈",
     "settings": "设置",
@@ -84,6 +85,7 @@
     "goDashboard": "仪表盘",
     "goAnalytics": "分析",
     "goOverview": "概览",
+    "goReports": "前往报表",
     "goSettings": "设置",
     "then": "然后"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "仪表盘",
     "goAnalytics": "分析",
     "goOverview": "概览",
+    "goReports": "前往报表",
     "goSettings": "设置",
     "language": "语言",
     "sidebarVariants": "侧边栏",

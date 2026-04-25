@@ -34,7 +34,9 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
     getKeys("toggle-mode"),
     (e: KeyboardEvent) => {
       e.preventDefault();
-      handleThemeChange((theme === "dark" ? "light" : "dark") as "light" | "dark");
+      handleThemeChange(
+        (theme === "dark" ? "light" : "dark") as "light" | "dark",
+      );
     },
     { enableOnFormTags: false },
   );
@@ -63,7 +65,7 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
     getKeys("go-dashboard"),
     (e: KeyboardEvent) => {
       e.preventDefault();
-      navigate("/dashboard");
+      navigate("/dashboard/overview");
     },
     { enableOnFormTags: false },
   );
@@ -82,6 +84,15 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
     (e: KeyboardEvent) => {
       e.preventDefault();
       navigate("/dashboard/overview");
+    },
+    { enableOnFormTags: false },
+  );
+  // Go to Reports
+  useHotkeys(
+    getKeys("go-reports"),
+    (e: KeyboardEvent) => {
+      e.preventDefault();
+      navigate("/dashboard/reports");
     },
     { enableOnFormTags: false },
   );

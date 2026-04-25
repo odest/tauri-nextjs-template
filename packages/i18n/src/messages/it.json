@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "Sei nella pagina iniziale."
   },
-  "DashboardPage": {
-    "title": "Sei nella pagina del cruscotto."
-  },
   "OverviewPage": {
-    "title": "Sei nella pagina di panoramica."
+    "title": "Sei nella pagina Cruscotto/Panoramica."
   },
   "AnalyticsPage": {
-    "title": "Sei nella pagina di analisi."
+    "title": "Sei nella pagina Cruscotto/Analisi."
+  },
+  "ReportsPage": {
+    "title": "Sei nella pagina Cruscotto/Rapporti."
   },
   "Greet": {
     "placeholder": "Inserisci un nome...",
@@ -55,6 +55,7 @@
     "dashboard": "Cruscotto",
     "overview": "Panoramica",
     "analytics": "Analisi",
+    "reports": "Rapporti",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Impostazioni",
@@ -84,6 +85,7 @@
     "goDashboard": "Vai al Dashboard",
     "goAnalytics": "Vai alle Analitiche",
     "goOverview": "Vai alla Panoramica",
+    "goReports": "Vai ai Rapporti",
     "goSettings": "Vai alle Impostazioni",
     "then": "poi"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Vai al Dashboard",
     "goAnalytics": "Vai alle Analitiche",
     "goOverview": "Vai alla Panoramica",
+    "goReports": "Vai ai Rapporti",
     "goSettings": "Vai alle Impostazioni",
     "language": "Lingua",
     "sidebarVariants": "Varianti della Barra Laterale",

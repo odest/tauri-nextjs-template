@@ -30,6 +30,7 @@ export interface SubNavItem {
 export interface MainNavItem {
   title: string;
   url: string;
+  href?: string;
   icon: LucideIcon;
   isActive?: boolean;
   items?: SubNavItem[];
@@ -39,6 +40,7 @@ export interface MainNavItem {
 export interface MobileNavItem {
   title: string;
   url: string;
+  href?: string;
   icon: LucideIcon;
   translationKey: string;
 }
@@ -97,6 +99,7 @@ export const navigationData: NavigationData = {
     {
       title: "Dashboard",
       url: "/dashboard",
+      href: "/dashboard/overview",
       icon: LayoutDashboard,
       isActive: true,
       translationKey: "dashboard",
@@ -110,6 +113,11 @@ export const navigationData: NavigationData = {
           title: "Analytics",
           url: "/dashboard/analytics",
           translationKey: "analytics",
+        },
+        {
+          title: "Reports",
+          url: "/dashboard/reports",
+          translationKey: "reports",
         },
       ],
     },
@@ -125,6 +133,7 @@ export const navigationData: NavigationData = {
     {
       title: "Dashboard",
       url: "/dashboard",
+      href: "/dashboard/overview",
       icon: LayoutDashboard,
       translationKey: "dashboard",
     },

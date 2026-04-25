@@ -2,14 +2,14 @@
   "HomePage": {
     "title": "Sie befinden sich auf der Startseite."
   },
-  "DashboardPage": {
-    "title": "Sie befinden sich auf der Dashboard-Seite."
-  },
   "OverviewPage": {
-    "title": "Sie befinden sich auf der Übersichtsseite."
+    "title": "Sie befinden sich auf der Dashboard/Übersichtsseite."
   },
   "AnalyticsPage": {
-    "title": "Sie befinden sich auf der Analyseseite."
+    "title": "Sie befinden sich auf der Dashboard/Analyseseite."
+  },
+  "ReportsPage": {
+    "title": "Sie befinden sich auf der Dashboard/Berichtsseite."
   },
   "Greet": {
     "placeholder": "Geben Sie einen Namen ein...",
@@ -55,6 +55,7 @@
     "dashboard": "Dashboard",
     "overview": "Übersicht",
     "analytics": "Analyse",
+    "reports": "Berichte",
     "github": "Github",
     "feedback": "Feedback",
     "settings": "Einstellungen",
@@ -84,6 +85,7 @@
     "goDashboard": "Zum Dashboard",
     "goAnalytics": "Zu Analytik",
     "goOverview": "Zur Übersicht",
+    "goReports": "Zu Berichten",
     "goSettings": "Zu Einstellungen",
     "then": "dann"
   },
@@ -100,6 +102,7 @@
     "goDashboard": "Zum Dashboard",
     "goAnalytics": "Zu Analytik",
     "goOverview": "Zur Übersicht",
+    "goReports": "Zu Berichten",
     "goSettings": "Zu Einstellungen",
     "language": "Sprache",
     "sidebarVariants": "Seitenleiste Varianten",
