@@ -52,7 +52,7 @@ export const Greet = () => {
 
     toast.promise(fetchGreeting(), {
       loading: isTauri() ? t("loadingTauri") : t("loadingWeb"),
-      success: (data) => {
+      success: (data: GreetResponse) => {
         const translationKey = data.message_key as Parameters<typeof t>[0];
 
         return t(translationKey, {
