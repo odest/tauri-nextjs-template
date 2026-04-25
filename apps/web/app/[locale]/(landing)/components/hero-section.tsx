@@ -25,9 +25,9 @@ export default function HeroSection() {
         aria-hidden
         className="absolute inset-0 isolate hidden opacity-65 contain-strict lg:block"
       >
-        <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-        <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-        <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+        <div className="absolute top-0 left-0 h-320 w-140 -translate-y-87.5 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
+        <div className="absolute top-0 left-0 h-320 w-60 [translate:5%_-50%] -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
+        <div className="absolute top-0 left-0 h-320 w-60 -translate-y-87.5 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
       </div>
       <div
         className="absolute inset-0 z-0 dark:hidden"
@@ -103,7 +103,7 @@ export default function HeroSection() {
                 },
               },
             }}
-            className="mask-b-from-35% mask-b-to-90% absolute inset-0 top-56 -z-20 lg:top-32"
+            className="absolute inset-0 top-56 -z-20 mask-b-from-35% mask-b-to-90% lg:top-32"
           >
             <Image
               src="/night-background.webp"
@@ -121,7 +121,7 @@ export default function HeroSection() {
           />
 
           <div className="mx-auto max-w-7xl px-6">
-            <div className="text-center sm:mx-auto lg:mr-auto lg:mt-0">
+            <div className="text-center sm:mx-auto lg:mt-0 lg:mr-auto">
               <AnimatedGroup variants={transitionVariants}>
                 <Link
                   href="https://github.com/odest/tntstack/releases/latest"
@@ -151,7 +151,7 @@ export default function HeroSection() {
                 preset="fade-in-blur"
                 speedSegment={0.3}
                 as="h1"
-                className="mx-auto mt-8 max-w-4xl text-balance text-5xl max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
+                className="mx-auto mt-8 max-w-4xl text-5xl text-balance max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
               >
                 Build Cross-Platform Apps Faster Than Ever
               </TextEffect>
@@ -161,7 +161,7 @@ export default function HeroSection() {
                 speedSegment={0.3}
                 delay={0.5}
                 as="p"
-                className="mx-auto mt-8 max-w-3xl text-balance [font-size:var(--comp-text-lg)] [line-height:var(--comp-lh-lg)]"
+                className="mx-auto mt-8 max-w-3xl [font-size:var(--comp-text-lg)] [line-height:var(--comp-lh-lg)] text-balance"
               >
                 The solid stack for building cross-platform apps. Write your
                 code once and build for Web, Desktop, and Mobile. Powered by a
@@ -221,17 +221,17 @@ export default function HeroSection() {
               ...transitionVariants,
             }}
           >
-            <div className="mask-b-from-55% relative -mr-56 mt-8 overflow-hidden px-2 sm:mr-0 sm:mt-12 md:mt-20">
-              <div className="inset-shadow-2xs ring-background dark:inset-shadow-white/20 bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
+            <div className="relative mt-8 -mr-56 overflow-hidden mask-b-from-55% px-2 sm:mt-12 sm:mr-0 md:mt-20">
+              <div className="ring-background bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg ring-1 inset-shadow-2xs shadow-zinc-950/15 dark:inset-shadow-white/20">
                 <Image
-                  className="bg-background aspect-15/8 relative hidden rounded-2xl grayscale mix-blend-luminosity dark:block"
+                  className="bg-background relative hidden aspect-15/8 rounded-2xl mix-blend-luminosity grayscale dark:block"
                   src="/app-screen-dark.png"
                   alt="app screen"
                   width="1920"
                   height="1080"
                 />
                 <Image
-                  className="z-2 border-border/25 aspect-15/8 relative rounded-2xl border grayscale mix-blend-luminosity dark:hidden"
+                  className="border-border/25 relative z-2 aspect-15/8 rounded-2xl border mix-blend-luminosity grayscale dark:hidden"
                   src="/app-screen-light.png"
                   alt="app screen"
                   width="1920"
@@ -240,7 +240,7 @@ export default function HeroSection() {
                 <BorderBeam
                   duration={6}
                   size={200}
-                  className="from-transparent via-primary to-transparent"
+                  className="via-primary from-transparent to-transparent"
                 />
               </div>
             </div>

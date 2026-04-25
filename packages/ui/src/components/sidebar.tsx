@@ -368,7 +368,7 @@ function SidebarContent({
       dir={dir as "ltr" | "rtl" | undefined}
       className={cn(
         "min-h-0 flex-1 group-data-[collapsible=icon]:overflow-hidden",
-        "[&_[data-radix-scroll-area-viewport]>div]:min-h-full! [&_[data-radix-scroll-area-viewport]>div]:flex! [&_[data-radix-scroll-area-viewport]>div]:flex-col!",
+        "[&_[data-radix-scroll-area-viewport]>div]:flex! [&_[data-radix-scroll-area-viewport]>div]:min-h-full! [&_[data-radix-scroll-area-viewport]>div]:flex-col!",
         className,
       )}
       {...props}

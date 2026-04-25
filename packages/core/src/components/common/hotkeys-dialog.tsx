@@ -38,7 +38,7 @@ function HotkeyRow({ hotkey }: { hotkey: HotkeyDefinition }) {
           <React.Fragment key={i}>
             <Kbd>{key}</Kbd>
             {isSequence && i < keys.length - 1 && (
-              <span className="text-[10px] text-muted-foreground opacity-70 font-mono mx-1.5">
+              <span className="text-muted-foreground mx-1.5 font-mono text-[10px] opacity-70">
                 {t("then")}
               </span>
             )}
@@ -59,7 +59,7 @@ function HotkeysList() {
     <div className="space-y-4">
       {generalHotkeys.length > 0 && (
         <div>
-          <h3 className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+          <h3 className="text-muted-foreground mb-2 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold tracking-wider uppercase">
             {t("general")}
           </h3>
           <div className="space-y-0.5">
@@ -76,7 +76,7 @@ function HotkeysList() {
 
       {navigationHotkeys.length > 0 && (
         <div>
-          <h3 className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+          <h3 className="text-muted-foreground mb-2 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-semibold tracking-wider uppercase">
             {t("navigation")}
           </h3>
           <div className="space-y-0.5">
@@ -103,7 +103,7 @@ export function HotkeysDialog() {
             <DrawerTitle>{t("title")}</DrawerTitle>
             <DrawerDescription>{t("description")}</DrawerDescription>
           </DrawerHeader>
-          <div className="overflow-y-auto w-full max-w-sm mx-auto no-scrollbar">
+          <div className="no-scrollbar mx-auto w-full max-w-sm overflow-y-auto">
             <HotkeysList />
           </div>
         </DrawerContent>
@@ -113,12 +113,12 @@ export function HotkeysDialog() {
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
-      <DialogContent className="sm:max-w-md max-h-[85vh] flex flex-col">
+      <DialogContent className="flex max-h-[85vh] flex-col sm:max-w-md">
         <DialogHeader className="shrink-0">
           <DialogTitle>{t("title")}</DialogTitle>
           <DialogDescription>{t("description")}</DialogDescription>
         </DialogHeader>
-        <div className="overflow-y-auto flex-1 no-scrollbar -mx-6 px-6">
+        <div className="no-scrollbar -mx-6 flex-1 overflow-y-auto px-6">
           <HotkeysList />
         </div>
       </DialogContent>

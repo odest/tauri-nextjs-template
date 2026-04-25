@@ -6,7 +6,7 @@ interface DashboardLayoutProps {
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex flex-1 min-h-0 flex-col">
+    <div className="flex min-h-0 flex-1 flex-col">
       <DashboardTabsNav />
       {children}
     </div>

@@ -74,25 +74,25 @@ const footerLinks: FooterSection[] = [
         title: "GitHub",
         href: "https://github.com/odest/tntstack",
         isExternal: true,
-        icon: <GithubIcon className="w-4 h-4" />,
+        icon: <GithubIcon className="h-4 w-4" />,
       },
       {
         title: "Contribute",
         href: "https://github.com/odest/tntstack/blob/master/CONTRIBUTING.md",
         isExternal: true,
-        icon: <GitPullRequestIcon className="w-4 h-4" />,
+        icon: <GitPullRequestIcon className="h-4 w-4" />,
       },
       {
         title: "Discussions",
         href: "https://github.com/odest/tntstack/discussions",
         isExternal: true,
-        icon: <MessageSquareIcon className="w-4 h-4" />,
+        icon: <MessageSquareIcon className="h-4 w-4" />,
       },
       {
         title: "Report an Issue",
         href: "https://github.com/odest/tntstack/issues",
         isExternal: true,
-        icon: <BugIcon className="w-4 h-4" />,
+        icon: <BugIcon className="h-4 w-4" />,
       },
     ],
   },
@@ -102,11 +102,11 @@ export function Footer() {
   return (
     <footer
       className={cn(
-        "relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center overflow-hidden rounded-t-4xl border-t px-6 md:rounded-t-6xl md:px-8",
+        "md:rounded-t-6xl relative mx-auto flex w-full max-w-6xl flex-col items-center justify-center overflow-hidden rounded-t-4xl border-t px-6 md:px-8",
         "dark:bg-[radial-gradient(35%_128px_at_50%_0%,--theme(--color-foreground/.1),transparent)]",
       )}
     >
-      <div className="absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground/20 blur" />
+      <div className="bg-foreground/20 absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur" />
 
       <div className="grid w-full gap-8 py-6 md:py-8 lg:grid-cols-3 lg:gap-8">
         <AnimatedContainer className="space-y-4">
@@ -116,7 +116,7 @@ export function Footer() {
               <h2 className="text-xl font-bold">TNTStack</h2>
             </div>
           </Link>
-          <p className="mt-4 text-muted-foreground [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
+          <p className="text-muted-foreground mt-4 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
             Build Cross-Platform Apps Faster Than Ever
           </p>
           <ModeSwitch />
@@ -129,11 +129,11 @@ export function Footer() {
                 <h3 className="[font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)]">
                   {section.label}
                 </h3>
-                <ul className="mt-4 space-y-2 text-muted-foreground [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
+                <ul className="text-muted-foreground mt-4 space-y-2 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
                   {section.links.map((link) => (
                     <li key={link.title}>
                       <Link
-                        className="inline-flex items-center duration-250 hover:text-foreground [&_svg]:me-1 [&_svg]:size-4"
+                        className="hover:text-foreground inline-flex items-center duration-250 [&_svg]:me-1 [&_svg]:size-4"
                         href={link.href}
                         target={link.isExternal ? "_blank" : "_self"}
                         rel={
@@ -158,7 +158,7 @@ export function Footer() {
       <BorderBeam
         duration={6}
         size={200}
-        className="from-transparent via-primary to-transparent"
+        className="via-primary from-transparent to-transparent"
       />
     </footer>
   );

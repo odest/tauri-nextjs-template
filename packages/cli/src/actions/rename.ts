@@ -196,12 +196,15 @@ async function renameAppleDirsAndFiles(
 
   for (const p of allPaths) {
     if (!(await fs.pathExists(p))) continue; // skip if already moved by parent
-    
+
     const basename = path.basename(p);
     let newBasename = basename;
-    
+
     if (newBasename.includes(SEARCH_TERMS.namePascal)) {
-      newBasename = newBasename.replaceAll(SEARCH_TERMS.namePascal, opts.projectNamePascal);
+      newBasename = newBasename.replaceAll(
+        SEARCH_TERMS.namePascal,
+        opts.projectNamePascal,
+      );
     }
     if (newBasename.includes(SEARCH_TERMS.name)) {
       newBasename = newBasename.replaceAll(SEARCH_TERMS.name, opts.projectName);

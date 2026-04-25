@@ -31,7 +31,7 @@ function DownloadButton({
         <span className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
           {label}
         </span>
-        <span className="text-muted-foreground [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-mono">
+        <span className="text-muted-foreground font-mono [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)]">
           {ext}
         </span>
       </Link>
@@ -53,7 +53,7 @@ function PlatformCard({
 }) {
   return (
     <Card
-      className={`group overflow-hidden bg-background shadow-foreground/5 text-center ${colSpanClass[platform.colSpan]}`}
+      className={`group bg-background shadow-foreground/5 overflow-hidden text-center ${colSpanClass[platform.colSpan]}`}
     >
       <CardHeader className="pb-3">
         <CardDecorator>{platform.icon}</CardDecorator>
@@ -70,7 +70,7 @@ function PlatformCard({
             />
           ))
         ) : (
-          <p className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] text-muted-foreground py-2">
+          <p className="text-muted-foreground py-2 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
             Coming soon
           </p>
         )}
@@ -84,14 +84,14 @@ export default function PlatformCards({ assets }: PlatformCardsProps) {
     <section className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
         <div className="text-center">
-          <h2 className="text-balance text-4xl font-semibold lg:text-5xl">
+          <h2 className="text-4xl font-semibold text-balance lg:text-5xl">
             Available Platforms
           </h2>
-          <p className="mt-4 text-muted-foreground">
+          <p className="text-muted-foreground mt-4">
             Download TNTStack for your platform.
           </p>
         </div>
-        <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 md:mt-16">
+        <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-6">
           {platformCards.map((platform) => (
             <PlatformCard
               key={platform.name}
@@ -106,13 +106,13 @@ export default function PlatformCards({ assets }: PlatformCardsProps) {
 }
 
 const CardDecorator = ({ children }: { children: ReactNode }) => (
-  <div className="mask-radial-from-40% mask-radial-to-60% relative mx-auto size-36 duration-200 [--color-border:color-mix(in_oklab,var(--color-foreground)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-foreground)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-foreground)15%,transparent)] dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-foreground)20%,transparent)]">
+  <div className="relative mx-auto size-36 mask-radial-from-40% mask-radial-to-60% duration-200 [--color-border:color-mix(in_oklab,var(--color-foreground)10%,transparent)] group-hover:[--color-border:color-mix(in_oklab,var(--color-foreground)20%,transparent)] dark:[--color-border:color-mix(in_oklab,var(--color-foreground)15%,transparent)] dark:group-hover:[--color-border:color-mix(in_oklab,var(--color-foreground)20%,transparent)]">
     <div
       aria-hidden
       className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
     />
 
-    <div className="bg-background absolute inset-0 m-auto flex size-(--comp-h-12) items-center justify-center border-l border-t">
+    <div className="bg-background absolute inset-0 m-auto flex size-(--comp-h-12) items-center justify-center border-t border-l">
       {children}
     </div>
   </div>

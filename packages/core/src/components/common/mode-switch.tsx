@@ -28,7 +28,7 @@ export function ModeSwitch({ className }: { className?: string }) {
     <LayoutGroup>
       <div
         className={cn(
-          "inline-flex items-center gap-1 rounded-full border border-border bg-background p-1 backdrop-blur-sm",
+          "border-border bg-background inline-flex items-center gap-1 rounded-full border p-1 backdrop-blur-sm",
           className,
         )}
       >
@@ -52,7 +52,7 @@ export function ModeSwitch({ className }: { className?: string }) {
               {isActive && (
                 <motion.span
                   layoutId="mode-switch-indicator"
-                  className="absolute inset-0 rounded-full bg-background shadow-sm ring-1 ring-border"
+                  className="bg-background ring-border absolute inset-0 rounded-full shadow-sm ring-1"
                   transition={{
                     type: "spring",
                     stiffness: 500,

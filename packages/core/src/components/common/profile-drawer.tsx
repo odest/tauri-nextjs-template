@@ -49,7 +49,7 @@ export function ProfileDrawer({ user }: ProfileDrawerProps) {
             </span>
           </div>
         </div>
-        <Separator className="my-1 h-px bg-border" />
+        <Separator className="bg-border my-1 h-px" />
         <div className="flex flex-col">
           {navigationData.navProfile.map((group, index) => (
             <div key={group.id} className="contents">

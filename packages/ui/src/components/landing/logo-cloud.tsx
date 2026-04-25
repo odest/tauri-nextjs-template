@@ -35,19 +35,19 @@ export const LogoCloud = () => {
 
             <div
               aria-hidden
-              className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"
+              className="from-background absolute inset-y-0 left-0 w-20 bg-linear-to-r"
             />
             <div
               aria-hidden
-              className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"
+              className="from-background absolute inset-y-0 right-0 w-20 bg-linear-to-l"
             />
             <ProgressiveBlur
-              className="pointer-events-none absolute left-0 top-0 h-full w-20"
+              className="pointer-events-none absolute top-0 left-0 h-full w-20"
               direction="left"
               blurIntensity={1}
             />
             <ProgressiveBlur
-              className="pointer-events-none absolute right-0 top-0 h-full w-20"
+              className="pointer-events-none absolute top-0 right-0 h-full w-20"
               direction="right"
               blurIntensity={1}
             />

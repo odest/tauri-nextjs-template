@@ -7,8 +7,8 @@ export function HomePage() {
   const t = useTranslations("HomePage");
 
   return (
-    <div className="flex flex-1 flex-col justify-center items-center p-4 gap-4">
-      <h1 className="text-xl font-bold text-center text-balance">
+    <div className="flex flex-1 flex-col items-center justify-center gap-4 p-4">
+      <h1 className="text-center text-xl font-bold text-balance">
         {t("title")}
       </h1>
       <Greet />

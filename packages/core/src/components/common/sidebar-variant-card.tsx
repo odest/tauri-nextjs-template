@@ -46,13 +46,13 @@ export const SidebarVariantCard = () => {
 
   return (
     <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 gap-4">
+      <CardHeader className="flex flex-row items-center justify-between gap-4 space-y-0">
         <div className="space-y-1.5">
           <CardTitle>{t("title")}</CardTitle>
           <CardDescription>{t("description")}</CardDescription>
         </div>
 
-        <div className="md:hidden shrink-0">
+        <div className="shrink-0 md:hidden">
           <Select
             value={sidebarVariant}
             onValueChange={(val) =>
@@ -97,38 +97,38 @@ export const SidebarVariantCard = () => {
           <div className="flex flex-col gap-3">
             <label
               htmlFor="variant-sidebar"
-              className="cursor-pointer block w-full"
+              className="block w-full cursor-pointer"
             >
               <div className="relative w-full">
-                <div className="aspect-video rounded-lg border-2 border-border bg-background overflow-hidden transition-colors">
-                  <div className="h-(--comp-h-5) bg-muted border-b"></div>
+                <div className="border-border bg-background aspect-video overflow-hidden rounded-lg border-2 transition-colors">
+                  <div className="bg-muted h-(--comp-h-5) border-b"></div>
                   <div className="absolute top-2 left-2 flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
                   </div>
 
                   <div className="flex h-full">
-                    <div className="w-12 h-[calc(100%-1.2rem)] bg-muted border-r">
-                      <div className="p-1 h-full flex flex-col justify-between">
+                    <div className="bg-muted h-[calc(100%-1.2rem)] w-12 border-r">
+                      <div className="flex h-full flex-col justify-between p-1">
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
 
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
                       </div>
                     </div>
 
                     <div className="flex-1 p-2">
                       <div className="space-y-1">
-                        <div className="h-2 bg-muted-foreground/20 rounded w-3/4"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-1/2"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-2/3"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-3/4 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-1/2 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-2/3 rounded"></div>
                       </div>
                     </div>
                   </div>
@@ -139,7 +139,7 @@ export const SidebarVariantCard = () => {
               <RadioGroupItem value="sidebar" id="variant-sidebar" />
               <Label
                 htmlFor="variant-sidebar"
-                className="font-medium cursor-pointer"
+                className="cursor-pointer font-medium"
               >
                 {t("sidebar")}
               </Label>
@@ -149,38 +149,38 @@ export const SidebarVariantCard = () => {
           <div className="flex flex-col gap-3">
             <label
               htmlFor="variant-floating"
-              className="cursor-pointer block w-full"
+              className="block w-full cursor-pointer"
             >
               <div className="relative w-full">
-                <div className="aspect-video rounded-lg border-2 border-border bg-background overflow-hidden transition-colors">
-                  <div className="h-(--comp-h-5) bg-muted border-b"></div>
+                <div className="border-border bg-background aspect-video overflow-hidden rounded-lg border-2 transition-colors">
+                  <div className="bg-muted h-(--comp-h-5) border-b"></div>
                   <div className="absolute top-2 left-2 flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
                   </div>
 
                   <div className="flex h-full p-1">
-                    <div className="w-12 h-[calc(100%-1.3rem)] bg-muted rounded-md border mr-1">
-                      <div className="p-1 h-full flex flex-col justify-between">
+                    <div className="bg-muted mr-1 h-[calc(100%-1.3rem)] w-12 rounded-md border">
+                      <div className="flex h-full flex-col justify-between p-1">
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
 
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex-1 bg-background rounded-md p-1">
+                    <div className="bg-background flex-1 rounded-md p-1">
                       <div className="space-y-1">
-                        <div className="h-2 bg-muted-foreground/20 rounded w-3/4"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-1/2"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-2/3"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-3/4 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-1/2 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-2/3 rounded"></div>
                       </div>
                     </div>
                   </div>
@@ -191,7 +191,7 @@ export const SidebarVariantCard = () => {
               <RadioGroupItem value="floating" id="variant-floating" />
               <Label
                 htmlFor="variant-floating"
-                className="font-medium cursor-pointer"
+                className="cursor-pointer font-medium"
               >
                 {t("floating")}
               </Label>
@@ -201,38 +201,38 @@ export const SidebarVariantCard = () => {
           <div className="flex flex-col gap-3">
             <label
               htmlFor="variant-inset"
-              className="cursor-pointer block w-full"
+              className="block w-full cursor-pointer"
             >
               <div className="relative w-full">
-                <div className="aspect-video rounded-lg border-2 border-border bg-muted overflow-hidden transition-colors">
-                  <div className="h-(--comp-h-5) bg-muted border-b"></div>
+                <div className="border-border bg-muted aspect-video overflow-hidden rounded-lg border-2 transition-colors">
+                  <div className="bg-muted h-(--comp-h-5) border-b"></div>
                   <div className="absolute top-2 left-2 flex gap-1">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                    <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-red-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-yellow-500"></div>
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
                   </div>
 
                   <div className="flex h-full">
-                    <div className="w-12 h-[calc(100%-1.3rem)] bg-muted">
-                      <div className="p-1 h-full pb-2 mt-1 flex flex-col justify-between">
+                    <div className="bg-muted h-[calc(100%-1.3rem)] w-12">
+                      <div className="mt-1 flex h-full flex-col justify-between p-1 pb-2">
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
 
                         <div className="space-y-1">
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
-                          <div className="h-1.5 bg-muted-foreground/30 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
+                          <div className="bg-muted-foreground/30 h-1.5 rounded"></div>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex-1 h-[calc(100%-1.7rem)] bg-background rounded-md border border-border p-2 mr-1 mt-1">
+                    <div className="bg-background border-border mt-1 mr-1 h-[calc(100%-1.7rem)] flex-1 rounded-md border p-2">
                       <div className="space-y-1">
-                        <div className="h-2 bg-muted-foreground/20 rounded w-3/4"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-1/2"></div>
-                        <div className="h-2 bg-muted-foreground/20 rounded w-2/3"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-3/4 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-1/2 rounded"></div>
+                        <div className="bg-muted-foreground/20 h-2 w-2/3 rounded"></div>
                       </div>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export const SidebarVariantCard = () => {
               <RadioGroupItem value="inset" id="variant-inset" />
               <Label
                 htmlFor="variant-inset"
-                className="font-medium cursor-pointer"
+                className="cursor-pointer font-medium"
               >
                 {t("inset")}
               </Label>

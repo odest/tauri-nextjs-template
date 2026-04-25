@@ -70,7 +70,7 @@ function CommandMenuItem({
   return (
     <CommandItem
       className={cn(
-        "h-(--comp-h-9) rounded-md border border-transparent px-3! font-medium data-[selected=true]:border-input data-[selected=true]:bg-input/50",
+        "data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-(--comp-h-9) rounded-md border border-transparent px-3! font-medium",
         className,
       )}
       {...props}
@@ -116,12 +116,12 @@ export function CommandPalette({
     const keys = formatHotkeyDisplay(hk.keys);
     const isSequence = hk.keys.includes(">");
     return (
-      <span className="ml-auto hidden md:flex items-center gap-1">
+      <span className="ml-auto hidden items-center gap-1 md:flex">
         {keys.map((key, i) => (
           <React.Fragment key={i}>
             <Kbd>{key}</Kbd>
             {isSequence && i < keys.length - 1 && (
-              <span className="text-[10px] text-muted-foreground opacity-70 font-mono mx-1.5">
+              <span className="text-muted-foreground mx-1.5 font-mono text-[10px] opacity-70">
                 {t("then")}
               </span>
             )}
@@ -138,7 +138,7 @@ export function CommandPalette({
     <>
       <Command
         className={cn(
-          "rounded-none bg-transparent p-2 **:data-[slot=command-input]:h-(--comp-h-9)! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-(--comp-h-9)! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50",
+          "**:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50 rounded-none bg-transparent p-2 **:data-[slot=command-input]:h-(--comp-h-9)! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-(--comp-h-9)! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border",
           isMobile && "h-full",
         )}
       >
@@ -146,10 +146,10 @@ export function CommandPalette({
         <CommandList
           className={cn(
             "no-scrollbar scroll-pt-2 scroll-pb-1.5",
-            isMobile ? "min-h-0 max-h-none flex-1" : "min-h-80",
+            isMobile ? "max-h-none min-h-0 flex-1" : "min-h-80",
           )}
         >
-          <CommandEmpty className="py-12 text-center [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] text-muted-foreground">
+          <CommandEmpty className="text-muted-foreground py-12 text-center [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
             {t("noResults")}
           </CommandEmpty>
 
@@ -253,7 +253,7 @@ export function CommandPalette({
                   onSelect={() => runCommand(() => changeLanguage(loc))}
                   disabled={isPending}
                 >
-                  <span className="[font-size:var(--comp-text-base)] [line-height:var(--comp-lh-base)] mr-2">
+                  <span className="mr-2 [font-size:var(--comp-text-base)] [line-height:var(--comp-lh-base)]">
                     {config.flag}
                   </span>
                   <span>{config.nativeName}</span>
@@ -312,7 +312,7 @@ export function CommandPalette({
                     {palette.slice(0, 5).map((color, i) => (
                       <div
                         key={i}
-                        className="h-3 w-3 rounded-full border border-border"
+                        className="border-border h-3 w-3 rounded-full border"
                         style={{ backgroundColor: color }}
                       />
                     ))}
@@ -324,7 +324,7 @@ export function CommandPalette({
         </CommandList>
       </Command>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 hidden md:flex h-(--comp-h-10) items-center justify-between rounded-b-xl border-t border-border bg-muted/50 px-4 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium text-muted-foreground">
+      <div className="border-border bg-muted/50 text-muted-foreground absolute inset-x-0 bottom-0 z-20 hidden h-(--comp-h-10) items-center justify-between rounded-b-xl border-t px-4 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium md:flex">
         <div className="flex items-center gap-2">
           <Kbd>
             <MoveUp />
@@ -350,7 +350,7 @@ export function CommandPalette({
     return (
       <Drawer open={isOpen} onOpenChange={(open) => !open && close()}>
         <DrawerContent
-          className="overflow-hidden h-[96dvh]"
+          className="h-[96dvh] overflow-hidden"
           onOpenAutoFocus={(e: Event) => e.preventDefault()}
         >
           <DrawerHeader className="sr-only">
@@ -365,7 +365,7 @@ export function CommandPalette({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
-      <DialogContent className="overflow-hidden p-0 rounded-xl border-none bg-background bg-clip-padding pb-10 shadow-2xl ring-4 ring-border/80 sm:max-w-lg top-[15%] translate-y-0">
+      <DialogContent className="bg-background ring-border/80 top-[15%] translate-y-0 overflow-hidden rounded-xl border-none bg-clip-padding p-0 pb-10 shadow-2xl ring-4 sm:max-w-lg">
         <DialogHeader className="sr-only">
           <DialogTitle>{t("commandPalette")}</DialogTitle>
           <DialogDescription>{t("search")}</DialogDescription>

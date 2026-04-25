@@ -30,8 +30,8 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
   return (
     <Card
       className={cn(
-        "p-1 gap-0 rounded-lg",
-        "[content-visibility:auto] [contain-intrinsic-size:200px]",
+        "gap-0 rounded-lg p-1",
+        "[contain-intrinsic-size:200px] [content-visibility:auto]",
       )}
     >
       <div className="relative flex h-36">
@@ -39,7 +39,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
           <div
             key={swatch.name + swatch.bg}
             className={cn(
-              "group/swatch relative h-full flex-1 ml-1 border first:ml-0 rounded-lg transition-all duration-300 ease-in-out",
+              "group/swatch relative ml-1 h-full flex-1 rounded-lg border transition-all duration-300 ease-in-out first:ml-0",
               "hover:grow-[1.5]",
             )}
             style={{ backgroundColor: swatch.bg }}
@@ -49,10 +49,10 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
                 "absolute inset-0 flex items-center justify-center",
                 "opacity-0 group-hover/swatch:opacity-100",
                 "transition-opacity duration-300 ease-in-out",
-                "pointer-events-none -rotate-90 whitespace-nowrap tracking-wider",
+                "pointer-events-none -rotate-90 tracking-wider whitespace-nowrap",
               )}
             >
-              <span className="bg-black/50 text-white backdrop-blur-sm px-2 py-0.5 rounded-md shadow-xs [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium">
+              <span className="rounded-md bg-black/50 px-2 py-0.5 [font-size:var(--comp-text-xs)] [line-height:var(--comp-lh-xs)] font-medium text-white shadow-xs backdrop-blur-sm">
                 {swatch.name}
               </span>
             </div>
@@ -63,7 +63,7 @@ export function ThemeCard({ themeLabel, themeName, palette }: ThemeCardProps) {
       <Button
         onClick={() => setSelectedTheme(themeName)}
         className={cn(
-          "w-full h-(--comp-h-12) mt-1 border [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-medium",
+          "mt-1 h-(--comp-h-12) w-full border [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-medium",
           selectedTheme === themeName
             ? "bg-primary text-primary-foreground"
             : "bg-background text-foreground",

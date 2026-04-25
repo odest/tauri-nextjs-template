@@ -23,7 +23,7 @@ export function LanguageCard() {
       <CardContent>
         <div className="flex items-center justify-between">
           <div className="space-y-2">
-            <div className="font-semibold flex items-center gap-2">
+            <div className="flex items-center gap-2 font-semibold">
               {t("title")}
             </div>
             <div className="text-muted-foreground [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
@@ -56,7 +56,7 @@ export function LanguageCard() {
                     value={loc}
                     className={cn(isSelected && "bg-accent")}
                   >
-                    <div className="flex items-center gap-2 w-full">
+                    <div className="flex w-full items-center gap-2">
                       <span className="[font-size:var(--comp-text-base)] [line-height:var(--comp-lh-base)]">
                         {config.flag}
                       </span>

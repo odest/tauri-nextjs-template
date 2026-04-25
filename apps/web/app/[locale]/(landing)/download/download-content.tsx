@@ -96,7 +96,7 @@ export default function DownloadContent({ release }: DownloadContentProps) {
             preset="fade-in-blur"
             speedSegment={0.3}
             as="h1"
-            className="mx-auto mt-8 max-w-4xl text-balance text-5xl max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
+            className="mx-auto mt-8 max-w-4xl text-5xl text-balance max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
           >
             Download TNTStack
           </TextEffect>
@@ -106,7 +106,7 @@ export default function DownloadContent({ release }: DownloadContentProps) {
             speedSegment={0.3}
             delay={0.5}
             as="p"
-            className="mx-auto mt-8 max-w-3xl text-balance [font-size:var(--comp-text-lg)] [line-height:var(--comp-lh-lg)]"
+            className="mx-auto mt-8 max-w-3xl [font-size:var(--comp-text-lg)] [line-height:var(--comp-lh-lg)] text-balance"
           >
             Get the latest version for your platform. One codebase for Web,
             Desktop, and Mobile.
@@ -114,7 +114,7 @@ export default function DownloadContent({ release }: DownloadContentProps) {
 
           {release?.version && (
             <AnimatedGroup variants={transitionVariants}>
-              <p className="mt-4 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] text-muted-foreground">
+              <p className="text-muted-foreground mt-4 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
                 Latest release: v{release.version}
               </p>
             </AnimatedGroup>

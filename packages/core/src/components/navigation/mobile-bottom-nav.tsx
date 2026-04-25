@@ -67,9 +67,9 @@ export function MobileBottomNav({
       className={cn(
         "fixed z-50 flex h-16 items-center justify-between md:hidden",
         "bottom-[calc(env(safe-area-inset-bottom)+1.5rem)]",
-        "left-4 right-4 mx-auto max-w-[400px]",
+        "right-4 left-4 mx-auto max-w-[400px]",
         "p-2",
-        "rounded-full border border-border",
+        "border-border rounded-full border",
         "bg-background/80 backdrop-blur-2xl",
         "shadow-[inset_0_1px_1px_rgba(255,255,255,1),inset_0_-1px_1px_rgba(0,0,0,0.05),0_12px_24px_-4px_rgba(0,0,0,0.15)]",
         "dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.5),0_8px_32px_rgba(0,0,0,0.4)]",
@@ -114,7 +114,7 @@ export function MobileBottomNav({
               custom={isActive}
               transition={transition}
               className={cn(
-                "relative flex h-full px-3.5 items-center justify-center [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-medium rounded-full transition-colors duration-300",
+                "relative flex h-full items-center justify-center rounded-full px-3.5 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-medium transition-colors duration-300",
                 isActive
                   ? "text-foreground min-w-0"
                   : "text-muted-foreground hover:text-foreground shrink-0",
@@ -124,9 +124,9 @@ export function MobileBottomNav({
                 <motion.div
                   layoutId="mobile-nav-active-pill"
                   className={cn(
-                    "absolute inset-0 rounded-full z-0",
-                    "bg-linear-to-b from-foreground/5 to-foreground/10",
-                    "border border-border/50",
+                    "absolute inset-0 z-0 rounded-full",
+                    "from-foreground/5 to-foreground/10 bg-linear-to-b",
+                    "border-border/50 border",
                     "shadow-[inset_0_-1px_0_var(--color-border)]",
                   )}
                   transition={transition}
@@ -134,7 +134,7 @@ export function MobileBottomNav({
                   <BorderBeam
                     duration={5}
                     size={50}
-                    className="from-transparent via-primary to-transparent"
+                    className="via-primary from-transparent to-transparent"
                   />
                 </motion.div>
               )}
@@ -153,7 +153,7 @@ export function MobileBottomNav({
                     animate="animate"
                     exit="exit"
                     transition={transition}
-                    className="relative z-10 block truncate min-w-0 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-semibold"
+                    className="relative z-10 block min-w-0 truncate [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)] font-semibold"
                   >
                     {t(item.translationKey as Parameters<typeof t>[0])}
                   </motion.span>
