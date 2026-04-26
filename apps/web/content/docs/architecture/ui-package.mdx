@@ -15,12 +15,12 @@ The design system layer. shadcn/ui components, Tailwind themes, global styles, a
 <Files>
   <Folder name="packages/ui/src" defaultOpen>
     <Folder name="components" defaultOpen>
-      <File name="button.tsx, card.tsx, input.tsx, sidebar.tsx, ... (15+ primitives)" />
+      <File name="button.tsx, card.tsx, command.tsx, dialog.tsx, drawer.tsx, tabs.tsx, ... (25+ primitives)" />
       <Folder name="landing">
-        <File name="animated-group.tsx, infinite-slider.tsx, logo-cloud.tsx, ..." />
+        <File name="animated-container.tsx, animated-group.tsx, border-beam.tsx, logo-cloud.tsx, text-hover-effect.tsx, ..." />
       </Folder>
       <Folder name="svgs">
-        <File name="Brand SVG icons (eslint, nextjs, react, rust, tauri, ...)" />
+        <File name="Brand and platform SVG icons (eslint, nextjs, react, tauri, windows, ...)" />
       </Folder>
     </Folder>
     <Folder name="hooks">
@@ -37,14 +37,14 @@ The design system layer. shadcn/ui components, Tailwind themes, global styles, a
 
 ## Components
 
-<Tabs items={["Primitives", "Landing"]}>
+<Tabs items={["Primitives", "Landing", "SVGs"]}>
   <Tab value="Primitives">
 
-15+ shadcn/ui components (`new-york` style) in the root of `src/components/`:
+25+ shadcn/ui components (`new-york` style) in the root of `src/components/`:
 
-`avatar`, `breadcrumb`, `button`, `card`, `collapsible`, `dropdown-menu`, `input`, `label`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `tooltip`
+`avatar`, `breadcrumb`, `button`, `card`, `collapsible`, `command`, `dialog`, `drawer`, `dropdown-menu`, `input`, `input-group`, `kbd`, `label`, `radio-group`, `scroll-area`, `select`, `separator`, `sheet`, `sidebar`, `skeleton`, `sonner`, `tabs`, `textarea`, `tooltip`
 
-All built on Radix UI primitives except `card`, `input`, `breadcrumb` (native HTML), `skeleton` (CSS animation), and `sidebar` (custom compound component).
+Most are built on Radix UI primitives. Exceptions: `card`, `input`, `breadcrumb` (native HTML), `skeleton` (CSS animation), `sidebar` (custom compound component), `command` (`cmdk`), `drawer` (`vaul`), `sonner` (toast library).
 
   </Tab>
   <Tab value="Landing">
@@ -53,12 +53,26 @@ Landing page components. All animations use the Motion library.
 
 | Component | What it does |
 |---|---|
+| `animated-container.tsx` | Scroll-triggered entrance animation wrapper |
 | `animated-group.tsx` | Staggered entrance animations |
+| `border-beam.tsx` | Animated border beam effect |
 | `infinite-slider.tsx` | Auto-scrolling horizontal slider |
 | `logo-cloud.tsx` | Tech logos display |
 | `logo.tsx` | App logo |
 | `progressive-blur.tsx` | Gradient blur overlay |
 | `text-effect.tsx` | Animated text reveal |
+| `text-hover-effect.tsx` | Interactive text hover effect |
+
+  </Tab>
+  <Tab value="SVGs">
+
+Brand and platform SVG icons as React components.
+
+| Icon | Source |
+|---|---|
+| `eslint.tsx`, `nextjs.tsx`, `react.tsx`, `rust.tsx`, `tauri.tsx`, `turborepo.tsx` | Tech stack logos |
+| `tailwindcss.tsx`, `motion.tsx`, `radixUi.tsx` | Library logos |
+| `windows.tsx`, `linux.tsx`, `apple.tsx`, `android.tsx` | Platform icons |
 
   </Tab>
 </Tabs>

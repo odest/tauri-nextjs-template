@@ -19,7 +19,13 @@ A Next.js frontend statically exported into a Tauri 2 webview with a Rust backen
       <Folder name="app">
         <Folder name="[locale]">
           <Folder name="home" />
-          <Folder name="dashboard" />
+          <Folder name="dashboard">
+            <Folder name="overview" />
+            <Folder name="analytics" />
+            <Folder name="reports" />
+            <File name="layout.tsx" />
+            <File name="page.tsx" />
+          </Folder>
           <Folder name="settings" />
           <File name="layout.tsx" />
           <File name="page.tsx — redirects to /home" />
@@ -112,17 +118,35 @@ In dev mode, Tauri runs `pnpm dev` and points the webview at `localhost:3000`. I
   <Tab value="lib.rs">
 
 ```rust title="src-tauri/src/lib.rs"
+use serde::Serialize;
+
+#[derive(Serialize)]
+struct GreetResponse {
+    message_key: String,
+    name: String,
+    source: String,
+}
+
+#[tauri::command]
+fn greet(name: &str) -> GreetResponse {
+    GreetResponse {
+        message_key: "successGreeting".to_string(),
+        name: name.to_string(),
+        source: "Tauri".to_string(),
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
   tauri::Builder::default()
     .plugin(tauri_plugin_opener::init())
-    .invoke_handler(tauri::generate_handler![/* your commands */])
+    .invoke_handler(tauri::generate_handler![greet])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
 ```
 
-Register plugins with `.plugin()` and IPC commands with `invoke_handler`. The `mobile_entry_point` attribute makes the same entry point work on both desktop and mobile.
+The `greet` command returns a `GreetResponse` struct with a `message_key` field. The frontend resolves this key to a translated string via `next-intl`. Register plugins with `.plugin()` and IPC commands with `invoke_handler`. The `mobile_entry_point` attribute makes the same entry point work on both desktop and mobile.
 
   </Tab>
   <Tab value="main.rs">

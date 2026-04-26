@@ -16,32 +16,32 @@ The business logic layer. Pages, Zustand stores, hooks, providers, navigation co
   <Folder name="packages/core/src" defaultOpen>
     <Folder name="components" defaultOpen>
       <Folder name="common">
-        <File name="greet.tsx, theme-card.tsx, mode-card.tsx, language-card.tsx, ..." />
+        <File name="greet.tsx, command-palette.tsx, hotkeys-dialog.tsx, profile-drawer.tsx, ..." />
       </Folder>
       <Folder name="layout">
         <File name="app-layout.tsx, app-header.tsx, app-sidebar.tsx" />
       </Folder>
       <Folder name="navigation">
-        <File name="main-nav.tsx, projects-nav.tsx, secondary-nav.tsx, user-nav.tsx" />
+        <File name="main-nav.tsx, dashboard-tabs-nav.tsx, mobile-bottom-nav.tsx, user-nav.tsx, ..." />
       </Folder>
     </Folder>
     <Folder name="pages">
-      <File name="HomePage.tsx, DashboardPage.tsx, SettingsPage.tsx" />
+      <File name="HomePage.tsx, SettingsPage.tsx" />
       <Folder name="subpages">
         <File name="OverviewPage.tsx, AnalyticsPage.tsx, ReportsPage.tsx" />
       </Folder>
     </Folder>
     <Folder name="stores">
-      <File name="greet-store.ts, sidebar-store.ts, theme-store.ts" />
+      <File name="sidebar-store.ts, theme-store.ts, command-palette-store.ts, hotkeys-store.ts, profile-drawer-store.ts" />
     </Folder>
     <Folder name="hooks">
-      <File name="use-language-switcher.ts, use-mounted.ts, use-theme-transition.ts" />
+      <File name="use-app-hotkeys.ts, use-drawer-history.ts, use-language-switcher.ts, use-mounted.ts, use-theme-transition.ts" />
     </Folder>
     <Folder name="providers">
       <File name="theme-provider.tsx" />
     </Folder>
     <Folder name="config">
-      <File name="navigation.ts, themes.ts" />
+      <File name="hotkeys.ts, navigation.ts, themes.ts" />
     </Folder>
     <Folder name="lib">
       <File name="utils.ts, storage-utils.ts" />
@@ -72,11 +72,15 @@ Feature components used in app pages.
 
 | Component | What it does |
 |---|---|
-| `greet.tsx` | Greeting form with Tauri/API toggle |
+| `greet.tsx` | Greeting form with toast notifications (Tauri IPC or API) |
+| `command-palette.tsx` | Global command palette (⌘K) for navigation and actions |
+| `hotkeys-dialog.tsx` | Keyboard shortcuts reference dialog |
+| `profile-drawer.tsx` | User profile drawer |
 | `language-card.tsx` | Language picker card |
-| `language-toggle.tsx` | Compact language toggle button |
+| `language-toggle.tsx` | Minimal language toggle button |
 | `mode-card.tsx` | Light/dark/system selector |
-| `mode-toggle.tsx` | Compact mode toggle button |
+| `mode-switch.tsx` | Minimal light/dark switch |
+| `mode-toggle.tsx` | Minimal light/dark toggle button |
 | `theme-card.tsx` | Single theme preview with selection |
 | `themes-list.tsx` | Searchable theme gallery grid |
 | `sidebar-variant-card.tsx` | Sidebar style picker |
@@ -85,11 +89,13 @@ Feature components used in app pages.
   </Tab>
   <Tab value="Navigation">
 
-Sidebar navigation sections. Mounted inside `app-sidebar.tsx`.
+Sidebar and mobile navigation sections. Sidebar components are mounted inside `app-sidebar.tsx`.
 
 | Component | What it renders |
 |---|---|
 | `main-nav.tsx` | Primary links (Home, Dashboard) |
+| `dashboard-tabs-nav.tsx` | Dashboard sub-page tabs (Overview, Analytics, Reports) |
+| `mobile-bottom-nav.tsx` | Bottom navigation bar for mobile viewports |
 | `projects-nav.tsx` | Project list with dropdown actions |
 | `secondary-nav.tsx` | Secondary links (Settings, Feedback) |
 | `user-nav.tsx` | User avatar with account menu |
@@ -104,18 +110,19 @@ Full page components consumed by both apps. The app routes are thin wrappers aro
 | Page | Route |
 |---|---|
 | `HomePage.tsx` | `/home` |
-| `DashboardPage.tsx` | `/dashboard` |
 | `SettingsPage.tsx` | `/settings` |
 | `OverviewPage.tsx` | `/dashboard/overview` |
 | `AnalyticsPage.tsx` | `/dashboard/analytics` |
 | `ReportsPage.tsx` | `/dashboard/reports` |
 
-This is why both apps can share the same UI: the page logic lives here, not in the apps.
+The `/dashboard` route itself redirects to `/dashboard/overview`. This is why both apps can share the same UI: the page logic lives here, not in the apps.
 
 ## Hooks
 
 | Hook | What it does |
 |---|---|
+| `use-app-hotkeys.ts` | Registers application-wide keyboard shortcuts |
+| `use-drawer-history.ts` | Manages drawer open/close state with browser history |
 | `use-mounted.ts` | Returns `true` after first client render |
 | `use-theme-transition.ts` | View Transition API wrapper for smooth theme switching |
 | `use-language-switcher.ts` | Locale change with theme re-application |
@@ -126,9 +133,11 @@ Zustand stores with `localStorage` persistence where needed.
 
 | Store | State |
 |---|---|
-| `greet-store.ts` | Greeting form input + response |
 | `sidebar-store.ts` | Open/closed state, sidebar variant |
 | `theme-store.ts` | Selected color theme (`data-theme` attribute) |
+| `command-palette-store.ts` | Command palette open/closed state |
+| `hotkeys-store.ts` | Hotkeys dialog open/closed state |
+| `profile-drawer-store.ts` | Profile drawer open/closed state |
 
 ## Providers
 
@@ -140,6 +149,7 @@ Zustand stores with `localStorage` persistence where needed.
 
 | File | What it defines |
 |---|---|
+| `hotkeys.ts` | Keyboard shortcut definitions and key bindings |
 | `navigation.ts` | Sidebar navigation structure and routes |
 | `themes.ts` | Theme registry (40+ color schemes) |
 | `theme-init.ts` | Script injected into `<head>` to prevent flash of wrong theme |
@@ -148,7 +158,7 @@ Zustand stores with `localStorage` persistence where needed.
 
 | File | What it provides |
 |---|---|
-| `utils.ts` | `fetchLatestGithubVersion()` — fetches latest release tag from GitHub API |
+| `utils.ts` | `fetchLatestGithubVersion()` fetches latest release tag. `formatHotkeyDisplay()` platform-aware hotkey labels (⌘ on Mac, Ctrl elsewhere) |
 | `storage-utils.ts` | Type-safe `localStorage` helpers for store persistence |
 
 ## Exports

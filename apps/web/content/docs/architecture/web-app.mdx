@@ -23,7 +23,7 @@ A server-rendered Next.js app that hosts the landing page, web app, documentatio
           <File name="Documentation site (Fumadocs layout)" />
         </Folder>
         <Folder name="(landing)">
-          <File name="Landing page (marketing layout)" />
+          <File name="Landing page, download page (marketing layout)" />
         </Folder>
         <File name="layout.tsx" />
       </Folder>
@@ -63,7 +63,7 @@ Pages are split into three route groups under `[locale]`, each with its own layo
 | Group | Paths | Layout |
 |---|---|---|
 | `(landing)` | `/`, `/download` | Marketing layout (no sidebar) |
-| `(app)` | `/home`, `/dashboard`, `/settings` | Sidebar-based app shell |
+| `(app)` | `/home`, `/dashboard/*`, `/settings` | Sidebar-based app shell |
 | `(docs)` | `/docs/...` | Fumadocs documentation layout |
 
 <Callout type="info">
@@ -117,7 +117,7 @@ Handles locale detection and URL rewriting. The matcher excludes API routes, Nex
 
 ## API Routes
 
-**`POST /api/greet`** — Demo endpoint. Accepts a JSON body with a `name` field, validates and sanitizes input, returns a greeting. Server-side equivalent of the native app's Tauri `greet` command.
+**`POST /api/greet`** — Demo endpoint. Accepts a JSON body with a `name` field, validates and sanitizes input, returns a `{ message_key, name, source }` response. The client uses `message_key` to resolve the translated greeting via `next-intl`. Server-side equivalent of the native app's Tauri `greet` command.
 
 **`GET /api/search`** — Fumadocs search index:
 
@@ -190,6 +190,15 @@ Connects MDX content to the docs UI. The `icon` function resolves frontmatter `i
 
   </Tab>
 </Tabs>
+
+## Lib
+
+| File | What it provides |
+|---|---|
+| `animations.ts` | Shared Motion animation presets for landing page transitions |
+| `detect-platform.ts` | User-agent based OS detection for the download page |
+| `github-releases.ts` | Fetches release assets from the GitHub API for download links |
+| `source.ts` | Fumadocs content source loader (see Documentation System above) |
 
 ## App Layout
 
