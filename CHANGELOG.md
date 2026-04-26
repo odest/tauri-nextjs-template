@@ -1,5 +1,42 @@
 # Changelog
 
+## [1.5.0](https://github.com/odest/tntstack/compare/v1.4.7...v1.5.0) (2026-04-26)
+
+
+### Features
+
+* add command palette with navigation and settings ([#55](https://github.com/odest/tntstack/issues/55)) ([36fe82a](https://github.com/odest/tntstack/commit/36fe82a95b14cdbd10d9eef087bc5b52749d61a4))
+* **core:** Add Reports page and update dashboard navigation ([77b7f50](https://github.com/odest/tntstack/commit/77b7f500320ecd56aaafef7261638825f5154826))
+* **core:** replace static greet text with toast and dynamic i18n ([6456e17](https://github.com/odest/tntstack/commit/6456e17e57d8a16a9a3ae57735eb93da762d9edc))
+* **hotkeys:** add keyboard shortcuts and dialog/drawer ([#54](https://github.com/odest/tntstack/issues/54)) ([4ff28b8](https://github.com/odest/tntstack/commit/4ff28b8fede9b09809c711dd34b5cf12de8281cf))
+* **landing:** implement footer section with theme toggle and links ([#53](https://github.com/odest/tntstack/issues/53)) ([ec7387d](https://github.com/odest/tntstack/commit/ec7387d6a1147a5af55b717779dde745c755bfef))
+* **mobile:** add mobile bottom navigation and drawers ([40e0bb0](https://github.com/odest/tntstack/commit/40e0bb0ca28b6c1e74fa862ddbbbba7d7edc7f96))
+* **ui:** adaptive styling and mobile UX improvements ([#57](https://github.com/odest/tntstack/issues/57)) ([9d4e5d5](https://github.com/odest/tntstack/commit/9d4e5d5c96a8c960f906b00ac2a69e577c750b0c))
+* **web:** implement download page with dynamic OS artifacts ([#49](https://github.com/odest/tntstack/issues/49)) ([25841eb](https://github.com/odest/tntstack/commit/25841ebf48545b5434cc7198913124b08b508332))
+
+
+### Bug Fixes
+
+* **core:** resolve implicit any type error in greet component ([0dcd28a](https://github.com/odest/tntstack/commit/0dcd28aa1bb72284e0547b8848130bb28c6c246e))
+
+
+### Documentation
+
+* sync documentation with current codebase ([08a7dbe](https://github.com/odest/tntstack/commit/08a7dbe65014881e38186ae0c4bc466072ff7cc9))
+
+
+### Code Refactoring
+
+* **ui:** implement adaptive sizing and typography via CSS variables ([dda740b](https://github.com/odest/tntstack/commit/dda740b7322b0c84d3d2e3f943872d6c8b0b8252))
+* **ui:** implement responsive hybrid layouts and optimize mobile ux ([fbfbb24](https://github.com/odest/tntstack/commit/fbfbb24f5f08b43c82cf7ea0b1b2c29bed3ae8ae))
+* **ui:** purge remaining hardcoded tailwind classes across components ([b16efc1](https://github.com/odest/tntstack/commit/b16efc155d225d5cde3c1be473a6e8e5f615030b))
+
+
+### Build System
+
+* **deps:** bump next from 16.2.1 to 16.2.3 ([#52](https://github.com/odest/tntstack/issues/52)) ([adf1d2e](https://github.com/odest/tntstack/commit/adf1d2ec99809bd4058708b9ff0c993ada569289))
+* **deps:** bump next-intl from 4.8.3 to 4.9.1 ([#51](https://github.com/odest/tntstack/issues/51)) ([ed5c70f](https://github.com/odest/tntstack/commit/ed5c70f48977ea752e65a5fe90219a78f9e7332c))
+
 ## [1.4.7](https://github.com/odest/tntstack/compare/v1.4.6...v1.4.7) (2026-03-29)
 
 
