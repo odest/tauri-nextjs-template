@@ -21,13 +21,18 @@ function DownloadButton({
   ext: string;
 }) {
   if (!href) return null;
+  const isExternal = href.startsWith("http");
   return (
     <Button
       asChild
       variant="outline"
       className="w-full cursor-pointer justify-between"
     >
-      <Link href={href}>
+      <Link 
+        href={href} 
+        target={isExternal ? "_blank" : undefined} 
+        rel={isExternal ? "noopener noreferrer" : undefined}
+      >
         <span className="[font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
           {label}
         </span>
@@ -63,8 +68,8 @@ function PlatformCard({
         {platform.downloads.length > 0 ? (
           platform.downloads.map((dl) => (
             <DownloadButton
-              key={dl.assetKey}
-              href={assets[dl.assetKey]}
+              key={dl.assetKey + dl.label}
+              href={dl.assetKey.startsWith("http") ? dl.assetKey : assets[dl.assetKey]}
               label={dl.label}
               ext={dl.ext}
             />
@@ -82,7 +87,7 @@ function PlatformCard({
 export default function PlatformCards({ assets }: PlatformCardsProps) {
   return (
     <section className="py-16 md:py-32">
-      <div className="mx-auto max-w-5xl px-6">
+      <div className="mx-auto max-w-6xl px-6">
         <div className="text-center">
           <h2 className="text-4xl font-semibold text-balance lg:text-5xl">
             Available Platforms

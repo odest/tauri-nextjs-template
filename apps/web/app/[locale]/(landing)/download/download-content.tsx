@@ -87,7 +87,7 @@ export default function DownloadContent({ release }: DownloadContentProps) {
         }}
       />
       <section className="pt-24 md:pt-36">
-        <div className="mx-auto max-w-7xl px-6 text-center">
+        <div className="mx-auto max-w-6xl px-6 text-center">
           <AnimatedGroup variants={transitionVariants}>
             <Logo className="mx-auto size-20" />
           </AnimatedGroup>

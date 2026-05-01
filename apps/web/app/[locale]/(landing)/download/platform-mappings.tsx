@@ -1,5 +1,5 @@
 import React from "react";
-import { Download } from "lucide-react";
+import { Download, Github } from "lucide-react";
 import { Windows } from "@workspace/ui/components/svgs/windows";
 import { Linux } from "@workspace/ui/components/svgs/linux";
 import { Apple } from "@workspace/ui/components/svgs/apple";
@@ -99,9 +99,20 @@ export const platformCards: PlatformCardData[] = [
     ],
   },
   {
-    name: "iOS",
-    icon: <Apple className="size-6" aria-hidden />,
+    name: "Other Platforms",
+    icon: <Github className="size-6" aria-hidden />,
     colSpan: 3,
-    downloads: [],
+    downloads: [
+      {
+        assetKey: "https://github.com/odest/tntstack/releases/latest",
+        label: "iOS App",
+        ext: "Coming soon",
+      },
+      {
+        assetKey: "https://github.com/odest/tntstack/releases/latest",
+        label: "View all releases",
+        ext: "GitHub",
+      },
+    ],
   },
 ];
