@@ -1,0 +1,32 @@
+---
+title: iOS Builds
+description: iOS support status, requirements, and local builds.
+icon: Smartphone
+---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+
+The scaffolded project includes a structurally complete and pre-configured iOS project in `apps/native/src-tauri/gen/apple/`. The Xcode project, launch screens, and app icons are already wired up to your Next.js frontend.
+
+<Callout type="warn">
+**Hardware Limitation Notice**
+Because iOS compilation strictly requires a macOS environment and Apple Developer certificates, the iOS portion of this template is provided "as-is" and relies entirely on your local setup. Automated CI/CD workflows for iOS are not bundled by default.
+</Callout>
+
+## Prerequisites
+
+To build and run the iOS app, you must follow Apple's standard development requirements:
+- A macOS machine
+- Xcode installed via the App Store
+- An active Apple Developer account (for physical device testing and App Store distribution)
+
+For complete environment setup instructions, refer to the official [Tauri iOS Guide](https://tauri.app/start/prerequisites/#ios).
+
+## Local Build
+
+If your macOS environment is fully set up with Xcode and your developer account is linked, you can build locally:
+
+| Command | What it does |
+|---|---|
+| `pnpm tauri ios dev` | Starts the Next.js dev server and opens the iOS simulator with hot reload. |
+| `pnpm tauri ios build` | Compiles a production build (requires provisioning profile). |

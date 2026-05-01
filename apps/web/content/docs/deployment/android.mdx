@@ -1,5 +1,182 @@
 ---
-title: Android Builds & Signing
-description: Build Android APKs and AABs, configure keystore signing, and set up GitHub Secrets.
+title: Android Builds
+description: Local and CI builds for Android. Keystore signing, APK types, and GitHub Secrets.
 icon: Smartphone
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+
+The scaffolded project includes a ready-to-build Android project in `apps/native/src-tauri/gen/android/`. Gradle files, manifests, and build scripts are all pre-configured. The only thing you need to provide is a signing keystore for release builds.
+
+The recommended workflow is **CI-first**: create a keystore, add the signing secrets to your GitHub repository, and let the CI workflows build signed APKs for you. Local Android builds require Android Studio, NDK, and Rust Android targets, setup that most developers skip unless they need on-device debugging.
+
+## Build Types
+
+| Type | Command | Output | Best for |
+|---|---|---|---|
+| Universal | `pnpm tauri android build` | `.apk` + `.aab` | Play Store, general distribution |
+| Split | `pnpm tauri android build --apk --split-per-abi` | 4 separate `.apk` files | GitHub Releases, sideloading |
+| Debug | `pnpm tauri android build --debug` | Unsigned `.apk` | Testing without a keystore |
+
+Split APKs produce one smaller APK per architecture: `arm64` (modern phones, 95%+), `arm` (older 32-bit), `x86_64` (emulators, Chromebooks), `x86` (older emulators).
+
+## Local Build
+
+### Development (hot reload)
+
+Connect a device via USB or start an emulator:
+
+```bash
+pnpm tauri android dev
+```
+
+Starts a dev server and installs the app on the connected device with hot reload. This is for development, not for producing an APK.
+
+### Debug Build (no keystore needed)
+
+```bash
+pnpm tauri android build --debug
+```
+
+Produces an unsigned debug APK. Good for testing on real devices without setting up signing.
+
+### Release Build (signed)
+
+Release builds require a keystore. Set one up first (see [Keystore Setup](#keystore-setup)), then:
+
+```bash
+pnpm tauri android build
+```
+
+Output goes to `apps/native/src-tauri/gen/android/app/build/outputs/`.
+
+For split APKs:
+
+```bash
+pnpm tauri android build --apk --split-per-abi
+```
+
+<Callout type="warn">
+Release builds **will fail** if `keystore.properties` is missing or incomplete. The Gradle signing config references it directly. Use `--debug` if you don't have a keystore yet.
+</Callout>
+
+## Keystore Setup
+
+The scaffolded project does **not** include a keystore. You create it once and use it for every release.
+
+<Steps>
+  <Step>
+    ### Generate a keystore
+
+```bash
+keytool -genkey -v \
+  -keystore your-release-key.jks \
+  -keyalg RSA \
+  -keysize 2048 \
+  -validity 10000 \
+  -alias your-key-alias
+```
+
+Store the `.jks` file somewhere safe outside the project directory. **Don't lose it!**
+  </Step>
+  <Step>
+    ### Create `keystore.properties`
+
+Create `apps/native/src-tauri/gen/android/keystore.properties` with your credentials:
+
+```properties title="apps/native/src-tauri/gen/android/keystore.properties"
+storeFile=/absolute/path/to/your-release-key.jks
+storePassword=your-store-password
+keyAlias=your-key-alias
+keyPassword=your-key-password
+```
+
+The `app/build.gradle.kts` reads this file at build time. If it doesn't exist or is incomplete, release builds will fail.
+  </Step>
+</Steps>
+
+<Callout type="info">
+`keystore.properties` is already in `.gitignore`. It will never be committed.
+</Callout>
+
+## CI Build
+
+Both Android CI workflows (`build-universal-apk.yml`, `build-split-apk.yml`) are called by `build-apps.yml` via manual dispatch. See [CI/CD Pipeline](/docs/deployment/ci-cd) for the trigger flow.
+
+### GitHub Secrets
+
+For signed release builds in CI, configure these in **Settings > Secrets and variables > Actions**:
+
+| Secret | Value |
+|---|---|
+| `BASE64_JKS` | Base64-encoded `.jks` file |
+| `STORE_FILE` | `~/keystore/release.jks` (recommended, use this value) |
+| `STORE_PASSWORD` | Store password (from keytool generation) |
+| `KEY_ALIAS` | Key alias (from keytool generation) |
+| `KEY_PASSWORD` | Key password (from keytool generation) |
+
+<Callout type="warn">
+`STORE_FILE` is **not** the path to your local keystore. It's the path where the CI runner writes the decoded `.jks` file during the build. The workflow decodes `BASE64_JKS`, saves it to this path, and references it in `keystore.properties`. Use the recommended value above unless you have a specific reason to change it.
+</Callout>
+
+To get `BASE64_JKS`:
+
+<Tabs items={["macOS", "Linux", "Windows (PowerShell)"]}>
+  <Tab value="macOS">
+
+```bash
+base64 -i your-release-key.jks | pbcopy
+```
+
+  </Tab>
+  <Tab value="Linux">
+
+```bash
+base64 -w 0 your-release-key.jks
+```
+
+  </Tab>
+  <Tab value="Windows (PowerShell)">
+
+```powershell
+[Convert]::ToBase64String([IO.File]::ReadAllBytes("your-release-key.jks")) | Set-Clipboard
+```
+
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+All 5 secrets are optional. Without them, the workflows produce unsigned debug APKs. Set up signing when you're ready to distribute.
+</Callout>
+
+### How the CI Signing Works
+
+The workflows check if `BASE64_JKS` exists. If it does:
+
+1. Decode the base64 value back to a `.jks` file at the `STORE_FILE` path
+2. Write a `keystore.properties` file with all four credentials
+3. Build in release mode
+
+If it doesn't exist, the workflow builds in debug mode (`--debug` flag). No manual intervention needed either way.
+
+### Release Assets
+
+| Workflow | Assets uploaded to GitHub Release |
+|---|---|
+| Universal | `[name]_[tag]_android_universal.apk`, `[name]_[tag]_android_universal.aab` |
+| Split | `[name]_[tag]_android_arm64.apk`, `_arm.apk`, `_x86_64.apk`, `_x86.apk` |
+
+The `.aab` is only produced in release mode and is the format required for Play Store.
+
+## Project Configuration
+
+The pre-configured Gradle setup in `apps/native/src-tauri/gen/android/`:
+
+| Setting | Value |
+|---|---|
+| Compile SDK | 36 |
+| Target SDK | 36 |
+| Min SDK | 24 (Android 7.0) |
+| NDK | r27d |

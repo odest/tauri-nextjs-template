@@ -1,5 +1,5 @@
 {
   "title": "Deployment",
   "icon": "CloudUpload",
-  "pages": ["ci-cd", "web", "desktop", "android"]
+  "pages": ["ci-cd", "web", "desktop", "android", "ios"]
 }

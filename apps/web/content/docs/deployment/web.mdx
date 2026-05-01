@@ -1,5 +1,79 @@
 ---
 title: Web Deployment
-description: Deploy the Next.js web app to Vercel, Docker, or other platforms.
+description: Deploy the Next.js web app to Vercel or self-host with Node.js.
 icon: Globe
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Step, Steps } from 'fumadocs-ui/components/steps'
+
+The scaffolded project includes a fully configured Next.js web application in `apps/web`. It features Server-Side Rendering (SSR), API routes, middleware, and Progressive Web App (PWA) support. Because it relies on these dynamic features, it requires a Node.js runtime and cannot be statically hosted.
+
+## Deploy to Vercel
+
+The recommended option. Next.js + Vercel is a natural fit, and the monorepo setup works out of the box with the right configuration.
+
+<Steps>
+  <Step>
+    ### Connect your repository
+
+    Import your GitHub repository at [vercel.com/new](https://vercel.com/new).
+  </Step>
+  <Step>
+    ### Configure the project
+
+    | Setting | Value |
+    |---|---|
+    | **Project Name** | `your-project-name` |
+    | **Application Preset** | Next.js |
+    | **Root Directory** | `apps/web` |
+    | **Build and Output Settings** | *Leave all as default (Overrides OFF)* |
+    | **Environment Variables** | *None required* |
+
+    <Callout type="info">
+    The **Root Directory** must be set to `apps/web`. Vercel automatically detects the Next.js, pnpm, and Turborepo workspace setup, so you do not need to manually override the build, output, or install commands.
+    </Callout>
+  </Step>
+  <Step>
+    ### Deploy
+
+    Vercel automatically builds and deploys on every push to `master`. Preview deployments are created for pull requests.
+  </Step>
+</Steps>
+
+## Self-Hosted (Node.js)
+
+For any server or VPS where you have Node.js:
+
+<Steps>
+  <Step>
+    ### Build
+
+    ```bash
+    pnpm install
+    pnpm turbo build --filter=web
+    ```
+  </Step>
+  <Step>
+    ### Start
+
+    ```bash
+    cd apps/web
+    pnpm start
+    ```
+
+    Starts on port 3000 by default. Set the `PORT` environment variable to change it.
+  </Step>
+</Steps>
+
+## Other Platforms
+
+This is a standard Next.js app. Any platform that supports Node.js and Next.js should work. Refer to the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for platform-specific guides (Netlify, AWS, Docker, etc.).
+
+## Build Commands
+
+| Command | What it does |
+|---|---|
+| `pnpm web dev` | Starts the dev server with hot reload |
+| `pnpm web build` | Builds **only** the web app |
+| `pnpm turbo build --filter=web` | Builds web app **and** its dependencies (`packages/*`) |

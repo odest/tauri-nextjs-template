@@ -1,5 +1,95 @@
 ---
 title: Desktop Builds
-description: Build Tauri desktop apps for Windows, macOS, and Linux.
+description: Local and CI builds for Windows, macOS, and Linux.
 icon: Monitor
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+
+The scaffolded project includes a pre-configured Tauri application in `apps/native/` that produces native desktop binaries for Windows, macOS, and Linux. The recommended approach is **CI-first**: push your code, create a release, and let the GitHub Actions workflow build for all three platforms in parallel. Local builds are useful for development and testing on your own machine.
+
+## Prerequisites
+
+Local desktop builds require platform-specific C++ build tools or SDKs. Follow the official [Tauri Prerequisites Guide](https://tauri.app/start/prerequisites/) to set up your OS before running any local builds.
+
+## Local Build
+
+| Command | What it does |
+|---|---|
+| `pnpm tauri dev` | Starts the Next.js dev server and opens the Tauri window with hot reload. |
+| `pnpm tauri build` | Produces a release build for your current OS. |
+
+Output goes to `apps/native/src-tauri/target/release/bundle/`.
+
+<Callout type="info">
+Local builds only produce binaries for your current operating system. To build for Windows, macOS, and Linux simultaneously, use the CI workflow.
+</Callout>
+
+## CI Build
+
+The `build-desktop.yml` workflow is called by `build-apps.yml` (manual dispatch). It dynamically builds a runner matrix from the platform toggles you select.
+
+| Platform | Runner | Targets | Output |
+|---|---|---|---|
+| macOS | `macos-latest` | `aarch64-apple-darwin`, `x86_64-apple-darwin` | `.dmg`, `.app` |
+| Linux | `ubuntu-22.04` | Default | `.deb`, `.rpm`, `.AppImage` |
+| Windows | `windows-latest` | Default | `.msi`, `.exe` |
+
+The matrix is not hardcoded. `build-apps.yml` passes boolean flags (`build_windows`, `build_macos`, `build_linux`) and the workflow constructs the matrix at runtime, so you only build what you need.
+
+### What the Workflow Does
+
+1. Checks out the code at the specified release tag
+2. Installs system dependencies (Linux needs `libwebkit2gtk-4.1-dev`, `patchelf`, etc.)
+3. Sets up pnpm, Node.js 20, and Rust stable with the target architecture
+4. Installs frontend dependencies and caches Rust + pnpm
+5. Runs `tauri-action` which builds the app and uploads assets to the GitHub Release
+
+```yaml title="tauri-action step"
+- uses: tauri-apps/tauri-action@v0
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  with:
+    tagName: ${{ inputs.tag_name }}
+    releaseName: ${{ inputs.tag_name }}
+    assetNamePattern: "[name]_${{ inputs.tag_name }}_${{ matrix.os_name }}_[arch][ext]"
+    projectPath: "apps/native"
+    includeRelease: true
+    includeUpdaterJson: true
+```
+
+### Release Assets
+
+After a successful build, these assets appear on the GitHub Release:
+
+| Platform | Assets |
+|---|---|
+| Windows | `[name]_[tag]_windows_x64.exe`, `.msi` |
+| macOS (ARM) | `[name]_[tag]_macos_aarch64.dmg`, `.app.tar.gz` |
+| macOS (Intel) | `[name]_[tag]_macos_x64.dmg`, `.app.tar.gz` |
+| Linux | `[name]_[tag]_linux_amd64.AppImage`, `.deb`<br/>`[name]_[tag]_linux_x86_64.rpm` |
+
+## Bundle Configuration
+
+```json title="apps/native/src-tauri/tauri.conf.json (bundle)"
+{
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ]
+  }
+}
+```
+
+`targets: "all"` builds every format supported by the current platform. The icon array covers all required sizes: `.ico` for Windows, `.icns` for macOS, `.png` for Linux.
+
+<Callout type="warn">
+Replace the default icons in `apps/native/src-tauri/icons/` with your own before releasing. Tauri requires specific sizes for each platform.
+</Callout>

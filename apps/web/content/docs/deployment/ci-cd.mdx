@@ -3,3 +3,224 @@ title: CI / CD Pipeline
 description: GitHub Actions workflows, Release Please automation, and Conventional Commits.
 icon: GitBranch
 ---
+
+import { Callout } from 'fumadocs-ui/components/callout'
+import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
+import { Mermaid } from '@/components/mdx/mermaid'
+
+GitHub Actions for validation, Release Please for versioning, manual dispatch for builds. 7 workflow files total.
+
+## Workflow Overview
+
+<Mermaid chart={`graph TD
+  PR["Pull Request to master"] --> CI["ci.yml"]
+  Push["Push to master"] --> RP["release.yml"]
+  RP -->|"Opens Release PR"| MergePR["Merge Release PR"]
+  MergePR -->|"Creates GitHub Release"| Manual["Manual trigger"]
+  Manual --> BA["build-apps.yml"]
+  MergePR -->|"CLI tag published"| CLI["publish-cli.yml"]
+  BA --> Desktop["build-desktop.yml"]
+  BA --> Universal["build-universal-apk.yml"]
+  BA --> Split["build-split-apk.yml"]
+  Desktop -->|"Upload assets"| Release["GitHub Release"]
+  Universal -->|"Upload assets"| Release
+  Split -->|"Upload assets"| Release
+  CLI -->|"Publish"| npm["npm Registry"]
+`} />
+
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `ci.yml` | PR to `master` | Lint, type check, build validation |
+| `release.yml` | Push to `master` | Release Please automation |
+| `build-apps.yml` | Manual dispatch | Orchestrates desktop + Android builds |
+| `build-desktop.yml` | Called by `build-apps` | Desktop builds (Windows, macOS, Linux) |
+| `build-universal-apk.yml` | Called by `build-apps` | Universal Android APK + AAB |
+| `build-split-apk.yml` | Called by `build-apps` | Per-architecture Android APKs |
+| `publish-cli.yml` | Release published (`@tntstack/create-app@v*`) | Publish CLI to npm |
+
+## CI Workflow
+
+Runs on every pull request to validate code quality:
+
+```yaml title=".github/workflows/ci.yml"
+name: CI
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm check-types
+      - run: pnpm build
+```
+
+Three checks must pass: **lint**, **type check**, and **build**.
+
+## Release Please
+
+[Release Please](https://github.com/googleapis/release-please) automates versioning based on Conventional Commits.
+
+### How It Works
+
+1. Push commits to `master` using conventional commit format
+2. Release Please opens a **Release PR** with version bumps and changelog
+3. Merge the Release PR to create a GitHub Release
+4. **Manually trigger** `build-apps.yml` with the release tag to build platform binaries
+
+<Callout type="info">
+Builds are not automatic. After a release is created, you go to Actions > Build Apps > Run workflow and enter the tag name (e.g. `v1.2.0`). This gives you control over which platforms to build for each release.
+</Callout>
+
+### Conventional Commits
+
+| Prefix | SemVer Bump | Changelog Section |
+|---|---|---|
+| `feat:` | Minor | Features |
+| `fix:` | Patch | Bug Fixes |
+| `perf:` | Patch | Performance Improvements |
+| `docs:` | Patch | Documentation |
+| `refactor:` | Patch | Code Refactoring |
+| `deps:` | Patch | Dependencies |
+| `revert:` | Patch | Reverts |
+| `style:` | — | Styles |
+| `test:` | — | Tests |
+| `build:` | — | Build System |
+| `ci:` | — | Continuous Integration |
+| `chore:` | — | Hidden (no changelog entry) |
+
+Adding `BREAKING CHANGE:` in the commit footer or `!` after the type (e.g., `feat!:`) triggers a **major** version bump.
+
+### Unified Versioning
+
+All packages share a single version managed from the root. The root `"."` package uses `extra-files` to update version fields across the monorepo:
+
+```json title="release-please-config.json (excerpt)"
+{
+  "sequential-calls": true,
+  "separate-pull-requests": true,
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "extra-files": [
+        { "type": "json", "path": "apps/native/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "apps/web/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "packages/ui/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "packages/i18n/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "packages/core/package.json", "jsonpath": "$.version" },
+        { "type": "json", "path": "apps/native/src-tauri/tauri.conf.json", "jsonpath": "$.version" },
+        { "type": "toml", "path": "apps/native/src-tauri/Cargo.toml", "jsonpath": "$.package.version" }
+      ]
+    },
+    "packages/cli": {
+      "release-type": "node",
+      "include-component-in-tag": true,
+      "component": "@tntstack/create-app"
+    }
+  }
+}
+```
+
+When a release is created, all packages bump to the same version, including `package.json`, `tauri.conf.json`, and `Cargo.toml`. The CLI (`@tntstack/create-app`) is versioned independently with `separate-pull-requests: true`, so it gets its own Release PR.
+
+### Version Files Updated
+
+| File | Field |
+|---|---|
+| `package.json` (root) | `version` |
+| `apps/native/package.json` | `version` |
+| `apps/web/package.json` | `version` |
+| `packages/ui/package.json` | `version` |
+| `packages/i18n/package.json` | `version` |
+| `packages/core/package.json` | `version` |
+| `apps/native/src-tauri/tauri.conf.json` | `version` |
+| `apps/native/src-tauri/Cargo.toml` | `package.version` |
+
+<Callout type="warn">
+Only the root package generates a `CHANGELOG.md`. The CLI package has its own changelog.
+</Callout>
+
+## Release Workflow
+
+```yaml title=".github/workflows/release.yml"
+name: Release
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+      - name: Set correct latest release
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
+        env:
+          GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          LATEST_TAG=$(gh release list --repo ${{ github.repository }} --limit 10 --json tagName -q ".[].tagName" | grep -E '^v[0-9]' | head -n 1)
+          if [ -n "$LATEST_TAG" ]; then
+            gh release edit "$LATEST_TAG" --repo ${{ github.repository }} --latest
+          fi
+```
+
+Uses `RELEASE_PLEASE_TOKEN` if available, falls back to `GITHUB_TOKEN`. The "Set correct latest release" step ensures the main monorepo release (not the CLI release) is marked as latest on GitHub.
+
+## Build Workflows
+
+Builds are triggered manually via `build-apps.yml`. You select a tag and toggle which platforms to build:
+
+| Input | Type | Default |
+|---|---|---|
+| `tag_name` | string (required) | — |
+| `build_windows` | boolean | `true` |
+| `build_macos` | boolean | `true` |
+| `build_linux` | boolean | `true` |
+| `build_android_split` | boolean | `true` |
+| `build_android_universal` | boolean | `true` |
+
+`build-apps.yml` delegates to three reusable workflows:
+
+<Tabs items={["Desktop", "Universal APK", "Split APK"]}>
+  <Tab value="Desktop">
+    Calls `build-desktop.yml`. Dynamically constructs a build matrix based on the boolean toggles you provide. See [Desktop Builds](/docs/deployment/desktop) for details on caching, architectures, and the generated assets.
+  </Tab>
+  <Tab value="Universal APK">
+    Calls `build-universal-apk.yml`. Builds a single APK containing all architectures, plus an AAB for the Play Store. Requires Android NDK `r27d`.
+  </Tab>
+  <Tab value="Split APK">
+    Calls `build-split-apk.yml`. Builds per-architecture APKs (`arm64`, `arm`, `x86`, `x86_64`) for smaller download sizes.
+  </Tab>
+</Tabs>
+
+<Callout type="info">
+Android workflows automatically check for keystore secrets. If found, they produce signed release builds. If not, they safely fall back to unsigned debug builds. See the [Android Builds](/docs/deployment/android) page for keystore and GitHub Secrets setup.
+</Callout>
+
+## CLI Publishing
+
+`publish-cli.yml` triggers automatically when a release tagged `@tntstack/create-app@v*` is published. It builds the CLI with `pnpm --filter @tntstack/create-app build` and publishes to npm with `--provenance` for supply chain security.
+
+Requires `NPM_TOKEN` in repository secrets.
