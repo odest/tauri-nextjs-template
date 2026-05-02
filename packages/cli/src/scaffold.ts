@@ -3,7 +3,7 @@ import path from "node:path";
 import fs from "fs-extra";
 import type { ScaffoldOptions } from "./prompts.js";
 import { cloneTemplate } from "./actions/clone.js";
-import { renameProject } from "./actions/rename.js";
+import { renameProject } from "./actions/rename/index.js";
 import { cleanFiles } from "./actions/clean.js";
 import { initGit } from "./actions/git.js";
 import { installDeps } from "./actions/install.js";
@@ -90,5 +90,5 @@ export async function scaffold(opts: ScaffoldOptions): Promise<void> {
     "Next steps",
   );
 
-  p.outro("Your TNTStack project is ready! 🚀");
+  p.outro("Your project is ready! 🚀");
 }
