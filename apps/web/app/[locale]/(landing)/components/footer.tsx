@@ -14,6 +14,7 @@ import { ModeSwitch } from "@workspace/core/components/common/mode-switch";
 import { AnimatedContainer } from "@workspace/ui/components/landing/animated-container";
 import { TextHoverEffect } from "@workspace/ui/components/landing/text-hover-effect";
 import { BorderBeam } from "@workspace/ui/components/landing/border-beam";
+import { siteConfig } from "@workspace/core/config/site";
 
 type FooterLink = {
   title: string;
@@ -49,7 +50,7 @@ const footerLinks: FooterSection[] = [
       },
       {
         title: "Changelog",
-        href: "https://github.com/odest/tntstack/blob/master/CHANGELOG.md",
+        href: siteConfig.links.changelog,
         isExternal: true,
       },
     ],
@@ -57,14 +58,14 @@ const footerLinks: FooterSection[] = [
   {
     label: "Legal",
     links: [
-      {
-        title: "MIT License",
-        href: "https://github.com/odest/tntstack/blob/master/LICENSE",
-        isExternal: true,
-      },
       { title: "Privacy Policy", href: "/", isExternal: false },
       { title: "Terms of Service", href: "/", isExternal: false },
       { title: "Security", href: "/", isExternal: false },
+      {
+        title: "License",
+        href: siteConfig.links.license,
+        isExternal: true,
+      },
     ],
   },
   {
@@ -72,25 +73,25 @@ const footerLinks: FooterSection[] = [
     links: [
       {
         title: "GitHub",
-        href: "https://github.com/odest/tntstack",
+        href: siteConfig.links.github,
         isExternal: true,
         icon: <GithubIcon className="h-4 w-4" />,
       },
       {
         title: "Contribute",
-        href: "https://github.com/odest/tntstack/blob/master/CONTRIBUTING.md",
+        href: siteConfig.links.contributing,
         isExternal: true,
         icon: <GitPullRequestIcon className="h-4 w-4" />,
       },
       {
         title: "Discussions",
-        href: "https://github.com/odest/tntstack/discussions",
+        href: siteConfig.links.discussions,
         isExternal: true,
         icon: <MessageSquareIcon className="h-4 w-4" />,
       },
       {
         title: "Report an Issue",
-        href: "https://github.com/odest/tntstack/issues",
+        href: siteConfig.links.issues,
         isExternal: true,
         icon: <BugIcon className="h-4 w-4" />,
       },
@@ -113,11 +114,11 @@ export function Footer() {
           <Link href="/">
             <div className="flex flex-row items-center gap-2">
               <Logo className="size-8!" />
-              <h2 className="text-xl font-bold">TNTStack</h2>
+              <h2 className="text-xl font-bold">{siteConfig.name}</h2>
             </div>
           </Link>
           <p className="text-muted-foreground mt-4 [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
-            Build Cross-Platform Apps Faster Than Ever
+            {siteConfig.headline}
           </p>
           <ModeSwitch />
         </AnimatedContainer>
@@ -153,7 +154,7 @@ export function Footer() {
         </div>
       </div>
       <div className="flex w-full items-center justify-center overflow-hidden">
-        <TextHoverEffect text="TNTSTACK" />
+        <TextHoverEffect text={siteConfig.name.toUpperCase()} />
       </div>
       <BorderBeam
         duration={6}

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { AppLayout } from "./components/AppLayout";
 import { themeInitScript } from "@workspace/core/scripts/theme-init";
 import { NextIntlClientProvider, hasLocale, messages } from "@workspace/i18n";
+import { siteConfig } from "@workspace/core/config/site";
 import { routing } from "@workspace/i18n/routing";
 import "@workspace/ui/globals.css";
 
@@ -18,8 +19,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TNTStack",
-  description: "TNTStack",
+  title: siteConfig.name,
+  description: siteConfig.description,
 };
 
 export const viewport: Viewport = {

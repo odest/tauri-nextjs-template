@@ -21,6 +21,7 @@ import { navigationData } from "@workspace/core/config/navigation";
 import { useSidebarStore } from "@workspace/core/stores/sidebar-store";
 import { useMounted } from "@workspace/core/hooks/use-mounted";
 import { Logo } from "@workspace/ui/components/landing/logo";
+import { siteConfig } from "@workspace/core/config/site";
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   pathname: string;
@@ -63,7 +64,7 @@ export function AppSidebar({
               <LinkComponent href="/" onClick={handleLinkClick}>
                 <Logo className="!size-5" />
                 <span className="[font-size:var(--comp-text-base)] [line-height:var(--comp-lh-base)] font-semibold">
-                  TNTStack
+                  {siteConfig.name}
                 </span>
               </LinkComponent>
             </SidebarMenuButton>

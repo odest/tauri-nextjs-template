@@ -1,5 +1,6 @@
 import React from "react";
 import { Download, Github } from "lucide-react";
+import { siteConfig } from "@workspace/core/config/site";
 import { Windows } from "@workspace/ui/components/svgs/windows";
 import { Linux } from "@workspace/ui/components/svgs/linux";
 import { Apple } from "@workspace/ui/components/svgs/apple";
@@ -104,12 +105,12 @@ export const platformCards: PlatformCardData[] = [
     colSpan: 3,
     downloads: [
       {
-        assetKey: "https://github.com/odest/tntstack/releases/latest",
+        assetKey: siteConfig.links.releases,
         label: "iOS App",
         ext: "Coming soon",
       },
       {
-        assetKey: "https://github.com/odest/tntstack/releases/latest",
+        assetKey: siteConfig.links.releases,
         label: "View all releases",
         ext: "GitHub",
       },

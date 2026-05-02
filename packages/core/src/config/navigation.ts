@@ -14,6 +14,7 @@ import {
   LucideIcon,
   LayoutDashboard,
 } from "lucide-react";
+import { siteConfig } from "@workspace/core/config/site";
 
 export interface UserNavItem {
   name: string;
@@ -83,9 +84,9 @@ export interface NavigationData {
 
 export const navigationData: NavigationData = {
   user: {
-    name: "odest",
-    email: "odest@example.com",
-    avatar: "/avatar.png",
+    name: siteConfig.owner,
+    email: "user@example.com",
+    avatar: "/avatar.svg",
   },
   navMain: [
     {
@@ -153,14 +154,14 @@ export const navigationData: NavigationData = {
   navSecondary: [
     {
       title: "Feedback",
-      url: "https://github.com/odest/tntstack/issues",
+      url: siteConfig.links.issues,
       icon: Send,
       translationKey: "feedback",
       external: true,
     },
     {
       title: "Github",
-      url: "https://github.com/odest/tntstack",
+      url: siteConfig.links.github,
       icon: Github,
       translationKey: "github",
       external: true,

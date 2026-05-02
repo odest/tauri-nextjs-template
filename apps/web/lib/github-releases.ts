@@ -1,4 +1,4 @@
-export const GITHUB_REPO = "odest/tntstack";
+import { siteConfig } from "@workspace/core/config/site";
 
 export interface ReleaseData {
   version: string;
@@ -46,10 +46,9 @@ interface GitHubRelease {
 // Fetches the latest GitHub release that has download assets. Uses ISR with 1-hour revalidation.
 export async function fetchLatestReleaseWithAssets(): Promise<ReleaseData | null> {
   try {
-    const res = await fetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=20`,
-      { next: { revalidate: 3600 } },
-    );
+    const res = await fetch(siteConfig.links.githubApi, {
+      next: { revalidate: 3600 },
+    });
     if (!res.ok) return null;
 
     const releases: GitHubRelease[] = await res.json();

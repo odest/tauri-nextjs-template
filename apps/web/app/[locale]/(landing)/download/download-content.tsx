@@ -12,6 +12,7 @@ import { detectPlatform, type Platform } from "@/lib/detect-platform";
 import { platformConfig } from "./platform-mappings";
 import { type ReleaseData } from "@/lib/github-releases";
 import PlatformCards from "../components/platform-cards";
+import { siteConfig } from "@workspace/core/config/site";
 
 interface DownloadContentProps {
   release: ReleaseData | null;
@@ -98,7 +99,7 @@ export default function DownloadContent({ release }: DownloadContentProps) {
             as="h1"
             className="mx-auto mt-8 max-w-4xl text-5xl text-balance max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
           >
-            Download TNTStack
+            {`Download ${siteConfig.name}`}
           </TextEffect>
           <TextEffect
             per="line"

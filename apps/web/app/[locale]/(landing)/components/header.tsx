@@ -6,6 +6,7 @@ import { Menu, X, Github } from "lucide-react";
 import { cn } from "@workspace/ui/lib/utils";
 import { Button } from "@workspace/ui/components/button";
 import { Logo } from "@workspace/ui/components/landing/logo";
+import { siteConfig } from "@workspace/core/config/site";
 
 const menuItems = [
   { name: "Docs", href: "/docs" },
@@ -91,7 +92,7 @@ export const HeroHeader = () => {
               <div className="flex w-full flex-col space-y-3 sm:flex-row sm:gap-3 sm:space-y-0 md:w-fit">
                 <Button asChild size="sm">
                   <Link
-                    href="https://github.com/odest/tntstack"
+                    href={siteConfig.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

@@ -6,6 +6,7 @@ import {
   platformCards,
   type PlatformCardData,
 } from "../download/platform-mappings";
+import { siteConfig } from "@workspace/core/config/site";
 
 interface PlatformCardsProps {
   assets: Record<string, string>;
@@ -93,7 +94,7 @@ export default function PlatformCards({ assets }: PlatformCardsProps) {
             Available Platforms
           </h2>
           <p className="text-muted-foreground mt-4">
-            Download TNTStack for your platform.
+            Download {siteConfig.name} for your platform.
           </p>
         </div>
         <div className="mx-auto mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:mt-16 lg:grid-cols-6">

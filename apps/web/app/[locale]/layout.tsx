@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Geist, Geist_Mono } from "next/font/google";
 import { themeInitScript } from "@workspace/core/scripts/theme-init";
 import { NextIntlClientProvider, hasLocale } from "@workspace/i18n";
+import { siteConfig } from "@workspace/core/config/site";
 import { routing } from "@workspace/i18n/routing";
 import { SerwistProvider } from "../serwist";
 import "../globals.css";
@@ -17,14 +18,13 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-const APP_NAME = "TNTStack";
-const APP_DEFAULT_TITLE = "TNTStack";
-const APP_TITLE_TEMPLATE = "%s - TNTStack";
-const APP_DESCRIPTION =
-  "The solid stack for building cross-platform apps. Write your code once and build for Web, Desktop, and Mobile.";
+const APP_NAME = siteConfig.name;
+const APP_DEFAULT_TITLE = siteConfig.name;
+const APP_TITLE_TEMPLATE = `%s - ${siteConfig.name}`;
+const APP_DESCRIPTION = siteConfig.description;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tntstack.odest.dev"),
+  metadataBase: new URL(siteConfig.links.website),
   applicationName: APP_NAME,
   title: {
     default: APP_DEFAULT_TITLE,

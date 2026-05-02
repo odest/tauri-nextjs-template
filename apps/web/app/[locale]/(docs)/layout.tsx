@@ -4,6 +4,7 @@ import { source } from "@/lib/source";
 import type { ReactNode } from "react";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { Logo } from "@workspace/ui/components/landing/logo";
+import { siteConfig } from "@workspace/core/config/site";
 
 function baseOptions(): BaseLayoutProps {
   return {
@@ -11,11 +12,11 @@ function baseOptions(): BaseLayoutProps {
       title: (
         <div className="flex items-center gap-2">
           <Logo className="size-5" />
-          <span className="font-semibold">TNTStack</span>
+          <span className="font-semibold">{siteConfig.name}</span>
         </div>
       ),
     },
-    githubUrl: "https://github.com/odest/tntstack",
+    githubUrl: siteConfig.links.github,
   };
 }
 

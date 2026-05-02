@@ -9,6 +9,7 @@ import { LogoCloud } from "@workspace/ui/components/landing/logo-cloud";
 import { TextEffect } from "@workspace/ui/components/landing/text-effect";
 import { BorderBeam } from "@workspace/ui/components/landing/border-beam";
 import { transitionVariants } from "@/lib/animations";
+import { siteConfig } from "@workspace/core/config/site";
 
 export default function HeroSection() {
   const [latestTag, setLatestTag] = useState<string | null>(null);
@@ -124,13 +125,13 @@ export default function HeroSection() {
             <div className="text-center sm:mx-auto lg:mt-0 lg:mr-auto">
               <AnimatedGroup variants={transitionVariants}>
                 <Link
-                  href="https://github.com/odest/tntstack/releases/latest"
+                  href={siteConfig.links.releases}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
                 >
                   <span className="text-foreground [font-size:var(--comp-text-sm)] [line-height:var(--comp-lh-sm)]">
-                    TNTStack v{latestTag} Released
+                    {siteConfig.name} v{latestTag} Released
                   </span>
                   <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
 
@@ -153,7 +154,7 @@ export default function HeroSection() {
                 as="h1"
                 className="mx-auto mt-8 max-w-4xl text-5xl text-balance max-md:font-semibold md:text-7xl lg:mt-16 xl:text-[5.25rem]"
               >
-                Build Cross-Platform Apps Faster Than Ever
+                {siteConfig.headline}
               </TextEffect>
               <TextEffect
                 per="line"
@@ -163,9 +164,7 @@ export default function HeroSection() {
                 as="p"
                 className="mx-auto mt-8 max-w-3xl [font-size:var(--comp-text-lg)] [line-height:var(--comp-lh-lg)] text-balance"
               >
-                The solid stack for building cross-platform apps. Write your
-                code once and build for Web, Desktop, and Mobile. Powered by a
-                seamless monorepo setup featuring Next.js and Tauri.
+                {siteConfig.description}
               </TextEffect>
 
               <AnimatedGroup
