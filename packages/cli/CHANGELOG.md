@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.1.9](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.8...@tntstack/create-app@v0.1.9) (2026-05-03)
+
+
+### Features
+
+* **cli:** add shadow templates and scaffold content cleanup ([9c15047](https://github.com/odest/tntstack/commit/9c15047bab89b23a7a570e4da9a81919575e9413))
+
+
+### Bug Fixes
+
+* **cli:** auto-inject version and add identifier validation ([1be815d](https://github.com/odest/tntstack/commit/1be815d778cb8b0134afa0d92ab40f18ed495492))
+* **cli:** improve scaffold UX, error recovery, and template versioning ([657cf1e](https://github.com/odest/tntstack/commit/657cf1e8c1ce43fd2c1f18c701d215b60f04a34e))
+
+
+### Documentation
+
+* **cli:** update README with new flags and configuration step ([0ac8e13](https://github.com/odest/tntstack/commit/0ac8e134777a5509c793f25290c43f1297ae66c1))
+
+
+### Code Refactoring
+
+* **cli:** modularize renaming logic and transition to targeted metadata updates ([e9fc6f0](https://github.com/odest/tntstack/commit/e9fc6f00c40c495b4cffa29b33565d8154ba9006))
+
+
+### Tests
+
+* **cli:** add validation utils tests and test script ([b6150ac](https://github.com/odest/tntstack/commit/b6150ac8a6ce73e398076c27e41b0c22183ca65e))
+
 ## [0.1.8](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.7...@tntstack/create-app@v0.1.8) (2026-03-23)
 
 
