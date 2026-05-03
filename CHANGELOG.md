@@ -1,5 +1,41 @@
 # Changelog
 
+## [1.6.0](https://github.com/odest/tntstack/compare/v1.5.0...v1.6.0) (2026-05-03)
+
+
+### Features
+
+* **cli:** add shadow templates and scaffold content cleanup ([9c15047](https://github.com/odest/tntstack/commit/9c15047bab89b23a7a570e4da9a81919575e9413))
+
+
+### Bug Fixes
+
+* **cli:** auto-inject version and add identifier validation ([1be815d](https://github.com/odest/tntstack/commit/1be815d778cb8b0134afa0d92ab40f18ed495492))
+* **cli:** improve scaffold UX, error recovery, and template versioning ([657cf1e](https://github.com/odest/tntstack/commit/657cf1e8c1ce43fd2c1f18c701d215b60f04a34e))
+
+
+### Documentation
+
+* **cli:** update README with new flags and configuration step ([0ac8e13](https://github.com/odest/tntstack/commit/0ac8e134777a5509c793f25290c43f1297ae66c1))
+* **deployment:** standardize and refine platform deployment guides ([a920ac3](https://github.com/odest/tntstack/commit/a920ac338132ab8cf90286b0c19e22ed01d674dc))
+* update CLI usage docs and add a simple configuration step ([959c087](https://github.com/odest/tntstack/commit/959c087a0634e2b81ae334990761d2ea23311b6b))
+
+
+### Styles
+
+* **web:** align download page width and update platform mappings ([46490e0](https://github.com/odest/tntstack/commit/46490e069c46039444e7faff86ac40de0a6cdc97))
+
+
+### Code Refactoring
+
+* centralize project metadata and decouple hardcoded template identity ([02ed2cb](https://github.com/odest/tntstack/commit/02ed2cbd3b20a604d69634ef8c89d497a1237339))
+* **cli:** modularize renaming logic and transition to targeted metadata updates ([e9fc6f0](https://github.com/odest/tntstack/commit/e9fc6f00c40c495b4cffa29b33565d8154ba9006))
+
+
+### Tests
+
+* **cli:** add validation utils tests and test script ([b6150ac](https://github.com/odest/tntstack/commit/b6150ac8a6ce73e398076c27e41b0c22183ca65e))
+
 ## [1.5.0](https://github.com/odest/tntstack/compare/v1.4.7...v1.5.0) (2026-04-26)
 
 
