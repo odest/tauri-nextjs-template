@@ -51,6 +51,11 @@ packages/
   typescript-config/  → Shared TypeScript configs
 ```
 
+### Configuration
+
+Before deploying or sharing your project, update the site metadata (URLs, headline, and description) in:
+`packages/core/src/config/site.ts`
+
 ---
 
 <div align="center">
