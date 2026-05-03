@@ -34,8 +34,9 @@ const program = new Command()
   .option("-i, --identifier <id>", "App identifier (reverse-domain)")
   .option("-v, --app-version <ver>", "Initial version")
   .option("--no-install", "Skip dependency installation")
+  .option("--no-git", "Skip git initialization")
+  .option("-b, --branch <branch>", "Template branch to clone", "master")
   .action(async (flags) => {
-    console.clear();
     console.log(pc.cyan(banner));
     p.intro(pc.bold(pc.green("TNTStack Scaffold Tool")));
 
@@ -71,6 +72,8 @@ const program = new Command()
         identifier,
         version: flags.appVersion ?? DEFAULT_VERSION,
         installDeps: flags.install ?? true,
+        initGit: flags.git ?? true,
+        branch: flags.branch,
       });
     } else {
       // Interactive mode

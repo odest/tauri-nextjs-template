@@ -42,6 +42,39 @@ export async function updateNativeFiles(
       }
     }
   }
+
+  await updateCargoMetadata(projectDir, opts);
+}
+
+export async function updateCargoMetadata(
+  projectDir: string,
+  opts: ScaffoldOptions,
+) {
+  const cargoPath = path.join(
+    projectDir,
+    "apps",
+    "native",
+    "src-tauri",
+    "Cargo.toml",
+  );
+  if (!(await fs.pathExists(cargoPath))) return;
+
+  try {
+    let content = await fs.readFile(cargoPath, "utf-8");
+    content = content.replace(
+      /description\s*=\s*"A Tauri App"/,
+      `description = "${opts.projectNamePascal}"`,
+    );
+    content = content.replace(
+      /authors\s*=\s*\["you"\]/,
+      `authors = ["${opts.githubUser}"]`,
+    );
+    await fs.writeFile(cargoPath, content, "utf-8");
+  } catch (err: unknown) {
+    p.log.warn(
+      `Could not update Cargo.toml metadata: ${err instanceof Error ? err.message : String(err)}`,
+    );
+  }
 }
 
 export async function renameAndroidDirs(

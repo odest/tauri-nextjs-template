@@ -18,6 +18,8 @@ export interface ScaffoldOptions {
   identifier: string;
   version: string;
   installDeps: boolean;
+  initGit: boolean;
+  branch: string;
 }
 
 /**
@@ -41,43 +43,58 @@ export async function runPrompts(
     const directory = defaultDir ?? `./${projectName}`;
 
     const defaultIdentifier = `com.${toSnakeCase(projectName)}.app`;
-    const identifier = await p.text({
+    const identifierRaw = await p.text({
       message: "App identifier (reverse-domain)?",
       placeholder: defaultIdentifier,
-      defaultValue: defaultIdentifier,
-      validate: validateIdentifier,
+      validate: (val) => {
+        if (!val) return undefined;
+        return validateIdentifier(val);
+      },
     });
-    if (p.isCancel(identifier)) {
+    if (p.isCancel(identifierRaw)) {
       p.cancel("Setup cancelled.");
       process.exit(0);
     }
+    const identifier = identifierRaw || defaultIdentifier;
 
-    const githubUser = await p.text({
+    const githubUserRaw = await p.text({
       message: "GitHub username / org (optional)?",
       placeholder: "your-github-username",
-      defaultValue: "your-github-username",
     });
-    if (p.isCancel(githubUser)) {
+    if (p.isCancel(githubUserRaw)) {
       p.cancel("Setup cancelled.");
       process.exit(0);
     }
+    const githubUser = githubUserRaw || "your-github-username";
 
-    const version = await p.text({
+    const versionRaw = await p.text({
       message: "Initial version?",
       placeholder: DEFAULT_VERSION,
-      defaultValue: DEFAULT_VERSION,
-      validate: validateVersion,
+      validate: (val) => {
+        if (!val) return undefined;
+        return validateVersion(val);
+      },
     });
-    if (p.isCancel(version)) {
+    if (p.isCancel(versionRaw)) {
       p.cancel("Setup cancelled.");
       process.exit(0);
     }
+    const version = versionRaw || DEFAULT_VERSION;
 
     const installDeps = await p.confirm({
       message: "Install dependencies?",
       initialValue: true,
     });
     if (p.isCancel(installDeps)) {
+      p.cancel("Setup cancelled.");
+      process.exit(0);
+    }
+
+    const initGit = await p.confirm({
+      message: "Initialize a new git repository?",
+      initialValue: true,
+    });
+    if (p.isCancel(initGit)) {
       p.cancel("Setup cancelled.");
       process.exit(0);
     }
@@ -91,6 +108,8 @@ export async function runPrompts(
       identifier,
       version,
       installDeps,
+      initGit,
+      branch: "master",
     };
 
     // Summary
@@ -102,6 +121,7 @@ export async function runPrompts(
         `${pc.bold("Identifier")}    ${opts.identifier}`,
         `${pc.bold("Version")}       ${opts.version}`,
         `${pc.bold("Install deps")}  ${opts.installDeps ? "yes" : "no"}`,
+        `${pc.bold("Init Git")}      ${opts.initGit ? "yes" : "no"}`,
       ].join("\n"),
       "Summary",
     );

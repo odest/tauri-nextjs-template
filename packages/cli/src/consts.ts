@@ -1,4 +1,4 @@
-export const TEMPLATE_SOURCE = "github:odest/tntstack#master";
+export const TEMPLATE_SOURCE = "github:odest/tntstack";
 
 export const DEFAULT_VERSION = "0.1.0";
 
@@ -9,9 +9,6 @@ export const SEARCH_TERMS = {
   identifier: "com.tntstack.app",
   githubUser: "odest",
 } as const;
-
-/** Glob pattern to find Android Java package dirs that need renaming. */
-export const ANDROID_PACKAGE_GLOB = "**/java/com/tntstack";
 
 /**
  * Directories and files to skip when scanning for replacements.
