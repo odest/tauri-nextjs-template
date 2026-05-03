@@ -46,7 +46,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "check-types": "tsc --noEmit",
-    "clean": "rimraf dist .turbo"
+    "clean": "rimraf dist .turbo",
+    "test": "vitest run"
   },
   "dependencies": {
     "@clack/prompts": "^1.2.0",
@@ -63,6 +64,7 @@
     "@workspace/typescript-config": "workspace:*",
     "eslint": "^9.39.4",
     "tsup": "^8.5.1",
-    "typescript": "~5.9.3"
+    "typescript": "~5.9.3",
+    "vitest": "^4.1.5"
   }
 }
