@@ -38,17 +38,19 @@ Published to npm as [`@tntstack/create-app`](https://www.npmjs.com/package/@tnts
 The CLI runs in interactive mode by default. You can also pass flags for CI or scripted setups:
 
 ```bash
-npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
+npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install --no-git
 ```
 
 | Flag | Description |
 |---|---|
 | `-n, --name <name>` | Project name |
 | `-d, --directory <dir>` | Output directory (defaults to `./<name>`) |
-| `-g, --github-user <user>` | GitHub username or org |
 | `-i, --identifier <id>` | App identifier, reverse-domain (defaults to `com.<name>.app`) |
+| `-g, --github-user <user>` | GitHub username or org |
 | `-v, --app-version <ver>` | Initial version (defaults to `0.1.0`) |
 | `--no-install` | Skip `pnpm install` |
+| `--no-git` | Skip `git init` |
+| `-b, --branch <branch>` | Template branch to clone (defaults to `master`) |
 
 ## Directory Structure
 
@@ -59,35 +61,53 @@ npm create @tntstack/app@latest --name <your-project-name> --github-user <your-g
       <File name="scaffold.ts" />
       <File name="prompts.ts" />
       <File name="consts.ts" />
-      <Folder name="actions">
+      <Folder name="actions" defaultOpen>
         <File name="clone.ts" />
-        <File name="rename.ts" />
+        <Folder name="rename" defaultOpen>
+          <File name="index.ts" />
+          <File name="native.ts" />
+          <File name="web.ts" />
+          <File name="version.ts" />
+          <File name="utils.ts" />
+        </Folder>
         <File name="clean.ts" />
         <File name="git.ts" />
         <File name="install.ts" />
       </Folder>
       <Folder name="utils">
         <File name="validate.ts" />
+        <File name="validate.test.ts" />
+      </Folder>
+    </Folder>
+    <Folder name="templates">
+      <File name="README.md" />
+      <Folder name="docs">
+        <File name="index.mdx" />
+        <File name="meta.json" />
       </Folder>
     </Folder>
     <File name="package.json" />
     <File name="tsconfig.json" />
+    <File name="tsup.config.ts" />
   </Folder>
 </Files>
 
 ## How It Works
 
-The scaffold pipeline runs 5 steps in order:
+The scaffold pipeline runs 6 steps in order:
 
-<Tabs items={["1. Clone", "2. Rename", "3. Clean", "4. Git", "5. Install"]}>
-  <Tab value="1. Clone">
+<Tabs items={["1. Download", "2. Templates", "3. Rename", "4. Clean", "5. Git", "6. Install"]}>
+  <Tab value="1. Download">
 
 ```typescript title="actions/clone.ts"
 import { downloadTemplate } from "giget";
 import { TEMPLATE_SOURCE } from "../consts.js";
 
-export async function cloneTemplate(directory: string): Promise<string> {
-  const { dir } = await downloadTemplate(TEMPLATE_SOURCE, {
+export async function cloneTemplate(
+  directory: string,
+  branch: string = "master",
+): Promise<string> {
+  const { dir } = await downloadTemplate(`${TEMPLATE_SOURCE}#${branch}`, {
     dir: directory,
     force: true,
   });
@@ -95,12 +115,29 @@ export async function cloneTemplate(directory: string): Promise<string> {
 }
 ```
 
-Downloads the latest source from `github:odest/tntstack#master` using giget. No git history is carried over.
+Downloads the source from `github:odest/tntstack` using giget. The branch defaults to `master` but can be overridden with `--branch`. No git history is carried over.
 
   </Tab>
-  <Tab value="2. Rename">
+  <Tab value="2. Templates">
 
-The most complex step. Walks every text file in the project and applies find-replace for these identifiers:
+Replaces branded content with clean starter files (shadow templates):
+
+- `apps/web/content/docs/` → replaced with minimal starter docs from `templates/docs/`
+- Root `README.md` → replaced with a project template, `{{PROJECT_NAME}}` is substituted with the user's project name
+
+This ensures the scaffolded project starts with a clean documentation structure instead of the TNTStack source docs.
+
+  </Tab>
+  <Tab value="3. Rename">
+
+The most complex step. Split into focused modules under `actions/rename/`:
+
+- **`utils.ts`** — shared helpers (`shouldSkip`, `replaceInFile`)
+- **`web.ts`** — renames web-specific config (`site.ts`, `layout.tsx`, `next.config.mjs`)
+- **`native.ts`** — renames Tauri config, Android/iOS identifiers, and `Cargo.toml` metadata
+- **`version.ts`** — updates version fields across `package.json`, `Cargo.toml`, `Cargo.lock`, `tauri.conf.json`, and `.release-please-manifest.json`
+
+The global find-replace covers these identifiers:
 
 | Search term | Replaced with |
 |---|---|
@@ -110,38 +147,35 @@ The most complex step. Walks every text file in the project and applies find-rep
 | `odest` | User's GitHub username |
 | `tntstack` | User's project name |
 
-After file contents, it also:
-- Renames Android Java package directories (`gen/android/**/java/com/tntstack/` → user's identifier path)
-- Renames Apple generated directories and files (`gen/apple/`)
-- Updates version fields in all `package.json` files, `Cargo.toml`, `Cargo.lock`, `tauri.conf.json`, and `.release-please-manifest.json`
-
 Binary files, lock files, and build artifacts are skipped via pattern matching.
 
   </Tab>
-  <Tab value="3. Clean">
+  <Tab value="4. Clean">
 
 Removes files that only belong to the source repo:
 
 ```typescript title="consts.ts"
 export const FILES_TO_CLEAN = [
   "CHANGELOG.md",
+  "CONTRIBUTING.md",
   "packages/cli",
   ".github/FUNDING.yml",
   ".github/workflows/publish-cli.yml",
+  ".github/assets",
 ] as const;
 ```
 
 Also removes `packages/cli` references from `release-please-config.json` and `.release-please-manifest.json`.
 
   </Tab>
-  <Tab value="4. Git">
+  <Tab value="5. Git">
 
-Runs `git init` and creates an initial commit. Skipped gracefully if git is not available.
+Runs `git init` and creates an initial commit. Skipped if `--no-git` was passed or if the user chose "No" in the interactive prompt. Falls back gracefully if git is not available on the system.
 
   </Tab>
-  <Tab value="5. Install">
+  <Tab value="6. Install">
 
-Runs `pnpm install` unless `--no-install` was passed. Falls back with a warning if pnpm is not found.
+Runs `pnpm install` unless `--no-install` was passed. Before attempting installation, the CLI checks if pnpm is available on the system. If pnpm is not found, the project is still created successfully but dependencies are skipped with a helpful message guiding the user to install pnpm and run `pnpm install` manually.
 
   </Tab>
 </Tabs>
@@ -152,10 +186,12 @@ In interactive mode, the CLI asks these questions:
 
 | Prompt | Default |
 |---|---|
-| Project name | `<your-project-name>` |
-| GitHub username / org | `<your-github-username>` |
+| Project name | — |
+| App identifier (reverse-domain) | `com.<project_name>.app` |
+| GitHub username / org | `your-github-username` |
 | Initial version | `0.1.0` |
 | Install dependencies? | Yes |
+| Initialize a new git repository? | Yes |
 
 After answering, a summary is shown and the user can confirm or re-enter their choices.
 
@@ -168,6 +204,9 @@ The CLI is built with tsup and published independently from the monorepo:
 | `build` | `tsup` (bundles to `dist/index.js`) |
 | `dev` | `tsup --watch` |
 | `start` | `node ./dist/index.js` |
+| `test` | `vitest run` |
+
+The CLI version is auto-injected from `package.json` at build time via `tsup.config.ts` `define`, so it always stays in sync.
 
 <Callout type="info">
 The CLI has its own version (`vX.Y.Z`) separate from the monorepo version. It's published to npm via the `publish-cli.yml` GitHub Actions workflow on new releases.

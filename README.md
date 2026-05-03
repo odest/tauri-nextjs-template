@@ -105,6 +105,11 @@ pnpm dev
 
 This starts both the web app (http://localhost:3000) and the native desktop app in parallel.
 
+### Configuration
+
+Before deploying or sharing your project, make sure to update the site metadata (URLs, headline, and description) in:
+`packages/core/src/config/site.ts`
+
 > [!IMPORTANT]
 > **GitHub Actions & Release Please:** For the automated release pipelines and changelog generation to function properly, you **must** configure the following repository settings:
 >

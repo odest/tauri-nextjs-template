@@ -54,10 +54,12 @@ The CLI is interactive by default, but you can pass flags to skip prompts:
 | Flag | Description | Default |
 |---|---|---|
 | `-n, --name <name>` | Project name | (prompted) |
-| `-g, --github-user <user>` | GitHub username or org | `your-github-username` |
 | `-i, --identifier <id>` | App identifier (reverse-domain) | `com.<name>.app` |
+| `-g, --github-user <user>` | GitHub username or org | `your-github-username` |
 | `-v, --app-version <ver>`  | Initial version | `0.1.0` |
 | `--no-install` | Skip dependency installation | (false) |
+| `--no-git` | Skip git initialization | (false) |
+| `-b, --branch <branch>` | Template branch to clone | `master` |
 
 Example:
 ```bash
@@ -122,6 +124,11 @@ Without these settings, the automated release PRs will either lack permission to
 
 ## What's Next
 
+### Update Metadata
+The CLI applies basic renaming, but you should manually update the site URLs, headline, and description in:
+`packages/core/src/config/site.ts`
+
+### Deployment Guides
 For production builds and distribution, see the platform-specific deployment guides:
 
 <Cards>
