@@ -9,8 +9,11 @@ import {
   toSnakeCase,
   validateProjectName,
   validateVersion,
+  validateIdentifier,
 } from "./utils/validate.js";
-import { DEFAULT_VERSION, SEARCH_TERMS } from "./consts.js";
+
+declare const __CLI_VERSION__: string;
+import { DEFAULT_VERSION } from "./consts.js";
 
 const banner = `
   ████████╗███╗   ██╗████████╗███████╗████████╗ █████╗  ██████╗██╗  ██╗
@@ -24,7 +27,7 @@ const banner = `
 const program = new Command()
   .name("tntstack")
   .description("Scaffold a new TNTStack project")
-  .version("0.1.2")
+  .version(__CLI_VERSION__)
   .option("-n, --name <name>", "Project name")
   .option("-d, --directory <dir>", "Output directory")
   .option("-g, --github-user <user>", "GitHub username / org")
@@ -51,13 +54,21 @@ const program = new Command()
         }
       }
 
+      const identifier =
+        flags.identifier ?? `com.${toSnakeCase(flags.name)}.app`;
+      const idErr = validateIdentifier(identifier);
+      if (idErr) {
+        p.cancel(idErr);
+        process.exit(1);
+      }
+
       await scaffold({
         projectName: flags.name,
         projectNamePascal: toPascalCase(flags.name),
         projectNameSnake: toSnakeCase(flags.name),
         directory: flags.directory ?? `./${flags.name}`,
         githubUser: flags.githubUser ?? "your-github-username",
-        identifier: flags.identifier ?? `com.${flags.name}.app`,
+        identifier,
         version: flags.appVersion ?? DEFAULT_VERSION,
         installDeps: flags.install ?? true,
       });

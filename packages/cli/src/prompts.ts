@@ -1,9 +1,10 @@
 import * as p from "@clack/prompts";
 import pc from "picocolors";
-import { DEFAULT_VERSION, SEARCH_TERMS } from "./consts.js";
+import { DEFAULT_VERSION } from "./consts.js";
 import {
   validateProjectName,
   validateVersion,
+  validateIdentifier,
   toPascalCase,
   toSnakeCase,
 } from "./utils/validate.js";
@@ -38,6 +39,18 @@ export async function runPrompts(
     }
 
     const directory = defaultDir ?? `./${projectName}`;
+
+    const defaultIdentifier = `com.${toSnakeCase(projectName)}.app`;
+    const identifier = await p.text({
+      message: "App identifier (reverse-domain)?",
+      placeholder: defaultIdentifier,
+      defaultValue: defaultIdentifier,
+      validate: validateIdentifier,
+    });
+    if (p.isCancel(identifier)) {
+      p.cancel("Setup cancelled.");
+      process.exit(0);
+    }
 
     const githubUser = await p.text({
       message: "GitHub username / org (optional)?",
@@ -75,7 +88,7 @@ export async function runPrompts(
       projectNameSnake: toSnakeCase(projectName),
       directory,
       githubUser,
-      identifier: `com.${projectName}.app`,
+      identifier,
       version,
       installDeps,
     };

@@ -43,3 +43,18 @@ export function toPascalCase(name: string): string {
     .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
     .join("");
 }
+
+/**
+ * Validate a reverse-domain app identifier (e.g. com.myapp.app).
+ * Must follow Java package name rules: lowercase letters, digits, dots, underscores.
+ * Requires at least 3 parts (e.g. com.company.app).
+ * Each part must start with a letter and be at least 2 characters long.
+ */
+export function validateIdentifier(
+  value: string | undefined,
+): string | undefined {
+  if (!value) return "Identifier cannot be empty.";
+  if (!/^[a-z][a-z0-9_]{1,}(\.[a-z][a-z0-9_]{1,}){2,}$/.test(value))
+    return "Must be a valid reverse-domain identifier (e.g. com.myapp.app). Requires at least 3 parts, starting with a letter, minimum 2 characters per part.";
+  return undefined;
+}
