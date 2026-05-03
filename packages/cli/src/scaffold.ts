@@ -1,5 +1,6 @@
 import * as p from "@clack/prompts";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import fs from "fs-extra";
 import type { ScaffoldOptions } from "./prompts.js";
 import { cloneTemplate } from "./actions/clone.js";
@@ -7,6 +8,9 @@ import { renameProject } from "./actions/rename/index.js";
 import { cleanFiles } from "./actions/clean.js";
 import { initGit } from "./actions/git.js";
 import { installDeps } from "./actions/install.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export async function scaffold(opts: ScaffoldOptions): Promise<void> {
   const projectDir = path.resolve(opts.directory);
@@ -42,17 +46,37 @@ export async function scaffold(opts: ScaffoldOptions): Promise<void> {
   }
   s.stop("Core files downloaded.");
 
-  // 2. Rename
+  // 2. Shadow template swap — replace branded content with clean starters
+  s.start("Applying project templates…");
+  const templatesDir = path.resolve(__dirname, "..", "templates");
+
+  // Replace docs with clean starter docs
+  const docsTarget = path.join(projectDir, "apps", "web", "content", "docs");
+  await fs.remove(docsTarget);
+  await fs.copy(path.join(templatesDir, "docs"), docsTarget);
+
+  // Replace root README with project template
+  const readmeTemplate = await fs.readFile(
+    path.join(templatesDir, "README.md"),
+    "utf-8",
+  );
+  await fs.writeFile(
+    path.join(projectDir, "README.md"),
+    readmeTemplate.replace(/\{\{PROJECT_NAME\}\}/g, opts.projectName),
+  );
+  s.stop("Templates applied.");
+
+  // 3. Rename
   s.start("Configuring project…");
   await renameProject(projectDir, opts);
   s.stop("Project configured.");
 
-  // 3. Clean
+  // 4. Clean
   s.start("Cleaning up…");
   await cleanFiles(projectDir);
   s.stop("Done.");
 
-  // 4. Git
+  // 5. Git
   s.start("Initialising git…");
   try {
     await initGit(projectDir);
@@ -64,7 +88,7 @@ export async function scaffold(opts: ScaffoldOptions): Promise<void> {
     );
   }
 
-  // 5. Install
+  // 6. Install
   if (opts.installDeps) {
     s.start("Installing dependencies…");
     try {

@@ -30,7 +30,8 @@
   "homepage": "https://tntstack.odest.dev",
   "type": "module",
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "bin": {
     "tntstack": "./dist/index.js"

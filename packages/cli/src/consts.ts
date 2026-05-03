@@ -45,9 +45,11 @@ export const SKIP_PATTERNS = [
 /** Files/dirs to delete after cloning (relative to project root). */
 export const FILES_TO_CLEAN = [
   "CHANGELOG.md",
+  "CONTRIBUTING.md",
   "packages/cli",
   ".github/FUNDING.yml",
   ".github/workflows/publish-cli.yml",
+  ".github/assets",
 ] as const;
 
 /**

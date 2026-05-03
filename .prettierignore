@@ -1,2 +1,3 @@
 apps/web/content/docs/**/*.mdx
+packages/cli/templates/docs/**/*.mdx
 **/CHANGELOG.md
