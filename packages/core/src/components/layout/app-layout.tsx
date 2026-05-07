@@ -11,6 +11,7 @@ import { MobileBottomNav } from "@workspace/core/components/navigation/mobile-bo
 import { navigationData } from "@workspace/core/config/navigation"
 import { ThemeProvider } from "@workspace/core/providers/theme-provider"
 import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys"
+import { TooltipProvider } from "@workspace/ui/components/tooltip"
 import { SidebarInset, SidebarProvider } from "@workspace/ui/components/sidebar"
 
 interface AppLayoutProps {
@@ -46,23 +47,25 @@ export function AppLayout({
       disableTransitionOnChange
       enableColorScheme
     >
-      <SidebarProvider className="h-screen pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
-        <HotkeysRegistrar navigate={navigate} />
-        <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
-        <SidebarInset>
-          <AppHeader pathname={pathname} LinkComponent={LinkComponent} />
-          {children}
-          <Toaster />
-          <MobileBottomNav
-            items={navigationData.navMobile}
-            pathname={pathname}
-            LinkComponent={LinkComponent}
-          />
-        </SidebarInset>
-        <HotkeysDialog />
-        <CommandPalette navigate={navigate} />
-        <ProfileDrawer user={navigationData.user} />
-      </SidebarProvider>
+      <TooltipProvider>
+        <SidebarProvider className="h-screen pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+          <HotkeysRegistrar navigate={navigate} />
+          <AppSidebar pathname={pathname} LinkComponent={LinkComponent} />
+          <SidebarInset>
+            <AppHeader pathname={pathname} LinkComponent={LinkComponent} />
+            {children}
+            <Toaster />
+            <MobileBottomNav
+              items={navigationData.navMobile}
+              pathname={pathname}
+              LinkComponent={LinkComponent}
+            />
+          </SidebarInset>
+          <HotkeysDialog />
+          <CommandPalette navigate={navigate} />
+          <ProfileDrawer user={navigationData.user} />
+        </SidebarProvider>
+      </TooltipProvider>
     </ThemeProvider>
   )
 }
