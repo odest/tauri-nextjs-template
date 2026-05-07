@@ -1,47 +1,47 @@
-"use client";
+"use client"
 
-import { useMemo } from "react";
-import { Laptop, Moon, Sun } from "lucide-react";
+import { useMemo } from "react"
+import { Laptop, Moon, Sun } from "lucide-react"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@workspace/ui/components/card";
-import { Label } from "@workspace/ui/components/label";
+} from "@workspace/ui/components/card"
+import { Label } from "@workspace/ui/components/label"
 import {
   RadioGroup,
   RadioGroupItem,
-} from "@workspace/ui/components/radio-group";
+} from "@workspace/ui/components/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/ui/components/select";
-import { useSidebar } from "@workspace/ui/components/sidebar";
-import { useMounted } from "@workspace/core/hooks/use-mounted";
-import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
-import { SettingsCardSkeleton } from "@workspace/core/components/common/settings-card-skeleton";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/select"
+import { useSidebar } from "@workspace/ui/components/sidebar"
+import { useMounted } from "@workspace/core/hooks/use-mounted"
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition"
+import { SettingsCardSkeleton } from "@workspace/core/components/common/settings-card-skeleton"
+import { useTranslations } from "@workspace/i18n"
 
 export const ModeCard = () => {
-  const { theme, handleThemeChange } = useThemeTransition();
-  const { state } = useSidebar();
-  const mounted = useMounted();
-  const t = useTranslations("ModeCard");
+  const { theme, handleThemeChange } = useThemeTransition()
+  const { state } = useSidebar()
+  const mounted = useMounted()
+  const t = useTranslations("ModeCard")
 
   const gridClasses = useMemo(
     () =>
       state === "collapsed"
         ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6"
         : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6",
-    [state],
-  );
+    [state]
+  )
 
-  if (!mounted) return <SettingsCardSkeleton gridClasses={gridClasses} />;
+  if (!mounted) return <SettingsCardSkeleton gridClasses={gridClasses} />
 
   return (
     <Card>
@@ -99,12 +99,12 @@ export const ModeCard = () => {
               className="block w-full cursor-pointer"
             >
               <div className="relative w-full">
-                <div className="border-border dark:border-muted-foreground bg-background dark:bg-foreground aspect-video w-full overflow-hidden rounded-lg border-2 transition-colors">
-                  <div className="border-border dark:border-muted-foreground bg-muted dark:bg-muted-foreground/30 h-5 border-b"></div>
+                <div className="aspect-video w-full overflow-hidden rounded-lg border-2 border-border bg-background transition-colors dark:border-muted-foreground dark:bg-foreground">
+                  <div className="h-5 border-b border-border bg-muted dark:border-muted-foreground dark:bg-muted-foreground/30"></div>
                   <div className="mt-2 space-y-1 p-2">
-                    <div className="bg-muted-foreground/20 dark:bg-muted/30 h-2 w-3/4 rounded"></div>
-                    <div className="bg-muted-foreground/20 dark:bg-muted/30 h-2 w-1/2 rounded"></div>
-                    <div className="bg-muted-foreground/20 dark:bg-muted/30 h-2 w-2/3 rounded"></div>
+                    <div className="h-2 w-3/4 rounded bg-muted-foreground/20 dark:bg-muted/30"></div>
+                    <div className="h-2 w-1/2 rounded bg-muted-foreground/20 dark:bg-muted/30"></div>
+                    <div className="h-2 w-2/3 rounded bg-muted-foreground/20 dark:bg-muted/30"></div>
                   </div>
                 </div>
                 <div className="absolute top-2 left-2 flex gap-1">
@@ -128,12 +128,12 @@ export const ModeCard = () => {
           <div className="flex flex-col gap-3">
             <label htmlFor="theme-dark" className="block w-full cursor-pointer">
               <div className="relative w-full">
-                <div className="border-muted-foreground dark:border-border bg-foreground dark:bg-background aspect-video w-full overflow-hidden rounded-lg border-2 transition-colors">
-                  <div className="dark:border-border border-muted-foreground bg-muted-foreground/30 dark:bg-muted h-5 border-b"></div>
+                <div className="aspect-video w-full overflow-hidden rounded-lg border-2 border-muted-foreground bg-foreground transition-colors dark:border-border dark:bg-background">
+                  <div className="h-5 border-b border-muted-foreground bg-muted-foreground/30 dark:border-border dark:bg-muted"></div>
                   <div className="mt-2 space-y-1 p-2">
-                    <div className="bg-muted/30 dark:bg-muted-foreground/20 h-2 w-3/4 rounded"></div>
-                    <div className="bg-muted/30 dark:bg-muted-foreground/20 h-2 w-1/2 rounded"></div>
-                    <div className="bg-muted/30 dark:bg-muted-foreground/20 h-2 w-2/3 rounded"></div>
+                    <div className="h-2 w-3/4 rounded bg-muted/30 dark:bg-muted-foreground/20"></div>
+                    <div className="h-2 w-1/2 rounded bg-muted/30 dark:bg-muted-foreground/20"></div>
+                    <div className="h-2 w-2/3 rounded bg-muted/30 dark:bg-muted-foreground/20"></div>
                   </div>
                 </div>
                 <div className="absolute top-2 left-2 flex gap-1">
@@ -161,25 +161,25 @@ export const ModeCard = () => {
             >
               <div className="relative w-full">
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg transition-colors">
-                  <div className="border-border dark:border-muted-foreground bg-background dark:bg-foreground absolute inset-0 w-1/2 rounded-tl-lg rounded-bl-lg border-2 border-r" />
-                  <div className="border-muted-foreground dark:border-border bg-foreground dark:bg-background absolute inset-0 left-1/2 w-1/2 rounded-tr-lg rounded-br-lg border-2 border-l" />
+                  <div className="absolute inset-0 w-1/2 rounded-tl-lg rounded-bl-lg border-2 border-r border-border bg-background dark:border-muted-foreground dark:bg-foreground" />
+                  <div className="absolute inset-0 left-1/2 w-1/2 rounded-tr-lg rounded-br-lg border-2 border-l border-muted-foreground bg-foreground dark:border-border dark:bg-background" />
 
                   <div className="relative">
                     <div className="flex h-5">
-                      <div className="border-border dark:border-muted-foreground bg-muted dark:bg-muted/30 w-1/2 rounded-tl-lg border-2 border-r"></div>
-                      <div className="border-muted-foreground dark:border-border bg-muted/30 dark:bg-muted w-1/2 rounded-tr-lg border-2 border-l"></div>
+                      <div className="w-1/2 rounded-tl-lg border-2 border-r border-border bg-muted dark:border-muted-foreground dark:bg-muted/30"></div>
+                      <div className="w-1/2 rounded-tr-lg border-2 border-l border-muted-foreground bg-muted/30 dark:border-border dark:bg-muted"></div>
                     </div>
                     <div className="mt-2 space-y-1 p-2">
                       <div className="flex h-2 rounded-full">
-                        <div className="bg-muted-foreground/20 dark:bg-muted/30 w-1/2 rounded-tl-md rounded-bl-md"></div>
-                        <div className="bg-muted/30 dark:bg-muted-foreground/20 w-1/4 rounded-tr-md rounded-br-md"></div>
+                        <div className="w-1/2 rounded-tl-md rounded-bl-md bg-muted-foreground/20 dark:bg-muted/30"></div>
+                        <div className="w-1/4 rounded-tr-md rounded-br-md bg-muted/30 dark:bg-muted-foreground/20"></div>
                       </div>
                       <div className="flex h-2 rounded-full">
-                        <div className="bg-muted-foreground/20 dark:bg-muted/30 w-1/2 rounded-md"></div>
+                        <div className="w-1/2 rounded-md bg-muted-foreground/20 dark:bg-muted/30"></div>
                       </div>
                       <div className="flex h-2 rounded-full">
-                        <div className="bg-muted-foreground/20 dark:bg-muted/30 w-1/2 rounded-tl-md rounded-bl-md"></div>
-                        <div className="bg-muted/30 dark:bg-muted-foreground/20 w-1/6 rounded-tr-md rounded-br-md"></div>
+                        <div className="w-1/2 rounded-tl-md rounded-bl-md bg-muted-foreground/20 dark:bg-muted/30"></div>
+                        <div className="w-1/6 rounded-tr-md rounded-br-md bg-muted/30 dark:bg-muted-foreground/20"></div>
                       </div>
                     </div>
                   </div>
@@ -205,5 +205,5 @@ export const ModeCard = () => {
         </RadioGroup>
       </CardContent>
     </Card>
-  );
-};
+  )
+}

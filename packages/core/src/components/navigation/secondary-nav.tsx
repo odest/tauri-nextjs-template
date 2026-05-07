@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ComponentType, useCallback } from "react";
-import { type LucideIcon } from "lucide-react";
+import * as React from "react"
+import { ComponentType, useCallback } from "react"
+import { type LucideIcon } from "lucide-react"
 import {
   SidebarGroup,
   SidebarGroupContent,
@@ -8,30 +8,30 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@workspace/ui/components/sidebar";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/sidebar"
+import { useTranslations } from "@workspace/i18n"
 
 interface SecondaryNavItem {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  translationKey: string;
-  external?: boolean;
+  title: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
+  external?: boolean
 }
 
 interface SecondaryNavProps extends React.ComponentPropsWithoutRef<
   typeof SidebarGroup
 > {
-  items: SecondaryNavItem[];
-  pathname: string;
+  items: SecondaryNavItem[]
+  pathname: string
   LinkComponent?:
     | ComponentType<{
-        href: string;
-        children: React.ReactNode;
-        onClick?: () => void;
-        className?: string;
+        href: string
+        children: React.ReactNode
+        onClick?: () => void
+        className?: string
       }>
-    | "a";
+    | "a"
 }
 
 export function SecondaryNav({
@@ -40,14 +40,14 @@ export function SecondaryNav({
   LinkComponent = "a",
   ...props
 }: SecondaryNavProps) {
-  const { isMobile, setOpenMobile } = useSidebar();
-  const t = useTranslations("Navigation");
+  const { isMobile, setOpenMobile } = useSidebar()
+  const t = useTranslations("Navigation")
 
   const handleLinkClick = useCallback(() => {
     if (isMobile) {
-      setOpenMobile(false);
+      setOpenMobile(false)
     }
-  }, [isMobile, setOpenMobile]);
+  }, [isMobile, setOpenMobile])
 
   return (
     <SidebarGroup {...props}>
@@ -56,7 +56,7 @@ export function SecondaryNav({
           {items.map((item) => {
             const active =
               pathname === item.url ||
-              (item.url !== "/" && pathname.startsWith(item.url));
+              (item.url !== "/" && pathname.startsWith(item.url))
             return (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild size="sm" isActive={active}>
@@ -73,10 +73,10 @@ export function SecondaryNav({
                   </LinkComponent>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-            );
+            )
           })}
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  );
+  )
 }

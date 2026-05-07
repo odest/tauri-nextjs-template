@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { Card, CardContent, CardHeader } from "@workspace/ui/components/card";
-import { Button } from "@workspace/ui/components/button";
-import { ReactNode } from "react";
+import Link from "next/link"
+import { Card, CardContent, CardHeader } from "@workspace/ui/components/card"
+import { Button } from "@workspace/ui/components/button"
+import { ReactNode } from "react"
 import {
   platformCards,
   type PlatformCardData,
-} from "../download/platform-mappings";
-import { siteConfig } from "@workspace/core/config/site";
+} from "../download/platform-mappings"
+import { siteConfig } from "@workspace/core/config/site"
 
 interface PlatformCardsProps {
-  assets: Record<string, string>;
+  assets: Record<string, string>
 }
 
 function DownloadButton({
@@ -17,12 +17,12 @@ function DownloadButton({
   label,
   ext,
 }: {
-  href: string | undefined;
-  label: string;
-  ext: string;
+  href: string | undefined
+  label: string
+  ext: string
 }) {
-  if (!href) return null;
-  const isExternal = href.startsWith("http");
+  if (!href) return null
+  const isExternal = href.startsWith("http")
   return (
     <Button
       asChild
@@ -35,27 +35,27 @@ function DownloadButton({
         rel={isExternal ? "noopener noreferrer" : undefined}
       >
         <span className="text-sm">{label}</span>
-        <span className="text-muted-foreground font-mono text-xs">{ext}</span>
+        <span className="font-mono text-xs text-muted-foreground">{ext}</span>
       </Link>
     </Button>
-  );
+  )
 }
 
 const colSpanClass = {
   2: "lg:col-span-2",
   3: "lg:col-span-3",
-} as const;
+} as const
 
 function PlatformCard({
   platform,
   assets,
 }: {
-  platform: PlatformCardData;
-  assets: Record<string, string>;
+  platform: PlatformCardData
+  assets: Record<string, string>
 }) {
   return (
     <Card
-      className={`group bg-background shadow-foreground/5 overflow-hidden text-center ${colSpanClass[platform.colSpan]}`}
+      className={`group overflow-hidden bg-background text-center shadow-foreground/5 ${colSpanClass[platform.colSpan]}`}
     >
       <CardHeader className="pb-3">
         <CardDecorator>{platform.icon}</CardDecorator>
@@ -76,11 +76,11 @@ function PlatformCard({
             />
           ))
         ) : (
-          <p className="text-muted-foreground py-2 text-sm">Coming soon</p>
+          <p className="py-2 text-sm text-muted-foreground">Coming soon</p>
         )}
       </CardContent>
     </Card>
-  );
+  )
 }
 
 export default function PlatformCards({ assets }: PlatformCardsProps) {
@@ -91,7 +91,7 @@ export default function PlatformCards({ assets }: PlatformCardsProps) {
           <h2 className="text-4xl font-semibold text-balance lg:text-5xl">
             Available Platforms
           </h2>
-          <p className="text-muted-foreground mt-4">
+          <p className="mt-4 text-muted-foreground">
             Download {siteConfig.name} for your platform.
           </p>
         </div>
@@ -106,7 +106,7 @@ export default function PlatformCards({ assets }: PlatformCardsProps) {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
 const CardDecorator = ({ children }: { children: ReactNode }) => (
@@ -116,8 +116,8 @@ const CardDecorator = ({ children }: { children: ReactNode }) => (
       className="absolute inset-0 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] dark:opacity-50"
     />
 
-    <div className="bg-background absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l">
+    <div className="absolute inset-0 m-auto flex size-12 items-center justify-center border-t border-l bg-background">
       {children}
     </div>
   </div>
-);
+)

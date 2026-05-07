@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { useCallback } from "react";
-import { ComponentType } from "react";
-import { ChevronRight, type LucideIcon } from "lucide-react";
+import { useCallback } from "react"
+import { ComponentType } from "react"
+import { ChevronRight, type LucideIcon } from "lucide-react"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@workspace/ui/components/collapsible";
+} from "@workspace/ui/components/collapsible"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -19,34 +19,34 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@workspace/ui/components/sidebar";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/sidebar"
+import { useTranslations } from "@workspace/i18n"
 
 interface MainNavItem {
-  title: string;
-  url: string;
-  href?: string;
-  icon: LucideIcon;
-  isActive?: boolean;
-  translationKey: string;
+  title: string
+  url: string
+  href?: string
+  icon: LucideIcon
+  isActive?: boolean
+  translationKey: string
   items?: {
-    title: string;
-    url: string;
-    translationKey: string;
-  }[];
+    title: string
+    url: string
+    translationKey: string
+  }[]
 }
 
 interface MainNavProps {
-  items: MainNavItem[];
-  pathname: string;
+  items: MainNavItem[]
+  pathname: string
   LinkComponent?:
     | ComponentType<{
-        href: string;
-        children: React.ReactNode;
-        onClick?: () => void;
-        className?: string;
+        href: string
+        children: React.ReactNode
+        onClick?: () => void
+        className?: string
       }>
-    | "a";
+    | "a"
 }
 
 export function MainNav({
@@ -54,14 +54,14 @@ export function MainNav({
   pathname,
   LinkComponent = "a",
 }: MainNavProps) {
-  const { isMobile, setOpenMobile } = useSidebar();
-  const t = useTranslations("Navigation");
+  const { isMobile, setOpenMobile } = useSidebar()
+  const t = useTranslations("Navigation")
 
   const handleLinkClick = useCallback(() => {
     if (isMobile) {
-      setOpenMobile(false);
+      setOpenMobile(false)
     }
-  }, [isMobile, setOpenMobile]);
+  }, [isMobile, setOpenMobile])
 
   return (
     <SidebarGroup>
@@ -70,8 +70,8 @@ export function MainNav({
         {items.map((item) => {
           const active =
             pathname === item.url ||
-            (item.url !== "/" && pathname.startsWith(item.url));
-          const href = item.href ?? item.url;
+            (item.url !== "/" && pathname.startsWith(item.url))
+          const href = item.href ?? item.url
           return (
             <Collapsible
               key={`${item.title}-${active}`}
@@ -106,7 +106,7 @@ export function MainNav({
                           const subActive =
                             pathname === subItem.url ||
                             (subItem.url !== "/" &&
-                              pathname.startsWith(subItem.url));
+                              pathname.startsWith(subItem.url))
                           return (
                             <SidebarMenuSubItem key={subItem.title}>
                               <SidebarMenuSubButton
@@ -121,7 +121,7 @@ export function MainNav({
                                 </LinkComponent>
                               </SidebarMenuSubButton>
                             </SidebarMenuSubItem>
-                          );
+                          )
                         })}
                       </SidebarMenuSub>
                     </CollapsibleContent>
@@ -129,9 +129,9 @@ export function MainNav({
                 ) : null}
               </SidebarMenuItem>
             </Collapsible>
-          );
+          )
         })}
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }

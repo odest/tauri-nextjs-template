@@ -1,20 +1,20 @@
-"use client";
+"use client"
 
-import { Laptop, Moon, Sun, Check } from "lucide-react";
-import { Button } from "@workspace/ui/components/button";
+import { Laptop, Moon, Sun, Check } from "lucide-react"
+import { Button } from "@workspace/ui/components/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@workspace/ui/components/dropdown-menu";
-import { cn } from "@workspace/ui/lib/utils";
-import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/dropdown-menu"
+import { cn } from "@workspace/ui/lib/utils"
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition"
+import { useTranslations } from "@workspace/i18n"
 
 export function ModeToggle() {
-  const { theme, handleThemeChange } = useThemeTransition();
-  const t = useTranslations("ModeCard");
+  const { theme, handleThemeChange } = useThemeTransition()
+  const t = useTranslations("ModeCard")
 
   return (
     <DropdownMenu>
@@ -51,5 +51,5 @@ export function ModeToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

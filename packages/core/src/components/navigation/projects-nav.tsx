@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useCallback } from "react";
-import { ComponentType } from "react";
+import { useCallback } from "react"
+import { ComponentType } from "react"
 import {
   Folder,
   MoreHorizontal,
   Share,
   Trash2,
   type LucideIcon,
-} from "lucide-react";
+} from "lucide-react"
 
 import {
   DropdownMenu,
@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@workspace/ui/components/dropdown-menu";
+} from "@workspace/ui/components/dropdown-menu"
 import {
   SidebarGroup,
   SidebarGroupLabel,
@@ -25,27 +25,27 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@workspace/ui/components/sidebar";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/sidebar"
+import { useTranslations } from "@workspace/i18n"
 
 interface ProjectNavItem {
-  name: string;
-  url: string;
-  icon: LucideIcon;
-  translationKey: string;
+  name: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
 }
 
 interface ProjectsNavProps {
-  projects: ProjectNavItem[];
-  pathname: string;
+  projects: ProjectNavItem[]
+  pathname: string
   LinkComponent?:
     | ComponentType<{
-        href: string;
-        children: React.ReactNode;
-        onClick?: () => void;
-        className?: string;
+        href: string
+        children: React.ReactNode
+        onClick?: () => void
+        className?: string
       }>
-    | "a";
+    | "a"
 }
 
 export function ProjectsNav({
@@ -53,14 +53,14 @@ export function ProjectsNav({
   pathname,
   LinkComponent = "a",
 }: ProjectsNavProps) {
-  const { isMobile, setOpenMobile } = useSidebar();
-  const t = useTranslations("Navigation");
+  const { isMobile, setOpenMobile } = useSidebar()
+  const t = useTranslations("Navigation")
 
   const handleLinkClick = useCallback(() => {
     if (isMobile) {
-      setOpenMobile(false);
+      setOpenMobile(false)
     }
-  }, [isMobile, setOpenMobile]);
+  }, [isMobile, setOpenMobile])
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
@@ -69,7 +69,7 @@ export function ProjectsNav({
         {projects.map((item) => {
           const active =
             pathname === item.url ||
-            (item.url !== "/" && pathname.startsWith(item.url));
+            (item.url !== "/" && pathname.startsWith(item.url))
           return (
             <SidebarMenuItem key={item.name}>
               <SidebarMenuButton asChild isActive={active}>
@@ -109,7 +109,7 @@ export function ProjectsNav({
                 </DropdownMenuContent>
               </DropdownMenu>
             </SidebarMenuItem>
-          );
+          )
         })}
         <SidebarMenuItem>
           <SidebarMenuButton>
@@ -119,5 +119,5 @@ export function ProjectsNav({
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>
-  );
+  )
 }

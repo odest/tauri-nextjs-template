@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from "react"
 
 const Nextjs = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} viewBox="0 0 394 80" fill="none">
@@ -37,6 +37,6 @@ const Nextjs = (props: SVGProps<SVGSVGElement>) => (
       fill="black"
     />
   </svg>
-);
+)
 
-export { Nextjs };
+export { Nextjs }

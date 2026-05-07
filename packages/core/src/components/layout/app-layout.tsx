@@ -1,38 +1,35 @@
-"use client";
+"use client"
 
-import { ReactNode, ComponentType } from "react";
-import { Toaster } from "@workspace/ui/components/sonner";
-import { AppSidebar } from "@workspace/core/components/layout/app-sidebar";
-import { AppHeader } from "@workspace/core/components/layout/app-header";
-import { HotkeysDialog } from "@workspace/core/components/common/hotkeys-dialog";
-import { CommandPalette } from "@workspace/core/components/common/command-palette";
-import { ProfileDrawer } from "@workspace/core/components/common/profile-drawer";
-import { MobileBottomNav } from "@workspace/core/components/navigation/mobile-bottom-nav";
-import { navigationData } from "@workspace/core/config/navigation";
-import { ThemeProvider } from "@workspace/core/providers/theme-provider";
-import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@workspace/ui/components/sidebar";
+import { ReactNode, ComponentType } from "react"
+import { Toaster } from "@workspace/ui/components/sonner"
+import { AppSidebar } from "@workspace/core/components/layout/app-sidebar"
+import { AppHeader } from "@workspace/core/components/layout/app-header"
+import { HotkeysDialog } from "@workspace/core/components/common/hotkeys-dialog"
+import { CommandPalette } from "@workspace/core/components/common/command-palette"
+import { ProfileDrawer } from "@workspace/core/components/common/profile-drawer"
+import { MobileBottomNav } from "@workspace/core/components/navigation/mobile-bottom-nav"
+import { navigationData } from "@workspace/core/config/navigation"
+import { ThemeProvider } from "@workspace/core/providers/theme-provider"
+import { useAppHotkeys } from "@workspace/core/hooks/use-app-hotkeys"
+import { SidebarInset, SidebarProvider } from "@workspace/ui/components/sidebar"
 
 interface AppLayoutProps {
-  children: ReactNode;
-  pathname: string;
-  navigate: (path: string) => void;
+  children: ReactNode
+  pathname: string
+  navigate: (path: string) => void
   LinkComponent?:
     | ComponentType<{
-        href: string;
-        children: React.ReactNode;
-        onClick?: () => void;
-        className?: string;
+        href: string
+        children: React.ReactNode
+        onClick?: () => void
+        className?: string
       }>
-    | "a";
+    | "a"
 }
 
 function HotkeysRegistrar({ navigate }: { navigate: (path: string) => void }) {
-  useAppHotkeys({ navigate });
-  return null;
+  useAppHotkeys({ navigate })
+  return null
 }
 
 export function AppLayout({
@@ -67,5 +64,5 @@ export function AppLayout({
         <ProfileDrawer user={navigationData.user} />
       </SidebarProvider>
     </ThemeProvider>
-  );
+  )
 }

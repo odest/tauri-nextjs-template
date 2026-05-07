@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import React, { useCallback } from "react";
-import { useTranslations } from "@workspace/i18n";
+import React, { useCallback } from "react"
+import { useTranslations } from "@workspace/i18n"
 import {
   Command,
   CommandEmpty,
@@ -10,36 +10,36 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@workspace/ui/components/command";
+} from "@workspace/ui/components/command"
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@workspace/ui/components/dialog";
+} from "@workspace/ui/components/dialog"
 import {
   Drawer,
   DrawerContent,
   DrawerDescription,
   DrawerHeader,
   DrawerTitle,
-} from "@workspace/ui/components/drawer";
-import { Kbd } from "@workspace/ui/components/kbd";
-import { useCommandPaletteStore } from "@workspace/core/stores/command-palette-store";
-import { useHotkeysDialogStore } from "@workspace/core/stores/hotkeys-store";
-import { useSidebarStore } from "@workspace/core/stores/sidebar-store";
-import { useThemeStore } from "@workspace/core/stores/theme-store";
-import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
-import { useIsMobile } from "@workspace/ui/hooks/use-mobile";
-import { useDrawerHistory } from "@workspace/core/hooks/use-drawer-history";
-import { useSidebar } from "@workspace/ui/components/sidebar";
-import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
-import { routing, localeConfig } from "@workspace/i18n/routing";
-import { themes } from "@workspace/core/config/themes";
-import { hotkeys } from "@workspace/core/config/hotkeys";
-import { formatHotkeyDisplay } from "@workspace/core/lib/utils";
-import { cn } from "@workspace/ui/lib/utils";
+} from "@workspace/ui/components/drawer"
+import { Kbd } from "@workspace/ui/components/kbd"
+import { useCommandPaletteStore } from "@workspace/core/stores/command-palette-store"
+import { useHotkeysDialogStore } from "@workspace/core/stores/hotkeys-store"
+import { useSidebarStore } from "@workspace/core/stores/sidebar-store"
+import { useThemeStore } from "@workspace/core/stores/theme-store"
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition"
+import { useIsMobile } from "@workspace/ui/hooks/use-mobile"
+import { useDrawerHistory } from "@workspace/core/hooks/use-drawer-history"
+import { useSidebar } from "@workspace/ui/components/sidebar"
+import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher"
+import { routing, localeConfig } from "@workspace/i18n/routing"
+import { themes } from "@workspace/core/config/themes"
+import { hotkeys } from "@workspace/core/config/hotkeys"
+import { formatHotkeyDisplay } from "@workspace/core/lib/utils"
+import { cn } from "@workspace/ui/lib/utils"
 import {
   Sun,
   Moon,
@@ -57,99 +57,99 @@ import {
   LayoutTemplate,
   LayoutDashboard,
   CornerDownLeftIcon,
-} from "lucide-react";
+} from "lucide-react"
 
 function CommandMenuItem({
   children,
   className,
   ...props
 }: React.ComponentProps<typeof CommandItem> & {
-  "data-selected"?: string;
-  "aria-selected"?: string;
+  "data-selected"?: string
+  "aria-selected"?: string
 }) {
   return (
     <CommandItem
       className={cn(
-        "data-[selected=true]:border-input data-[selected=true]:bg-input/50 h-9 rounded-md border border-transparent px-3! font-medium",
-        className,
+        "h-9 rounded-md border border-transparent px-3! font-medium data-[selected=true]:border-input data-[selected=true]:bg-input/50",
+        className
       )}
       {...props}
     >
       {children}
     </CommandItem>
-  );
+  )
 }
 
 export function CommandPalette({
   navigate,
 }: {
-  navigate: (path: string) => void;
+  navigate: (path: string) => void
 }) {
-  const t = useTranslations("CommandPalette");
-  const { isOpen, close } = useCommandPaletteStore();
-  useDrawerHistory(isOpen, close);
-  const isMobile = useIsMobile();
+  const t = useTranslations("CommandPalette")
+  const { isOpen, close } = useCommandPaletteStore()
+  useDrawerHistory(isOpen, close)
+  const isMobile = useIsMobile()
   const {
     theme: activeMode,
     resolvedTheme,
     handleThemeChange,
-  } = useThemeTransition();
-  const { toggleSidebar } = useSidebar();
-  const { variant, setVariant } = useSidebarStore();
-  const { selectedTheme, setSelectedTheme } = useThemeStore();
-  const toggleHotkeysDialog = useHotkeysDialogStore((s) => s.toggle);
-  const { locale, isPending, changeLanguage } = useLanguageSwitcher();
+  } = useThemeTransition()
+  const { toggleSidebar } = useSidebar()
+  const { variant, setVariant } = useSidebarStore()
+  const { selectedTheme, setSelectedTheme } = useThemeStore()
+  const toggleHotkeysDialog = useHotkeysDialogStore((s) => s.toggle)
+  const { locale, isPending, changeLanguage } = useLanguageSwitcher()
 
   const runCommand = useCallback(
     (command: () => unknown) => {
-      close();
+      close()
       setTimeout(() => {
-        command();
-      }, 300);
+        command()
+      }, 300)
     },
-    [close],
-  );
+    [close]
+  )
 
   const getKeysDisplay = (id: string) => {
-    const hk = hotkeys.find((h) => h.id === id);
-    if (!hk) return null;
-    const keys = formatHotkeyDisplay(hk.keys);
-    const isSequence = hk.keys.includes(">");
+    const hk = hotkeys.find((h) => h.id === id)
+    if (!hk) return null
+    const keys = formatHotkeyDisplay(hk.keys)
+    const isSequence = hk.keys.includes(">")
     return (
       <span className="ml-auto hidden items-center gap-1 md:flex">
         {keys.map((key, i) => (
           <React.Fragment key={i}>
             <Kbd>{key}</Kbd>
             {isSequence && i < keys.length - 1 && (
-              <span className="text-muted-foreground mx-1.5 font-mono text-[10px] opacity-70">
+              <span className="mx-1.5 font-mono text-[10px] text-muted-foreground opacity-70">
                 {t("then")}
               </span>
             )}
           </React.Fragment>
         ))}
       </span>
-    );
-  };
+    )
+  }
 
   const groupClasses =
-    "p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!";
+    "p-0! **:[[cmdk-group-heading]]:scroll-mt-16 **:[[cmdk-group-heading]]:p-3! **:[[cmdk-group-heading]]:pb-1!"
 
   const paletteContent = (
     <>
       <Command
         className={cn(
-          "**:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50 rounded-none bg-transparent p-2 **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border",
-          isMobile && "h-full",
+          "rounded-none bg-transparent p-2 **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50",
+          isMobile && "h-full"
         )}
       >
         <CommandInput placeholder={t("search")} autoFocus />
         <CommandList
           className={cn(
             "no-scrollbar scroll-pt-2 scroll-pb-1.5",
-            isMobile ? "max-h-none min-h-0 flex-1" : "min-h-80",
+            isMobile ? "max-h-none min-h-0 flex-1" : "min-h-80"
           )}
         >
-          <CommandEmpty className="text-muted-foreground py-12 text-center text-sm">
+          <CommandEmpty className="py-12 text-center text-sm text-muted-foreground">
             {t("noResults")}
           </CommandEmpty>
 
@@ -161,8 +161,8 @@ export function CommandPalette({
                   handleThemeChange(
                     (activeMode === "dark" ? "light" : "dark") as
                       | "light"
-                      | "dark",
-                  ),
+                      | "dark"
+                  )
                 )
               }
             >
@@ -245,7 +245,7 @@ export function CommandPalette({
 
           <CommandGroup heading={t("language")} className={groupClasses}>
             {routing.locales.map((loc) => {
-              const config = localeConfig[loc as keyof typeof localeConfig];
+              const config = localeConfig[loc as keyof typeof localeConfig]
               return (
                 <CommandMenuItem
                   key={loc}
@@ -257,7 +257,7 @@ export function CommandPalette({
                   <span>{config.nativeName}</span>
                   {locale === loc && <Check className="ml-auto h-4 w-4" />}
                 </CommandMenuItem>
-              );
+              )
             })}
           </CommandGroup>
 
@@ -282,7 +282,7 @@ export function CommandPalette({
                         <Check className="ml-auto h-4 w-4" />
                       )}
                     </CommandMenuItem>
-                  ),
+                  )
                 )}
               </CommandGroup>
             </>
@@ -296,7 +296,7 @@ export function CommandPalette({
                 (activeMode === "system" ? resolvedTheme : activeMode) ===
                 "dark"
                   ? themeItem.darkPalette
-                  : themeItem.lightPalette;
+                  : themeItem.lightPalette
               return (
                 <CommandMenuItem
                   key={themeItem.name}
@@ -310,19 +310,19 @@ export function CommandPalette({
                     {palette.slice(0, 5).map((color, i) => (
                       <div
                         key={i}
-                        className="border-border h-3 w-3 rounded-full border"
+                        className="h-3 w-3 rounded-full border border-border"
                         style={{ backgroundColor: color }}
                       />
                     ))}
                   </div>
                 </CommandMenuItem>
-              );
+              )
             })}
           </CommandGroup>
         </CommandList>
       </Command>
 
-      <div className="border-border bg-muted/50 text-muted-foreground absolute inset-x-0 bottom-0 z-20 hidden h-10 items-center justify-between rounded-b-xl border-t px-4 text-xs font-medium md:flex">
+      <div className="absolute inset-x-0 bottom-0 z-20 hidden h-10 items-center justify-between rounded-b-xl border-t border-border bg-muted/50 px-4 text-xs font-medium text-muted-foreground md:flex">
         <div className="flex items-center gap-2">
           <Kbd>
             <MoveUp />
@@ -342,7 +342,7 @@ export function CommandPalette({
         </div>
       </div>
     </>
-  );
+  )
 
   if (isMobile) {
     return (
@@ -358,12 +358,12 @@ export function CommandPalette({
           {paletteContent}
         </DrawerContent>
       </Drawer>
-    );
+    )
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
-      <DialogContent className="bg-background ring-border/80 top-[15%] translate-y-0 overflow-hidden rounded-xl border-none bg-clip-padding p-0 pb-10 shadow-2xl ring-4 sm:max-w-lg">
+      <DialogContent className="top-[15%] translate-y-0 overflow-hidden rounded-xl border-none bg-background bg-clip-padding p-0 pb-10 shadow-2xl ring-4 ring-border/80 sm:max-w-lg">
         <DialogHeader className="sr-only">
           <DialogTitle>{t("commandPalette")}</DialogTitle>
           <DialogDescription>{t("search")}</DialogDescription>
@@ -371,5 +371,5 @@ export function CommandPalette({
         {paletteContent}
       </DialogContent>
     </Dialog>
-  );
+  )
 }

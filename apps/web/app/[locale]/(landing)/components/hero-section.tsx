@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight, Play, Rocket } from "lucide-react";
-import { fetchLatestGithubVersion } from "@workspace/core/lib/utils";
-import { Button } from "@workspace/ui/components/button";
-import { AnimatedGroup } from "@workspace/ui/components/landing/animated-group";
-import { LogoCloud } from "@workspace/ui/components/landing/logo-cloud";
-import { TextEffect } from "@workspace/ui/components/landing/text-effect";
-import { BorderBeam } from "@workspace/ui/components/landing/border-beam";
-import { transitionVariants } from "@/lib/animations";
-import { siteConfig } from "@workspace/core/config/site";
+import React, { useState, useEffect } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Play, Rocket } from "lucide-react"
+import { fetchLatestGithubVersion } from "@workspace/core/lib/utils"
+import { Button } from "@workspace/ui/components/button"
+import { AnimatedGroup } from "@workspace/ui/components/landing/animated-group"
+import { LogoCloud } from "@workspace/ui/components/landing/logo-cloud"
+import { TextEffect } from "@workspace/ui/components/landing/text-effect"
+import { BorderBeam } from "@workspace/ui/components/landing/border-beam"
+import { transitionVariants } from "@/lib/animations"
+import { siteConfig } from "@workspace/core/config/site"
 
 export default function HeroSection() {
-  const [latestTag, setLatestTag] = useState<string | null>(null);
+  const [latestTag, setLatestTag] = useState<string | null>(null)
 
   useEffect(() => {
     fetchLatestGithubVersion().then((tag) => {
-      if (tag) setLatestTag(tag);
-    });
-  }, []);
+      if (tag) setLatestTag(tag)
+    })
+  }, [])
 
   return (
     <main className="overflow-hidden">
@@ -128,14 +128,14 @@ export default function HeroSection() {
                   href={siteConfig.links.releases}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:bg-background dark:hover:border-t-border bg-muted group mx-auto flex w-fit items-center gap-4 rounded-full border p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 dark:border-t-white/5 dark:shadow-zinc-950"
+                  className="group mx-auto flex w-fit items-center gap-4 rounded-full border bg-muted p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-300 hover:bg-background dark:border-t-white/5 dark:shadow-zinc-950 dark:hover:border-t-border"
                 >
-                  <span className="text-foreground text-sm">
+                  <span className="text-sm text-foreground">
                     {siteConfig.name} v{latestTag} Released
                   </span>
-                  <span className="dark:border-background block h-4 w-0.5 border-l bg-white dark:bg-zinc-700"></span>
+                  <span className="block h-4 w-0.5 border-l bg-white dark:border-background dark:bg-zinc-700"></span>
 
-                  <div className="bg-background group-hover:bg-muted size-6 overflow-hidden rounded-full duration-500">
+                  <div className="size-6 overflow-hidden rounded-full bg-background duration-500 group-hover:bg-muted">
                     <div className="flex w-12 -translate-x-1/2 duration-500 ease-in-out group-hover:translate-x-0">
                       <span className="flex size-6">
                         <ArrowRight className="m-auto size-3" />
@@ -217,16 +217,16 @@ export default function HeroSection() {
             }}
           >
             <div className="relative mt-8 -mr-56 overflow-hidden mask-b-from-55% px-2 sm:mt-12 sm:mr-0 md:mt-20">
-              <div className="ring-background bg-background relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg ring-1 inset-shadow-2xs shadow-zinc-950/15 dark:inset-shadow-white/20">
+              <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border bg-background p-4 shadow-lg ring-1 inset-shadow-2xs shadow-zinc-950/15 ring-background dark:inset-shadow-white/20">
                 <Image
-                  className="bg-background relative hidden aspect-15/8 rounded-2xl mix-blend-luminosity grayscale dark:block"
+                  className="relative hidden aspect-15/8 rounded-2xl bg-background mix-blend-luminosity grayscale dark:block"
                   src="/app-screen-dark.png"
                   alt="app screen"
                   width="1920"
                   height="1080"
                 />
                 <Image
-                  className="border-border/25 relative z-2 aspect-15/8 rounded-2xl border mix-blend-luminosity grayscale dark:hidden"
+                  className="relative z-2 aspect-15/8 rounded-2xl border border-border/25 mix-blend-luminosity grayscale dark:hidden"
                   src="/app-screen-light.png"
                   alt="app screen"
                   width="1920"
@@ -235,7 +235,7 @@ export default function HeroSection() {
                 <BorderBeam
                   duration={6}
                   size={200}
-                  className="via-primary from-transparent to-transparent"
+                  className="from-transparent via-primary to-transparent"
                 />
               </div>
             </div>
@@ -244,5 +244,5 @@ export default function HeroSection() {
       </section>
       <LogoCloud />
     </main>
-  );
+  )
 }

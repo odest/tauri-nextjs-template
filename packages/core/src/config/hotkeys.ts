@@ -1,8 +1,8 @@
 export interface HotkeyDefinition {
-  id: string;
-  keys: string;
-  translationKey: string;
-  category: "navigation" | "general";
+  id: string
+  keys: string
+  translationKey: string
+  category: "navigation" | "general"
 }
 
 export const hotkeys: HotkeyDefinition[] = [
@@ -66,4 +66,4 @@ export const hotkeys: HotkeyDefinition[] = [
     translationKey: "showHotkeys",
     category: "general",
   },
-];
+]

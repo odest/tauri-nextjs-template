@@ -1,25 +1,25 @@
-import * as p from "@clack/prompts";
-import pc from "picocolors";
-import { DEFAULT_VERSION } from "./consts.js";
+import * as p from "@clack/prompts"
+import pc from "picocolors"
+import { DEFAULT_VERSION } from "./consts.js"
 import {
   validateProjectName,
   validateVersion,
   validateIdentifier,
   toPascalCase,
   toSnakeCase,
-} from "./utils/validate.js";
+} from "./utils/validate.js"
 
 export interface ScaffoldOptions {
-  projectName: string;
-  projectNamePascal: string;
-  projectNameSnake: string;
-  directory: string;
-  githubUser: string;
-  identifier: string;
-  version: string;
-  installDeps: boolean;
-  initGit: boolean;
-  branch: string;
+  projectName: string
+  projectNamePascal: string
+  projectNameSnake: string
+  directory: string
+  githubUser: string
+  identifier: string
+  version: string
+  installDeps: boolean
+  initGit: boolean
+  branch: string
 }
 
 /**
@@ -27,76 +27,76 @@ export interface ScaffoldOptions {
  * If the user cancels at any point, the process exits.
  */
 export async function runPrompts(
-  defaultDir?: string,
+  defaultDir?: string
 ): Promise<ScaffoldOptions> {
   while (true) {
     const projectName = await p.text({
       message: "What is your project name?",
       placeholder: "my-awesome-app",
       validate: validateProjectName,
-    });
+    })
     if (p.isCancel(projectName)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
 
-    const directory = defaultDir ?? `./${projectName}`;
+    const directory = defaultDir ?? `./${projectName}`
 
-    const defaultIdentifier = `com.${toSnakeCase(projectName)}.app`;
+    const defaultIdentifier = `com.${toSnakeCase(projectName)}.app`
     const identifierRaw = await p.text({
       message: "App identifier (reverse-domain)?",
       placeholder: defaultIdentifier,
       validate: (val) => {
-        if (!val) return undefined;
-        return validateIdentifier(val);
+        if (!val) return undefined
+        return validateIdentifier(val)
       },
-    });
+    })
     if (p.isCancel(identifierRaw)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
-    const identifier = identifierRaw || defaultIdentifier;
+    const identifier = identifierRaw || defaultIdentifier
 
     const githubUserRaw = await p.text({
       message: "GitHub username / org (optional)?",
       placeholder: "your-github-username",
-    });
+    })
     if (p.isCancel(githubUserRaw)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
-    const githubUser = githubUserRaw || "your-github-username";
+    const githubUser = githubUserRaw || "your-github-username"
 
     const versionRaw = await p.text({
       message: "Initial version?",
       placeholder: DEFAULT_VERSION,
       validate: (val) => {
-        if (!val) return undefined;
-        return validateVersion(val);
+        if (!val) return undefined
+        return validateVersion(val)
       },
-    });
+    })
     if (p.isCancel(versionRaw)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
-    const version = versionRaw || DEFAULT_VERSION;
+    const version = versionRaw || DEFAULT_VERSION
 
     const installDeps = await p.confirm({
       message: "Install dependencies?",
       initialValue: true,
-    });
+    })
     if (p.isCancel(installDeps)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
 
     const initGit = await p.confirm({
       message: "Initialize a new git repository?",
       initialValue: true,
-    });
+    })
     if (p.isCancel(initGit)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
 
     const opts: ScaffoldOptions = {
@@ -110,7 +110,7 @@ export async function runPrompts(
       installDeps,
       initGit,
       branch: "master",
-    };
+    }
 
     // Summary
     p.note(
@@ -123,24 +123,24 @@ export async function runPrompts(
         `${pc.bold("Install deps")}  ${opts.installDeps ? "yes" : "no"}`,
         `${pc.bold("Init Git")}      ${opts.initGit ? "yes" : "no"}`,
       ].join("\n"),
-      "Summary",
-    );
+      "Summary"
+    )
 
     const confirmed = await p.confirm({
       message: "Proceed with these settings?",
       initialValue: true,
-    });
+    })
 
     if (p.isCancel(confirmed)) {
-      p.cancel("Setup cancelled.");
-      process.exit(0);
+      p.cancel("Setup cancelled.")
+      process.exit(0)
     }
 
     if (confirmed) {
-      return opts;
+      return opts
     }
 
     // If not confirmed, it loops back to the beginning.
-    p.log.info("Let's try that again...");
+    p.log.info("Let's try that again...")
   }
 }

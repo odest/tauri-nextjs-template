@@ -1,68 +1,68 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Skeleton } from "@workspace/ui/components/skeleton";
+import { useState, useEffect } from "react"
+import { Skeleton } from "@workspace/ui/components/skeleton"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/ui/components/select";
+} from "@workspace/ui/components/select"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@workspace/ui/components/card";
+} from "@workspace/ui/components/card"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@workspace/ui/components/input-group";
+} from "@workspace/ui/components/input-group"
 import {
   XCircle,
   ArrowUpDown,
   Search,
   ArrowUpAZ,
   ArrowDownAZ,
-} from "lucide-react";
-import { themes } from "@workspace/core/config/themes";
-import { ThemeCard } from "@workspace/core/components/common/theme-card";
-import { useThemeStore } from "@workspace/core/stores/theme-store";
-import { useMounted } from "@workspace/core/hooks/use-mounted";
-import { useTranslations } from "@workspace/i18n";
-import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
+} from "lucide-react"
+import { themes } from "@workspace/core/config/themes"
+import { ThemeCard } from "@workspace/core/components/common/theme-card"
+import { useThemeStore } from "@workspace/core/stores/theme-store"
+import { useMounted } from "@workspace/core/hooks/use-mounted"
+import { useTranslations } from "@workspace/i18n"
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition"
 
 export const ThemesList = () => {
-  const { theme: activeMode, resolvedTheme } = useThemeTransition();
-  const mounted = useMounted();
-  const t = useTranslations("ThemesList");
+  const { theme: activeMode, resolvedTheme } = useThemeTransition()
+  const mounted = useMounted()
+  const t = useTranslations("ThemesList")
 
-  const [filteredThemes, setFilteredThemes] = useState(themes);
-  const [searchTerm, setSearchTerm] = useState("");
-  const { sortOption, setSortOption } = useThemeStore();
+  const [filteredThemes, setFilteredThemes] = useState(themes)
+  const [searchTerm, setSearchTerm] = useState("")
+  const { sortOption, setSortOption } = useThemeStore()
 
   useEffect(() => {
     const filtered = themes.filter((theme) =>
-      theme.name?.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
+      theme.name?.toLowerCase().includes(searchTerm.toLowerCase())
+    )
 
     const sorted = [...filtered].sort((a, b) => {
       switch (sortOption) {
         case "az":
-          return (a.name || "").localeCompare(b.name || "");
+          return (a.name || "").localeCompare(b.name || "")
         case "za":
-          return (b.name || "").localeCompare(a.name || "");
+          return (b.name || "").localeCompare(a.name || "")
         default:
-          return 0;
+          return 0
       }
-    });
+    })
 
-    setFilteredThemes(sorted);
-  }, [searchTerm, sortOption]);
+    setFilteredThemes(sorted)
+  }, [searchTerm, sortOption])
 
   if (!mounted)
     return (
@@ -97,7 +97,7 @@ export const ThemesList = () => {
           </div>
         </CardContent>
       </Card>
-    );
+    )
 
   return (
     <Card>
@@ -162,9 +162,9 @@ export const ThemesList = () => {
       <CardContent className="space-y-4">
         {filteredThemes.length === 0 && searchTerm ? (
           <div className="py-12 text-center">
-            <Search className="text-muted-foreground mx-auto mb-4 size-12" />
+            <Search className="mx-auto mb-4 size-12 text-muted-foreground" />
             <h3 className="mb-1 text-lg font-medium">{t("noThemesTitle")}</h3>
-            <p className="text-muted-foreground px-4 text-pretty">
+            <p className="px-4 text-pretty text-muted-foreground">
               {t("noThemesDescription")}
             </p>
           </div>
@@ -187,5 +187,5 @@ export const ThemesList = () => {
         )}
       </CardContent>
     </Card>
-  );
-};
+  )
+}

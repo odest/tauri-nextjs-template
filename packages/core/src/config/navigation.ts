@@ -13,73 +13,73 @@ import {
   CreditCard,
   LucideIcon,
   LayoutDashboard,
-} from "lucide-react";
-import { siteConfig } from "@workspace/core/config/site";
+} from "lucide-react"
+import { siteConfig } from "@workspace/core/config/site"
 
 export interface UserNavItem {
-  name: string;
-  email: string;
-  avatar: string;
+  name: string
+  email: string
+  avatar: string
 }
 
 export interface SubNavItem {
-  title: string;
-  url: string;
-  translationKey: string;
+  title: string
+  url: string
+  translationKey: string
 }
 
 export interface MainNavItem {
-  title: string;
-  url: string;
-  href?: string;
-  icon: LucideIcon;
-  isActive?: boolean;
-  items?: SubNavItem[];
-  translationKey: string;
+  title: string
+  url: string
+  href?: string
+  icon: LucideIcon
+  isActive?: boolean
+  items?: SubNavItem[]
+  translationKey: string
 }
 
 export interface MobileNavItem {
-  title: string;
-  url: string;
-  href?: string;
-  icon: LucideIcon;
-  translationKey: string;
+  title: string
+  url: string
+  href?: string
+  icon: LucideIcon
+  translationKey: string
 }
 
 export interface SecondaryNavItem {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  translationKey: string;
-  external?: boolean;
+  title: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
+  external?: boolean
 }
 
 export interface ProjectNavItem {
-  name: string;
-  url: string;
-  icon: LucideIcon;
-  translationKey: string;
+  name: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
 }
 
 export interface ProfileNavItem {
-  title: string;
-  url: string;
-  icon: LucideIcon;
-  translationKey: string;
+  title: string
+  url: string
+  icon: LucideIcon
+  translationKey: string
 }
 
 export interface ProfileNavGroup {
-  id: string;
-  items: ProfileNavItem[];
+  id: string
+  items: ProfileNavItem[]
 }
 
 export interface NavigationData {
-  user: UserNavItem;
-  navMain: MainNavItem[];
-  navMobile: MobileNavItem[];
-  navSecondary: SecondaryNavItem[];
-  projects: ProjectNavItem[];
-  navProfile: ProfileNavGroup[];
+  user: UserNavItem
+  navMain: MainNavItem[]
+  navMobile: MobileNavItem[]
+  navSecondary: SecondaryNavItem[]
+  projects: ProjectNavItem[]
+  navProfile: ProfileNavGroup[]
 }
 
 export const navigationData: NavigationData = {
@@ -228,4 +228,4 @@ export const navigationData: NavigationData = {
       ],
     },
   ],
-};
+}

@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from "react"
 
 const Tauri = (props: SVGProps<SVGSVGElement>) => (
   <svg {...props} preserveAspectRatio="xMidYMid" viewBox="0 0 256 289">
@@ -22,6 +22,6 @@ const Tauri = (props: SVGProps<SVGSVGElement>) => (
       d="M47.913 95.577a104.766 104.766 0 0 1 36.419-14.842 73.46 73.46 0 0 0-4.116 33.3c-29.847 10.619-49.549 39.148-48.906 70.822.642 31.673 21.484 59.38 51.738 68.78 30.253 9.399 63.127-1.62 81.604-27.352a122.227 122.227 0 0 0 40.16-11.6C191.076 258.854 150 288.785 103.748 288.33c-46.252-.453-86.733-31.184-99.602-75.612-12.87-44.427 4.92-92.037 43.768-117.141Zm155.528 100.026-.5.25.5-.25Z"
     />
   </svg>
-);
+)
 
-export { Tauri };
+export { Tauri }

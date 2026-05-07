@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { Card, CardContent } from "@workspace/ui/components/card";
+import { Card, CardContent } from "@workspace/ui/components/card"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@workspace/ui/components/select";
-import { cn } from "@workspace/ui/lib/utils";
-import { localeConfig, routing } from "@workspace/i18n/routing";
-import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/select"
+import { cn } from "@workspace/ui/lib/utils"
+import { localeConfig, routing } from "@workspace/i18n/routing"
+import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher"
+import { useTranslations } from "@workspace/i18n"
 
 export function LanguageCard() {
   const { locale, currentConfig, isPending, changeLanguage } =
-    useLanguageSwitcher();
-  const t = useTranslations("LanguageCard");
+    useLanguageSwitcher()
+  const t = useTranslations("LanguageCard")
 
   return (
     <Card>
@@ -26,7 +26,7 @@ export function LanguageCard() {
             <div className="flex items-center gap-2 font-semibold">
               {t("title")}
             </div>
-            <div className="text-muted-foreground text-sm">
+            <div className="text-sm text-muted-foreground">
               {t("description")}
             </div>
           </div>
@@ -45,8 +45,8 @@ export function LanguageCard() {
             </SelectTrigger>
             <SelectContent>
               {routing.locales.map((loc) => {
-                const config = localeConfig[loc as keyof typeof localeConfig];
-                const isSelected = locale === loc;
+                const config = localeConfig[loc as keyof typeof localeConfig]
+                const isSelected = locale === loc
 
                 return (
                   <SelectItem
@@ -59,12 +59,12 @@ export function LanguageCard() {
                       <span>{config.nativeName}</span>
                     </div>
                   </SelectItem>
-                );
+                )
               })}
             </SelectContent>
           </Select>
         </div>
       </CardContent>
     </Card>
-  );
+  )
 }

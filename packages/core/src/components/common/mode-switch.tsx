@@ -1,40 +1,40 @@
-"use client";
+"use client"
 
-import { LayoutGroup, motion } from "motion/react";
-import { Monitor, Sun, Moon } from "lucide-react";
-import { cn } from "@workspace/ui/lib/utils";
-import { useMounted } from "@workspace/core/hooks/use-mounted";
-import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition";
+import { LayoutGroup, motion } from "motion/react"
+import { Monitor, Sun, Moon } from "lucide-react"
+import { cn } from "@workspace/ui/lib/utils"
+import { useMounted } from "@workspace/core/hooks/use-mounted"
+import { useThemeTransition } from "@workspace/core/hooks/use-theme-transition"
 
-type Mode = "system" | "light" | "dark";
+type Mode = "system" | "light" | "dark"
 
 const modes: { value: Mode; icon: typeof Monitor }[] = [
   { value: "system", icon: Monitor },
   { value: "light", icon: Sun },
   { value: "dark", icon: Moon },
-];
+]
 
 export function ModeSwitch({ className }: { className?: string }) {
-  const mounted = useMounted();
-  const { theme, handleThemeChange } = useThemeTransition();
+  const mounted = useMounted()
+  const { theme, handleThemeChange } = useThemeTransition()
 
-  const selected = (theme as Mode) ?? "system";
+  const selected = (theme as Mode) ?? "system"
 
   if (!mounted) {
-    return <></>;
+    return <></>
   }
 
   return (
     <LayoutGroup>
       <div
         className={cn(
-          "border-border bg-background inline-flex items-center gap-1 rounded-full border p-1 backdrop-blur-sm",
-          className,
+          "inline-flex items-center gap-1 rounded-full border border-border bg-background p-1 backdrop-blur-sm",
+          className
         )}
       >
         {modes.map((mode) => {
-          const Icon = mode.icon;
-          const isActive = selected === mode.value;
+          const Icon = mode.icon
+          const isActive = selected === mode.value
 
           return (
             <button
@@ -45,14 +45,14 @@ export function ModeSwitch({ className }: { className?: string }) {
                 "relative z-10 flex size-7 cursor-pointer items-center justify-center rounded-full transition-colors duration-200",
                 isActive
                   ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground/70",
+                  : "text-muted-foreground hover:text-foreground/70"
               )}
               aria-label={`Switch to ${mode.value} mode`}
             >
               {isActive && (
                 <motion.span
                   layoutId="mode-switch-indicator"
-                  className="bg-background ring-border absolute inset-0 rounded-full shadow-sm ring-1"
+                  className="absolute inset-0 rounded-full bg-background shadow-sm ring-1 ring-border"
                   transition={{
                     type: "spring",
                     stiffness: 500,
@@ -62,9 +62,9 @@ export function ModeSwitch({ className }: { className?: string }) {
               )}
               <Icon className="relative z-10 h-4 w-4" />
             </button>
-          );
+          )
         })}
       </div>
     </LayoutGroup>
-  );
+  )
 }

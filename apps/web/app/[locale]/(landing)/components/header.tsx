@@ -1,31 +1,31 @@
-"use client";
+"use client"
 
-import React from "react";
-import Link from "next/link";
-import { Menu, X, Github } from "lucide-react";
-import { cn } from "@workspace/ui/lib/utils";
-import { Button } from "@workspace/ui/components/button";
-import { Logo } from "@workspace/ui/components/landing/logo";
-import { siteConfig } from "@workspace/core/config/site";
+import React from "react"
+import Link from "next/link"
+import { Menu, X, Github } from "lucide-react"
+import { cn } from "@workspace/ui/lib/utils"
+import { Button } from "@workspace/ui/components/button"
+import { Logo } from "@workspace/ui/components/landing/logo"
+import { siteConfig } from "@workspace/core/config/site"
 
 const menuItems = [
   { name: "Docs", href: "/docs" },
   { name: "Pricing", href: "/" },
   { name: "Download", href: "/download" },
   { name: "Showcase", href: "/" },
-];
+]
 
 export const HeroHeader = () => {
-  const [menuState, setMenuState] = React.useState(false);
-  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [menuState, setMenuState] = React.useState(false)
+  const [isScrolled, setIsScrolled] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
   return (
     <header>
       <nav
@@ -36,7 +36,7 @@ export const HeroHeader = () => {
           className={cn(
             "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
             isScrolled &&
-              "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5",
+              "max-w-4xl rounded-2xl border bg-background/50 backdrop-blur-lg lg:px-5"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-4">
@@ -65,7 +65,7 @@ export const HeroHeader = () => {
                   <li key={index}>
                     <Link
                       href={item.href}
-                      className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                      className="block text-muted-foreground duration-150 hover:text-accent-foreground"
                     >
                       <span>{item.name}</span>
                     </Link>
@@ -74,14 +74,14 @@ export const HeroHeader = () => {
               </ul>
             </div>
 
-            <div className="bg-background mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent">
+            <div className="mb-6 hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border bg-background p-6 shadow-2xl shadow-zinc-300/20 in-data-[state=active]:block md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none lg:in-data-[state=active]:flex dark:shadow-none dark:lg:bg-transparent">
               <div className="lg:hidden">
                 <ul className="space-y-6 text-base">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <Link
                         href={item.href}
-                        className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                        className="block text-muted-foreground duration-150 hover:text-accent-foreground"
                       >
                         <span>{item.name}</span>
                       </Link>
@@ -106,5 +106,5 @@ export const HeroHeader = () => {
         </div>
       </nav>
     </header>
-  );
-};
+  )
+}

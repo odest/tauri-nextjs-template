@@ -1,49 +1,47 @@
-"use client";
+"use client"
 
-import { ComponentType, Fragment } from "react";
-import { Separator } from "@workspace/ui/components/separator";
-import { SidebarTrigger } from "@workspace/ui/components/sidebar";
+import { ComponentType, Fragment } from "react"
+import { Separator } from "@workspace/ui/components/separator"
+import { SidebarTrigger } from "@workspace/ui/components/sidebar"
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@workspace/ui/components/breadcrumb";
-import { ModeToggle } from "@workspace/core/components/common/mode-toggle";
-import { LanguageToggle } from "@workspace/core/components/common/language-toggle";
-import { navigationData } from "@workspace/core/config/navigation";
-import { useTranslations } from "@workspace/i18n";
+} from "@workspace/ui/components/breadcrumb"
+import { ModeToggle } from "@workspace/core/components/common/mode-toggle"
+import { LanguageToggle } from "@workspace/core/components/common/language-toggle"
+import { navigationData } from "@workspace/core/config/navigation"
+import { useTranslations } from "@workspace/i18n"
 
 function formatSegment(segment: string): string {
   return segment
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(" ")
 }
 
 interface AppHeaderProps {
-  pathname: string;
+  pathname: string
   LinkComponent?:
     | ComponentType<{
-        href: string;
-        children: React.ReactNode;
-        onClick?: () => void;
-        className?: string;
+        href: string
+        children: React.ReactNode
+        onClick?: () => void
+        className?: string
       }>
-    | "a";
+    | "a"
 }
 
 export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
-  const segments = pathname
-    .split("/")
-    .filter((s) => Boolean(s) && s !== "home");
-  const t = useTranslations("Navigation");
-  const isHome = pathname === "/home" || pathname === "/";
+  const segments = pathname.split("/").filter((s) => Boolean(s) && s !== "home")
+  const t = useTranslations("Navigation")
+  const isHome = pathname === "/home" || pathname === "/"
   const getBreadcrumbHref = (href: string) => {
-    const navItem = navigationData.navMain.find((item) => item.url === href);
-    return navItem?.href ?? href;
-  };
+    const navItem = navigationData.navMain.find((item) => item.url === href)
+    return navItem?.href ?? href
+  }
 
   return (
     <header className="hidden h-12 shrink-0 items-center gap-2 border-b transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:flex">
@@ -65,12 +63,12 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
             </BreadcrumbItem>
 
             {segments.map((segment, index) => {
-              const href = `/${segments.slice(0, index + 1).join("/")}`;
-              const breadcrumbHref = getBreadcrumbHref(href);
-              const isLast = index === segments.length - 1;
+              const href = `/${segments.slice(0, index + 1).join("/")}`
+              const breadcrumbHref = getBreadcrumbHref(href)
+              const isLast = index === segments.length - 1
               // Try to get translation, fallback to formatted segment
               const displayText =
-                t(segment) !== segment ? t(segment) : formatSegment(segment);
+                t(segment) !== segment ? t(segment) : formatSegment(segment)
 
               return (
                 <Fragment key={href}>
@@ -88,7 +86,7 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
                     )}
                   </BreadcrumbItem>
                 </Fragment>
-              );
+              )
             })}
           </BreadcrumbList>
         </Breadcrumb>
@@ -99,5 +97,5 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
         </div>
       </div>
     </header>
-  );
+  )
 }

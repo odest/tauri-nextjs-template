@@ -1,6 +1,6 @@
-const siteUrl = "https://tntstack.odest.dev";
-const repoUrl = "https://github.com/odest/tntstack";
-const apiUrl = "https://api.github.com/repos/odest/tntstack";
+const siteUrl = "https://tntstack.odest.dev"
+const repoUrl = "https://github.com/odest/tntstack"
+const apiUrl = "https://api.github.com/repos/odest/tntstack"
 
 export const siteConfig = {
   name: "TNTStack",
@@ -19,6 +19,6 @@ export const siteConfig = {
     contributing: `${repoUrl}/blob/master/CONTRIBUTING.md`,
     githubApi: `${apiUrl}/releases?per_page=10`,
   },
-};
+}
 
-export type SiteConfig = typeof siteConfig;
+export type SiteConfig = typeof siteConfig
