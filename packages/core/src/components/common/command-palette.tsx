@@ -9,6 +9,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
+  CommandShortcut,
   CommandSeparator,
 } from "@workspace/ui/components/command"
 import {
@@ -116,7 +117,7 @@ export function CommandPalette({
     const keys = formatHotkeyDisplay(hk.keys)
     const isSequence = hk.keys.includes(">")
     return (
-      <span className="ml-auto hidden items-center gap-1 md:flex">
+      <CommandShortcut className="ml-auto hidden items-center gap-1 md:flex">
         {keys.map((key, i) => (
           <React.Fragment key={i}>
             <Kbd>{key}</Kbd>
@@ -127,7 +128,7 @@ export function CommandPalette({
             )}
           </React.Fragment>
         ))}
-      </span>
+      </CommandShortcut>
     )
   }
 
@@ -138,7 +139,10 @@ export function CommandPalette({
     <>
       <Command
         className={cn(
-          "rounded-none bg-transparent p-2 **:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0 **:data-[slot=command-input-wrapper]:mb-0 **:data-[slot=command-input-wrapper]:h-9! **:data-[slot=command-input-wrapper]:rounded-md **:data-[slot=command-input-wrapper]:border **:data-[slot=command-input-wrapper]:border-input **:data-[slot=command-input-wrapper]:bg-input/50",
+          "rounded-none bg-transparent p-2",
+          "**:data-[slot=command-input-wrapper]:p-0!",
+          "**:data-[slot=command-input]:h-9! **:data-[slot=command-input]:py-0",
+          "**:data-[slot=input-group]:h-9! **:data-[slot=input-group]:rounded-md **:data-[slot=input-group]:border-input **:data-[slot=input-group]:bg-input/50",
           isMobile && "h-full"
         )}
       >
@@ -252,10 +256,10 @@ export function CommandPalette({
                   value={config.nativeName + " " + config.label}
                   onSelect={() => runCommand(() => changeLanguage(loc))}
                   disabled={isPending}
+                  data-checked={locale === loc}
                 >
                   <span className="mr-2 text-base">{config.flag}</span>
                   <span>{config.nativeName}</span>
-                  {locale === loc && <Check className="ml-auto h-4 w-4" />}
                 </CommandMenuItem>
               )
             })}
@@ -275,12 +279,10 @@ export function CommandPalette({
                       onSelect={() =>
                         runCommand(() => setVariant(sidebarVariant))
                       }
+                      data-checked={variant === sidebarVariant}
                     >
                       <LayoutTemplate />
                       <span className="capitalize">{t(sidebarVariant)}</span>
-                      {variant === sidebarVariant && (
-                        <Check className="ml-auto h-4 w-4" />
-                      )}
                     </CommandMenuItem>
                   )
                 )}
@@ -311,6 +313,7 @@ export function CommandPalette({
                       <div
                         key={i}
                         className="h-3 w-3 rounded-full border border-border"
+                        data-slot="command-shortcut"
                         style={{ backgroundColor: color }}
                       />
                     ))}
@@ -363,7 +366,10 @@ export function CommandPalette({
 
   return (
     <Dialog open={isOpen} onOpenChange={(open) => !open && close()}>
-      <DialogContent className="top-[15%] translate-y-0 overflow-hidden rounded-xl border-none bg-background bg-clip-padding p-0 pb-10 shadow-2xl ring-4 ring-border/80 sm:max-w-lg">
+      <DialogContent
+        className="top-[15%] translate-y-0 overflow-hidden rounded-xl border-none bg-background bg-clip-padding p-0 pb-10 shadow-2xl ring-4 ring-border/80 sm:max-w-lg"
+        showCloseButton={false}
+      >
         <DialogHeader className="sr-only">
           <DialogTitle>{t("commandPalette")}</DialogTitle>
           <DialogDescription>{t("search")}</DialogDescription>

@@ -101,7 +101,7 @@ export function HotkeysDialog() {
             <DrawerTitle>{t("title")}</DrawerTitle>
             <DrawerDescription>{t("description")}</DrawerDescription>
           </DrawerHeader>
-          <div className="no-scrollbar mx-auto w-full max-w-sm overflow-y-auto">
+          <div className="mx-auto no-scrollbar w-full max-w-sm overflow-y-auto">
             <HotkeysList />
           </div>
         </DrawerContent>
@@ -116,7 +116,7 @@ export function HotkeysDialog() {
           <DialogTitle>{t("title")}</DialogTitle>
           <DialogDescription>{t("description")}</DialogDescription>
         </DialogHeader>
-        <div className="no-scrollbar -mx-6 flex-1 overflow-y-auto px-6">
+        <div className="-mx-6 no-scrollbar flex-1 overflow-y-auto px-6">
           <HotkeysList />
         </div>
       </DialogContent>

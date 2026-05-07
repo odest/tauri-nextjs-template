@@ -49,7 +49,7 @@ export function AppHeader({ pathname, LinkComponent = "a" }: AppHeaderProps) {
         <SidebarTrigger className="-ml-1 cursor-pointer" />
         <Separator
           orientation="vertical"
-          className="mx-2 data-[orientation=vertical]:h-4"
+          className="mx-2 data-vertical:h-4 data-vertical:self-center"
         />
 
         <Breadcrumb>

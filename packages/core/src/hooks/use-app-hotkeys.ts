@@ -46,9 +46,16 @@ export function useAppHotkeys({ navigate }: UseAppHotkeysOptions) {
     getKeys("toggle-sidebar"),
     (e: KeyboardEvent) => {
       e.preventDefault()
+      e.stopPropagation()
       toggleSidebar()
     },
-    { enableOnFormTags: false, delimiter: "|" }
+    {
+      enableOnFormTags: false,
+      delimiter: "|",
+      eventListenerOptions: {
+        capture: true,
+      },
+    }
   )
 
   // Go to Home
