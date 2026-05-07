@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "check-types": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{ts,tsx}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
     "tauri": "tauri",
     "clean": "rimraf dist .next .turbo src-tauri/target"
   },

@@ -24,11 +24,14 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Format Check
+        run: pnpm format:check
+
       - name: Lint
         run: pnpm lint
 
       - name: Type check
-        run: pnpm check-types
+        run: pnpm typecheck
 
       - name: Build
         run: pnpm build

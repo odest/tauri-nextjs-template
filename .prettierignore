@@ -1,3 +1,10 @@
 apps/web/content/docs/**/*.mdx
 packages/cli/templates/docs/**/*.mdx
 **/CHANGELOG.md
+dist/
+node_modules/
+.next/
+.turbo/
+coverage/
+pnpm-lock.yaml
+.pnpm-store/

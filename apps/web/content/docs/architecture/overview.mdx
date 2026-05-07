@@ -110,8 +110,11 @@ Solid arrows are runtime dependencies. Dashed arrows are dev/tooling dependencie
     "lint": {
       "dependsOn": ["^lint"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "format": {
+      "dependsOn": ["^format"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"]
     },
     "dev": {
       "cache": false,
@@ -129,7 +132,8 @@ Solid arrows are runtime dependencies. Dashed arrows are dev/tooling dependencie
 | `build` | Builds dependencies first (`^build`), caches `.next` output |
 | `dev` | Parallel dev servers, no caching |
 | `lint` | Lints dependency packages first, cacheable |
-| `check-types` | Type-checks dependency packages first, cacheable |
+| `format` | Formats dependency packages first, cacheable |
+| `typecheck` | Type-checks dependency packages first, cacheable |
 | `clean` | Removes build artifacts, not cached |
 
 ## Root Files

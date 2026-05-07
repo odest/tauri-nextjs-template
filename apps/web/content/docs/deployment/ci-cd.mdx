@@ -59,12 +59,13 @@ jobs:
           node-version: 20
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
+      - run: pnpm format:check
       - run: pnpm lint
-      - run: pnpm check-types
+      - run: pnpm typecheck
       - run: pnpm build
 ```
 
-Three checks must pass: **lint**, **type check**, and **build**.
+Four checks must pass: **formatting**, **linting**, **type checking**, and **production build**.
 
 ## Release Please
 

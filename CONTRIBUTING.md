@@ -46,7 +46,8 @@ pnpm dev
 - `pnpm dev` - Start development servers for all apps
 - `pnpm build` - Build all apps and packages
 - `pnpm lint` - Run ESLint on all packages
-- `pnpm check-types` - Run TypeScript type checking
+- `pnpm format` - Format all code
+- `pnpm typecheck` - Run TypeScript type checking
 - `pnpm clean` - Clean all build outputs
 - `pnpm tauri` - Run Tauri CLI commands
 

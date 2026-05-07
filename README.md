@@ -192,7 +192,8 @@ Both `web` and `native` import pages, layouts, and state from `packages/core`, a
 pnpm dev                  # Start all apps in dev mode
 pnpm build                # Build everything
 pnpm lint                 # Lint all packages
-pnpm check-types          # TypeScript validation across all workspaces
+pnpm format               # Format all code
+pnpm typecheck            # TypeScript validation across all workspaces
 pnpm web dev              # Web app only
 pnpm tauri dev            # Desktop app only
 pnpm tauri android dev    # Android app
