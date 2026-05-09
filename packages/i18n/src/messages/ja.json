@@ -70,7 +70,8 @@
     "account": "アカウント",
     "billing": "請求",
     "notifications": "通知",
-    "logOut": "ログアウト"
+    "logOut": "ログアウト",
+    "search": "検索..."
   },
   "HotkeysDialog": {
     "title": "キーボードショートカット",
@@ -114,5 +115,29 @@
     "openOrSelect": "開く",
     "close": "閉じる",
     "then": "その後"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "通知なし",
+    "emptyDescription": "すべて既読です！",
+    "title": "通知",
+    "markAllRead": "すべて既読にする",
+    "all": "すべて",
+    "unread": "未読",
+    "seeAll": "すべての通知を見る",
+    "loginTitle": "ログイン成功",
+    "loginDescription": "user@example.comとして安全にサインインしました。",
+    "loginTime": "たった今",
+    "mentionTitle": "新しいメンション",
+    "mentionDescription": "新しいコメントでメンションされました。",
+    "mentionTime": "21分前",
+    "reportTitle": "レポート作成完了",
+    "reportDescription": "先週の分析レポートが作成されました。",
+    "reportTime": "3時間前",
+    "exportTitle": "エクスポート完了",
+    "exportDescription": "要求されたデータがCSVでダウンロードされました。",
+    "exportTime": "昨日",
+    "versionTitle": "新バージョンリリース",
+    "versionDescription": "新機能と改善のための最新バージョンを確認してください。",
+    "versionTime": "2日前"
   }
 }

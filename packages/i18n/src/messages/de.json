@@ -70,7 +70,8 @@
     "account": "Konto",
     "billing": "Abrechnung",
     "notifications": "Benachrichtigungen",
-    "logOut": "Abmelden"
+    "logOut": "Abmelden",
+    "search": "Suchen..."
   },
   "HotkeysDialog": {
     "title": "Tastaturkürzel",
@@ -114,5 +115,29 @@
     "openOrSelect": "Öffnen/Auswählen",
     "close": "Schließen",
     "then": "dann"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Keine Benachrichtigungen",
+    "emptyDescription": "Sie sind auf dem neuesten Stand!",
+    "title": "Benachrichtigungen",
+    "markAllRead": "Alle als gelesen markieren",
+    "all": "Alle",
+    "unread": "Ungelesen",
+    "seeAll": "Alle Benachrichtigungen ansehen",
+    "loginTitle": "Anmeldung erfolgreich",
+    "loginDescription": "Sie haben sich sicher als user@example.com angemeldet.",
+    "loginTime": "Gerade eben",
+    "mentionTitle": "Neue Erwähnung",
+    "mentionDescription": "Sie wurden in einem neuen Kommentar erwähnt.",
+    "mentionTime": "vor 21 Minuten",
+    "reportTitle": "Bericht erstellt",
+    "reportDescription": "Der Analysebericht für die vorherige Woche wurde erstellt.",
+    "reportTime": "vor 3 Stunden",
+    "exportTitle": "Export abgeschlossen",
+    "exportDescription": "Die angeforderten Daten wurden im CSV-Format heruntergeladen.",
+    "exportTime": "Gestern",
+    "versionTitle": "Neue Version veröffentlicht",
+    "versionDescription": "Prüfen Sie die neueste Version auf neue Funktionen und Verbesserungen.",
+    "versionTime": "vor 2 Tagen"
   }
 }

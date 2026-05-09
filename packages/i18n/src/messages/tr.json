@@ -70,7 +70,8 @@
     "account": "Hesap",
     "billing": "Faturalama",
     "notifications": "Bildirimler",
-    "logOut": "Çıkış Yap"
+    "logOut": "Çıkış Yap",
+    "search": "Ara..."
   },
   "HotkeysDialog": {
     "title": "Klavye Kısayolları",
@@ -114,5 +115,29 @@
     "openOrSelect": "Aç/Seç",
     "close": "Kapat",
     "then": "sonra"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Bildirim yok",
+    "emptyDescription": "Tüm bildirimler okundu!",
+    "title": "Bildirimler",
+    "markAllRead": "Tümünü okundu olarak işaretle",
+    "all": "Tümü",
+    "unread": "Okunmayan",
+    "seeAll": "Tüm bildirimleri görüntüle",
+    "loginTitle": "Giriş Başarılı",
+    "loginDescription": "user@example.com olarak güvenli bir şekilde giriş yaptınız.",
+    "loginTime": "Az önce",
+    "mentionTitle": "Yeni Bahsedilme",
+    "mentionDescription": "Yeni bir yorumda bahsedildiniz.",
+    "mentionTime": "21 dakika önce",
+    "reportTitle": "Rapor Oluşturuldu",
+    "reportDescription": "Geçen haftanın analiz raporu oluşturuldu.",
+    "reportTime": "3 saat önce",
+    "exportTitle": "Dışa Aktarma Tamamlandı",
+    "exportDescription": "İstediğiniz veri CSV formatında indirildi.",
+    "exportTime": "Dün",
+    "versionTitle": "Yeni Sürüm Yayınlandı",
+    "versionDescription": "Yeni özellikler ve iyileştirmeler için en son sürümü kontrol edin.",
+    "versionTime": "2 gün önce"
   }
 }

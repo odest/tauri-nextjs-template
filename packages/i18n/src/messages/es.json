@@ -70,7 +70,8 @@
     "account": "Cuenta",
     "billing": "Facturación",
     "notifications": "Notificaciones",
-    "logOut": "Cerrar sesión"
+    "logOut": "Cerrar sesión",
+    "search": "Buscar..."
   },
   "HotkeysDialog": {
     "title": "Atajos de Teclado",
@@ -114,5 +115,29 @@
     "openOrSelect": "Abrir/Seleccionar",
     "close": "Cerrar",
     "then": "luego"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Sin notificaciones",
+    "emptyDescription": "¡Estás al día!",
+    "title": "Notificaciones",
+    "markAllRead": "Marcar todo como leído",
+    "all": "Todas",
+    "unread": "No leídas",
+    "seeAll": "Ver todas",
+    "loginTitle": "Inicio de sesión exitoso",
+    "loginDescription": "Has iniciado sesión de forma segura como user@example.com.",
+    "loginTime": "Justo ahora",
+    "mentionTitle": "Nueva mención",
+    "mentionDescription": "Te han mencionado en un comentario nuevo.",
+    "mentionTime": "hace 21 minutos",
+    "reportTitle": "Informe generado",
+    "reportDescription": "El informe analítico de la semana anterior ha sido generado.",
+    "reportTime": "hace 3 horas",
+    "exportTitle": "Exportación completada",
+    "exportDescription": "Los datos que solicitaste se han descargado en CSV.",
+    "exportTime": "Ayer",
+    "versionTitle": "Nueva versión lanzada",
+    "versionDescription": "Consulte la última versión para conocer las nuevas funciones y mejoras.",
+    "versionTime": "hace 2 días"
   }
 }

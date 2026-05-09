@@ -70,7 +70,8 @@
     "account": "账户",
     "billing": "账单",
     "notifications": "通知",
-    "logOut": "退出登录"
+    "logOut": "退出登录",
+    "search": "搜索..."
   },
   "HotkeysDialog": {
     "title": "键盘快捷键",
@@ -114,5 +115,29 @@
     "openOrSelect": "打开/选择",
     "close": "关闭",
     "then": "然后"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "无通知",
+    "emptyDescription": "所有通知已读！",
+    "title": "通知",
+    "markAllRead": "全部标记为已读",
+    "all": "全部",
+    "unread": "未读",
+    "seeAll": "查看所有通知",
+    "loginTitle": "登录成功",
+    "loginDescription": "您已安全登录为 user@example.com。",
+    "loginTime": "刚刚",
+    "mentionTitle": "新提及",
+    "mentionDescription": "您在一条新评论中被提及。",
+    "mentionTime": "21 分钟前",
+    "reportTitle": "报告已生成",
+    "reportDescription": "上一周的分析报告已生成。",
+    "reportTime": "3 小时前",
+    "exportTitle": "导出完成",
+    "exportDescription": "您请求的数据已以 CSV 格式下载。",
+    "exportTime": "昨天",
+    "versionTitle": "新版本发布",
+    "versionDescription": "检查最新版本以获取新功能和改进。",
+    "versionTime": "2 天前"
   }
 }

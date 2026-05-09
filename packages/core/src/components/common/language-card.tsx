@@ -8,7 +8,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@workspace/ui/components/select"
-import { cn } from "@workspace/ui/lib/utils"
 import { localeConfig, routing } from "@workspace/i18n/routing"
 import { useLanguageSwitcher } from "@workspace/core/hooks/use-language-switcher"
 import { useTranslations } from "@workspace/i18n"
@@ -43,17 +42,12 @@ export function LanguageCard() {
                 </div>
               </SelectValue>
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent position="popper">
               {routing.locales.map((loc) => {
                 const config = localeConfig[loc as keyof typeof localeConfig]
-                const isSelected = locale === loc
 
                 return (
-                  <SelectItem
-                    key={loc}
-                    value={loc}
-                    className={cn(isSelected && "bg-accent")}
-                  >
+                  <SelectItem key={loc} value={loc}>
                     <div className="flex w-full items-center gap-2">
                       <span className="text-base">{config.flag}</span>
                       <span>{config.nativeName}</span>

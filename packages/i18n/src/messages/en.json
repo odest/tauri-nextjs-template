@@ -70,7 +70,8 @@
     "account": "Account",
     "billing": "Billing",
     "notifications": "Notifications",
-    "logOut": "Log out"
+    "logOut": "Log out",
+    "search": "Search..."
   },
   "HotkeysDialog": {
     "title": "Keyboard Shortcuts",
@@ -114,5 +115,29 @@
     "openOrSelect": "Open/Select",
     "close": "Close",
     "then": "then"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "No notifications",
+    "emptyDescription": "You're all caught up!",
+    "title": "Notifications",
+    "markAllRead": "Mark all as read",
+    "all": "All",
+    "unread": "Unread",
+    "seeAll": "See all notifications",
+    "loginTitle": "Login Successful",
+    "loginDescription": "You have securely signed in as user@example.com.",
+    "loginTime": "Just now",
+    "mentionTitle": "New Mention",
+    "mentionDescription": "You have been mentioned in a new comment.",
+    "mentionTime": "21 minutes ago",
+    "reportTitle": "Report Generated",
+    "reportDescription": "The analytics report for the previous week has been generated.",
+    "reportTime": "3 hours ago",
+    "exportTitle": "Export Completed",
+    "exportDescription": "The data you requested has been downloaded in CSV format.",
+    "exportTime": "Yesterday",
+    "versionTitle": "New Version Released",
+    "versionDescription": "Check the latest version for new features and improvements.",
+    "versionTime": "2 days ago"
   }
 }

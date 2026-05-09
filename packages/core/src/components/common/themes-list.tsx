@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react"
 import { Skeleton } from "@workspace/ui/components/skeleton"
 import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@workspace/ui/components/empty"
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -140,7 +147,7 @@ export const ThemesList = () => {
               <SelectTrigger className="w-full gap-2 sm:w-40 md:w-[180px]">
                 <SelectValue placeholder={t("sortBy")} />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent position="popper">
                 <SelectItem value="default">
                   <ArrowUpDown className="mr-2 h-4 w-4" />
                   {t("sortDefault")}
@@ -161,13 +168,15 @@ export const ThemesList = () => {
 
       <CardContent className="space-y-4">
         {filteredThemes.length === 0 && searchTerm ? (
-          <div className="py-12 text-center">
-            <Search className="mx-auto mb-4 size-12 text-muted-foreground" />
-            <h3 className="mb-1 text-lg font-medium">{t("noThemesTitle")}</h3>
-            <p className="px-4 text-pretty text-muted-foreground">
-              {t("noThemesDescription")}
-            </p>
-          </div>
+          <Empty className="border border-dashed">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <Search />
+              </EmptyMedia>
+              <EmptyTitle>{t("noThemesTitle")}</EmptyTitle>
+              <EmptyDescription>{t("noThemesDescription")}</EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         ) : (
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 md:gap-4">
             {filteredThemes.map((theme) => (

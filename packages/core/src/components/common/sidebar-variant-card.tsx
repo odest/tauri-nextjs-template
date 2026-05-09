@@ -62,7 +62,7 @@ export const SidebarVariantCard = () => {
             <SelectTrigger className="w-[200px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent position="popper">
               <SelectItem value="sidebar">
                 <div className="flex items-center gap-2">
                   <PanelLeft className="size-4" />

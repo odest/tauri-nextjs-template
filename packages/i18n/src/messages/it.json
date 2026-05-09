@@ -70,7 +70,8 @@
     "account": "Account",
     "billing": "Fatturazione",
     "notifications": "Notifiche",
-    "logOut": "Esci"
+    "logOut": "Esci",
+    "search": "Cerca..."
   },
   "HotkeysDialog": {
     "title": "Scorciatoie da Tastiera",
@@ -114,5 +115,29 @@
     "openOrSelect": "Apri/Seleziona",
     "close": "Chiudi",
     "then": "poi"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Nessuna notifica",
+    "emptyDescription": "Tutto aggiornato!",
+    "title": "Notifiche",
+    "markAllRead": "Segna tutti come letti",
+    "all": "Tutti",
+    "unread": "Non letti",
+    "seeAll": "Vedi tutte le notifiche",
+    "loginTitle": "Accesso completato",
+    "loginDescription": "Accesso effettuato come user@example.com.",
+    "loginTime": "Ora",
+    "mentionTitle": "Nuova menzione",
+    "mentionDescription": "Sei stato menzionato in un commento.",
+    "mentionTime": "21 minuti fa",
+    "reportTitle": "Rapporto generato",
+    "reportDescription": "Il rapporto analitico della settimana precedente è stato generato.",
+    "reportTime": "3 ore fa",
+    "exportTitle": "Esportazione completata",
+    "exportDescription": "I dati sono stati scaricati in CSV.",
+    "exportTime": "Ieri",
+    "versionTitle": "Nuova versione",
+    "versionDescription": "Controlla l'ultima versione per nuove funzionalità e miglioramenti.",
+    "versionTime": "2 giorni fa"
   }
 }

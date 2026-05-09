@@ -61,7 +61,7 @@ export const ModeCard = () => {
             <SelectTrigger className="w-[200px]">
               <SelectValue />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent position="popper">
               <SelectItem value="light">
                 <div className="flex items-center gap-2">
                   <Sun className="size-4" />

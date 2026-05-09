@@ -70,7 +70,8 @@
     "account": "Compte",
     "billing": "Facturation",
     "notifications": "Notifications",
-    "logOut": "Se déconnecter"
+    "logOut": "Se déconnecter",
+    "search": "Rechercher..."
   },
   "HotkeysDialog": {
     "title": "Raccourcis Clavier",
@@ -114,5 +115,29 @@
     "openOrSelect": "Ouvrir",
     "close": "Fermer",
     "then": "puis"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Aucune notification",
+    "emptyDescription": "Vous êtes à jour !",
+    "title": "Notifications",
+    "markAllRead": "Tout marquer comme lu",
+    "all": "Tout",
+    "unread": "Non lu",
+    "seeAll": "Voir tout",
+    "loginTitle": "Connexion réussie",
+    "loginDescription": "Vous êtes connecté en toute sécurité.",
+    "loginTime": "À l'instant",
+    "mentionTitle": "Nouvelle mention",
+    "mentionDescription": "Vous avez été mentionné dans un commentaire.",
+    "mentionTime": "il y a 21 minutes",
+    "reportTitle": "Rapport généré",
+    "reportDescription": "Le rapport analytique de la semaine précédente a été généré.",
+    "reportTime": "il y a 3 heures",
+    "exportTitle": "Exportation terminée",
+    "exportDescription": "Les données ont été téléchargées.",
+    "exportTime": "Hier",
+    "versionTitle": "Nouvelle version",
+    "versionDescription": "Consultez la dernière version pour découvrir de nouvelles fonctionnalités et améliorations.",
+    "versionTime": "il y a 2 jours"
   }
 }

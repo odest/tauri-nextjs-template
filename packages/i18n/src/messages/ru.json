@@ -70,7 +70,8 @@
     "account": "Аккаунт",
     "billing": "Выставление счетов",
     "notifications": "Уведомления",
-    "logOut": "Выйти"
+    "logOut": "Выйти",
+    "search": "Поиск..."
   },
   "HotkeysDialog": {
     "title": "Горячие клавиши",
@@ -114,5 +115,29 @@
     "openOrSelect": "Выбрать",
     "close": "Закрыть",
     "then": "затем"
+  },
+  "NotificationCenter": {
+    "emptyTitle": "Нет уведомлений",
+    "emptyDescription": "Вы все прочитали!",
+    "title": "Уведомления",
+    "markAllRead": "Отметить все как прочитанные",
+    "all": "Все",
+    "unread": "Непрочитанные",
+    "seeAll": "Смотреть все",
+    "loginTitle": "Успешный вход",
+    "loginDescription": "Вы безопасно вошли как user@example.com.",
+    "loginTime": "Только что",
+    "mentionTitle": "Новое упоминание",
+    "mentionDescription": "Вас упомянули в новом комментарии.",
+    "mentionTime": "21 минуту назад",
+    "reportTitle": "Отчет готов",
+    "reportDescription": "Аналитический отчет за прошлую неделю был сгенерирован.",
+    "reportTime": "3 часа назад",
+    "exportTitle": "Экспорт завершен",
+    "exportDescription": "Данные загружены в формате CSV.",
+    "exportTime": "Вчера",
+    "versionTitle": "Новая версия",
+    "versionDescription": "Проверьте последнюю версию на наличие новых функций и улучшений.",
+    "versionTime": "2 дня назад"
   }
 }
