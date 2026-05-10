@@ -1,3 +1,17 @@
+> [!WARNING]
+> **DEPRECATED:** TNTStack has been fully rebranded to **Catalyzer**.
+>
+> This package (`@tntstack/create-app`) is deprecated and no longer maintained.
+> Please use the new official scaffolding tool to start your projects:
+>
+> ```bash
+> npm create catalyzer@latest
+> ```
+>
+> For the latest documentation and updates, visit the new repository: [Catalyzer](https://github.com/odest/catalyzer)
+
+<br>
+
 # @tntstack/create-app
 
 Scaffolding CLI for [TNTStack](https://github.com/odest/tntstack). Creates a new cross-platform monorepo project (Web + Desktop + Mobile) from the TNTStack.
