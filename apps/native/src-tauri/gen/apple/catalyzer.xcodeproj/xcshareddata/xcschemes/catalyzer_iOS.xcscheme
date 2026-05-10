@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "890DEB4334D48A20C05B2CD7"
-               BuildableName = "tntstack_iOS.app"
-               BlueprintName = "tntstack_iOS"
-               ReferencedContainer = "container:tntstack.xcodeproj">
+               BuildableName = "catalyzer_iOS.app"
+               BlueprintName = "catalyzer_iOS"
+               ReferencedContainer = "container:catalyzer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "890DEB4334D48A20C05B2CD7"
-            BuildableName = "tntstack_iOS.app"
-            BlueprintName = "tntstack_iOS"
-            ReferencedContainer = "container:tntstack.xcodeproj">
+            BuildableName = "catalyzer_iOS.app"
+            BlueprintName = "catalyzer_iOS"
+            ReferencedContainer = "container:catalyzer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "890DEB4334D48A20C05B2CD7"
-            BuildableName = "tntstack_iOS.app"
-            BlueprintName = "tntstack_iOS"
-            ReferencedContainer = "container:tntstack.xcodeproj">
+            BuildableName = "catalyzer_iOS.app"
+            BlueprintName = "catalyzer_iOS"
+            ReferencedContainer = "container:catalyzer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>
@@ -101,9 +101,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "890DEB4334D48A20C05B2CD7"
-            BuildableName = "tntstack_iOS.app"
-            BlueprintName = "tntstack_iOS"
-            ReferencedContainer = "container:tntstack.xcodeproj">
+            BuildableName = "catalyzer_iOS.app"
+            BlueprintName = "catalyzer_iOS"
+            ReferencedContainer = "container:catalyzer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <CommandLineArguments>

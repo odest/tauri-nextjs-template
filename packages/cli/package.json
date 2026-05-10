@@ -1,7 +1,7 @@
 {
-  "name": "@tntstack/create-app",
-  "version": "0.1.10",
-  "description": "Scaffolding CLI for TNT Stack",
+  "name": "create-catalyzer",
+  "version": "0.0.1",
+  "description": "Scaffolding CLI for Catalyzer",
   "license": "MIT",
   "author": "odest",
   "publishConfig": {
@@ -9,7 +9,7 @@
     "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
-    "tntstack",
+    "catalyzer",
     "tauri",
     "nextjs",
     "turborepo",
@@ -21,20 +21,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/odest/tntstack.git",
+    "url": "git+https://github.com/odest/catalyzer.git",
     "directory": "packages/cli"
   },
   "bugs": {
-    "url": "https://github.com/odest/tntstack/issues"
+    "url": "https://github.com/odest/catalyzer/issues"
   },
-  "homepage": "https://tntstack.odest.dev",
+  "homepage": "https://catalyzer.dev",
   "type": "module",
   "files": [
     "dist",
     "templates"
   ],
   "bin": {
-    "tntstack": "./dist/index.js"
+    "catalyzer": "./dist/index.js"
   },
   "engines": {
     "node": ">=20"

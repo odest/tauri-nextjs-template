@@ -27,22 +27,22 @@ The official CLI initializes the workspace, renaming identifiers, and setting up
 <Tabs items={["npm", "pnpm", "bun", "yarn"]}>
   <Tab value="npm">
     ```bash
-    npm create @tntstack/app@latest
+    npm create catalyzer@latest
     ```
   </Tab>
   <Tab value="pnpm">
     ```bash
-    pnpm create @tntstack/app@latest
+    pnpm create catalyzer@latest
     ```
   </Tab>
   <Tab value="bun">
     ```bash
-    bunx @tntstack/create-app
+    bunx create-catalyzer@latest
     ```
   </Tab>
   <Tab value="yarn">
     ```bash
-    yarn create @tntstack/app
+    yarn create catalyzer@latest
     ```
   </Tab>
 </Tabs>
@@ -63,7 +63,7 @@ The CLI is interactive by default, but you can pass flags to skip prompts:
 
 Example:
 ```bash
-npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install
+npm create catalyzer@latest --name <your-project-name> --github-user <your-github-username> --no-install
 ```
 
 ## 2. Local Development
@@ -104,7 +104,7 @@ If you only want to work on one platform:
 
 ## 3. CI/CD & Repository Settings
 
-TNTStack uses **Release Please** for automated versioning and changelog generation. If you host your code on GitHub, you must grant specific permissions for the release bot and enforce a linear git history.
+Catalyzer uses **Release Please** for automated versioning and changelog generation. If you host your code on GitHub, you must grant specific permissions for the release bot and enforce a linear git history.
 
 ### Step A: Workflow Permissions
 1. Go to your repository **Settings** > **Actions** > **General**.

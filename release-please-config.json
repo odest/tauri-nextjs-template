@@ -7,8 +7,8 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "tntstack",
-      "component": "tntstack",
+      "package-name": "catalyzer",
+      "component": "catalyzer",
       "changelog-path": "CHANGELOG.md",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,
@@ -58,8 +58,8 @@
       "include-component-in-tag": true,
       "tag-separator": "@",
       "version-file": "package.json",
-      "component": "@tntstack/create-app",
-      "package-name": "@tntstack/create-app"
+      "component": "create-catalyzer",
+      "package-name": "create-catalyzer"
     }
   },
   "changelog-sections": [

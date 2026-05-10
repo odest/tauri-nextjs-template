@@ -1,35 +1,35 @@
 <div align="center">
   <picture>
-    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-light.svg" media="(prefers-color-scheme: dark)">
-    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-dark.svg" media="(prefers-color-scheme: light)">
-    <img src="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/logo-dark.svg" alt="TNTStack" width="120" height="120">
+    <source srcset="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/logo-light.svg" media="(prefers-color-scheme: dark)">
+    <source srcset="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/logo-dark.svg" media="(prefers-color-scheme: light)">
+    <img src="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/logo-dark.svg" alt="Catalyzer" width="120" height="120">
   </picture>
 
-  <h1>TNTStack</h1>
+  <h1>Catalyzer</h1>
 
   <p>
-    <strong>The solid stack for building cross-platform apps.</strong><br>
+    <strong>Build Cross-Platform Apps Faster Than Ever</strong><br>
     Write your code once and build for Web, Desktop, and Mobile.<br>
     Powered by Tauri and Next.js in a single monorepo.
   </p>
 
-[![CI Status](https://github.com/odest/tntstack/actions/workflows/ci.yml/badge.svg)](https://github.com/odest/tntstack/actions/workflows/ci.yml)
-[![Release](https://github.com/odest/tntstack/actions/workflows/release.yml/badge.svg)](https://github.com/odest/tntstack/actions/workflows/release.yml)
+[![CI Status](https://github.com/odest/catalyzer/actions/workflows/ci.yml/badge.svg)](https://github.com/odest/catalyzer/actions/workflows/ci.yml)
+[![Release](https://github.com/odest/catalyzer/actions/workflows/release.yml/badge.svg)](https://github.com/odest/catalyzer/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/github/v/release/odest/tntstack?label=Version&color=orange)](https://github.com/odest/tntstack/releases/latest)
-[![CLI](https://img.shields.io/npm/v/@tntstack/create-app?label=CLI&color=orange)](https://www.npmjs.com/package/@tntstack/create-app)
+[![Version](https://img.shields.io/github/v/release/odest/catalyzer?label=Version&color=orange)](https://github.com/odest/catalyzer/releases/latest)
+[![CLI](https://img.shields.io/npm/v/create-catalyzer?label=CLI&color=orange)](https://www.npmjs.com/package/create-catalyzer)
 
-[![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://tntstack.odest.dev)
-[![Docs](https://img.shields.io/badge/Docs-Online-blue)](https://tntstack.odest.dev/docs)
-[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Desktop%20%7C%20Mobile-blue.svg)](https://tntstack.odest.dev)
+[![Live Demo](https://img.shields.io/badge/Demo-Live-success)](https://catalyzer.dev)
+[![Docs](https://img.shields.io/badge/Docs-Online-blue)](https://catalyzer.dev/docs)
+[![Platform](https://img.shields.io/badge/Platform-Web%20%7C%20Desktop%20%7C%20Mobile-blue.svg)](https://catalyzer.dev)
 
   <br />
 
   <picture>
-    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-light.webp" media="(prefers-color-scheme: light)">
-    <source srcset="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-dark.webp" media="(prefers-color-scheme: dark)">
-    <a href="https://tntstack.odest.dev" target="_blank">
-    <img src="https://raw.githubusercontent.com/odest/tntstack/refs/heads/master/.github/assets/banner-dark.webp" alt="TNTStack" width="800">
+    <source srcset="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/banner-light.webp" media="(prefers-color-scheme: light)">
+    <source srcset="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/banner-dark.webp" media="(prefers-color-scheme: dark)">
+    <a href="https://catalyzer.dev" target="_blank">
+    <img src="https://raw.githubusercontent.com/odest/catalyzer/refs/heads/master/.github/assets/banner-dark.webp" alt="Catalyzer" width="800">
   </a>
     
   </picture>
@@ -37,13 +37,13 @@
 
 <br>
 
-TNTStack is a starting point for building cross-platform apps. It covers **Web**, **Desktop** (Windows, macOS, Linux), and **Mobile** (Android, iOS) from the same shared UI, themes, and logic. Run the CLI, scaffold your project, and start building.
+Catalyzer is a starting point for building cross-platform apps. It covers **Web**, **Desktop** (Windows, macOS, Linux), and **Mobile** (Android, iOS) from the same shared UI, themes, and logic. Run the CLI, scaffold your project, and start building.
 
 ## 💡 Philosophy
 
 - **Unified** - One codebase, every platform. Web and native share the same pages, components, and state through `packages/core` and `packages/ui`.
 - **Ready** - 40+ themes, 10 languages, CI/CD, and a scaffolding CLI out of the box.
-- **Portable** - Run `npm create @tntstack/app`, brand your project, and own the code. No lock-in.
+- **Portable** - Run `npm create catalyzer@latest`, brand your project, and own the code. No lock-in.
 - **Strict** - End-to-end TypeScript, shared lint rules, and automated releases keep things solid.
 
 ## ✨ Features
@@ -55,7 +55,7 @@ TNTStack is a starting point for building cross-platform apps. It covers **Web**
 - **PWA** - Offline support, precaching, and runtime caching strategies for the web app
 - **Landing Page** - Pre-built, SEO-optimized marketing pages designed to pitch your product
 - **Docs Page** - Integrated, MDX-powered documentation architecture ready for your technical guides
-- **Scaffolding CLI** - `npm create @tntstack/app` sets up a branded, configured project
+- **Scaffolding CLI** - `npm create catalyzer@latest` sets up a branded, configured project
 - **Turborepo** - Dependency-aware builds and caching
 - **TypeScript** - Strict, end-to-end type safety with shared configs
 - **CI/CD** - GitHub Actions + Release Please for automated builds and versioning
@@ -70,22 +70,22 @@ TNTStack is a starting point for building cross-platform apps. It covers **Web**
 
 > [!NOTE]
 > Building native apps requires additional platform-specific tools (e.g., Xcode, Android Studio, C++ Build Tools).
-> See our [Docs](https://tntstack.odest.dev/docs) or Tauri's [Prerequisites Guide](https://v2.tauri.app/start/prerequisites/) for details.
+> See our [Docs](https://catalyzer.dev/docs) or Tauri's [Prerequisites Guide](https://v2.tauri.app/start/prerequisites/) for details.
 
 ### Create a New Project
 
 ```bash
-npm create @tntstack/app@latest
+npm create catalyzer@latest
 ```
 
 <details>
 <summary>Using other package managers</summary>
 
 ```bash
-pnpm create @tntstack/app@latest
-yarn create @tntstack/app
-npx @tntstack/create-app
-bunx @tntstack/create-app
+pnpm create catalyzer@latest
+yarn create catalyzer@latest
+npx create-catalyzer@latest
+bunx create-catalyzer@latest
 ```
 
 </details>
@@ -129,7 +129,7 @@ packages/
   core/               → Business logic: pages, stores, hooks, providers, config
   ui/                 → Design system: shadcn/ui primitives, themes, styles
   i18n/               → 10-language type-safe translations (SSR & static)
-  cli/                → Scaffolding tool (npm create @tntstack/app)
+  cli/                → Scaffolding tool (npm create catalyzer@latest)
   eslint-config/      → Shared ESLint rules (Flat Config)
   typescript-config/  → Shared TypeScript configs
 ```
@@ -138,15 +138,15 @@ Both `web` and `native` import pages, layouts, and state from `packages/core`, a
 
 ### Supported Platforms
 
-| Platform       | Status       | Links                                                              |
-| -------------- | ------------ | ------------------------------------------------------------------ |
-| **🌐 Web**     | ✅ Available | [Live Demo](https://tntstack.odest.dev)                            |
-| **📱 PWA**     | ✅ Available | [Live Demo](https://tntstack.odest.dev)                            |
-| **🪟 Windows** | ✅ Available | [Download Demo](https://github.com/odest/tntstack/releases/latest) |
-| **🍎 macOS**   | ✅ Available | [Download Demo](https://github.com/odest/tntstack/releases/latest) |
-| **🐧 Linux**   | ✅ Available | [Download Demo](https://github.com/odest/tntstack/releases/latest) |
-| **🤖 Android** | ✅ Available | [Download Demo](https://github.com/odest/tntstack/releases/latest) |
-| **📱 iOS**     | ✅ Available | [Download Demo](https://github.com/odest/tntstack/releases/latest) |
+| Platform       | Status       | Links                                                               |
+| -------------- | ------------ | ------------------------------------------------------------------- |
+| **🌐 Web**     | ✅ Available | [Live Demo](https://catalyzer.dev)                                  |
+| **📱 PWA**     | ✅ Available | [Live Demo](https://catalyzer.dev)                                  |
+| **🪟 Windows** | ✅ Available | [Download Demo](https://github.com/odest/catalyzer/releases/latest) |
+| **🍎 macOS**   | ✅ Available | [Download Demo](https://github.com/odest/catalyzer/releases/latest) |
+| **🐧 Linux**   | ✅ Available | [Download Demo](https://github.com/odest/catalyzer/releases/latest) |
+| **🤖 Android** | ✅ Available | [Download Demo](https://github.com/odest/catalyzer/releases/latest) |
+| **📱 iOS**     | ✅ Available | [Download Demo](https://github.com/odest/catalyzer/releases/latest) |
 
 ## 🛠️ Tech Stack
 
@@ -204,7 +204,7 @@ pnpm clean                # Clean all build outputs
 
 ## 📖 Documentation
 
-For setup guides, architecture, theming, i18n, deployment and more, see **[Documentation](https://tntstack.odest.dev/docs)**
+For setup guides, architecture, theming, i18n, deployment and more, see **[Documentation](https://catalyzer.dev/docs)**
 
 ## 🤝 Contributing
 

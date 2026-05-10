@@ -60,5 +60,5 @@ Before deploying or sharing your project, update the site metadata (URLs, headli
 ---
 
 <div align="center">
-  <sub>Built with <b><a href="https://github.com/odest/tntstack">TNTStack</a></b> - The solid stack for building cross-platform apps.</sub>
+  <sub>Built with <b><a href="https://github.com/odest/catalyzer">Catalyzer</a></b> - Accelerate your cross-platform app development</sub>
 </div>

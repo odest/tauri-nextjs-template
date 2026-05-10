@@ -1,4 +1,4 @@
-package com.tntstack.app
+package com.catalyzer.app
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge

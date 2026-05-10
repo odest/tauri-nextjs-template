@@ -36,7 +36,7 @@ GitHub Actions for validation, Release Please for versioning, manual dispatch fo
 | `build-desktop.yml` | Called by `build-apps` | Desktop builds (Windows, macOS, Linux) |
 | `build-universal-apk.yml` | Called by `build-apps` | Universal Android APK + AAB |
 | `build-split-apk.yml` | Called by `build-apps` | Per-architecture Android APKs |
-| `publish-cli.yml` | Release published (`@tntstack/create-app@v*`) | Publish CLI to npm |
+| `publish-cli.yml` | Release published (`create-catalyzer@v*`) | Publish CLI to npm |
 
 ## CI Workflow
 
@@ -125,13 +125,13 @@ All packages share a single version managed from the root. The root `"."` packag
     "packages/cli": {
       "release-type": "node",
       "include-component-in-tag": true,
-      "component": "@tntstack/create-app"
+      "component": "create-catalyzer"
     }
   }
 }
 ```
 
-When a release is created, all packages bump to the same version, including `package.json`, `tauri.conf.json`, and `Cargo.toml`. The CLI (`@tntstack/create-app`) is versioned independently with `separate-pull-requests: true`, so it gets its own Release PR.
+When a release is created, all packages bump to the same version, including `package.json`, `tauri.conf.json`, and `Cargo.toml`. The CLI (`create-catalyzer`) is versioned independently with `separate-pull-requests: true`, so it gets its own Release PR.
 
 ### Version Files Updated
 
@@ -222,6 +222,6 @@ Android workflows automatically check for keystore secrets. If found, they produ
 
 ## CLI Publishing
 
-`publish-cli.yml` triggers automatically when a release tagged `@tntstack/create-app@v*` is published. It builds the CLI with `pnpm --filter @tntstack/create-app build` and publishes to npm with `--provenance` for supply chain security.
+`publish-cli.yml` triggers automatically when a release tagged `create-catalyzer@v*` is published. It builds the CLI with `pnpm --filter create-catalyzer build` and publishes to npm with `--provenance` for supply chain security.
 
 Requires `NPM_TOKEN` in repository secrets.

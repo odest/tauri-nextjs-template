@@ -1,12 +1,12 @@
-export const TEMPLATE_SOURCE = "github:odest/tntstack"
+export const TEMPLATE_SOURCE = "github:odest/catalyzer"
 
 export const DEFAULT_VERSION = "0.1.0"
 
 /** Search terms used for automatic find-replace across the entire project. */
 export const SEARCH_TERMS = {
-  name: "tntstack",
-  namePascal: "TNTStack",
-  identifier: "com.tntstack.app",
+  name: "catalyzer",
+  namePascal: "Catalyzer",
+  identifier: "com.catalyzer.app",
   githubUser: "odest",
 } as const
 

@@ -32,13 +32,13 @@
 		A761A06CD03A90D96C928C8F /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		B875ADC57D078917AF3FBAED /* bindings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bindings.h; sourceTree = "<group>"; };
 		B901E65A4B1C5887C41CB88D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		BC2A2E02263C491B46025026 /* tntstack_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = tntstack_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2A2E02263C491B46025026 /* catalyzer_iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = catalyzer_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0CA7103992EA6FDFA23511 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C3E189730C44E0150DD7DF85 /* lib.rs */ = {isa = PBXFileReference; path = lib.rs; sourceTree = "<group>"; };
 		C985EF31C485FB84384995ED /* libapp.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libapp.a; sourceTree = "<group>"; };
 		E3CE1C6D48D652506210F467 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		ED27B2B5126E98204C30568E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		F67C137E6096A22B1B7841E3 /* tntstack_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tntstack_iOS.entitlements; sourceTree = "<group>"; };
+		F67C137E6096A22B1B7841E3 /* catalyzer_iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = catalyzer_iOS.entitlements; sourceTree = "<group>"; };
 		FD077C1018906D8406DC3A26 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -76,13 +76,13 @@
 			path = Externals;
 			sourceTree = "<group>";
 		};
-		46CB77F4DDD8AE9A66DACD1F /* tntstack */ = {
+		46CB77F4DDD8AE9A66DACD1F /* catalyzer */ = {
 			isa = PBXGroup;
 			children = (
 				A761A06CD03A90D96C928C8F /* main.mm */,
 				0CC9BD6A3F0798E291C19A83 /* bindings */,
 			);
-			path = tntstack;
+			path = catalyzer;
 			sourceTree = "<group>";
 		};
 		6FD5AB3DCFC39CB425D5C89B = {
@@ -94,7 +94,7 @@
 				3D16527DC9732F506D0422C7 /* Externals */,
 				A29FF8276BAEC59707F1761C /* Sources */,
 				AB73B1ACFE2C7CC1C671F9E6 /* src */,
-				AB85B31DF4250636C6AEF60A /* tntstack_iOS */,
+				AB85B31DF4250636C6AEF60A /* catalyzer_iOS */,
 				DB1ABBC6371C76C0BEEB3827 /* Frameworks */,
 				F4A9DE7584DCB20894FCF4CD /* Products */,
 			);
@@ -103,7 +103,7 @@
 		A29FF8276BAEC59707F1761C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				46CB77F4DDD8AE9A66DACD1F /* tntstack */,
+				46CB77F4DDD8AE9A66DACD1F /* catalyzer */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -118,13 +118,13 @@
 			path = ../../src;
 			sourceTree = "<group>";
 		};
-		AB85B31DF4250636C6AEF60A /* tntstack_iOS */ = {
+		AB85B31DF4250636C6AEF60A /* catalyzer_iOS */ = {
 			isa = PBXGroup;
 			children = (
 				B901E65A4B1C5887C41CB88D /* Info.plist */,
-				F67C137E6096A22B1B7841E3 /* tntstack_iOS.entitlements */,
+				F67C137E6096A22B1B7841E3 /* catalyzer_iOS.entitlements */,
 			);
-			path = tntstack_iOS;
+			path = catalyzer_iOS;
 			sourceTree = "<group>";
 		};
 		DB1ABBC6371C76C0BEEB3827 /* Frameworks */ = {
@@ -145,7 +145,7 @@
 		F4A9DE7584DCB20894FCF4CD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BC2A2E02263C491B46025026 /* tntstack_iOS.app */,
+				BC2A2E02263C491B46025026 /* catalyzer_iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,9 +153,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		890DEB4334D48A20C05B2CD7 /* tntstack_iOS */ = {
+		890DEB4334D48A20C05B2CD7 /* catalyzer_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B99D77D44A0AB9252BC502D4 /* Build configuration list for PBXNativeTarget "tntstack_iOS" */;
+			buildConfigurationList = B99D77D44A0AB9252BC502D4 /* Build configuration list for PBXNativeTarget "catalyzer_iOS" */;
 			buildPhases = (
 				C4FF05D550B5065E8C1F15CD /* Build Rust Code */,
 				67233C9EA6DB6CEF23C4EABA /* Sources */,
@@ -166,11 +166,11 @@
 			);
 			dependencies = (
 			);
-			name = tntstack_iOS;
+			name = catalyzer_iOS;
 			packageProductDependencies = (
 			);
-			productName = tntstack_iOS;
-			productReference = BC2A2E02263C491B46025026 /* tntstack_iOS.app */;
+			productName = catalyzer_iOS;
+			productReference = BC2A2E02263C491B46025026 /* catalyzer_iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -182,7 +182,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 			};
-			buildConfigurationList = 57484B9CCD2CED0DBB46ADFA /* Build configuration list for PBXProject "tntstack" */;
+			buildConfigurationList = 57484B9CCD2CED0DBB46ADFA /* Build configuration list for PBXProject "catalyzer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -196,7 +196,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				890DEB4334D48A20C05B2CD7 /* tntstack_iOS */,
+				890DEB4334D48A20C05B2CD7 /* catalyzer_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -258,7 +258,7 @@
 					arm64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = tntstack_iOS/tntstack_iOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = catalyzer_iOS/catalyzer_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = x86_64;
@@ -266,15 +266,15 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = tntstack_iOS/Info.plist;
+				INFOPLIST_FILE = catalyzer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tntstack.app;
-				PRODUCT_NAME = tntstack;
+				PRODUCT_BUNDLE_IDENTIFIER = com.catalyzer.app;
+				PRODUCT_NAME = catalyzer;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = arm64;
@@ -352,7 +352,7 @@
 					arm64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = tntstack_iOS/tntstack_iOS.entitlements;
+				CODE_SIGN_ENTITLEMENTS = catalyzer_iOS/catalyzer_iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = x86_64;
@@ -360,15 +360,15 @@
 					"$(inherited)",
 					"\".\"",
 				);
-				INFOPLIST_FILE = tntstack_iOS/Info.plist;
+				INFOPLIST_FILE = catalyzer_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				"LIBRARY_SEARCH_PATHS[arch=arm64]" = "$(inherited) $(PROJECT_DIR)/Externals/arm64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
 				"LIBRARY_SEARCH_PATHS[arch=x86_64]" = "$(inherited) $(PROJECT_DIR)/Externals/x86_64/$(CONFIGURATION) $(SDKROOT)/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME) $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tntstack.app;
-				PRODUCT_NAME = tntstack;
+				PRODUCT_BUNDLE_IDENTIFIER = com.catalyzer.app;
+				PRODUCT_NAME = catalyzer;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = arm64;
@@ -434,7 +434,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		57484B9CCD2CED0DBB46ADFA /* Build configuration list for PBXProject "tntstack" */ = {
+		57484B9CCD2CED0DBB46ADFA /* Build configuration list for PBXProject "catalyzer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AE7509AEC5A7CB3C79511C3E /* debug */,
@@ -443,7 +443,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = debug;
 		};
-		B99D77D44A0AB9252BC502D4 /* Build configuration list for PBXNativeTarget "tntstack_iOS" */ = {
+		B99D77D44A0AB9252BC502D4 /* Build configuration list for PBXNativeTarget "catalyzer_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				87E529DA2314B370263E5029 /* debug */,

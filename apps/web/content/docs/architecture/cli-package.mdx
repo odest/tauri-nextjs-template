@@ -1,6 +1,6 @@
 ---
 title: CLI Package
-description: Scaffolding CLI. Downloads, renames, and configures TNTStack projects.
+description: Scaffolding CLI. Downloads, renames, and configures Catalyzer projects.
 icon: Terminal
 ---
 
@@ -8,29 +8,29 @@ import { File, Folder, Files } from 'fumadocs-ui/components/files'
 import { Callout } from 'fumadocs-ui/components/callout'
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 
-Published to npm as [`@tntstack/create-app`](https://www.npmjs.com/package/@tntstack/create-app). Downloads the latest source, renames all identifiers to match your project, configures Android and iOS packaging, inits git, and optionally installs dependencies.
+Published to npm as [`create-catalyzer`](https://www.npmjs.com/package/create-catalyzer). Downloads the latest source, renames all identifiers to match your project, configures Android and iOS packaging, inits git, and optionally installs dependencies.
 
 ## Usage
 
 <Tabs items={["npm", "pnpm", "yarn", "bun"]}>
   <Tab value="npm">
     ```bash
-    npm create @tntstack/app@latest
+    npm create catalyzer@latest
     ```
   </Tab>
   <Tab value="pnpm">
     ```bash
-    pnpm create @tntstack/app@latest
+    pnpm create catalyzer@latest
     ```
   </Tab>
   <Tab value="yarn">
     ```bash
-    yarn create @tntstack/app
+    yarn create catalyzer@latest
     ```
   </Tab>
   <Tab value="bun">
     ```bash
-    bunx @tntstack/create-app
+    bunx create-catalyzer@latest
     ```
   </Tab>
 </Tabs>
@@ -38,7 +38,7 @@ Published to npm as [`@tntstack/create-app`](https://www.npmjs.com/package/@tnts
 The CLI runs in interactive mode by default. You can also pass flags for CI or scripted setups:
 
 ```bash
-npm create @tntstack/app@latest --name <your-project-name> --github-user <your-github-username> --no-install --no-git
+npm create catalyzer@latest --name <your-project-name> --github-user <your-github-username> --no-install --no-git
 ```
 
 | Flag | Description |
@@ -115,7 +115,7 @@ export async function cloneTemplate(
 }
 ```
 
-Downloads the source from `github:odest/tntstack` using giget. The branch defaults to `master` but can be overridden with `--branch`. No git history is carried over.
+Downloads the source from `github:odest/catalyzer` using giget. The branch defaults to `master` but can be overridden with `--branch`. No git history is carried over.
 
   </Tab>
   <Tab value="2. Templates">
@@ -125,7 +125,7 @@ Replaces branded content with clean starter files (shadow templates):
 - `apps/web/content/docs/` → replaced with minimal starter docs from `templates/docs/`
 - Root `README.md` → replaced with a project template, `{{PROJECT_NAME}}` is substituted with the user's project name
 
-This ensures the scaffolded project starts with a clean documentation structure instead of the TNTStack source docs.
+This ensures the scaffolded project starts with a clean documentation structure instead of the Catalyzer source docs.
 
   </Tab>
   <Tab value="3. Rename">
@@ -141,11 +141,11 @@ The global find-replace covers these identifiers:
 
 | Search term | Replaced with |
 |---|---|
-| `com.tntstack.app` | User's app identifier |
-| `tntstack_lib` | `<project_name_snake>_lib` |
-| `TNTStack` | PascalCase project name |
+| `com.catalyzer.app` | User's app identifier |
+| `catalyzer_lib` | `<project_name_snake>_lib` |
+| `Catalyzer` | PascalCase project name |
 | `odest` | User's GitHub username |
-| `tntstack` | User's project name |
+| `catalyzer` | User's project name |
 
 Binary files, lock files, and build artifacts are skipped via pattern matching.
 

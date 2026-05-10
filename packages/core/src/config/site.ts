@@ -1,13 +1,13 @@
-const siteUrl = "https://tntstack.odest.dev"
-const repoUrl = "https://github.com/odest/tntstack"
-const apiUrl = "https://api.github.com/repos/odest/tntstack"
+const siteUrl = "https://catalyzer.dev"
+const repoUrl = "https://github.com/odest/catalyzer"
+const apiUrl = "https://api.github.com/repos/odest/catalyzer"
 
 export const siteConfig = {
-  name: "TNTStack",
+  name: "Catalyzer",
   owner: "odest",
   headline: "Build Cross-Platform Apps Faster Than Ever",
   description:
-    "The solid stack for building cross-platform apps. Write your code once and build for Web, Desktop, and Mobile. Powered by a seamless monorepo setup featuring Next.js and Tauri.",
+    "A production-grade starter template for building cross-platform apps. Write your code once and ship to Web, Desktop, and Mobile from a single codebase. Powered by Next.js and Tauri.",
   links: {
     website: siteUrl,
     github: repoUrl,

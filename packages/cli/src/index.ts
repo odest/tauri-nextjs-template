@@ -16,17 +16,17 @@ declare const __CLI_VERSION__: string
 import { DEFAULT_VERSION } from "./consts.js"
 
 const banner = `
-  ████████╗███╗   ██╗████████╗███████╗████████╗ █████╗  ██████╗██╗  ██╗
-  ╚══██╔══╝████╗  ██║╚══██╔══╝██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-     ██║   ██╔██╗ ██║   ██║   ███████╗   ██║   ███████║██║     █████╔╝ 
-     ██║   ██║╚██╗██║   ██║   ╚════██║   ██║   ██╔══██║██║     ██╔═██╗ 
-     ██║   ██║ ╚████║   ██║   ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
-     ╚═╝   ╚═╝  ╚═══╝   ╚═╝   ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
+ ██████╗ █████╗ ████████╗ █████╗ ██╗  ██╗   ██╗███████╗███████╗██████╗ 
+██╔════╝██╔══██╗╚══██╔══╝██╔══██╗██║  ╚██╗ ██╔╝╚══███╔╝██╔════╝██╔══██╗
+██║     ███████║   ██║   ███████║██║   ╚████╔╝   ███╔╝ █████╗  ██████╔╝
+██║     ██╔══██║   ██║   ██╔══██║██║    ╚██╔╝   ███╔╝  ██╔══╝  ██╔══██╗
+╚██████╗██║  ██║   ██║   ██║  ██║███████╗██║   ███████╗███████╗██║  ██║
+ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝   ╚══════╝╚══════╝╚═╝  ╚═╝
 `
 
 const program = new Command()
-  .name("tntstack")
-  .description("Scaffold a new TNTStack project")
+  .name("catalyzer")
+  .description("Scaffold a new Catalyzer project")
   .version(__CLI_VERSION__)
   .option("-n, --name <name>", "Project name")
   .option("-d, --directory <dir>", "Output directory")
@@ -38,7 +38,7 @@ const program = new Command()
   .option("-b, --branch <branch>", "Template branch to clone", "master")
   .action(async (flags) => {
     console.log(pc.cyan(banner))
-    p.intro(pc.bold(pc.green("TNTStack Scaffold Tool")))
+    p.intro(pc.bold(pc.green("Catalyzer Scaffold Tool")))
 
     if (flags.name) {
       // Non-interactive mode

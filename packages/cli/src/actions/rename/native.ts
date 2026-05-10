@@ -13,7 +13,7 @@ import {
 function buildNativeReplacementMap(opts: ScaffoldOptions): [string, string][] {
   return [
     [SEARCH_TERMS.identifier, opts.identifier],
-    ["tntstack_lib", `${opts.projectNameSnake}_lib`],
+    ["catalyzer_lib", `${opts.projectNameSnake}_lib`],
     [SEARCH_TERMS.namePascal, opts.projectNamePascal],
     [SEARCH_TERMS.name, opts.projectNameSnake], // src-tauri uses snake_case or kebab-case for binaries
   ]

@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: A cross-platform monorepo for Web, Desktop, and Mobile. Built on Tauri 2 and Next.js.
+description: Production-grade cross-platform starter template to build Web, Desktop, and Mobile apps from a single codebase. Powered by Next.js, Tauri, and Turborepo.
 icon: BookOpen
 ---
 
@@ -9,7 +9,7 @@ import { Card, Cards } from 'fumadocs-ui/components/card'
 import { Step, Steps } from 'fumadocs-ui/components/steps'
 import { Layers, Component, Palette, Languages, Wifi, GitBranch, Monitor, Globe, Smartphone, Command, Keyboard } from 'lucide-react'
 
-TNTStack is a starting point for building cross-platform apps. One codebase targets Web (SSR + PWA), Desktop (Windows, macOS, Linux), and Mobile (Android, iOS). The web deployment operates as a standard Next.js application with Server-Side Rendering (SSR) and Progressive Web App (PWA) capabilities. For native targets, we use Tauri v2. The native build pipeline takes a static export of the Next.js application and embeds it within a Rust-powered webview.
+Catalyzer is a starting point for building cross-platform apps. One codebase targets Web (SSR + PWA), Desktop (Windows, macOS, Linux), and Mobile (Android, iOS). The web deployment operates as a standard Next.js application with Server-Side Rendering (SSR) and Progressive Web App (PWA) capabilities. For native targets, we use Tauri v2. The native build pipeline takes a static export of the Next.js application and embeds it within a Rust-powered webview.
 
 Both apps pull pages and state from a shared core package, and design system primitives from a shared UI package. You change a button once, it updates everywhere.
 
@@ -41,7 +41,7 @@ Both apps pull pages and state from a shared core package, and design system pri
   <Step>
     ### Initialization
     ```bash
-    npm create @tntstack/app@latest
+    npm create catalyzer@latest
     ```
   </Step>
   <Step>

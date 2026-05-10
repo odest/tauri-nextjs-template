@@ -2,5 +2,5 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-  tntstack_lib::run()
+  catalyzer_lib::run()
 }

@@ -4067,7 +4067,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tntstack"
+name = "catalyzer"
 version = "1.5.0"
 dependencies = [
  "serde",

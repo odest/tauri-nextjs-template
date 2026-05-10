@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish:
-    if: startsWith(github.event.release.tag_name, '@tntstack/create-app@v')
+    if: startsWith(github.event.release.tag_name, 'create-catalyzer@v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,7 +29,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build CLI
-        run: pnpm --filter @tntstack/create-app build
+        run: pnpm --filter create-catalyzer build
 
       - name: Publish to npm
         run: |

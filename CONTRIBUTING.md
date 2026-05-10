@@ -1,4 +1,4 @@
-# Contributing to TNTStack
+# Contributing to Catalyzer
 
 First off, thank you for considering contributing to this project!
 
@@ -31,8 +31,8 @@ This project uses:
 
 ```bash
 # Clone the repository
-git clone https://github.com/odest/tntstack.git
-cd tntstack
+git clone https://github.com/odest/catalyzer.git
+cd catalyzer
 
 # Install dependencies
 pnpm install

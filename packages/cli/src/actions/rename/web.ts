@@ -20,13 +20,13 @@ export async function updateSiteConfig(
   let content = await fs.readFile(sitePath, "utf-8")
 
   // Explicitly replace template identity within this single file
-  content = content.replaceAll("TNTStack", opts.projectNamePascal)
+  content = content.replaceAll("Catalyzer", opts.projectNamePascal)
   content = content.replaceAll(
-    "odest/tntstack",
+    "odest/catalyzer",
     `${opts.githubUser}/${opts.projectName}`
   )
   content = content.replaceAll("odest", opts.githubUser)
-  content = content.replaceAll("tntstack", opts.projectName)
+  content = content.replaceAll("catalyzer", opts.projectName)
 
   await fs.writeFile(sitePath, content, "utf-8")
 }

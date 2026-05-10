@@ -83,9 +83,9 @@ A Next.js frontend statically exported into a Tauri 2 webview with a Rust backen
 ```json title="src-tauri/tauri.conf.json"
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "tntstack",
+  "productName": "Catalyzer",
   "version": "x.x.x",
-  "identifier": "com.tntstack.app",
+  "identifier": "com.catalyzer.app",
   "build": {
     "beforeDevCommand": "pnpm dev",
     "devUrl": "http://localhost:3000",
@@ -93,7 +93,7 @@ A Next.js frontend statically exported into a Tauri 2 webview with a Rust backen
     "frontendDist": "../dist"
   },
   "app": {
-    "windows": [{ "title": "tntstack", "width": 800, "height": 600 }],
+    "windows": [{ "title": "Catalyzer", "width": 800, "height": 600 }],
     "security": { "csp": null }
   },
   "bundle": {
@@ -155,7 +155,7 @@ The `greet` command returns a `GreetResponse` struct with a `message_key` field.
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 fn main() {
-  tntstack_lib::run()
+  catalyzer_lib::run()
 }
 ```
 
