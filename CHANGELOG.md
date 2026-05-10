@@ -1,5 +1,53 @@
 # Changelog
 
+## [1.6.0](https://github.com/odest/tntstack/compare/v1.5.0...v1.6.0) (2026-05-10)
+
+
+### Features
+
+* **cli:** add shadow templates and scaffold content cleanup ([9c15047](https://github.com/odest/tntstack/commit/9c15047bab89b23a7a570e4da9a81919575e9413))
+* **core:** add notification center and search to app header ([2d2ec0e](https://github.com/odest/tntstack/commit/2d2ec0ea21c57448edc31906fc37e2af6d4fa1dd))
+
+
+### Bug Fixes
+
+* **cli:** auto-inject version and add identifier validation ([1be815d](https://github.com/odest/tntstack/commit/1be815d778cb8b0134afa0d92ab40f18ed495492))
+* **cli:** improve scaffold UX, error recovery, and template versioning ([657cf1e](https://github.com/odest/tntstack/commit/657cf1e8c1ce43fd2c1f18c701d215b60f04a34e))
+* **core:** align components with v4 vega patterns and resolve hotkey conflicts ([acebee0](https://github.com/odest/tntstack/commit/acebee080ed5da6c8b6daa6886a68dc47a7137f7))
+
+
+### Documentation
+
+* **cli:** add a deprecation warning and migration information to the README ([10a03e3](https://github.com/odest/tntstack/commit/10a03e3434abf8e6bf894d9afb4aacef761c934f))
+* **cli:** update README with new flags and configuration step ([0ac8e13](https://github.com/odest/tntstack/commit/0ac8e134777a5509c793f25290c43f1297ae66c1))
+* **deployment:** standardize and refine platform deployment guides ([a920ac3](https://github.com/odest/tntstack/commit/a920ac338132ab8cf90286b0c19e22ed01d674dc))
+* update CLI usage docs and add a simple configuration step ([959c087](https://github.com/odest/tntstack/commit/959c087a0634e2b81ae334990761d2ea23311b6b))
+
+
+### Styles
+
+* enforce global formatting with new prettier rules ([5db1510](https://github.com/odest/tntstack/commit/5db1510fb75e05de9588d69f9ff05da99400b730))
+* **web:** align download page width and update platform mappings ([46490e0](https://github.com/odest/tntstack/commit/46490e069c46039444e7faff86ac40de0a6cdc97))
+
+
+### Code Refactoring
+
+* centralize project metadata and decouple hardcoded template identity ([02ed2cb](https://github.com/odest/tntstack/commit/02ed2cbd3b20a604d69634ef8c89d497a1237339))
+* **cli:** modularize renaming logic and transition to targeted metadata updates ([e9fc6f0](https://github.com/odest/tntstack/commit/e9fc6f00c40c495b4cffa29b33565d8154ba9006))
+* **ui:** revert adaptive sizing to standard tailwind utilities ([9bb5d67](https://github.com/odest/tntstack/commit/9bb5d6734cd891a9e045e83d095790d23117b74f))
+* **ui:** update shadcn components to v4 radix-vega style ([0dcb0f2](https://github.com/odest/tntstack/commit/0dcb0f233e911444f08fb6d1032cc23296fdc9b7))
+
+
+### Tests
+
+* **cli:** add validation utils tests and test script ([b6150ac](https://github.com/odest/tntstack/commit/b6150ac8a6ce73e398076c27e41b0c22183ca65e))
+
+
+### Build System
+
+* **deps:** bump next-intl from 4.9.1 to 4.9.2 ([#61](https://github.com/odest/tntstack/issues/61)) ([f477f65](https://github.com/odest/tntstack/commit/f477f65d29089671bafcdb43194150df6b604f4b))
+* **deps:** bump tauri from 2.10.3 to 2.11.1 in /apps/native/src-tauri ([#62](https://github.com/odest/tntstack/issues/62)) ([99fccf0](https://github.com/odest/tntstack/commit/99fccf0498a0724db4bee45c649fb808761f5e57))
+
 ## [1.5.0](https://github.com/odest/tntstack/compare/v1.4.7...v1.5.0) (2026-04-26)
 
 
