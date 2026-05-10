@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.10](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.9...@tntstack/create-app@v0.1.10) (2026-05-10)
+
+
+### Documentation
+
+* **cli:** add a deprecation warning and migration information to the README ([10a03e3](https://github.com/odest/tntstack/commit/10a03e3434abf8e6bf894d9afb4aacef761c934f))
+
+
+### Styles
+
+* enforce global formatting with new prettier rules ([5db1510](https://github.com/odest/tntstack/commit/5db1510fb75e05de9588d69f9ff05da99400b730))
+
 ## [0.1.9](https://github.com/odest/tntstack/compare/@tntstack/create-app@v0.1.8...@tntstack/create-app@v0.1.9) (2026-05-03)
 
 
